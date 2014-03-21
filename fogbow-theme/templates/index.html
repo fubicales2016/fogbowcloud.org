@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% set active_page = "index" %}
+{% block jumbo %}
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <img src="{{ SITEURL }}/theme/img/logos/logo.jpg" width=420>
+        </div>
+        <div class="col-lg-8">
+          <h1>fogbow</h1>
+          <h2>the federated, green and opportunistic cloud</h2>
+          <br>
+          <a target="_blank" href="https://github.com/fogbow/" class="btn btn-danger btn-lg">Learn more</a>
+        </div>
+      </div>
+    </div>   
+  </div>
+{% endblock %}
+
+{% block contents %}
+<div class="row">
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Federated</h1>
+        <p>Aggregate resources from multiple and heterogeneous infrastructures.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-rendezvous" class="btn btn-primary btn-sm">rendezvous</a>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-manager" class="btn btn-primary btn-sm">manager</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Opportunistic</h1>
+        <p>Deploy a private cloud on top of commodity hardware in an opportunistic fashion.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-opportunism" class="btn btn-primary btn-sm">opportunism@github</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Green</h1>
+        <p>Save energy by consolidating applications in active hosts and by shutting down idle hosts.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-green" class="btn btn-primary btn-sm">green@github</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
