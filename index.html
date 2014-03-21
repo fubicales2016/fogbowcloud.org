@@ -1,70 +1,86 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>fogbow</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/theme/css/bootstrap.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">fogbow</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <img src="/theme/img/logos/logo.jpg" width=420>
+        </div>
+        <div class="col-lg-8">
+          <h1>fogbow</h1>
+          <h2>the federated, green and opportunistic cloud</h2>
+          <br>
+          <a target="_blank" href="https://github.com/fogbow/" class="btn btn-danger btn-lg">Learn more</a>
+        </div>
+      </div>
+    </div>   
+  </div>
+    <div class="container">
+      <div class="bs-docs-section">
+<div class="row">
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Federated</h1>
+        <p>Aggregate resources from multiple and heterogeneous infrastructures.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-rendezvous" class="btn btn-primary btn-sm">rendezvous</a>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-manager" class="btn btn-primary btn-sm">manager</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Opportunistic</h1>
+        <p>Deploy a private cloud on top of commodity hardware in an opportunistic fashion.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-opportunism" class="btn btn-primary btn-sm">opportunism@github</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="well well-lg">
+        <h1>Green</h1>
+        <p>Save energy by consolidating applications in active hosts and by shutting down idle hosts.</p>
+        <a target="_blank" href="https://github.com/fogbow/fogbow-green" class="btn btn-primary btn-sm">green@github</a>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <footer class="footer">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-unstyled show">
+              <li class="pull-right"><a href="#top">Back to top</a></li>
+              <li><a href="http://blog.fogbowcloud.org">Blog</a></li>
+              <li><a href="https://github.com/fogbow/">GitHub</a></li>
+              <li><a href="http://build.fogbowcloud.org">Build status</a></li>
+            </ul>
+            <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License Version 2.0</a>.</p>
+            <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-</head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">fogbow </a></h1>
-                <nav><ul>
-                    <li><a href="/category/python.html">Python</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/my-super-post.html">My super title</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2010-12-03T10:20:00">
-                Fri 03 December 2010
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="/author/abmargb.html">abmargb</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>. </p>
-<p>tags: <a href="/tag/pelican.html">pelican</a><a href="/tag/publishing.html">publishing</a></p>
-</footer><!-- /.post-info --><p>This is the content of my super blog post.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+  </body>
 </html>
