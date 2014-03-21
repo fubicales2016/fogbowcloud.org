@@ -38,3 +38,5 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+pelican.pid
+srv.pid
