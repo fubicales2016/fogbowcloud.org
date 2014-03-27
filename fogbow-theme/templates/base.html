@@ -17,6 +17,12 @@
             <span class="icon-bar"></span>
           </button>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Install</a></li>
+          <li {% if output_file == 'architecture.html' %}class="active"{% endif %}>
+            <a href="{{ SITEURL }}/architecture.html">How it works</a>
+          </li>
+        </ul>
       </div>
     </div>
     {% block jumbo %} {% endblock %}
