@@ -19,7 +19,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Install</a></li>
-          <li {% if output_file == 'architecture.html' %}class="active"{% endif %}>
+          <li {% for page in pages if page.section == 'arch' and page.save_as == output_file %}class="active"{% endfor %}>
             <a href="{{ SITEURL }}/architecture.html">How it works</a>
           </li>
           <li><a href="#">Contact us</a></li>
