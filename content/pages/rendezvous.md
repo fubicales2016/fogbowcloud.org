@@ -20,8 +20,6 @@ All communication is done via XMPP according to the Rendezvous protocol.
 
 ## Rendezvous protocol
 
----
-
 ### IAmAlive
 
 #### Request
