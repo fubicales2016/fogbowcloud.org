@@ -6113,3 +6113,7 @@ label,
 .affix {
   position: fixed;
 }
+
+.page-content img {
+  max-width: 750px;
+}
