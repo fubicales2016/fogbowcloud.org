@@ -17,6 +17,7 @@ TRANSLATION_FEED_ATOM = None
 
 THEME = 'fogbow-theme'
 DIRECT_TEMPLATES = ['index']
+STATIC_PATHS = ['CNAME']
 
 # Blogroll
 LINKS =  (('Pelican', 'http://getpelican.com/'),
