@@ -55,7 +55,73 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Rendezvous</h1>
-<p>Bla</p>
+<p>The Rendezvous is the discovery service of the fowbow cloud. It allows members to find each other by providing a complete status of the federation. </p>
+<h2>Rendezvous architecture</h2>
+<p>Currently, the Rendezvous provides two methods to federation members: IamAlive and WhoIsAlive.</p>
+<p>The first one allows a federation member to report resource information. In this sense, the Rendezvous component will periodically receive information from every federation manager, which will also work as a heartbeat, and tag this information with a timestamp. This data is valid for a given expiration interval, which is configurable. After this timeout, data is considered expired and this member will no longer show up as an active member of the federation.</p>
+<p>The WhoIsAlive method allows a federation member to ask for the set of active federation members. The rendezvous component will then return resource information about all currently active members.</p>
+<p>All communication is done via XMPP according to the Rendezvous protocol.</p>
+<h2>Rendezvous protocol</h2>
+<hr />
+<h3>IAmAlive</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/iamalive&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;status&gt;</span>
+         <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+         <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+      <span class="nt">&lt;/status&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<hr />
+<h3>WhoIsAlive</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/whoisalive&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/whoisalive&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;item</span> <span class="na">id=</span><span class="s">&quot;federated-cloud-id1&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;status&gt;</span>
+            <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+            <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+            <span class="nt">&lt;updated&gt;</span>value<span class="nt">&lt;/updated&gt;</span>  
+         <span class="nt">&lt;/status&gt;</span>
+      <span class="nt">&lt;/item&gt;</span>
+      .
+      .
+      .
+      <span class="nt">&lt;item</span> <span class="na">id=</span><span class="s">&quot;federated-cloud-idn&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;status&gt;</span>
+            <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+            <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+            <span class="nt">&lt;updated&gt;</span>value<span class="nt">&lt;/updated&gt;</span>  
+         <span class="nt">&lt;/status&gt;</span>
+      <span class="nt">&lt;/item&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<p>Obs: The updated value is the timestamp of information. It will be formatted according to ISO 8601 standard. </p>
       </div>
     </div>
     </div>
