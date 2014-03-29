@@ -55,7 +55,15 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Opportunism</h1>
-<p>Bla</p>
+<p>Opportunism is a feature that allows idle resources to be used by the cloud. Resources being used by a local user shouldn’t show up to the cloud.</p>
+<h3>Requirements</h3>
+<ul>
+<li>nova-compute should be disabled and its instances killed when there is mouse/keyboard activity.</li>
+<li>it must come back when the host is idle for a certain amount of time.</li>
+</ul>
+<h3>Implementation</h3>
+<p>The opportunism is implemented using PowerNap that is a configurable deamon that executes some actions when the system is idle, and the idleness is determined by monitors that can be configured to watch CPU load, processes, mouse/keyboard, etc.</p>
+<p>A powernap action script needs to be written sends an RPC to nova-compute in order to disable it.</p>
       </div>
     </div>
     </div>
