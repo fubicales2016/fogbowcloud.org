@@ -6116,8 +6116,10 @@ label,
 .page-content img {
   max-width: 750px;
 }
-.page-content > h1, h2 {
+.page-content > h1,
+.page-content > h2 {
   border-bottom: 1px solid #ddd;
   line-height: 1.7;
   margin: 1em 0 15px;
 }
+
