@@ -24,7 +24,7 @@ Despite those changes, powernap by default only triggers the recovery action whe
 
 The powernap has some monitors to check if the host is idle, but the monitor that checks for input devices (mouse and keyboard) just watches USB devices, so a new monitor named PS2Monitor was added to also check PS2 devices.
 
-With this changes, the powernap is able to use in the fogbow opportunism module.
+With those changes, the powernap is able to be used in the opportunistic component.
 
 ### Action
 The action is divided in two scripts (start-node and stop-node), one for start the compute node and other to stop, both scripts uses the Python client for NOVA API to enable/disable specific services in order to start/stop the compute node.
