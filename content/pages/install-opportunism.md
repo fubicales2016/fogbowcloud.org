@@ -1,10 +1,10 @@
-Title: Install - Opportunism
-url: opportunism
+Title: Opportunism
+url: install-opportunism
 save_as: install-opportunism.html
 section: install
 index: 0
 
-Install - Opportunism
+Opportunism
 ==========
 The installation of the Fogbow Opportunism is very simple, 
 it uses the Distutils from python to install the module, 
