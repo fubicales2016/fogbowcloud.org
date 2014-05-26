@@ -1,8 +1,8 @@
-title: install-redezvous
-url: install-redezvous
-save_as: rendezvous.html
-section: arch
-index: 1
+Title: Rendezvous
+url: install-rendezvous
+save_as: install-rendezvous.html
+section: install
+index: 2
 
 # Rendezvous
 
