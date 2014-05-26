@@ -1,7 +1,7 @@
-title: install-manager
+Title: install-manager
 url: install-manager
-save_as: manager.html
-section: arch
+save_as: install-manager.html
+section: install
 index: 1
 
 # Manager
