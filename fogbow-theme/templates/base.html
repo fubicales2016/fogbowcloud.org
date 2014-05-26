@@ -24,6 +24,9 @@
           <li {% for page in pages if page.section == 'arch' and page.save_as == output_file %}class="active"{% endfor %}>
             <a href="{{ SITEURL }}/architecture.html">How it works</a>
           </li>
+          <li {% for page in pages if page.section == 'usage' and page.save_as == output_file %}class="active"{% endfor %}>
+            <a href="{{ SITEURL }}/manager-cli.html">How to use it</a>
+          </li>
           <li><a href="#">Contact us</a></li>
         </ul>
       </div>
