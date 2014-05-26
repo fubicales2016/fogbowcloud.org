@@ -1,0 +1,1 @@
+intall - configure - run
