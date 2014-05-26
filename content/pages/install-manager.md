@@ -1,4 +1,4 @@
-Title: install-manager
+Title: Manager
 url: install-manager
 save_as: install-manager.html
 section: install
