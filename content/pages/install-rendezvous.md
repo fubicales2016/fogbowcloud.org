@@ -11,7 +11,7 @@ The Rendezvous is the discovery service of the fowbow cloud. It allows members t
 ## Install
 To set up Rendezvous, if you have an XMPP server alredy installed and configured in your machine, first, get the latest code of the project.
 ``` shell
-git clone git clone https://github.com/fogbow/fogbow-redezvous.git
+git clone https://github.com/fogbow/fogbow-redezvous.git
 ```
 ## Configure
 After the installation the user can configure a few properties listed below:
