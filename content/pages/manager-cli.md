@@ -61,9 +61,9 @@ Get a new Token.
 
 Example :
 ```bash
-<<fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000
+<< fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000
 
->>MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0y
+>> MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
 =========
 ### 4 – Request Operations 
@@ -78,10 +78,10 @@ Get all requests user.
 
 Example :
 ```bash
-<<fogbow-cli request --get --auth-token mytoken --url http://url.com:10000
+<< fogbow-cli request --get --auth-token mytoken --url http://url.com:10000
 
->>X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
->>X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+>> X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
+>>  X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
 ##### 4.1.2 – Get specific request
 Get specific request user.
@@ -93,9 +93,9 @@ Get specific request user.
 
 Example :
 ```bash
-<<fogbow-cli request --get --auth-token mytoken --id requestid --url http://url.com:10000
+<< fogbow-cli request --get --auth-token mytoken --id requestid --url http://url.com:10000
 
->>RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=failed; InstanceId=null
+>> RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
 ```
 ####4.2 - Create requests 
 Create requests.
@@ -109,10 +109,10 @@ Create requests.
 
 Example :
 ```bash
-<<fogbow-cli request --create --n 2 --image myimage --flavor  myflavor --url http://url.com:10000
+<< fogbow-cli request --create --n 2 --image myimage --flavor  myflavor --url http://url.com:10000
 
->>X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
->>X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+>> X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
+>> X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
 ##### 4.2.1 Values Default 
 If the user does not fill the optional fields, the default values will be used.
@@ -122,7 +122,9 @@ If the user does not fill the optional fields, the default values will be used.
 
 Example :
 ```bash
-fogbow-cli request --create --url http://url.com:10000  
+<< fogbow-cli request --create --url http://url.com:10000  
+
+>> X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
 #### 4.3 - Delete requests 
 ##### 4.3.1 – Delete all requests
@@ -134,9 +136,9 @@ Delete all requests user.
 
 Example :
 ```bash
-<<fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
+<< fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
 
->>Ok
+>> Ok
 ```
 
 ##### 4.3.2 - Delete specific requests
@@ -149,9 +151,9 @@ Delete specific request user.
 
 Example :
 ```bash
-<<fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
+<< fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
 
->>Ok
+>> Ok
 ```
 
 =========
@@ -166,9 +168,9 @@ Get all instances user.
 
 Example :
 ```bash
-<<fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
+<< fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
 
->>X-OCCI-Location: 34235356-3432434-324324-32432423
+>> X-OCCI-Location: 34235356-3432434-324324-32432423
 ```
 #####5.1.2 -  Get specific instance
 Get specific instance user.
@@ -180,14 +182,14 @@ Get specific instance user.
 
 Example : 
 ```bash
-<<fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://url.com:10000
+<< fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://url.com:10000
 
->>Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
->>Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
->>Link: </network/admin>; org.openstack.compute.console.vnc="N/A"; occi.compute.architecture="x86"; occi.compute.speed="0.0"
->>X-OCCI-Attribute: org.openstack.compute.console.vnc="N/A"
->>X-OCCI-Attribute: occi.compute.architecture="x86"
->>X-OCCI-Attribute: occi.compute.speed="0.0"
+>> Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
+>> Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
+>> Link: </network/admin>; org.openstack.compute.console.vnc="N/A"; occi.compute.architecture="x86"; occi.compute.speed="0.0"
+>> X-OCCI-Attribute: org.openstack.compute.console.vnc="N/A"
+>> X-OCCI-Attribute: occi.compute.architecture="x86"
+>> X-OCCI-Attribute: occi.compute.speed="0.0"
 ```
 
 ####5.2 - Delete instance
@@ -199,9 +201,9 @@ Delete all instances user.
 * --auth-token  (Required) : Token user.
 
 ```bash
-<<fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
+<< fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
 
->>Ok
+>> Ok
 ```
 #####5.2.2 Delete specific instance
 Delete specific instance user.
@@ -212,7 +214,7 @@ Delete specific instance user.
 * --id (Required) : Instance id.
 
 ```bash
-<<fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
+<< fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
 
->>Ok
+>> Ok
 ```
