@@ -32,8 +32,8 @@ xmpp_host=127.0.0.1
 # Example:
 xmpp_port=5347
 
+# Maximum Interval of time that the Rendezvous Component will keep a cloud in its roster without a sign of activeness.
 # Example:
-# Maximum Interval of time that the Rendezvous Component will keep a Cloud in its roster without a sign of activeness.
 site_expiration=10000
 ```
 ## Run
