@@ -16,20 +16,24 @@ git clone git clone https://github.com/fogbow/fogbow-redezvous.git
 ## Configure
 After the installation the user can configure a few properties listed below:
 ``` shell
-# jid of your Rendezvous Component
+# jid of your Rendezvous Component.
 # Example:
 xmpp_jid=rendezvous.test.com
-# Component password
+
+# Component password.
 # Example:
 xmpp_password=password
-# IP aderess
+
+# IP aderess.
 # Example:
 xmpp_host=127.0.0.1
-# Port in which the server will be listening
+
+# Port in which the server will be listening.
 # Example:
 xmpp_port=5347
+
 # Example:
-# Interval of time that the component will expire
+# Maximum Interval of time that the Rendezvous Component will keep a Cloud in its roster without a sign of activeness.
 site_expiration=10000
 ```
 ## Run
