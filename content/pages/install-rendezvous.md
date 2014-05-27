@@ -42,7 +42,7 @@ xmpp_port=5347
 site_expiration=10000
 ```
 ## Run
-To Start Rendezvous, run the start-redezvous script in the bin directory.
+To start Rendezvous, run the start-redezvous script in the bin directory.
 ``` shell
 ./bin/start-rendezvous
 ```
