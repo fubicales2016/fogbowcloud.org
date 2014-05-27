@@ -45,7 +45,164 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Manager command line interface</h1>
-<p>Bla</p>
+<p>Manager command line interface is the service for the client that should be use to execute functions the system. It allows user know about federation members, resources provided by fogbow and get, create and delete requests and get and delete instances. </p>
+<h3>Summary</h3>
+<p><ol>
+  <li>Member Operations</li>
+  <li>Resources Operations</li>
+  <li>Token Operations</li>
+  <li>Request Operations</li>
+  <li>Instance Operations</li>
+</ol></p>
+<p>=========</p>
+<h3>1 - Member Operations.</h3>
+<p><ul>
+  <li>member (Required)</li>
+  <li>--url (Required) : Endpoint</li>
+</ul></p>
+<h4>1.1 - List Federation members</h4>
+<p>Get all federation members.
+<ul>
+  <li>--get (Required)</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">member</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<p>=========</p>
+<h3>2 - Resources Operations</h3>
+<p><ul>
+  <li>resource (Required)</li>
+  <li>--url (Required) : Endpoint</li>
+</ul></p>
+<h4>2.1 - Get all Fogbow Resources</h4>
+<p>Get all resources provided by Fogbow.
+<ul>
+  <li>--get (Required)</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">resource</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<p>=========</p>
+<h3>3 – Get new Token</h3>
+<p><ul>
+  <li>token (Required) : Token user.</li>
+  <li>--url (Required) : Endpoint</li>
+</ul></p>
+<h4>3.1 - Get a new Token</h4>
+<p>Get a new Token.
+<ul>
+  <li>--get (Required)</li>
+  <li>--password (Optional)</li>
+  <li>--username (Required)</li>
+  <li>--tenantName (Required)</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">token</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">password</span> <span class="n">mypassword</span> <span class="o">--</span><span class="n">username</span> <span class="n">myusername</span> <span class="o">--</span><span class="n">tenantName</span> <span class="n">mytenantname</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<p>=========</p>
+<h3>4 – Request Operations</h3>
+<p>Get, create and delete requests.
+<ul>
+  <li>request (Required)</li>
+  <li>--url (Required) : Endpoint</li>
+</ul></p>
+<h4>4.1 – Get request</h4>
+<h5>4.1.1 – Get all requests</h5>
+<p>Get all requests from user.
+<ul>
+  <li>--get (Required)</li>
+  <li>--auth-token (Required) : Token user.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span> <span class="n">mytoken</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<h5>4.1.2 – Get specific request</h5>
+<p>Get specific request from user.
+<ul>
+  <li>--get (Required)</li>
+  <li>--auth-token (Required) : Token user.</li>
+  <li>--id (Required) : Request id.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span> <span class="n">mytoken</span> <span class="o">--</span><span class="n">id</span> <span class="n">requestid</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<h4>4.2 - Create requests</h4>
+<p>Create requests.
+<ul>
+  <li>--create (Required) </li>
+  <li>--auth-token (Required) : Token user.</li>
+  <li>--n (Optional) : Number of request.</li>
+  <li>--image (Optional)</li>
+  <li>--flavor (Optional)</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">n</span> <span class="mi">2</span> <span class="o">--</span><span class="n">image</span> <span class="n">myimage</span> <span class="o">--</span><span class="n">flavor</span>  <span class="n">myflavor</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<h5>4.2.1 Values Default</h5>
+<p>If the User does not fill the optional fields, the default values will be used.
+<ul>
+  <li>--n = 1 </li>
+  <li>--image = fogbow-linux-x86</li>
+  <li>--flavor = fogbow-small </li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>  
+</pre></div>
+
+
+<h4>4.3 - Delete requests</h4>
+<h5>4.3.1 – Delete all requests</h5>
+<p>Delete all requests user.
+<ul>
+  <li>--delete (Required)</li>
+  <li>--auth-token (Required) : Token user.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="n">delete</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span> <span class="n">mytoken</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<h5>4.3.2 - Delete specific requests</h5>
+<p>Delete specific request user.
+<ul>
+  <li>--delete (Required)</li>
+  <li>--auth-token (Required) : Token user.</li>
+  <li>--id (Required) : Request id.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">request</span> <span class="o">--</span><span class="n">delete</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span> <span class="n">mytoken</span> <span class="o">--</span><span class="n">id</span> <span class="n">requestid</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<p>=========</p>
+<h3>5 - Instance Operations</h3>
+<p><ul>
+  <li>instance (Required)</li>
+  <li>--url (Required) : Endpoint</li>
+</ul></p>
+<h4>5.1 - Get instance</h4>
+<h5>5.1.1 -  Get all instance</h5>
+<p>Get all instances user.
+<ul>
+  <li>--get  (Required)</li>
+  <li>--auth-token  (Required) : Token user.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">instance</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span>  <span class="n">mytoken</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
+
+
+<h5>5.1.1 -  Get specific instance</h5>
+<p>Get specific instance user.
+<ul>
+  <li>--get  (Required)</li>
+  <li>--auth-token  (Required) : Token user. </li>
+  <li>--id (Required) : Instance id.</li>
+</ul></p>
+<div class="highlight"><pre><span class="n">Example</span> <span class="o">:</span> <span class="n">instance</span> <span class="o">--</span><span class="kd">get</span> <span class="o">--</span><span class="n">auth</span><span class="o">-</span><span class="n">token</span> <span class="n">mytoken</span> <span class="o">--</span><span class="n">id</span> <span class="n">instanceid</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="o">://</span><span class="n">url</span><span class="o">.</span><span class="na">com</span><span class="o">:</span><span class="mi">10000</span>
+</pre></div>
       </div>
     </div>
     </div>
