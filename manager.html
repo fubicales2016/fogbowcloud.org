@@ -60,7 +60,26 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Manager</h1>
-<p>Bla</p>
+<p>The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers. The final user requests resources through extended OCCI API and specifying the amount of them. The requested resources are treated individually (e.g., if a user requests 3 instances, the manager translate it to 3 single requests of 1 instance). </p>
+<p>While there are available resources, the manager create instances on local cloud. Thereafter the it uses information (got from Rendezvous) to choose another manager and submit remaining requests to a remote cloud. This process concludes when the user's requests were fulfilled or they were not into valid period anymore. </p>
+<h2>Manager Architecture</h2>
+<p>Speak about monitoring Instance; updating token; and submiting open requests.</p>
+<p>This component was designed to not depend on a specific cloud technology. There are a Plugin Layer between manager component and the cloud, in this layer fogbow requests are translated to specific cloud request format. </p>
+<p>All communication is done via XMPP according to the Manager Protocol.</p>
+<h2>Manager Protocol</h2>
+<h3>Example</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/iamalive&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;status&gt;</span>
+         <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+         <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+      <span class="nt">&lt;/status&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
       </div>
     </div>
     </div>
