@@ -13,6 +13,11 @@ To set up Rendezvous, if you have an XMPP server alredy installed and configured
 ``` shell
 git clone https://github.com/fogbow/fogbow-redezvous.git
 ```
+Then install in your machine
+``` shell
+mvn install -D
+```
+
 ## Configure
 After the installation the user can configure a few properties listed below:
 ``` shell
