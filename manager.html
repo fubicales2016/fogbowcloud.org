@@ -66,24 +66,129 @@
 <p>The Manager component was designed to not depend on a specific cloud technology. There is a Plugin Layer between this component and the cloud, in this layer fogbow requests are translated to specific cloud request format. The plugins that should be used by manager are configurable at manager configuration file. Currently, fogbow provides an implementation to OpenStack cloud.</p>
 <p>Basicaly, the Manager is responsable for three diferent services:</p>
 <ul>
-<li>Submiting open requests: it will submit all open requests periodically. It is possible that some user's requests were not have been fulfilled at previous submition, then the manager try to fulfill them periodically. The scheduler interval is configurable at manager configuration file;</li>
-<li>Monitoring of instances: it monitors request's instances. In this way, the manager identifies when a request's instance does not exist anymore and it updates request state according to request's attributes (possible request states can be seen here). The instance monitoring period is configurable at manager configuration file;</li>
-<li>Updating of requests's token: it updates request's token when it is needed. When a request was done by local cloud user, it knows the used access token. However this access token can expire before valid_until attribute or request be fulfilled. In this way, the manager updates the request's token when it is necessary. The token update period is configurable at manager configuration file.</li>
+<li><strong>Submiting open requests:</strong> it will submit all open requests periodically. It is possible that some user's requests were not have been fulfilled at previous submition, then the manager try to fulfill them periodically. The scheduler interval is configurable at manager configuration file;</li>
+<li><strong>Monitoring of instances:</strong> it monitors request's instances. In this way, the manager identifies when a request's instance does not exist anymore and it updates request state according to request's attributes (possible request states can be seen here). The instance monitoring period is configurable at manager configuration file;</li>
+<li><strong>Updating of requests's token:</strong> it updates request's token when it is needed. When a request was done by local cloud user, it knows the used access token. However this access token can expire before valid_until attribute or request be fulfilled. In this way, the manager updates the request's token when it is necessary. The token update period is configurable at manager configuration file.</li>
 </ul>
 <p>All communication is done via XMPP according to the Manager Protocol.</p>
 <h2>Manager Protocol</h2>
-<h3>Example</h3>
+<h3>Request Remote Instance</h3>
 <h4>Request</h4>
-<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/iamalive&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;status&gt;</span>
-         <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
-         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
-         <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
-         <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
-      <span class="nt">&lt;/status&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;set&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/manager/request&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;category&gt;</span>
+         <span class="nt">&lt;class&gt;</span>category-class1<span class="nt">&lt;/class&gt;</span>
+         <span class="nt">&lt;term&gt;</span>category-term1<span class="nt">&lt;/term&gt;</span>
+         <span class="nt">&lt;scheme&gt;</span>category-scheme1<span class="nt">&lt;/scheme&gt;</span>
+      <span class="nt">&lt;/category&gt;</span>
+      ...
+      <span class="nt">&lt;category&gt;</span>
+         <span class="nt">&lt;class&gt;</span>category-classN<span class="nt">&lt;/class&gt;</span>
+         <span class="nt">&lt;term&gt;</span>category-termN<span class="nt">&lt;/term&gt;</span>
+         <span class="nt">&lt;scheme&gt;</span>category-schemeN<span class="nt">&lt;/scheme&gt;</span>
+      <span class="nt">&lt;/category&gt;</span>
+      <span class="nt">&lt;attribute&gt;</span>
+         <span class="nt">&lt;var&gt;</span>att-name1<span class="nt">&lt;/var&gt;</span>
+         <span class="nt">&lt;value&gt;</span>att-value1<span class="nt">&lt;/value&gt;</span>
+      <span class="nt">&lt;/attribute&gt;</span>
+      ...
+      <span class="nt">&lt;attribute&gt;</span>
+         <span class="nt">&lt;var&gt;</span>att-nameN<span class="nt">&lt;/var&gt;</span>
+         <span class="nt">&lt;value&gt;</span>att-valueN<span class="nt">&lt;/value&gt;</span>
+      <span class="nt">&lt;/attribute&gt;</span>
    <span class="nt">&lt;/query&gt;</span>
 <span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/manager/request&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;instance&gt;</span>
+         <span class="nt">&lt;id&gt;</span>instance-id<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;/instance&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h3>Get Remote Instance</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/manager/getinstance&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;instance&gt;</span>
+         <span class="nt">&lt;id&gt;</span>instance-id<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;/instance&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/manager/getinstance&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;instance&gt;</span>
+         <span class="nt">&lt;id&gt;</span>instance-id<span class="nt">&lt;/id&gt;</span>
+         <span class="nt">&lt;link&gt;</span>
+            <span class="nt">&lt;link&gt;</span>link-name<span class="nt">&lt;/link&gt;</span>
+            <span class="nt">&lt;attribute</span> <span class="na">val=</span><span class="s">&quot;att-name1&quot;</span><span class="nt">&gt;</span>att-value1<span class="nt">&lt;/attribute&gt;</span>
+            ...
+            <span class="nt">&lt;attribute</span> <span class="na">val=</span><span class="s">&quot;att-nameN&quot;</span><span class="nt">&gt;</span>att-valueN<span class="nt">&lt;/attribute&gt;</span>
+         <span class="nt">&lt;/link&gt;</span>
+         <span class="nt">&lt;resource&gt;</span>
+            <span class="nt">&lt;category&gt;</span>
+               <span class="nt">&lt;class&gt;</span>category-class1<span class="nt">&lt;/class&gt;</span>
+               <span class="nt">&lt;term&gt;</span>category-term1<span class="nt">&lt;/term&gt;</span>
+               <span class="nt">&lt;scheme&gt;</span>category-scheme1<span class="nt">&lt;/scheme&gt;</span>
+               <span class="nt">&lt;attribute&gt;</span>att-name1<span class="nt">&lt;/attribute&gt;</span>
+               ...
+               <span class="nt">&lt;attribute&gt;</span>att-nameN<span class="nt">&lt;/attribute&gt;</span>
+               <span class="nt">&lt;action&gt;</span>action-name1<span class="nt">&lt;/acttion&gt;</span>
+               ...
+               <span class="nt">&lt;action&gt;</span>action-nameN<span class="nt">&lt;/acttion&gt;</span>
+            <span class="nt">&lt;/category&gt;</span>
+            <span class="nt">&lt;location&gt;</span>value<span class="nt">&lt;/location&gt;</span>
+            <span class="nt">&lt;title&gt;</span>value<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;rel&gt;</span>value<span class="nt">&lt;/rel&gt;</span>
+         <span class="nt">&lt;/resource&gt;</span>
+         ...
+         <span class="nt">&lt;resource&gt;</span>
+            <span class="nt">&lt;category&gt;</span>
+               <span class="nt">&lt;class&gt;</span>category-classN<span class="nt">&lt;/class&gt;</span>
+               <span class="nt">&lt;term&gt;</span>category-termN<span class="nt">&lt;/term&gt;</span>
+               <span class="nt">&lt;scheme&gt;</span>category-schemeN<span class="nt">&lt;/scheme&gt;</span>
+               <span class="nt">&lt;attribute&gt;</span>att-name1<span class="nt">&lt;/attribute&gt;</span>
+               ...
+               <span class="nt">&lt;attribute&gt;</span>att-nameN<span class="nt">&lt;/attribute&gt;</span>
+               <span class="nt">&lt;action&gt;</span>action-name1<span class="nt">&lt;/acttion&gt;</span>
+               ...
+               <span class="nt">&lt;action&gt;</span>action-nameN<span class="nt">&lt;/acttion&gt;</span>
+            <span class="nt">&lt;/category&gt;</span>
+            <span class="nt">&lt;location&gt;</span>value<span class="nt">&lt;/location&gt;</span>
+            <span class="nt">&lt;title&gt;</span>value<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;rel&gt;</span>value<span class="nt">&lt;/rel&gt;</span>
+         <span class="nt">&lt;/resource&gt;</span>
+         <span class="nt">&lt;attribute</span> <span class="na">val=</span><span class="s">&quot;att-name1&quot;</span><span class="nt">&gt;</span>att-value1<span class="nt">&lt;/attribute&gt;</span>
+         ...
+         <span class="nt">&lt;attribute</span> <span class="na">val=</span><span class="s">&quot;att-nameN&quot;</span><span class="nt">&gt;</span>att-valueN<span class="nt">&lt;/attribute&gt;</span>
+      <span class="nt">&lt;/instance&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h3>Remove Remote Instance</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;set&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/manager/removeinstance&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;instance&gt;</span>
+         <span class="nt">&lt;id&gt;</span>instance-id<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;/instance&gt;</span>
+   <span class="nt">&lt;/query&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
       </div>
     </div>
