@@ -17,9 +17,11 @@ Manager command line interface is the service for the client that should be use 
 * Instance Operations
 
 ### 1 - Member Operations. 
+
 Return all federations members.
 
 #### 1.1 - List Federation members 
+
 Get all federation members.
 * member (Required).
 * --url (Required) : Endpoint.
@@ -61,6 +63,8 @@ Get a new Token.
 * --password (Optional) : Password user.
 * --username (Required) : Username user.
 * --tenantName (Required) .
+
+Observation : If the password is not passed in the command, this one will be request in the console. Password is optional in the command but necessary on operation.
 
 Example :
 ```bash
