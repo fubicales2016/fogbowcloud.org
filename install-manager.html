@@ -51,7 +51,7 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Manager</h1>
-<p>Bla bla. </p>
+<p>The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers.  </p>
 <h2>Install</h2>
 <p>To set up Manager, first, get the latest code of the project.</p>
 <div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-manager.git
@@ -70,14 +70,14 @@
 <span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
 
 <span class="c"># Component password</span>
-<span class="c">#Example:</span>
+<span class="c"># Example:</span>
 <span class="nv">xmpp_password</span><span class="o">=</span>password
 
-<span class="c"># ip aderess.</span>
+<span class="c"># IP address.</span>
 <span class="c"># Example:</span>
 <span class="nv">xmpp_host</span><span class="o">=</span>127.0.0.1
 
-<span class="c"># port in which the server will be listening.</span>
+<span class="c"># Port in which the server will be listening.</span>
 <span class="c"># Example:</span>
 <span class="nv">xmpp_port</span><span class="o">=</span>5347
 
@@ -85,87 +85,96 @@
 <span class="c"># Example:</span>
 <span class="nv">rendezvous_jid</span><span class="o">=</span>rendezvous.test.com
 
-<span class="c"># compute plugin class</span>
+<span class="c"># Cloud compute information</span>
+<span class="c"># Compute plugin class</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
-<span class="c"># endpoint occi</span>
+<span class="c"># Cloud OCCI endpoint</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_occi_url</span><span class="o">=</span>http://localhost:8182
 
-<span class="c"># endpoint v2api</span>
+<span class="c"># Cloud v2 compute endpoint</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_v2api_url</span><span class="o">=</span>http://localhost:8182
 
-<span class="c"># small falvor</span>
+<span class="c"># Associating local cloud flavors to fogbow flavors</span>
+<span class="c"># Small flavor</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_flavor_small</span><span class="o">=</span>m1-small
 
-<span class="c"># medium falvor</span>
+<span class="c"># Medium flavor</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_flavor_medium</span><span class="o">=</span>m1-medium
 
-<span class="c"># large falvor</span>
+<span class="c"># Large flavor</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_flavor_large</span><span class="o">=</span>m1-large
 
-<span class="c"># image</span>
+<span class="c"># Image</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_default_cirros_image</span><span class="o">=</span>cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 
-<span class="c"># identity plugin class</span>
+<span class="c"># Cloud identity is used to get and authenticate tokens for local cloud users</span>
+<span class="c"># Identity plugin class</span>
 <span class="c"># Example:</span>
 <span class="nv">identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
 
-<span class="c"># identity plugin endpoint</span>
+<span class="c"># Cloud identity endpoint</span>
 <span class="c"># Example:</span>
 <span class="nv">identity_openstack_url</span><span class="o">=</span>http://localhost:5000
 
-<span class="c"># federation member name</span>
+<span class="c"># Cloud federation user is a local cloud user that will submit requests from remote members</span>
+<span class="c"># Federation user name</span>
 <span class="c"># Example:</span>
 <span class="nv">federation_user_name</span><span class="o">=</span>fogbow
 
-<span class="c"># federation member password</span>
+<span class="c"># Federation user password</span>
 <span class="c"># Example:</span>
 <span class="nv">federation_user_password</span><span class="o">=</span>fogbow
 
-<span class="c"># federation member tenant name</span>
+<span class="c"># Federation user tenant (project) name</span>
 <span class="c"># Example:</span>
 <span class="nv">federation_user_tenant_name</span><span class="o">=</span>demo
 
-<span class="c"># default member validator class</span>
+<span class="c"># Validator member is used to define if the manager can receive or donate to another one</span>
+<span class="c"># Member validator class</span>
 <span class="c"># Example:</span>
 <span class="nv">member_validator</span><span class="o">=</span>org.fogbowcloud.manager.core.DefaultMemberValidator
 
-<span class="c"># certificate path </span>
+<span class="c"># Member certificate file contains the certificate the should be used by the manager </span>
 <span class="c"># Example:</span>
-<span class="nv">cert_path</span><span class="o">=</span>
+<span class="nv">cert_path</span><span class="o">=</span>path/certificate/file
 
-<span class="c"># scheduler period</span>
+<span class="c"># Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet</span>
+<span class="c"># Uses miliseconds unit</span>
 <span class="c"># Example:</span>
 <span class="nv">scheduler_period</span><span class="o">=</span>30000
 
-<span class="c"># tima token update</span>
+<span class="c"># Token update period is the interval of time that the Manager Component will check if it is needed to get new token for requests and get it if yes</span>
+<span class="c"># Uses miliseconds unit</span>
 <span class="c"># Example:</span>
 <span class="nv">token_update_period</span><span class="o">=</span>300000
 
-<span class="c"># time instance monitoruing period</span>
+<span class="c"># Instance monitoring period is the interval of time that the Manager Component will check if the request&#39;s instance still exists. If not, the manager will update request state according to request&#39;s attributes</span>
+<span class="c"># Uses miliseconds unit</span>
 <span class="c"># Example:</span>
 <span class="nv">instance_monitoring_period</span><span class="o">=</span>120000
 
-<span class="c"># shh tunnel host</span>
+<span class="c"># ssh properties are used to give connectivity for instances</span>
+<span class="c"># IP address of shh tunnel host</span>
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_host</span><span class="o">=</span>10.0.0.1
 
-<span class="c"># shh tunnel user</span>
+<span class="c"># shh tunnel user is a valid user at tunnel host. This user must not requere password</span>
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_user</span><span class="o">=</span>fogbow
 
-<span class="c"># shh tunnel port range</span>
+<span class="c"># shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances</span>
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_port_range</span><span class="o">=</span>50000:59999
 
-<span class="c"># http port</span>
+<span class="c"># http port is the Manager Component endpoint port</span>
 <span class="c"># Example:</span>
 <span class="nv">http_port</span> <span class="o">=</span> 8182
 </pre></div>
@@ -173,7 +182,7 @@
 
 <h2>Run</h2>
 <p>To start Manager, run the start-manager script in the bin directory.</p>
-<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">start</span><span class="o">-</span><span class="n">manager</span>
+<div class="highlight"><pre>./bin/start-manager
 </pre></div>
       </div>
     </div>
