@@ -73,10 +73,12 @@
 <h3>2 - Resources Operations</h3>
 <p>Return all resources provided by Fogbow.</p>
 <h4>2.1 - Get all Fogbow Resources</h4>
-<p>Get all resources provided by Fogbow.
-<em> resource (Required)
-</em> --url (Required) : Endpoint
-* --get (Required)</p>
+<p>Get all resources provided by Fogbow. </p>
+<ul>
+<li>resource (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get (Required)</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli resource --get --url http://url.com:10000</span>
 
@@ -89,13 +91,15 @@
 <h3>3 – Token Operation</h3>
 <p>Return a new token user.</p>
 <h4>3.1 - Get a new Token</h4>
-<p>Get a new Token.
-<em> token (Required) : Token user
-</em> --url (Required) : Endpoint
-<em> --get (Required)
-</em> --password (Optional) : Password user
-<em> --username (Required) : Username user
-</em> --tenantName (Required) </p>
+<p>Get a new Token.</p>
+<ul>
+<li>token (Required) : Token user</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get (Required)</li>
+<li>--password (Optional) : Password user</li>
+<li>--username (Required) : Username user</li>
+<li>--tenantName (Required) </li>
+</ul>
 <p>Observation : If the password is not passed in the command, this one will be request in the console. Password is optional in the command but necessary on operation.</p>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000</span>
@@ -108,11 +112,13 @@
 <p>Get, create and delete requests.</p>
 <h4>4.1 – Get request</h4>
 <h5>4.1.1 – Get all requests</h5>
-<p>Get all requests user.
-<em> request (Required)
-</em> --url (Required) : Endpoint
-<em> --get (Required)
-</em> --auth-token (Required) : Token user</p>
+<p>Get all requests user.</p>
+<ul>
+<li>request (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get (Required)</li>
+<li>--auth-token (Required) : Token user</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --get --auth-token mytoken --url http://url.com:10000</span>
 
@@ -122,12 +128,14 @@
 
 
 <h5>4.1.2 – Get specific request</h5>
-<p>Get specific request user.
-<em> request (Required)
-</em> --url (Required) : Endpoint
-<em> --get (Required)
-</em> --auth-token (Required) : Token user
-* --id (Required) : Request id</p>
+<p>Get specific request user.</p>
+<ul>
+<li>request (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get (Required)</li>
+<li>--auth-token (Required) : Token user</li>
+<li>--id (Required) : Request id</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --get --auth-token mytoken --id requestid --url http://url.com:10000</span>
 
@@ -136,14 +144,16 @@
 
 
 <h4>4.2 - Create requests</h4>
-<p>Create requests.
-<em> request (Required)
-</em> --url (Required) : Endpoint
-<em> --create (Required)
-</em> --auth-token (Required) : Token user
-<em> --n (Optional) : Number of request
-</em> --image (Optional) : Image Fogbow
-* --flavor (Optional) : Flavor Fogbow</p>
+<p>Create requests.</p>
+<ul>
+<li>request (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--create (Required)</li>
+<li>--auth-token (Required) : Token user</li>
+<li>--n (Optional) : Number of request</li>
+<li>--image (Optional) : Image Fogbow</li>
+<li>--flavor (Optional) : Flavor Fogbow</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --create --n 2 --image myimage --f</span>lavor  myflavor --url http://url.com:10000
 
@@ -153,10 +163,12 @@
 
 
 <h5>4.2.1 Values Default</h5>
-<p>If the user does not fill the optional fields, the default values will be used.
-- n = 1
-- image = fogbow-linux-x86
-- flavor = fogbow-small</p>
+<p>If the user does not fill the optional fields, the default values will be used.</p>
+<ul>
+<li>n = 1</li>
+<li>image = fogbow-linux-x86</li>
+<li>flavor = fogbow-small</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --create --url http://url.com:10000  </span>
 
@@ -166,11 +178,13 @@
 
 <h4>4.3 - Delete requests</h4>
 <h5>4.3.1 – Delete all requests</h5>
-<p>Delete all requests user.
-<em> request (Required)
-</em> --url (Required) : Endpoint
-<em> --delete (Required)
-</em> --auth-token (Required) : Token user</p>
+<p>Delete all requests user.</p>
+<ul>
+<li>request (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--delete (Required)</li>
+<li>--auth-token (Required) : Token user</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre>&lt;&lt; fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
 
@@ -179,12 +193,14 @@
 
 
 <h5>4.3.2 - Delete specific requests</h5>
-<p>Delete specific request user.
-<em> request (Required)
-</em> --url (Required) : Endpoint
-<em> --delete (Required)
-</em> --auth-token (Required) : Token user
-* --id (Required) : Request id</p>
+<p>Delete specific request user.</p>
+<ul>
+<li>request (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--delete (Required)</li>
+<li>--auth-token (Required) : Token user</li>
+<li>--id (Required) : Request id</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre>&lt;&lt; fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
 
@@ -196,11 +212,13 @@
 <p>Get and Delete instances.</p>
 <h4>5.1 - Get instance</h4>
 <h5>5.1.1 -  Get all instance</h5>
-<p>Get all instances user.
-<em> instance (Required)
-</em> --url (Required) : Endpoint
-<em> --get  (Required)
-</em> --auth-token  (Required) : Token user</p>
+<p>Get all instances user.</p>
+<ul>
+<li>instance (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get  (Required)</li>
+<li>--auth-token  (Required) : Token user</li>
+</ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000</span>
 
@@ -210,12 +228,14 @@
 
 
 <h5>5.1.2 -  Get specific instance</h5>
-<p>Get specific instance user.
-<em> instance (Required)
-</em> --url (Required) : Endpoint
-<em> --get  (Required)
-</em> --auth-token  (Required) : Token user
-* --id (Required) : Instance id</p>
+<p>Get specific instance user.</p>
+<ul>
+<li>instance (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--get  (Required)</li>
+<li>--auth-token  (Required) : Token user</li>
+<li>--id (Required) : Instance id</li>
+</ul>
 <p>Example : </p>
 <div class="highlight"><pre>&lt;&lt; fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://url.com:10000
 
@@ -230,11 +250,13 @@
 
 <h4>5.2 - Delete instance</h4>
 <h5>5.2.1 Delete all instances</h5>
-<p>Delete all instances user.
-<em> instance (Required)
-</em> --url (Required) : Endpoint
-<em> --delete  (Required)
-</em> --auth-token  (Required) : Token user</p>
+<p>Delete all instances user.</p>
+<ul>
+<li>instance (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--delete  (Required)</li>
+<li>--auth-token  (Required) : Token user</li>
+</ul>
 <div class="highlight"><pre>&lt;&lt; fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
 
 &gt;&gt; Ok
@@ -242,12 +264,14 @@
 
 
 <h5>5.2.2 Delete specific instance</h5>
-<p>Delete specific instance user.
-<em> instance (Required)
-</em> --url (Required) : Endpoint
-<em> --delete  (Required)
-</em> --auth-token  (Required) : Token user
-* --id (Required) : Instance id</p>
+<p>Delete specific instance user.</p>
+<ul>
+<li>instance (Required)</li>
+<li>--url (Required) : Endpoint</li>
+<li>--delete  (Required)</li>
+<li>--auth-token  (Required) : Token user</li>
+<li>--id (Required) : Instance id</li>
+</ul>
 <div class="highlight"><pre>&lt;&lt; fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
 
 &gt;&gt; Ok
