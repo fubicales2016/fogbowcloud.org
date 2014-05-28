@@ -6,7 +6,7 @@ index: 1
 
 # Manager
 
-Bla bla. 
+The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers.  
 
 ## Install
 To set up Manager, first, get the latest code of the project.
@@ -27,14 +27,14 @@ After the installation the user can configure a few properties listed below:
 xmpp_jid=manager.test.com
 
 # Component password
-#Example:
+# Example:
 xmpp_password=password
 
-# ip aderess.
+# IP address.
 # Example:
 xmpp_host=127.0.0.1
 
-# port in which the server will be listening.
+# Port in which the server will be listening.
 # Example:
 xmpp_port=5347
 
@@ -42,93 +42,103 @@ xmpp_port=5347
 # Example:
 rendezvous_jid=rendezvous.test.com
 
-# compute plugin class
+# Cloud compute information
+# Compute plugin class
 # Example:
 compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
-# endpoint occi
+# Cloud OCCI endpoint
 # Example:
 compute_openstack_occi_url=http://localhost:8182
 
-# endpoint v2api
+# Cloud v2 compute endpoint
 # Example:
 compute_openstack_v2api_url=http://localhost:8182
 
-# small falvor
+# Associating local cloud flavors to fogbow flavors
+# Small flavor
 # Example:
 compute_openstack_flavor_small=m1-small
 
-# medium falvor
+# Medium flavor
 # Example:
 compute_openstack_flavor_medium=m1-medium
 
-# large falvor
+# Large flavor
 # Example:
 compute_openstack_flavor_large=m1-large
 
-# image
+# Image
 # Example:
 compute_openstack_default_cirros_image=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 
-# identity plugin class
+# Cloud identity is used to get and authenticate tokens for local cloud users
+# Identity plugin class
 # Example:
 identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
 
-# identity plugin endpoint
+# Cloud identity endpoint
 # Example:
 identity_openstack_url=http://localhost:5000
 
-# federation member name
+# Cloud federation user is a local cloud user that will submit requests from remote members
+# Federation user name
 # Example:
 federation_user_name=fogbow
 
-# federation member password
+# Federation user password
 # Example:
 federation_user_password=fogbow
 
-# federation member tenant name
+# Federation user tenant (project) name
 # Example:
 federation_user_tenant_name=demo
 
-# default member validator class
+# Validator member is used to define if the manager can receive or donate to another one
+# Member validator class
 # Example:
 member_validator=org.fogbowcloud.manager.core.DefaultMemberValidator
 
-# certificate path 
+# Member certificate file contains the certificate the should be used by the manager 
 # Example:
-cert_path=
+cert_path=path/certificate/file
 
-# scheduler period
+# Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
+# Uses miliseconds unit
 # Example:
 scheduler_period=30000
 
-# tima token update
+# Token update period is the interval of time that the Manager Component will check if it is needed to get new token for requests and get it if yes
+# Uses miliseconds unit
 # Example:
 token_update_period=300000
 
-# time instance monitoruing period
+# Instance monitoring period is the interval of time that the Manager Component will check if the request's instance still exists. If not, the manager will update request state according to request's attributes
+# Uses miliseconds unit
 # Example:
 instance_monitoring_period=120000
 
-# shh tunnel host
+# ssh properties are used to give connectivity for instances
+# IP address of shh tunnel host
 # Example:
 ssh_tunnel_host=10.0.0.1
 
-# shh tunnel user
+# shh tunnel user is a valid user at tunnel host. This user must not requere password
 # Example:
 ssh_tunnel_user=fogbow
 
-# shh tunnel port range
+# shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances
 # Example:
 ssh_tunnel_port_range=50000:59999
 
-# http port
+# http port is the Manager Component endpoint port
 # Example:
 http_port = 8182
 
 ```
 ## Run
 To start Manager, run the start-manager script in the bin directory.
-``` shell
+
+```bash
 ./bin/start-manager
 ```
