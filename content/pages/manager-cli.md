@@ -40,9 +40,9 @@ Return all resources provided by Fogbow.
 
 #### 2.1 - Get all Fogbow Resources 
 Get all resources provided by Fogbow.
-* resource (Required).
-* --url (Required) : Endpoint.
-* --get (Required).
+* resource (Required)
+* --url (Required) : Endpoint
+* --get (Required)
 
 Example :
 ```bash
@@ -58,12 +58,12 @@ Return a new token user.
 
 #### 3.1 - Get a new Token
 Get a new Token.
-* token (Required) : Token user.
-* --url (Required) : Endpoint.
-* --get (Required).
-* --password (Optional) : Password user.
-* --username (Required) : Username user.
-* --tenantName (Required) .
+* token (Required) : Token user
+* --url (Required) : Endpoint
+* --get (Required)
+* --password (Optional) : Password user
+* --username (Required) : Username user
+* --tenantName (Required) 
 
 Observation : If the password is not passed in the command, this one will be request in the console. Password is optional in the command but necessary on operation.
 
@@ -81,10 +81,10 @@ Get, create and delete requests.
 
 ##### 4.1.1 – Get all requests
 Get all requests user.
-* request (Required).
-* --url (Required) : Endpoint.
-* --get (Required).
-* --auth-token (Required) : Token user.
+* request (Required)
+* --url (Required) : Endpoint
+* --get (Required)
+* --auth-token (Required) : Token user
 
 Example :
 ```bash
@@ -95,11 +95,11 @@ Example :
 ```
 ##### 4.1.2 – Get specific request
 Get specific request user.
-* request (Required).
-* --url (Required) : Endpoint.
-* --get (Required).
-* --auth-token (Required) : Token user.
-* --id (Required) : Request id.
+* request (Required)
+* --url (Required) : Endpoint
+* --get (Required)
+* --auth-token (Required) : Token user
+* --id (Required) : Request id
 
 Example :
 ```bash
@@ -109,13 +109,13 @@ Example :
 ```
 #### 4.2 - Create requests 
 Create requests.
-* request (Required).
-* --url (Required) : Endpoint.
-* --create (Required).
-* --auth-token (Required) : Token user.
-* --n (Optional) : Number of request.
-* --image (Optional) : Image Fogbow.
-* --flavor (Optional) : Flavor Fogbow.
+* request (Required)
+* --url (Required) : Endpoint
+* --create (Required)
+* --auth-token (Required) : Token user
+* --n (Optional) : Number of request
+* --image (Optional) : Image Fogbow
+* --flavor (Optional) : Flavor Fogbow
 
 Example :
 ```bash
@@ -126,9 +126,9 @@ Example :
 ```
 ##### 4.2.1 Values Default 
 If the user does not fill the optional fields, the default values will be used.
-- n = 1.
-- image = fogbow-linux-x86.
-- flavor = fogbow-small.
+- n = 1
+- image = fogbow-linux-x86
+- flavor = fogbow-small
 
 Example :
 ```bash
@@ -140,10 +140,10 @@ Example :
 
 ##### 4.3.1 – Delete all requests
 Delete all requests user.
-* request (Required).
-* --url (Required) : Endpoint.
-* --delete (Required).
-* --auth-token (Required) : Token user.
+* request (Required)
+* --url (Required) : Endpoint
+* --delete (Required)
+* --auth-token (Required) : Token user
 
 Example :
 ```bash
@@ -154,11 +154,11 @@ Example :
 
 ##### 4.3.2 - Delete specific requests
 Delete specific request user.
-* request (Required).
+* request (Required)
 * --url (Required) : Endpoint
-* --delete (Required).
-* --auth-token (Required) : Token user.
-* --id (Required) : Request id.
+* --delete (Required)
+* --auth-token (Required) : Token user
+* --id (Required) : Request id
 
 Example :
 ```bash
@@ -174,10 +174,10 @@ Get and Delete instances.
 
 #####5.1.1 -  Get all instance
 Get all instances user.
-* instance (Required).
-* --url (Required) : Endpoint.
-* --get  (Required).
-* --auth-token  (Required) : Token user.
+* instance (Required)
+* --url (Required) : Endpoint
+* --get  (Required)
+* --auth-token  (Required) : Token user
 
 Example :
 ```bash
@@ -188,11 +188,11 @@ Example :
 ```
 #####5.1.2 -  Get specific instance
 Get specific instance user.
-* instance (Required).
-* --url (Required) : Endpoint.
-* --get  (Required).
-* --auth-token  (Required) : Token user.
-* --id (Required) : Instance id.
+* instance (Required)
+* --url (Required) : Endpoint
+* --get  (Required)
+* --auth-token  (Required) : Token user
+* --id (Required) : Instance id
 
 Example : 
 ```bash
@@ -210,10 +210,10 @@ Example :
 
 #####5.2.1 Delete all instances
 Delete all instances user.
-* instance (Required).
-* --url (Required) : Endpoint.
-* --delete  (Required).
-* --auth-token  (Required) : Token user.
+* instance (Required)
+* --url (Required) : Endpoint
+* --delete  (Required)
+* --auth-token  (Required) : Token user
 
 ```bash
 << fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
@@ -222,11 +222,11 @@ Delete all instances user.
 ```
 #####5.2.2 Delete specific instance
 Delete specific instance user.
-* instance (Required).
-* --url (Required) : Endpoint.
-* --delete  (Required).
-* --auth-token  (Required) : Token user.
-* --id (Required) : Instance id.
+* instance (Required)
+* --url (Required) : Endpoint
+* --delete  (Required)
+* --auth-token  (Required) : Token user
+* --id (Required) : Instance id
 
 ```bash
 << fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
