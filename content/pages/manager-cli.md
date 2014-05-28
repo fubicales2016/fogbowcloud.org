@@ -36,10 +36,13 @@ Example :
 ```
 
 ### 2 - Resources Operations
+
 Return all resources provided by Fogbow.
 
 #### 2.1 - Get all Fogbow Resources 
-Get all resources provided by Fogbow.
+
+Get all resources provided by Fogbow. 
+
 * resource (Required)
 * --url (Required) : Endpoint
 * --get (Required)
@@ -54,10 +57,13 @@ Example :
 ```
 
 ### 3 – Token Operation
+
 Return a new token user.
 
 #### 3.1 - Get a new Token
+
 Get a new Token.
+
 * token (Required) : Token user
 * --url (Required) : Endpoint
 * --get (Required)
@@ -80,7 +86,9 @@ Get, create and delete requests.
 #### 4.1 – Get request 
 
 ##### 4.1.1 – Get all requests
+
 Get all requests user.
+
 * request (Required)
 * --url (Required) : Endpoint
 * --get (Required)
@@ -94,7 +102,9 @@ Example :
 >>  X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
 ##### 4.1.2 – Get specific request
+
 Get specific request user.
+
 * request (Required)
 * --url (Required) : Endpoint
 * --get (Required)
@@ -108,7 +118,9 @@ Example :
 >> RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
 ```
 #### 4.2 - Create requests 
+
 Create requests.
+
 * request (Required)
 * --url (Required) : Endpoint
 * --create (Required)
@@ -125,7 +137,9 @@ Example :
 >> X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
 ##### 4.2.1 Values Default 
+
 If the user does not fill the optional fields, the default values will be used.
+
 - n = 1
 - image = fogbow-linux-x86
 - flavor = fogbow-small
@@ -139,7 +153,9 @@ Example :
 #### 4.3 - Delete requests 
 
 ##### 4.3.1 – Delete all requests
+
 Delete all requests user.
+
 * request (Required)
 * --url (Required) : Endpoint
 * --delete (Required)
@@ -153,7 +169,9 @@ Example :
 ```
 
 ##### 4.3.2 - Delete specific requests
+
 Delete specific request user.
+
 * request (Required)
 * --url (Required) : Endpoint
 * --delete (Required)
@@ -168,12 +186,15 @@ Example :
 ```
 
 ### 5 - Instance Operations
+
 Get and Delete instances.
 
 ####5.1 - Get instance
 
 #####5.1.1 -  Get all instance
+
 Get all instances user.
+
 * instance (Required)
 * --url (Required) : Endpoint
 * --get  (Required)
@@ -187,7 +208,9 @@ Example :
 >> X-OCCI-Location: 4B869582-8907667-123457-0765345c
 ```
 #####5.1.2 -  Get specific instance
+
 Get specific instance user.
+
 * instance (Required)
 * --url (Required) : Endpoint
 * --get  (Required)
@@ -209,7 +232,9 @@ Example :
 ####5.2 - Delete instance
 
 #####5.2.1 Delete all instances
+
 Delete all instances user.
+
 * instance (Required)
 * --url (Required) : Endpoint
 * --delete  (Required)
@@ -221,7 +246,9 @@ Delete all instances user.
 >> Ok
 ```
 #####5.2.2 Delete specific instance
+
 Delete specific instance user.
+
 * instance (Required)
 * --url (Required) : Endpoint
 * --delete  (Required)
