@@ -18,6 +18,7 @@ Manager command line interface is the service for the client that should be use 
 
 =========
 ### 1 - Member Operations. 
+Return all federations members.
 #### 1.1 - List Federation members 
 Get all federation members.
 * member (Required).
@@ -26,13 +27,14 @@ Get all federation members.
 
 Example :
 ```bash
-<<fogbow-cli member --get --url http://url.com:10000
+<< fogbow-cli member --get --url http://url.com:10000
 
->>id=ferationid;cpuIdle=20;cpuInUse=10;memIdle=39;memInUse=20;flavor: 'small, capacity="1"';
+>> id=ferationid;cpuIdle=20;cpuInUse=10;memIdle=39;memInUse=20;flavor:'small, capacity="1"';
 ```
 
 =========
 ### 2 - Resources Operations
+Return all resources provided by Fogbow.
 #### 2.1 - Get all Fogbow Resources 
 Get all resources provided by Fogbow.
 * resource (Required).
@@ -41,15 +43,16 @@ Get all resources provided by Fogbow.
 
 Example :
 ```bash
-<<fogbow-cli resource --get --url http://url.com:10000
+<< fogbow-cli resource --get --url http://url.com:10000
 
->>Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
->>Category: fogbow-large; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
->>Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
+>> Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
+>> Category: fogbow-large; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
+>> Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
 ```
 
 =========
-### 3 – Get new Token
+### 3 – Token Operation
+Return a new token user.
 #### 3.1 - Get a new Token
 Get a new Token.
 * token (Required) : Token user.
@@ -97,7 +100,7 @@ Example :
 
 >> RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
 ```
-####4.2 - Create requests 
+#### 4.2 - Create requests 
 Create requests.
 * request (Required).
 * --url (Required) : Endpoint.
@@ -158,6 +161,7 @@ Example :
 
 =========
 ### 5 - Instance Operations
+Get and Delete instances.
 ####5.1 - Get instance
 #####5.1.1 -  Get all instance
 Get all instances user.
@@ -170,7 +174,8 @@ Example :
 ```bash
 << fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
 
->> X-OCCI-Location: 34235356-3432434-324324-32432423
+>> X-OCCI-Location: 3I235356-3432434-324324-3243242f
+>> X-OCCI-Location: 4B869582-8907667-123457-0765345c
 ```
 #####5.1.2 -  Get specific instance
 Get specific instance user.
