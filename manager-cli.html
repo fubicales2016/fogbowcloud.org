@@ -95,9 +95,9 @@
 <em> --username (Required) : Username user.
 </em> --tenantName (Required) .</p>
 <p>Example :</p>
-<div class="highlight"><pre><span class="s">&lt;&lt;fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000</span>
+<div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000</span>
 
-<span class="s">&gt;&gt;MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRf</span>YXQiOiAiMjAxNC0wNS0y
+<span class="s">&gt;&gt; MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRf</span>YXQiOiAiMjAxNC0wNS0
 </pre></div>
 
 
@@ -112,10 +112,10 @@
 <em> --get (Required).
 </em> --auth-token (Required) : Token user.</p>
 <p>Example :</p>
-<div class="highlight"><pre><span class="s">&lt;&lt;fogbow-cli request --get --auth-token mytoken --url http://url.com:10000</span>
+<div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --get --auth-token mytoken --url http://url.com:10000</span>
 
-<span class="s">&gt;&gt;X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-ef</span>f5fdd07257
-&gt;&gt;X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+<span class="s">&gt;&gt; X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-ef</span>f5fdd07257
+&gt;&gt;  X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 </pre></div>
 
 
@@ -127,9 +127,9 @@
 </em> --auth-token (Required) : Token user.
 * --id (Required) : Request id.</p>
 <p>Example :</p>
-<div class="highlight"><pre><span class="s">&lt;&lt;fogbow-cli request --get --auth-token mytoken --id requestid --url http://url.com:10000</span>
+<div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --get --auth-token mytoken --id requestid --url http://url.com:10000</span>
 
-<span class="s">&gt;&gt;RequestId=47536d31-0674-4278-ad05-ef</span>f5fdd07257; <span class="nv">State</span><span class="o">=</span>failed; <span class="nv">InstanceId</span><span class="o">=</span>null
+<span class="s">&gt;&gt; RequestId=47536d31-0674-4278-ad05-ef</span>f5fdd07257; <span class="nv">State</span><span class="o">=</span>open; <span class="nv">InstanceId</span><span class="o">=</span>232135435-5435345-435345435-43545
 </pre></div>
 
 
@@ -143,10 +143,10 @@
 </em> --image (Optional) : Image Fogbow.
 * --flavor (Optional) : Flavor Fogbow.</p>
 <p>Example :</p>
-<div class="highlight"><pre><span class="s">&lt;&lt;fogbow-cli request --create --n 2 --image myimage --f</span>lavor  myflavor --url http://url.com:10000
+<div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --create --n 2 --image myimage --f</span>lavor  myflavor --url http://url.com:10000
 
-&gt;&gt;X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
-&gt;&gt;X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
+&gt;&gt; X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
+&gt;&gt; X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 </pre></div>
 
 
@@ -156,7 +156,9 @@
 - image = fogbow-linux-x86.
 - flavor = fogbow-small.</p>
 <p>Example :</p>
-<div class="highlight"><pre>fogbow-cli request --create --url http://url.com:10000  
+<div class="highlight"><pre><span class="s">&lt;&lt; fogbow-cli request --create --url http://url.com:10000  </span>
+
+<span class="s">&gt;&gt; X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-ef</span>f5fdd07257
 </pre></div>
 
 
@@ -168,9 +170,9 @@
 <em> --delete (Required).
 </em> --auth-token (Required) : Token user.</p>
 <p>Example :</p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
 
-&gt;&gt;Ok
+&gt;&gt; Ok
 </pre></div>
 
 
@@ -182,9 +184,9 @@
 </em> --auth-token (Required) : Token user.
 * --id (Required) : Request id.</p>
 <p>Example :</p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
 
-&gt;&gt;Ok
+&gt;&gt; Ok
 </pre></div>
 
 
@@ -198,9 +200,9 @@
 <em> --get  (Required).
 </em> --auth-token  (Required) : Token user.</p>
 <p>Example :</p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
 
-&gt;&gt;X-OCCI-Location: 34235356-3432434-324324-32432423
+&gt;&gt; X-OCCI-Location: 34235356-3432434-324324-32432423
 </pre></div>
 
 
@@ -212,14 +214,14 @@
 </em> --auth-token  (Required) : Token user.
 * --id (Required) : Instance id.</p>
 <p>Example : </p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://url.com:10000
 
-&gt;&gt;Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
-&gt;&gt;Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
-&gt;&gt;Link: &lt;/network/admin&gt;; org.openstack.compute.console.vnc<span class="o">=</span><span class="s2">&quot;N/A&quot;</span>; occi.compute.architecture<span class="o">=</span><span class="s2">&quot;x86&quot;</span>; occi.compute.speed<span class="o">=</span><span class="s2">&quot;0.0&quot;</span>
-&gt;&gt;X-OCCI-Attribute: org.openstack.compute.console.vnc<span class="o">=</span><span class="s2">&quot;N/A&quot;</span>
-&gt;&gt;X-OCCI-Attribute: occi.compute.architecture<span class="o">=</span><span class="s2">&quot;x86&quot;</span>
-&gt;&gt;X-OCCI-Attribute: occi.compute.speed<span class="o">=</span><span class="s2">&quot;0.0&quot;</span>
+&gt;&gt; Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
+&gt;&gt; Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
+&gt;&gt; Link: &lt;/network/admin&gt;; org.openstack.compute.console.vnc<span class="o">=</span><span class="s2">&quot;N/A&quot;</span>; occi.compute.architecture<span class="o">=</span><span class="s2">&quot;x86&quot;</span>; occi.compute.speed<span class="o">=</span><span class="s2">&quot;0.0&quot;</span>
+&gt;&gt; X-OCCI-Attribute: org.openstack.compute.console.vnc<span class="o">=</span><span class="s2">&quot;N/A&quot;</span>
+&gt;&gt; X-OCCI-Attribute: occi.compute.architecture<span class="o">=</span><span class="s2">&quot;x86&quot;</span>
+&gt;&gt; X-OCCI-Attribute: occi.compute.speed<span class="o">=</span><span class="s2">&quot;0.0&quot;</span>
 </pre></div>
 
 
@@ -230,9 +232,9 @@
 </em> --url (Required) : Endpoint.
 <em> --delete  (Required).
 </em> --auth-token  (Required) : Token user.</p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
 
-&gt;&gt;Ok
+&gt;&gt; Ok
 </pre></div>
 
 
@@ -243,9 +245,9 @@
 <em> --delete  (Required).
 </em> --auth-token  (Required) : Token user.
 * --id (Required) : Instance id.</p>
-<div class="highlight"><pre>&lt;&lt;fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
+<div class="highlight"><pre>&lt;&lt; fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
 
-&gt;&gt;Ok
+&gt;&gt; Ok
 </pre></div>
       </div>
     </div>
