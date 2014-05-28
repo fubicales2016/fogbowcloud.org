@@ -23,6 +23,7 @@ Return all federations members.
 #### 1.1 - List Federation members 
 
 Get all federation members.
+
 * member (Required).
 * --url (Required) : Endpoint.
 * --get (Required).
