@@ -18,6 +18,7 @@ Manager command line interface is the service for the client that should be use 
 
 ### 1 - Member Operations. 
 Return all federations members.
+
 #### 1.1 - List Federation members 
 Get all federation members.
 * member (Required).
@@ -33,6 +34,7 @@ Example :
 
 ### 2 - Resources Operations
 Return all resources provided by Fogbow.
+
 #### 2.1 - Get all Fogbow Resources 
 Get all resources provided by Fogbow.
 * resource (Required).
@@ -50,6 +52,7 @@ Example :
 
 ### 3 – Token Operation
 Return a new token user.
+
 #### 3.1 - Get a new Token
 Get a new Token.
 * token (Required) : Token user.
@@ -68,7 +71,9 @@ Example :
 
 ### 4 – Request Operations 
 Get, create and delete requests.
+
 #### 4.1 – Get request 
+
 ##### 4.1.1 – Get all requests
 Get all requests user.
 * request (Required).
@@ -127,6 +132,7 @@ Example :
 >> X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
 #### 4.3 - Delete requests 
+
 ##### 4.3.1 – Delete all requests
 Delete all requests user.
 * request (Required).
@@ -158,7 +164,9 @@ Example :
 
 ### 5 - Instance Operations
 Get and Delete instances.
+
 ####5.1 - Get instance
+
 #####5.1.1 -  Get all instance
 Get all instances user.
 * instance (Required).
@@ -194,6 +202,7 @@ Example :
 ```
 
 ####5.2 - Delete instance
+
 #####5.2.1 Delete all instances
 Delete all instances user.
 * instance (Required).
