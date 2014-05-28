@@ -24,9 +24,9 @@ Return all federations members.
 
 Get all federation members.
 
-* member (Required).
-* --url (Required) : Endpoint.
-* --get (Required).
+* member (Required)
+* --url (Required) : Endpoint
+* --get (Required)
 
 Example :
 ```bash
