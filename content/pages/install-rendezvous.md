@@ -29,7 +29,7 @@ xmpp_jid=rendezvous.test.com
 # Example:
 xmpp_password=password
 
-# IP aderess.
+# IP address.
 # Example:
 xmpp_host=127.0.0.1
 
