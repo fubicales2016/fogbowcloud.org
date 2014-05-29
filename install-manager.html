@@ -64,7 +64,10 @@
 
 
 <h2>Configure</h2>
-<p>After the installation the user can configure a few properties listed below:</p>
+<p>After the installation the user can configure a few properties. All sections listed below are part of the same file.</p>
+<ul>
+<li><strong>XMPP properties:</strong> Manager and Rendezvous XMPP properties that will be used to comunication between components.  </li>
+</ul>
 <div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
 <span class="c"># Example:</span>
 <span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
@@ -84,9 +87,13 @@
 <span class="c"># jid of your Rendezvous Component</span>
 <span class="c"># Example:</span>
 <span class="nv">rendezvous_jid</span><span class="o">=</span>rendezvous.test.com
+</pre></div>
 
-<span class="c"># Cloud compute information</span>
-<span class="c"># Compute plugin class</span>
+
+<ul>
+<li><strong>Cloud Compute Information:</strong> All compute information required by compute plugin that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently provided by fogbow).</li>
+</ul>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
@@ -114,18 +121,26 @@
 <span class="c"># Image</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_openstack_default_cirros_image</span><span class="o">=</span>cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+</pre></div>
 
-<span class="c"># Cloud identity is used to get and authenticate tokens for local cloud users</span>
-<span class="c"># Identity plugin class</span>
+
+<ul>
+<li><strong>Cloud Identity Information:</strong> All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). </li>
+</ul>
+<div class="highlight"><pre><span class="c"># Identity plugin class</span>
 <span class="c"># Example:</span>
 <span class="nv">identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
 
 <span class="c"># Cloud identity endpoint</span>
 <span class="c"># Example:</span>
 <span class="nv">identity_openstack_url</span><span class="o">=</span>http://localhost:5000
+</pre></div>
 
-<span class="c"># Cloud federation user is a local cloud user that will submit requests from remote members</span>
-<span class="c"># Federation user name</span>
+
+<ul>
+<li><strong>Federation User Information:</strong> Cloud federation user is a local cloud user that will submit requests from remote members.</li>
+</ul>
+<div class="highlight"><pre><span class="c"># Federation user name</span>
 <span class="c"># Example:</span>
 <span class="nv">federation_user_name</span><span class="o">=</span>fogbow
 
@@ -136,17 +151,26 @@
 <span class="c"># Federation user tenant (project) name</span>
 <span class="c"># Example:</span>
 <span class="nv">federation_user_tenant_name</span><span class="o">=</span>demo
+</pre></div>
 
-<span class="c"># Validator member is used to define if the manager can receive or donate to another one</span>
-<span class="c"># Member validator class</span>
+
+<ul>
+<li><strong>Validator Member Information:</strong> Validator member is used to define if the manager can receive or donate to another one. It is possible differents implementations for it, and each implementation can require specific properties (as idnetity and compute plugin). This section shows properties required by default member validator (all member can receive and donate resources to each other).</li>
+</ul>
+<div class="highlight"><pre><span class="c"># Member validator class</span>
 <span class="c"># Example:</span>
 <span class="nv">member_validator</span><span class="o">=</span>org.fogbowcloud.manager.core.DefaultMemberValidator
 
 <span class="c"># Member certificate file contains the certificate the should be used by the manager </span>
 <span class="c"># Example:</span>
 <span class="nv">cert_path</span><span class="o">=</span>path/certificate/file
+</pre></div>
 
-<span class="c"># Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet</span>
+
+<ul>
+<li><strong>Times Properties:</strong> Time configuration required by Manager Component.</li>
+</ul>
+<div class="highlight"><pre><span class="c"># Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet</span>
 <span class="c"># Uses miliseconds unit</span>
 <span class="c"># Example:</span>
 <span class="nv">scheduler_period</span><span class="o">=</span>30000
@@ -160,9 +184,13 @@
 <span class="c"># Uses miliseconds unit</span>
 <span class="c"># Example:</span>
 <span class="nv">instance_monitoring_period</span><span class="o">=</span>120000
+</pre></div>
 
-<span class="c"># ssh properties are used to give connectivity for instances</span>
-<span class="c"># IP address of shh tunnel host</span>
+
+<ul>
+<li><strong>SSH Tunnel Properties:</strong> SSH properties are used to give connectivity for instances.</li>
+</ul>
+<div class="highlight"><pre><span class="c"># IP address of shh tunnel host</span>
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_host</span><span class="o">=</span>10.0.0.1
 
@@ -173,8 +201,13 @@
 <span class="c"># shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances</span>
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_port_range</span><span class="o">=</span>50000:59999
+</pre></div>
 
-<span class="c"># http port is the Manager Component endpoint port</span>
+
+<ul>
+<li><strong>Manager HTTP Port:</strong> HTTP port which manager component endpoint will be listening.</li>
+</ul>
+<div class="highlight"><pre><span class="c"># http port is the Manager Component endpoint port</span>
 <span class="c"># Example:</span>
 <span class="nv">http_port</span> <span class="o">=</span> 8182
 </pre></div>
