@@ -21,7 +21,7 @@ Configuration
 ==========
 After the installation, you can configure which monitors will be used and how much time the powernap will wait before assuming that the host is idle.
 
-The configuration file is located at /etc/powernap/config. A commented config file follows on:
+The configuration file is located at ```/etc/powernap/config```. A commented configuration file follows on:
 
 ```bash
 # Number of seconds that all monitors must have no activity or must be absent.
