@@ -19,7 +19,7 @@ Component "rendezvous.test.com"
        component_secret = "password"
 ```
 
-With an XMPP server already installed and configured, first, get the latest code of the project.
+With an XMPP server already installed and configured, get the latest code of the project.
 ``` shell
 git clone https://github.com/fogbow/fogbow-redezvous.git
 ```
@@ -29,30 +29,26 @@ mvn install
 ```
 
 ## Configure
-After the installation the user can configure a few properties listed below:
+After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
+
 ``` shell
-# jid of your Rendezvous Component.
-# Example:
+# XMPP address of your Rendezvous Component, as configured in the XMPP server.
 xmpp_jid=rendezvous.test.com
 
-# Component password.
-# Example:
+# XMPP component password, as configured in the XMPP server.
 xmpp_password=password
 
-# IP address.
-# Example:
+# Address of the host running the XMPP component.
 xmpp_host=127.0.0.1
 
-# Port in which the server will be listening.
-# Example:
+# Port in which the XMPP server will be listening for components, as configured in the XMPP server.
 xmpp_port=5347
 
-# Maximum Interval of time that the Rendezvous Component will keep a cloud in its roster without a sign of activeness.
-# Example:
+# Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.
 site_expiration=10000
 ```
 ## Run
-To start Rendezvous, run the start-redezvous script in the bin directory.
+To start the Rendezvous component, run the start-redezvous script inside ```./bin```.
 ``` shell
 ./bin/start-rendezvous
 ```
