@@ -1,4 +1,4 @@
-Title: Manager cli
+Title: Manager client
 url: manager-cli
 save_as: manager-cli.html
 section: usage
@@ -7,7 +7,7 @@ index: 0
 Manager command line interface
 ==========
 
-Manager command line interface is the service for the client that should be use to execute functions the system. It allows user know about federation members, resources provided by fogbow and get, create and delete requests and get and delete instances. 
+Manager command line interface is the service used to execute functions in the system. It allows user to get information about federation members, resources provided by fogbow and create requests to manage instances.
 
 ### Summary
 * Member Operations
@@ -18,7 +18,7 @@ Manager command line interface is the service for the client that should be use 
 
 ### 1 - Member Operations. 
 
-Return all federations members.
+Return all federation members.
 
 #### 1.1 - List Federation members 
 
@@ -30,7 +30,7 @@ Get all federation members.
 
 Example :
 ```bash
-$ bin/fogbow-cli member --get --url http://url.com:10000
+$ bin/fogbow-cli member --get --url http://url.com:8182
 
 id=ferationid1;cpuIdle=20;cpuInUse=10;memIdle=39;memInUse=20;flavor:'small, capacity="1"';
 id=ferationid2;cpuIdle=30;cpuInUse=20;memIdle=49;memInUse=20;flavor:'large, capacity="2"';
@@ -50,7 +50,7 @@ Get all resources provided by Fogbow.
 
 Example :
 ```bash
-$ bin/fogbow-cli resource --get --url http://url.com:10000
+$ bin/fogbow-cli resource --get --url http://url.com:8182
 
 Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
 Category: fogbow-large; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
@@ -59,24 +59,24 @@ Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"
 
 ### 3 – Token Operation
 
-Return a new token user.
+Return a new user's token.
 
 #### 3.1 - Get a new Token
 
 Get a new Token.
 
-* token (Required) : Token user
+* token (Required) : User's token
 * --url (Required) : Endpoint
 * --get (Required)
-* --password (Optional) : Password user
-* --username (Required) : Username user
+* --password (Optional) 
+* --username (Required)
 * --tenantName (Required) 
 
-Observation : If the password is not passed in the command, this one will be request in the console. Password is optional in the command but necessary on operation.
+Observation : If the password is not passed in the command line, it will be requested in the console. Password is optional in the command but needed in operation.
 
 Example :
 ```bash
-$ bin/fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://url.com:10000
+$ bin/fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://localhost:8182
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
@@ -93,23 +93,23 @@ Get all requests user.
 * request (Required)
 * --url (Required) : Endpoint
 * --get (Required)
-* --auth-token (Required) : Token user
+* --auth-token (Required) : User's token
 
 Example :
 ```bash
-$ bin/fogbow-cli request --get --auth-token mytoken --url http://url.com:10000
+$ bin/fogbow-cli request --get --auth-token mytoken --url http://url.com:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
-##### 4.1.2 – Get specific request
+##### 4.1.2 – Get request information
 
-Get specific request user.
+Get complete request information.
 
 * request (Required)
 * --url (Required) : Endpoint
 * --get (Required)
-* --auth-token (Required) : Token user
+* --auth-token (Required) : User's token
 * --id (Required) : Request id
 
 Example :
@@ -125,8 +125,8 @@ Create requests.
 * request (Required)
 * --url (Required) : Endpoint
 * --create (Required)
-* --auth-token (Required) : Token user
-* --n (Optional) : Number of request
+* --auth-token (Required) : User's token
+* --n (Optional) : Number of instances
 * --image (Optional) : Image Fogbow
 * --flavor (Optional) : Flavor Fogbow
 
@@ -137,7 +137,7 @@ $ bin/fogbow-cli request --create --n 2 --image myimage --flavor  myflavor --url
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
-##### 4.2.1 Values Default 
+##### 4.2.1 Default values 
 
 If the user does not fill the optional fields, the default values will be used.
 
@@ -147,7 +147,7 @@ If the user does not fill the optional fields, the default values will be used.
 
 Example :
 ```bash
-$ bin/fogbow-cli request --create --url http://url.com:10000  
+$ bin/fogbow-cli request --create --url http://url.com:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
@@ -155,7 +155,7 @@ X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07
 
 ##### 4.3.1 – Delete all requests
 
-Delete all requests user.
+Delete all user's requests.
 
 * request (Required)
 * --url (Required) : Endpoint
@@ -164,58 +164,58 @@ Delete all requests user.
 
 Example :
 ```bash
-$ bin/fogbow-cli request --delete --auth-token mytoken --url http://url.com:10000
+$ bin/fogbow-cli request --delete --auth-token mytoken --url http://url.com:8182
 
 Ok
 ```
 
-##### 4.3.2 - Delete specific requests
+##### 4.3.2 - Delete a request
 
-Delete specific request user.
+Delete a user's request.
 
 * request (Required)
 * --url (Required) : Endpoint
 * --delete (Required)
-* --auth-token (Required) : Token user
+* --auth-token (Required) : User's token
 * --id (Required) : Request id
 
 Example :
 ```bash
-$ bin/fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:10000
+$ bin/fogbow-cli request --delete --auth-token mytoken --id requestid --url http://url.com:8182
 
 Ok
 ```
 
 ### 5 - Instance Operations
 
-Get and Delete instances.
+Manage instances.
 
 ####5.1 - Get instance
 
-#####5.1.1 -  Get all instance
+#####5.1.1 -  Get all instances
 
-Get all instances user.
+Get all user's instances.
 
 * instance (Required)
 * --url (Required) : Endpoint
 * --get  (Required)
-* --auth-token  (Required) : Token user
+* --auth-token  (Required) : User's token
 
 Example :
 ```bash
-$ bin/fogbow-cli instance --get --auth-token  mytoken --url http://url.com:10000
+$ bin/fogbow-cli instance --get --auth-token  mytoken --url http://url.com:8182
 
 X-OCCI-Location: 3I235356-3432434-324324-3243242f
 X-OCCI-Location: 4B869582-8907667-123457-0765345c
 ```
-#####5.1.2 -  Get specific instance
+#####5.1.2 -  Get instance information
 
-Get specific instance user.
+Get information about an instance.
 
 * instance (Required)
 * --url (Required) : Endpoint
 * --get  (Required)
-* --auth-token  (Required) : Token user
+* --auth-token  (Required) : User's token
 * --id (Required) : Instance id
 
 Example : 
@@ -230,34 +230,34 @@ X-OCCI-Attribute: occi.compute.architecture="x86"
 X-OCCI-Attribute: occi.compute.speed="0.0"
 ```
 
-####5.2 - Delete instance
+####5.2 - Delete instances
 
 #####5.2.1 Delete all instances
 
-Delete all instances user.
+Delete all user's instances.
 
 * instance (Required)
 * --url (Required) : Endpoint
 * --delete  (Required)
-* --auth-token  (Required) : Token user
+* --auth-token  (Required) : User's token
 
 ```bash
-$ bin/fogbow-cli instance --delete --auth-token mytoken --url http://url.com:10000
+$ bin/fogbow-cli instance --delete --auth-token mytoken --url http://url.com:8182
 
 Ok
 ```
-#####5.2.2 Delete specific instance
+#####5.2.2 Delete an instance
 
-Delete specific instance user.
+Delete a user's instance.
 
 * instance (Required)
 * --url (Required) : Endpoint
 * --delete  (Required)
-* --auth-token  (Required) : Token user
+* --auth-token  (Required) : User's token
 * --id (Required) : Instance id
 
 ```bash
-$ bin/fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:10000
+$ bin/fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://url.com:8182
 
 Ok
 ```
