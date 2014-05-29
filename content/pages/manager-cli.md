@@ -32,8 +32,8 @@ Example :
 ```bash
 $ bin/fogbow-cli member --get --url http://localhost:8182
 
-id=ferationid1;cpuIdle=20;cpuInUse=10;memIdle=39;memInUse=20;flavor:'small, capacity="1"';
-id=ferationid2;cpuIdle=30;cpuInUse=20;memIdle=49;memInUse=20;flavor:'large, capacity="2"';
+id=ferationid1;cpuIdle=1;cpuInUse=2;memIdle=100;memInUse=200;flavor:'small, capacity="1"';
+id=ferationid2;cpuIdle=2;cpuInUse=4;memIdle=150;memInUse=300;flavor:'large, capacity="2"';
 ```
 
 ### 2 - Resources Operations
