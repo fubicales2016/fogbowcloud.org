@@ -21,7 +21,7 @@ Component "rendezvous.test.com"
 
 With an XMPP server already installed and configured, get the latest code of the project.
 ``` shell
-git clone https://github.com/fogbow/fogbow-redezvous.git
+git clone https://github.com/fogbow/fogbow-rendezvous.git
 ```
 Then, install it
 ``` shell
@@ -48,7 +48,7 @@ xmpp_port=5347
 site_expiration=10000
 ```
 ## Run
-To start the Rendezvous component, run the start-redezvous script inside ```./bin```.
+To start the Rendezvous component, run the start-rendezvous script inside ```./bin```.
 ``` shell
 ./bin/start-rendezvous
 ```
