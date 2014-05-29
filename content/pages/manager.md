@@ -8,11 +8,11 @@ index: 2
 
 The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers. The final user requests resources through extended OCCI API and specifying the amount of them. The requested resources are treated individually (e.g., if an user requests 3 instances, the manager translates it to 3 single requests of 1 instance). 
 
-While there are available resources, the manager creates instances on local cloud. Thereafter it uses information (got from Rendezvous) to choose another manager and submits remaining requests to a remote cloud. This process concludes when the user's requests were fulfilled or they were not into valid period anymore. 
+While there were available resources, the manager creates instances on local cloud. Thereafter it uses information (gotten from Rendezvous) to choose another manager and submits remaining requests to a remote cloud. This process concludes when the user's requests were fulfilled or they were not into valid period anymore. 
 
 ## Manager Architecture
 
-The Manager component was designed to not depend on a specific cloud technology. There is a Plugin Layer between this component and the cloud, in this layer fogbow requests are translated to specific cloud request format. The plugins that should be used by manager are configurable at manager configuration file. Currently, fogbow provides an implementation to OpenStack cloud.
+The Manager component was designed to not depend on a specific cloud technology. There is a Plugin Layer between this component and the cloud, in this layer fogbow requests are translated to specific cloud request format. The plugins that should be used by manager are configurable at manager configuration file. It is possible to implement plugins to each cloud technology, then the user can fell free to make it if there is not one for the cloud that she/he uses. Currently, fogbow provides an implementation to OpenStack cloud.
 
 Basicaly, the Manager is responsable for three diferent services:
 
