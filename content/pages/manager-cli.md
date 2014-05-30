@@ -4,29 +4,19 @@ save_as: manager-cli.html
 section: usage
 index: 0
 
-Manager command line interface
+Manager CLI
 ==========
 
-Manager command line interface is the service used to execute functions in the system. It allows user to get information about federation members, resources provided by fogbow and create requests to manage instances.
+The Manager CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.
 
-### Summary
-* Member Operations
-* Resources Operations
-* Token Operations
-* Request Operations
-* Instance Operations
+### Member operations (```member```)
 
-### 1 - Member Operations. 
-
-Return all federation members.
-
-#### 1.1 - List Federation members 
+#### List Federation members 
 
 Get all federation members.
 
-* member (Required)
-* --url (Required) : Endpoint
 * --get (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 
 Example :
 ```bash
@@ -36,17 +26,14 @@ id=ferationid1;cpuIdle=1;cpuInUse=2;memIdle=100;memInUse=200;flavor:'small, capa
 id=ferationid2;cpuIdle=2;cpuInUse=4;memIdle=150;memInUse=300;flavor:'large, capacity="2"';
 ```
 
-### 2 - Resources Operations
+### Resources operations (```resource```)
 
-Return all resources provided by Fogbow.
+#### Get all fogbow Resources 
 
-#### 2.1 - Get all Fogbow Resources 
+Get all OCCI resources provided by fogbow. 
 
-Get all resources provided by Fogbow. 
-
-* resource (Required)
-* --url (Required) : Endpoint
 * --get (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 
 Example :
 ```bash
@@ -57,22 +44,19 @@ Category: fogbow-large; scheme="http://schemas.fogbowcloud.org/template/resource
 Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
 ```
 
-### 3 – Token Operation
+### Token operations (```token```)
 
-Return a new user's token.
+#### Create a new Token
 
-#### 3.1 - Get a new Token
+Create a new user token.
 
-Get a new Token.
-
-* token (Required) : User's token
-* --url (Required) : Endpoint
 * --get (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 * --password (Optional) 
 * --username (Required)
 * --tenantName (Required) 
 
-Observation : If the password is not passed in the command line, it will be requested in the console. Password is optional in the command but needed in operation.
+Obs.: If a password is not provided, it will be requested in the console.
 
 Example :
 ```bash
@@ -81,18 +65,14 @@ $ bin/fogbow-cli token --get --password mypassword --username myusername --tenan
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
 
-### 4 – Request Operations 
-Get, create and delete requests.
+### Request Operations (```request```)
 
-#### 4.1 – Get request 
+#### Get request 
 
-##### 4.1.1 – Get all requests
+Get all instances requests of an user.
 
-Get all requests user.
-
-* request (Required)
-* --url (Required) : Endpoint
 * --get (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 * --auth-token (Required) : User's token
 
 Example :
@@ -102,13 +82,11 @@ $ bin/fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
-##### 4.1.2 – Get request information
 
-Get complete request information.
+Get detailed information about a single instance request.
 
-* request (Required)
-* --url (Required) : Endpoint
 * --get (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 * --auth-token (Required) : User's token
 * --id (Required) : Request id
 
@@ -118,42 +96,33 @@ $ bin/fogbow-cli request --get --auth-token mytoken --id requestid --url http://
 
 RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
 ```
-#### 4.2 - Create requests 
+#### Create requests 
 
-Create requests.
+Create instance requests.
 
-* request (Required)
-* --url (Required) : Endpoint
 * --create (Required)
+* --url (Optional; Default: http://localhost:8182): OCCI endpoint
 * --auth-token (Required) : User's token
-* --n (Optional) : Number of instances
-* --image (Optional) : Image Fogbow
-* --flavor (Optional) : Flavor Fogbow
+* --n (Optional; Default: 1) : Number of requests to be created
+* --image (Optional; Default: fogbow-linux-x86) : Fogbow image
+* --flavor (Optional; Default: fogbow-small) : Fogbow flavor
 
 Example :
 ```bash
-$ bin/fogbow-cli request --create --n 2 --image myimage --flavor  myflavor --url http://localhost:8182
+$ bin/fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
-##### 4.2.1 Default values 
 
-If the user does not fill the optional fields, the default values will be used.
-
-- n = 1
-- image = fogbow-linux-x86
-- flavor = fogbow-small
-
-Example :
+Example using defaults:
 ```bash
 $ bin/fogbow-cli request --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
-#### 4.3 - Delete requests 
 
-##### 4.3.1 – Delete all requests
+##### Delete all requests
 
 Delete all user's requests.
 
