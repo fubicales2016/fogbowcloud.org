@@ -44,24 +44,14 @@
         </ul>
       </div>
       <div class="col-lg-8 page-content">
-      	<h1>Manager command line interface</h1>
-<p>Manager command line interface is the service used to execute functions in the system. It allows user to get information about federation members, resources provided by fogbow and create requests to manage instances.</p>
-<h3>Summary</h3>
-<ul>
-<li>Member Operations</li>
-<li>Resources Operations</li>
-<li>Token Operations</li>
-<li>Request Operations</li>
-<li>Instance Operations</li>
-</ul>
-<h3>1 - Member Operations.</h3>
-<p>Return all federation members.</p>
-<h4>1.1 - List Federation members</h4>
+      	<h1>Manager CLI</h1>
+<p>The Manager CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.</p>
+<h3>Member operations (<code>member</code>)</h3>
+<h4>List Federation members</h4>
 <p>Get all federation members.</p>
 <ul>
-<li>member (Required)</li>
-<li>--url (Required) : Endpoint</li>
 <li>--get (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 </ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli member --get --url http://localhost:8182
@@ -71,14 +61,12 @@
 </pre></div>
 
 
-<h3>2 - Resources Operations</h3>
-<p>Return all resources provided by Fogbow.</p>
-<h4>2.1 - Get all Fogbow Resources</h4>
-<p>Get all resources provided by Fogbow. </p>
+<h3>Resources operations (<code>resource</code>)</h3>
+<h4>Get all fogbow Resources</h4>
+<p>Get all OCCI resources provided by fogbow. </p>
 <ul>
-<li>resource (Required)</li>
-<li>--url (Required) : Endpoint</li>
 <li>--get (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 </ul>
 <p>Example :</p>
 <div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli resource --get --url http://localhost:8182
@@ -89,19 +77,17 @@ Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</spa
 </pre></div>
 
 
-<h3>3 – Token Operation</h3>
-<p>Return a new user's token.</p>
-<h4>3.1 - Get a new Token</h4>
-<p>Get a new Token.</p>
+<h3>Token operations (<code>token</code>)</h3>
+<h4>Create a new Token</h4>
+<p>Create a new user token.</p>
 <ul>
-<li>token (Required) : User's token</li>
-<li>--url (Required) : Endpoint</li>
 <li>--get (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 <li>--password (Optional) </li>
 <li>--username (Required)</li>
 <li>--tenantName (Required) </li>
 </ul>
-<p>Observation : If the password is not passed in the command line, it will be requested in the console. Password is optional in the command but needed in operation.</p>
+<p>Obs.: If a password is not provided, it will be requested in the console.</p>
 <p>Example :</p>
 <div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://localhost:8182
 
@@ -109,15 +95,12 @@ MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguh
 </pre></div>
 
 
-<h3>4 – Request Operations</h3>
-<p>Get, create and delete requests.</p>
-<h4>4.1 – Get request</h4>
-<h5>4.1.1 – Get all requests</h5>
-<p>Get all requests user.</p>
+<h3>Request Operations (<code>request</code>)</h3>
+<h4>Get request</h4>
+<p>Get all instances requests of an user.</p>
 <ul>
-<li>request (Required)</li>
-<li>--url (Required) : Endpoint</li>
 <li>--get (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 <li>--auth-token (Required) : User's token</li>
 </ul>
 <p>Example :</p>
@@ -128,12 +111,10 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 </pre></div>
 
 
-<h5>4.1.2 – Get request information</h5>
-<p>Get complete request information.</p>
+<p>Get detailed information about a single instance request.</p>
 <ul>
-<li>request (Required)</li>
-<li>--url (Required) : Endpoint</li>
 <li>--get (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 <li>--auth-token (Required) : User's token</li>
 <li>--id (Required) : Request id</li>
 </ul>
@@ -144,41 +125,32 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 </pre></div>
 
 
-<h4>4.2 - Create requests</h4>
-<p>Create requests.</p>
+<h4>Create requests</h4>
+<p>Create instance requests.</p>
 <ul>
-<li>request (Required)</li>
-<li>--url (Required) : Endpoint</li>
 <li>--create (Required)</li>
+<li>--url (Optional; Default: http://localhost:8182): OCCI endpoint</li>
 <li>--auth-token (Required) : User's token</li>
-<li>--n (Optional) : Number of instances</li>
-<li>--image (Optional) : Image Fogbow</li>
-<li>--flavor (Optional) : Flavor Fogbow</li>
+<li>--n (Optional; Default: 1) : Number of requests to be created</li>
+<li>--image (Optional; Default: fogbow-linux-x86) : Fogbow image</li>
+<li>--flavor (Optional; Default: fogbow-small) : Fogbow flavor</li>
 </ul>
 <p>Example :</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --create --n 2 --image myimage --flavor  myflavor --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 </pre></div>
 
 
-<h5>4.2.1 Default values</h5>
-<p>If the user does not fill the optional fields, the default values will be used.</p>
-<ul>
-<li>n = 1</li>
-<li>image = fogbow-linux-x86</li>
-<li>flavor = fogbow-small</li>
-</ul>
-<p>Example :</p>
+<p>Example using defaults:</p>
 <div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 </pre></div>
 
 
-<h4>4.3 - Delete requests</h4>
-<h5>4.3.1 – Delete all requests</h5>
+<h5>Delete all requests</h5>
 <p>Delete all user's requests.</p>
 <ul>
 <li>request (Required)</li>
