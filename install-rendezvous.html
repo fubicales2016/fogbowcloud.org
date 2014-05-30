@@ -61,7 +61,7 @@ We recommend <a href="https://prosody.im/">prosody</a> as for its ease of config
 </pre></div>
 
 
-<p>With an XMPP server already installed and configured, first, get the latest code of the project.</p>
+<p>With an XMPP server already installed and configured, get the latest code of the project.</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fogbow/fogbow-redezvous.git</span>
 </pre></div>
 
@@ -72,31 +72,26 @@ We recommend <a href="https://prosody.im/">prosody</a> as for its ease of config
 
 
 <h2>Configure</h2>
-<p>After the installation the user can configure a few properties listed below:</p>
-<div class="highlight"><pre><span class="cp"># jid of your Rendezvous Component.</span>
-<span class="cp"># Example:</span>
+<p>After the installation, move the file <code>rendezvous.conf.example</code> to <code>rendezvous.conf</code> and edit its contents:</p>
+<div class="highlight"><pre><span class="cp"># XMPP address of your Rendezvous Component, as configured in the XMPP server.</span>
 <span class="n">xmpp_jid</span><span class="o">=</span><span class="n">rendezvous</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
 
-<span class="cp"># Component password.</span>
-<span class="cp"># Example:</span>
+<span class="cp"># XMPP component password, as configured in the XMPP server.</span>
 <span class="n">xmpp_password</span><span class="o">=</span><span class="n">password</span>
 
-<span class="cp"># IP address.</span>
-<span class="cp"># Example:</span>
+<span class="cp"># Address of the host running the XMPP component.</span>
 <span class="n">xmpp_host</span><span class="o">=</span><span class="mf">127.0.0.1</span>
 
-<span class="cp"># Port in which the server will be listening.</span>
-<span class="cp"># Example:</span>
+<span class="cp"># Port in which the XMPP server will be listening for components, as configured in the XMPP server.</span>
 <span class="n">xmpp_port</span><span class="o">=</span><span class="mi">5347</span>
 
-<span class="cp"># Maximum Interval of time that the Rendezvous Component will keep a cloud in its roster without a sign of activeness.</span>
-<span class="cp"># Example:</span>
+<span class="cp"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
 <span class="n">site_expiration</span><span class="o">=</span><span class="mi">10000</span>
 </pre></div>
 
 
 <h2>Run</h2>
-<p>To start Rendezvous, run the start-redezvous script in the bin directory.</p>
+<p>To start the Rendezvous component, run the start-redezvous script inside <code>./bin</code>.</p>
 <div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">start</span><span class="o">-</span><span class="n">rendezvous</span>
 </pre></div>
       </div>
