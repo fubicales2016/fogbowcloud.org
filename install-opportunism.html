@@ -51,164 +51,161 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Installation</h1>
-<p>The installation of the opportunistic component is very simple.</p>
-<p>It uses Distutils from python to be installed, so all you need to do is to get the latest code and run the setup.py 
-and all packages and scripts will be allocated to the right place.</p>
+<p>The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fogbow/fogbow-opportunism.git</span>
 <span class="n">cd</span> <span class="n">fogbow</span><span class="o">-</span><span class="n">opportunism</span>
 <span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 
 
-<p>The opportunistic component files will be located at /var/lib/fogbow-opportunism.</p>
+<p>The opportunistic module files will be located at /var/lib/fogbow-opportunism.</p>
 <h1>Configuration</h1>
-<p>After installation the user can configure which monitors will be used and how much time the powernap will wait before setting the host idle.</p>
-<p>The configuration file is located at /etc/powernap/config</p>
-<p>Follows few properties that you can customize</p>
-<div class="highlight"><pre><span class="cp"># Number of seconds that all monitors must have no activity or must be absent.</span>
-<span class="cp"># The default is an absence period of 30 seconds.</span>
-<span class="cp"># Example:</span>
-<span class="cp">#   ABSENT_SECONDS = 30</span>
-<span class="n">ABSENT_SECONDS</span> <span class="o">=</span> <span class="mi">300</span>
+<p>After the installation, you can configure which monitors will be used and how much time the powernap will wait before assuming that the host is idle.</p>
+<p>The configuration file is located at /etc/powernap/config. A commented config file follows on:</p>
+<div class="highlight"><pre><span class="c"># Number of seconds that all monitors must have no activity or must be absent.</span>
+<span class="c"># The default is an absence period of 30 seconds.</span>
+<span class="c"># Example:</span>
+<span class="c">#   ABSENT_SECONDS = 30</span>
+<span class="nv">ABSENT_SECONDS</span> <span class="o">=</span> 300
 
-<span class="cp"># The powernap daemon will wake every INTERVAL_SECONDS and check for activity</span>
-<span class="cp"># to all of the monitors.  Lower values of INTERVAL_SECONDS will provide</span>
-<span class="cp"># more detailed process monitoring but will consume more system resources.</span>
-<span class="cp"># Higher values of INTERVAL_SECONDS will consume less system resources, but</span>
-<span class="cp"># might miss activity that execute for less than INTERVAL_SECONDS.</span>
-<span class="cp"># The minimum runtime of any monitor should not be less than INTERVAL_SECONDS.</span>
-<span class="cp"># The default interval is 1 second.</span>
-<span class="cp"># Example:</span>
-<span class="cp">#   INTERVAL_SECONDS = 1</span>
-<span class="n">INTERVAL_SECONDS</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c"># The powernap daemon will wake every INTERVAL_SECONDS and check for activity</span>
+<span class="c"># to all of the monitors.  Lower values of INTERVAL_SECONDS will provide</span>
+<span class="c"># more detailed process monitoring but will consume more system resources.</span>
+<span class="c"># Higher values of INTERVAL_SECONDS will consume less system resources, but</span>
+<span class="c"># might miss activity that execute for less than INTERVAL_SECONDS.</span>
+<span class="c"># The minimum runtime of any monitor should not be less than INTERVAL_SECONDS.</span>
+<span class="c"># The default interval is 1 second.</span>
+<span class="c"># Example:</span>
+<span class="c">#   INTERVAL_SECONDS = 1</span>
+<span class="nv">INTERVAL_SECONDS</span> <span class="o">=</span> 10
 
-<span class="cp"># Action to run when the monitor detects activity in the resource</span>
-<span class="cp"># The default action is &quot;/var/lib/fogbow-opportunism/actions/openstack/stop-node&quot;</span>
-<span class="n">RECOVER_ACTION</span> <span class="o">=</span> <span class="s">&quot;/var/lib/fogbow-opportunism/actions/openstack/stop-node&quot;</span>
+<span class="c"># Action to run when the monitor detects activity in the resource</span>
+<span class="c"># The default action is &quot;/var/lib/fogbow-opportunism/actions/openstack/stop-node&quot;</span>
+<span class="nv">RECOVER_ACTION</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/fogbow-opportunism/actions/openstack/stop-node&quot;</span>
 
-<span class="cp"># Action to run when the resource is idle</span>
-<span class="n">ACTION</span> <span class="o">=</span> <span class="s">&quot;/var/lib/fogbow-opportunism/actions/openstack/start-node&quot;</span>
+<span class="c"># Action to run when the resource is idle</span>
+<span class="nv">ACTION</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/fogbow-opportunism/actions/openstack/start-node&quot;</span>
 </pre></div>
 
 
-<p>Properties for monitors configuration</p>
-<div class="highlight"><pre><span class="cp"># The [ConsoleMonitor] section enables or disables  monitoring of activity</span>
-<span class="cp"># in the Console (tty), also tracking activity from any locally connected</span>
-<span class="cp"># mouse and keyboard (PS2 Only).</span>
-<span class="cp"># The default is enabled, set to &#39;y&#39;. It can be disabled by setting it to &#39;n&#39;.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  console = y</span>
-<span class="cp">#  console = n</span>
-<span class="p">[</span><span class="n">ConsoleMonitor</span><span class="p">]</span>
-<span class="n">ptmx</span> <span class="o">=</span> <span class="n">y</span>
+<p>Monitors' configuration:</p>
+<div class="highlight"><pre><span class="c"># The [ConsoleMonitor] section enables or disables  monitoring of activity</span>
+<span class="c"># in the Console (tty), also tracking activity from any locally connected</span>
+<span class="c"># mouse and keyboard (PS2 Only).</span>
+<span class="c"># The default is enabled, set to &#39;y&#39;. It can be disabled by setting it to &#39;n&#39;.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  console = y</span>
+<span class="c">#  console = n</span>
+<span class="o">[</span>ConsoleMonitor<span class="o">]</span>
+<span class="nv">ptmx</span> <span class="o">=</span> y
 
-<span class="cp"># The [PS2Monitor] section enables or disables monitoring of activity</span>
-<span class="cp"># in the PS2 input devices (ex.: mouse and keyboard)</span>
-<span class="p">[</span><span class="n">PS2Monitor</span><span class="p">]</span>
-<span class="n">ps2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="c"># The [PS2Monitor] section enables or disables monitoring of activity</span>
+<span class="c"># in the PS2 input devices (ex.: mouse and keyboard)</span>
+<span class="o">[</span>PS2Monitor<span class="o">]</span>
+<span class="nv">ps2</span> <span class="o">=</span> y
 
-<span class="cp"># The [InputMonitor] section lists the USB Input devices for which to track</span>
-<span class="cp"># events. Currently, only two types of devices are supported, mouse and keyboard.</span>
-<span class="cp"># Both InputMonitor&#39;s are enabled by default. In the case there are no USB</span>
-<span class="cp"># devices connected, PowerNap will ignore these settings.</span>
-<span class="cp"># To disable, set them to &quot;n&quot; or &quot;no&quot;, or simply comment them.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  keyboard = n</span>
-<span class="cp">#  keyboard = y</span>
-<span class="p">[</span><span class="n">InputMonitor</span><span class="p">]</span>
-<span class="n">keyboard</span> <span class="o">=</span> <span class="n">y</span>
-<span class="n">mouse</span> <span class="o">=</span> <span class="n">y</span>
+<span class="c"># The [InputMonitor] section lists the USB Input devices for which to track</span>
+<span class="c"># events. Currently, only two types of devices are supported, mouse and keyboard.</span>
+<span class="c"># Both InputMonitor&#39;s are enabled by default. In the case there are no USB</span>
+<span class="c"># devices connected, PowerNap will ignore these settings.</span>
+<span class="c"># To disable, set them to &quot;n&quot; or &quot;no&quot;, or simply comment them.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  keyboard = n</span>
+<span class="c">#  keyboard = y</span>
+<span class="o">[</span>InputMonitor<span class="o">]</span>
+<span class="nv">keyboard</span> <span class="o">=</span> y
+<span class="nv">mouse</span> <span class="o">=</span> y
 
-<span class="cp"># The [WoLMonitor] section lists all ports on which the WoL Monitor will be</span>
-<span class="cp"># listening for WoL Packets for any of the network interfaces.</span>
-<span class="cp"># Once a WoL Packet is received, the WoLMonitor will compare the data received</span>
-<span class="cp"># with all the network interfaces (eth&#39;s) to determine wether it is destined</span>
-<span class="cp"># for any of the network interfaces.</span>
-<span class="cp"># The default is to monitor ports 7 and 9 for WoL data packets. It can also be</span>
-<span class="cp"># set to any other port on which the machine is receiving WoL packets</span>
-<span class="cp"># Example:</span>
-<span class="cp">#  wol1052 = 1052</span>
-<span class="p">[</span><span class="n">WoLMonitor</span><span class="p">]</span>
-<span class="n">wol7</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">wol9</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="c"># The [WoLMonitor] section lists all ports on which the WoL Monitor will be</span>
+<span class="c"># listening for WoL Packets for any of the network interfaces.</span>
+<span class="c"># Once a WoL Packet is received, the WoLMonitor will compare the data received</span>
+<span class="c"># with all the network interfaces (eth&#39;s) to determine wether it is destined</span>
+<span class="c"># for any of the network interfaces.</span>
+<span class="c"># The default is to monitor ports 7 and 9 for WoL data packets. It can also be</span>
+<span class="c"># set to any other port on which the machine is receiving WoL packets</span>
+<span class="c"># Example:</span>
+<span class="c">#  wol1052 = 1052</span>
+<span class="o">[</span>WoLMonitor<span class="o">]</span>
+<span class="nv">wol7</span> <span class="o">=</span> 7
+<span class="nv">wol9</span> <span class="o">=</span> 9
 
-<span class="cp"># The [ProcessMonitor] section lists all the processes to Monitor by using</span>
-<span class="cp"># regular expressions.</span>
-<span class="cp"># Each item listed will be compared against the output of &quot;ps -eo args&quot;.</span>
-<span class="cp"># The default is to monitor /sbin/init, which should always be running.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  mplayer = &quot;mplayer &quot;</span>
-<span class="cp">#  sshd = &quot;sshd: .*\[priv\]$&quot;</span>
-<span class="cp">#  kvm = &quot;kvm &quot;</span>
-<span class="p">[</span><span class="n">ProcessMonitor</span><span class="p">]</span>
-<span class="n">init</span> <span class="o">=</span> <span class="s">&quot;^/sbin/init&quot;</span>
+<span class="c"># The [ProcessMonitor] section lists all the processes to Monitor by using</span>
+<span class="c"># regular expressions.</span>
+<span class="c"># Each item listed will be compared against the output of &quot;ps -eo args&quot;.</span>
+<span class="c"># The default is to monitor /sbin/init, which should always be running.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  mplayer = &quot;mplayer &quot;</span>
+<span class="c">#  sshd = &quot;sshd: .*\[priv\]$&quot;</span>
+<span class="c">#  kvm = &quot;kvm &quot;</span>
+<span class="o">[</span>ProcessMonitor<span class="o">]</span>
+<span class="nv">init</span> <span class="o">=</span> <span class="s2">&quot;^/sbin/init&quot;</span>
 
-<span class="cp"># The [LoadMonitor] section defines the load threshold.  When the system load</span>
-<span class="cp"># according to /proc/loadavg is above this value, then system will be deemed</span>
-<span class="cp"># &#39;active&#39; and will not powernap.  If the system is already powernapping, then</span>
-<span class="cp"># the system will awake out of the powernap mode if the load raises above the</span>
-<span class="cp"># threshold.</span>
-<span class="cp"># If the threshold is set to &quot;n&quot; (which is default), threshold is automatically</span>
-<span class="cp"># calculated to be the number of online processors, as determined by:</span>
-<span class="cp">#   getconf _NPROCESSORS_ONLN</span>
-<span class="cp"># Example:</span>
-<span class="cp">#   threshold = 1.5</span>
-<span class="cp">#   threshold = 9999</span>
-<span class="cp">#   threshold = 0</span>
-<span class="cp">#   threshold = n</span>
-<span class="p">[</span><span class="n">LoadMonitor</span><span class="p">]</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="n">n</span>
+<span class="c"># The [LoadMonitor] section defines the load threshold.  When the system load</span>
+<span class="c"># according to /proc/loadavg is above this value, then system will be deemed</span>
+<span class="c"># &#39;active&#39; and will not powernap.  If the system is already powernapping, then</span>
+<span class="c"># the system will awake out of the powernap mode if the load raises above the</span>
+<span class="c"># threshold.</span>
+<span class="c"># If the threshold is set to &quot;n&quot; (which is default), threshold is automatically</span>
+<span class="c"># calculated to be the number of online processors, as determined by:</span>
+<span class="c">#   getconf _NPROCESSORS_ONLN</span>
+<span class="c"># Example:</span>
+<span class="c">#   threshold = 1.5</span>
+<span class="c">#   threshold = 9999</span>
+<span class="c">#   threshold = 0</span>
+<span class="c">#   threshold = n</span>
+<span class="o">[</span>LoadMonitor<span class="o">]</span>
+<span class="nv">threshold</span> <span class="o">=</span> n
 
-<span class="cp"># The [TCPMonitor] section lists all the TCP ports on which to watch for</span>
-<span class="cp"># established connections using netstat(8). It supports both, single TCP</span>
-<span class="cp"># as well as port ranges.</span>
-<span class="cp"># There is no default TCP Monitor.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  ssh = 22</span>
-<span class="cp">#  http = 80</span>
-<span class="cp">#  https = 443</span>
-<span class="cp">#  other = 64500-65000</span>
-<span class="p">[</span><span class="n">TCPMonitor</span><span class="p">]</span>
-<span class="n">ssh</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="c"># The [TCPMonitor] section lists all the TCP ports on which to watch for</span>
+<span class="c"># established connections using netstat(8). It supports both, single TCP</span>
+<span class="c"># as well as port ranges.</span>
+<span class="c"># There is no default TCP Monitor.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  ssh = 22</span>
+<span class="c">#  http = 80</span>
+<span class="c">#  https = 443</span>
+<span class="c">#  other = 64500-65000</span>
+<span class="o">[</span>TCPMonitor<span class="o">]</span>
+<span class="nv">ssh</span> <span class="o">=</span> 22
 
-<span class="cp"># The [UDPMonitor] section lists all the UDP ports on which to listen</span>
-<span class="cp"># for data.</span>
-<span class="cp"># Each item listed will BIND a UDP port and listen to any data. Keep</span>
-<span class="cp"># in mind that this port will be bined and no other application will</span>
-<span class="cp"># be able to use this port.</span>
-<span class="cp"># There is no default UDP Monitor.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  udp-1 = 1025</span>
-<span class="cp">#  udp-2 = 2048</span>
-<span class="p">[</span><span class="n">UDPMonitor</span><span class="p">]</span>
-<span class="n">udp</span><span class="o">-</span><span class="mi">1025</span> <span class="o">=</span> <span class="mi">1025</span>
+<span class="c"># The [UDPMonitor] section lists all the UDP ports on which to listen</span>
+<span class="c"># for data.</span>
+<span class="c"># Each item listed will BIND a UDP port and listen to any data. Keep</span>
+<span class="c"># in mind that this port will be bined and no other application will</span>
+<span class="c"># be able to use this port.</span>
+<span class="c"># There is no default UDP Monitor.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  udp-1 = 1025</span>
+<span class="c">#  udp-2 = 2048</span>
+<span class="o">[</span>UDPMonitor<span class="o">]</span>
+udp-1025 <span class="o">=</span> 1025
 
-<span class="cp"># The [IOMonitor] section lists all the processes to Monitor for IO</span>
-<span class="cp"># activity. A regular expressions is used to find the processes PIDs, which</span>
-<span class="cp"># are later used to monitor IO.</span>
-<span class="cp"># There is no default IO Monitor.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  kvm-io = &quot;kvm&quot;</span>
-<span class="cp">#  mysqld-io = &quot;mysql&quot;</span>
-<span class="p">[</span><span class="n">IOMonitor</span><span class="p">]</span>
-<span class="n">kvm</span><span class="o">-</span><span class="n">io</span> <span class="o">=</span> <span class="s">&quot;kvm&quot;</span>
-<span class="n">mysqld</span><span class="o">-</span><span class="n">io</span> <span class="o">=</span> <span class="s">&quot;mysql&quot;</span>
+<span class="c"># The [IOMonitor] section lists all the processes to Monitor for IO</span>
+<span class="c"># activity. A regular expressions is used to find the processes PIDs, which</span>
+<span class="c"># are later used to monitor IO.</span>
+<span class="c"># There is no default IO Monitor.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  kvm-io = &quot;kvm&quot;</span>
+<span class="c">#  mysqld-io = &quot;mysql&quot;</span>
+<span class="o">[</span>IOMonitor<span class="o">]</span>
+kvm-io <span class="o">=</span> <span class="s2">&quot;kvm&quot;</span>
+mysqld-io <span class="o">=</span> <span class="s2">&quot;mysql&quot;</span>
 
-<span class="cp"># The [DiskMonitor] section lists the disk devices for which to track</span>
-<span class="cp"># standby/sleep status.  If any of the devices are active/idle the</span>
-<span class="cp"># system will be deemed &#39;active&#39; and will not powernap. Generally useful</span>
-<span class="cp"># for monitoring data drives (e.g. NAS), but will not typically work to</span>
-<span class="cp"># monitor the root drive. Note also that this plugin only reacts to the</span>
-<span class="cp"># state of the drive and does not modify the behavior of the drive</span>
-<span class="cp"># directly. Therefore it only makes sense to monitor a drive that has</span>
-<span class="cp"># already been configured to standby or sleep.  </span>
-<span class="cp"># To disable checking specific drives, set them to &quot;n&quot; or &quot;no&quot;,</span>
-<span class="cp"># or simply comment them.</span>
-<span class="cp"># Examples:</span>
-<span class="cp">#  sda = y</span>
-<span class="cp">#  sdb = n</span>
-<span class="p">[</span><span class="n">DiskMonitor</span><span class="p">]</span>
-<span class="n">sda</span> <span class="o">=</span> <span class="n">y</span>
+<span class="c"># The [DiskMonitor] section lists the disk devices for which to track</span>
+<span class="c"># standby/sleep status.  If any of the devices are active/idle the</span>
+<span class="c"># system will be deemed &#39;active&#39; and will not powernap. Generally useful</span>
+<span class="c"># for monitoring data drives (e.g. NAS), but will not typically work to</span>
+<span class="c"># monitor the root drive. Note also that this plugin only reacts to the</span>
+<span class="c"># state of the drive and does not modify the behavior of the drive</span>
+<span class="c"># directly. Therefore it only makes sense to monitor a drive that has</span>
+<span class="c"># already been configured to standby or sleep.  </span>
+<span class="c"># To disable checking specific drives, set them to &quot;n&quot; or &quot;no&quot;,</span>
+<span class="c"># or simply comment them.</span>
+<span class="c"># Examples:</span>
+<span class="c">#  sda = y</span>
+<span class="c">#  sdb = n</span>
+<span class="o">[</span>DiskMonitor<span class="o">]</span>
+<span class="nv">sda</span> <span class="o">=</span> y
 </pre></div>
       </div>
     </div>
