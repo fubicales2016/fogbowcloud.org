@@ -2,7 +2,7 @@ Title: Manager
 url: install-manager
 save_as: install-manager.html
 section: install
-index: 1
+index: 3
 
 # Manager
 
