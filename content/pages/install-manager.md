@@ -19,6 +19,7 @@ mvn install -D
 ```
 
 ## Configure
+Currently we are using the OCCI interface of the cloud. Then, this is a requirement to use manager to request resources and it is configured at the file.
 After the installation the user can configure a few properties. All sections listed below are part of the same file.
 
 * **XMPP properties:** Manager and Rendezvous XMPP properties that will be used to comunication between components.  
