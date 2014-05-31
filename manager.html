@@ -70,12 +70,43 @@
 <li><strong>Monitoring instances:</strong> the manager checks all instances that it is aware of and identifies when an instance is no longer active. Then it updates the state of the corresponding requests according to their type (one-time|persistent). The instance monitoring period is also configurable in the manager configuration file;</li>
 <li><strong>Reissuing requests' tokens:</strong> the manager updates requests' tokens when it is needed. When a request was done by an user of the underlying cloud, it is aware of the access token being used. However this access token can expire before  request gets fulfilled or before the valid_until attribute. In this way, the manager updates the request's token when it is necessary. The token update period is configurable in the manager configuration file.</li>
 </ul>
-<p>To be detailed:</p>
+<p>The end-user can interact with Manager to do follow commands:</p>
 <ul>
-<li>End-user endpoints</li>
-<li>Communication between managers</li>
-<li>Request states</li>
-<li>Request types</li>
+<li>Get federation members list;</li>
+<li>Get avaiable resources;</li>
+<li>Get a token access id;</li>
+<li>Request instances;</li>
+<li>Get requests list;</li>
+<li>Get details of a single request;</li>
+<li>Delete a single request;</li>
+<li>Delete all requests;</li>
+<li>Get instances list;</li>
+<li>Get details of a single instance;</li>
+<li>Delete a single instance;</li>
+<li>Delete all instances.</li>
+</ul>
+<p>We have a <a href="http://www.fogbowcloud.org/manager-cli">Manager Client</a> application to help user interaction. Please, check the documentation for more information.</p>
+<p>The managers interact each other to do follow actions:</p>
+<ul>
+<li>Request remote instance;</li>
+<li>Get remote instance;</li>
+<li>Remove remote instance.</li>
+</ul>
+<p>You can see the <a href="#manager-protocol">Manager Protocol</a> documentation for more information.</p>
+<p>A Manager also can interact with Rendezvous component. The interactions between these components are to:</p>
+<ul>
+<li>Send alive mensage to rendezvous component;</li>
+<li>Know all alive federation members.</li>
+</ul>
+<p>More details can be seen at <a href="http://www.fogbowcloud.org/rendezvous">Rendezvous Protocol</a> documentation.</p>
+<p>When a end-user requests resoures, she/he can specify the request type. The manager provides two request types: <strong>one-time</strong> and <strong>persistent</strong>. By default, it is one-time. One-time request can only be fulfilled once, and a persistent request is considered for fulfillment whenever there is no instance running for the same request and the request is into the validity period. If the user does not set validity period, the request is valid from now until forever.</p>
+<p>Once a end-user makes a request, the possible request states are: </p>
+<ul>
+<li><strong>Open:</strong> The request is not fulfilled;</li>
+<li><strong>Failed:</strong> The request failed because bad parameters were specified;</li>
+<li><strong>Fulfilled:</strong> The request is currently active (fulfilled) and has an associated instance;</li>
+<li><strong>Deleted:</strong> The request was deleted, but it still has an associated instance;</li>
+<li><strong>Closed:</strong> The request either completed (a Instance was launched and subsequently was interrupted or terminated), or was not fulfilled within the period specified.</li>
 </ul>
 <p>All communication among Managers is done via XMPP, according to the Manager Protocol.</p>
 <h2>Manager Protocol</h2>
