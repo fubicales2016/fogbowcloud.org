@@ -54,21 +54,21 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Manager</h1>
-<p>The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers.  </p>
+<p>The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the Rendezvous and other Managers. </p>
+<p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface">Openstack's OCCI guide</a> to know more. </p>
 <h2>Install</h2>
-<p>To set up Manager, first, get the latest code of the project.</p>
+<p>To set up a Manager instance, first, get the latest code from github.</p>
 <div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-manager.git
 </pre></div>
 
 
-<p>Then, install it in your machine.</p>
-<div class="highlight"><pre>mvn install -D
+<p>Then, install it with Maven</p>
+<div class="highlight"><pre>mvn install
 </pre></div>
 
 
 <h2>Configure</h2>
-<p>Currently we are using the OCCI interface of the cloud. Then, this is a requirement to use manager to request resources and it is configured at the file.
-After the installation the user can configure a few properties. All sections listed below are part of the same file.</p>
+<p>After the installation, move the file <code>manager.conf.example</code> to <code>manager.conf</code> and edit its contents:</p>
 <ul>
 <li><strong>XMPP properties:</strong> Manager and Rendezvous XMPP properties that will be used to comunication between components.  </li>
 </ul>
@@ -218,7 +218,7 @@ After the installation the user can configure a few properties. All sections lis
 
 
 <h2>Run</h2>
-<p>To start Manager, run the start-manager script in the bin directory.</p>
+<p>To start the Manager component, run the start-manager script inside <code>bin</code>.</p>
 <div class="highlight"><pre>./bin/start-manager
 </pre></div>
       </div>
