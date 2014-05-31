@@ -8,7 +8,9 @@ index: 3
 
 The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the Rendezvous and other Managers. 
 
-This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more. 
+This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more.
+
+Also, the Manager needs an user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
 
 ## Install
 To set up a Manager instance, first, get the latest code from github.
