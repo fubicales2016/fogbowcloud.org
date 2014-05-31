@@ -20,51 +20,46 @@ Internally, the Manager is responsible for three periodic services:
 * **Monitoring instances:** the manager checks all instances that it is aware of and identifies when an instance is no longer active. Then it updates the state of the corresponding requests according to their type (one-time|persistent). The instance monitoring period is also configurable in the manager configuration file;
 * **Reissuing requests' tokens:** the manager updates requests' tokens when it is needed. When a request was done by an user of the underlying cloud, it is aware of the access token being used. However this access token can expire before  request gets fulfilled or before the valid_until attribute. In this way, the manager updates the request's token when it is necessary. The token update period is configurable in the manager configuration file.
 
-The end-user can interact with Manager to do follow commands:
+The end-user can interact with a Manager component to perform the following operations:
 
-* Get federation members list;
-* Get avaiable resources;
+* List the federation members;
 * Get a token access id;
 * Request instances;
-* Get requests list;
-* Get details of a single request;
-* Delete a single request;
-* Delete all requests;
-* Get instances list;
-* Get details of a single instance;
-* Delete a single instance;
-* Delete all instances.
+* List requests;
+* Delete requests;
+* List instances;
+* Delete instances.
 
-We have a [Manager Client](http://www.fogbowcloud.org/manager-cli) application to help user interaction. Please, check the documentation for more information.
+We have a fogbow command line interface that helps users to interact with a Manager. Please, check the [documentation](http://www.fogbowcloud.org/manager-cli) for more information.
 
-The managers interact each other to do follow actions:
+Managers interact with each other to perform the following:
 
-* Request remote instance;
-* Get remote instance;
-* Remove remote instance.
+* Request instances;
+* Get detailed information about remote instances;
+* Remove remote instances.
 
-You can see the [Manager Protocol](#manager-protocol) documentation for more information.
+You can check the [Manager Protocol](#manager-protocol) for more information.
 
-A Manager also can interact with Rendezvous component. The interactions between these components are to:
+A Manager will also interact with a Rendezvous component. Those interactions will:
 
-* Send alive mensage to rendezvous component;
-* Know all alive federation members.
+* Send liveness messages;
+* List active federation members.
 
-More details can be seen at [Rendezvous Protocol](http://www.fogbowcloud.org/rendezvous) documentation.
+See more details at the [Rendezvous Protocol](http://www.fogbowcloud.org/rendezvous) documentation.
 
-When a end-user requests resoures, she/he can specify the request type. The manager provides two request types: **one-time** and **persistent**. By default, it is one-time. One-time request can only be fulfilled once, and a persistent request is considered for fulfillment whenever there is no instance running for the same request and the request is into the validity period. If the user does not set validity period, the request is valid from now until forever.
+When an end-user requests resoures, s/he is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. An one-time request can only be fulfilled once, whilst a persistent one is considered for scheduling while it has no instance allocated and it is still into the validity period.
 
 Once a end-user makes a request, the possible request states are: 
 
-* **Open:** The request is not fulfilled;
+* **Open:** The request is active but it has no allocated instance;
 * **Failed:** The request failed because bad parameters were specified;
-* **Fulfilled:** The request is currently active (fulfilled) and has an associated instance;
+* **Fulfilled:** The request is currently active and has an associated instance;
 * **Deleted:** The request was deleted, but it still has an associated instance;
-* **Closed:** The request either completed (a Instance was launched and subsequently was interrupted or terminated), or was not fulfilled within the period specified.
-
-All communication among Managers is done via XMPP, according to the Manager Protocol.
+* **Closed:** The request either completed (an instance was launched and subsequently was interrupted or terminated), or was not fulfilled within the period specified.
 
 ## Manager Protocol
+
+All communication among Managers is done via XMPP, according to the Manager Protocol.
 
 ### Request Remote Instance
 
