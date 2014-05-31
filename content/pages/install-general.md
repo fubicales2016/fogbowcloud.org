@@ -6,7 +6,7 @@ index: 0
 
 # Get started
 
-Fogbow can be used in several use cases. Learn how to install it for some of those cases that follow on.
+Fogbow can be used in several use cases. Learn how to install it for some cases that follow on.
 
 ## I want to join a fogbow federation
 
