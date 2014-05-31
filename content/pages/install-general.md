@@ -20,4 +20,3 @@ If you want to install a new federation, you need to install an instance of the 
 
 If you have a private cloud running Openstack, therefore running nova-compute in your compute nodes, and you want to make it oportunistic, in a sense that only idle nodes will show up to the cloud , you can follow the instructions in [here](http://www.fogbowcloud.org/install-opportunism).
 
-You can install the fogbow components according to your interest. For example, . 
