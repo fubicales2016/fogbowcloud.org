@@ -1,9 +1,23 @@
-Title: General Installation
+Title: Get started
 url: install-general
 save_as: install-general.html
 section: install
 index: 0
 
-# General Installation
+# Get started
 
-You can install the fogbow components according to your interest. For example, if you have a nova-compute installed and want to make it an oportunistic component, you can follow instruction [here](http://www.fogbowcloud.org/install-opportunism). Otherwise, if you want to install only a cloud manager to be part of a existing federation, you can see [here](http://www.fogbowcloud.org/install-manager). But if you want to install a new federation, you need to install the rendezvous and the managers (you can see how to install these components [here](http://www.fogbowcloud.org/install-rendezvous) and [here](http://www.fogbowcloud.org/install-manager) respectively).
+Fogbow can be used in several use cases. Learn how to install it for some of those cases that follow on.
+
+## I want to join a fogbow federation
+
+If you have a private cloud running, and you want to be part of an existing federation, you need to install a fogbow Manager and configure it properly, so that it is able to communicate with your existing cloud. You can learn how to install and configure a fogbow Manager in [here](http://www.fogbowcloud.org/install-manager).
+
+## I want to deploy a fogbow federation myself
+
+If you want to install a new federation, you need to install an instance of the Rendezvous component and a Manager component in every Administrative Domain you control. And then, of course, you need to point every Manager to the same Rendezvous. You can learn how to install a fogbow Rendezvous [here](http://www.fogbowcloud.org/install-rendezvous).
+
+## I have a private cloud and I want it to make it opportunistic
+
+If you have a private cloud running Openstack, therefore running nova-compute in your compute nodes, and you want to make it oportunistic, in a sense that only idle nodes will show up to the cloud , you can follow the instructions in [here](http://www.fogbowcloud.org/install-opportunism).
+
+You can install the fogbow components according to your interest. For example, . 
