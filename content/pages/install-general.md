@@ -16,7 +16,7 @@ If you have a private cloud running, and you want to be part of an existing fede
 
 If you want to install a new federation, you need to install an instance of the Rendezvous component and a Manager component in every Administrative Domain you control. And then, of course, you need to point every Manager to the same Rendezvous. You can learn how to install a fogbow Rendezvous [here](http://www.fogbowcloud.org/install-rendezvous).
 
-## I have a private cloud and I want it to make it opportunistic
+## I want to make my cloud opportunistic
 
 If you have a private cloud running Openstack, therefore running nova-compute in your compute nodes, and you want to make it oportunistic, in a sense that only idle nodes will show up to the cloud , you can follow the instructions in [here](http://www.fogbowcloud.org/install-opportunism).
 
