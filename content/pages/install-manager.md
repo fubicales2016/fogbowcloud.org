@@ -6,21 +6,22 @@ index: 3
 
 # Manager
 
-The Manager is the federation service that should run on each federation member. It provides an extended OCCI API for final users and interacts with Rendezvous and other Managers.  
+The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the Rendezvous and other Managers. 
+
+This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more. 
 
 ## Install
-To set up Manager, first, get the latest code of the project.
+To set up a Manager instance, first, get the latest code from github.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
 ```
-Then, install it in your machine.
+Then, install it with Maven
 ```bash
-mvn install -D
+mvn install
 ```
 
 ## Configure
-Currently we are using the OCCI interface of the cloud. Then, this is a requirement to use manager to request resources and it is configured at the file.
-After the installation the user can configure a few properties. All sections listed below are part of the same file.
+After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
 * **XMPP properties:** Manager and Rendezvous XMPP properties that will be used to comunication between components.  
 
@@ -164,7 +165,7 @@ http_port = 8182
 
 ```
 ## Run
-To start Manager, run the start-manager script in the bin directory.
+To start the Manager component, run the start-manager script inside ```bin```.
 
 ```bash
 ./bin/start-manager
