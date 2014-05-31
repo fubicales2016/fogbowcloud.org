@@ -6,7 +6,7 @@ index: 2
 
 # Rendezvous
 
-The Rendezvous component act as a discovery service for a fowbow federated cloud. It allows members to find each other by providing a complete status of the federation.
+The Rendezvous component act as a discovery service for a fowbow federation. It allows members to find each other by providing a complete status of the federation.
 
 ## Install
 
