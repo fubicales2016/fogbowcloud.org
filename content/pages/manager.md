@@ -30,7 +30,7 @@ The end-user can interact with a Manager component to perform the following oper
 * List instances;
 * Delete instances.
 
-We have a fogbow command line interface that helps users to interact with a Manager. Please, check the [documentation](http://www.fogbowcloud.org/manager-cli) for more information.
+We have a fogbow command line interface that helps users to interact with a Manager. Please, check its [documentation](http://www.fogbowcloud.org/manager-cli) for more information.
 
 Managers interact with each other to perform the following:
 
@@ -56,6 +56,10 @@ Once a end-user makes a request, the possible request states are:
 * **Fulfilled:** The request is currently active and has an associated instance;
 * **Deleted:** The request was deleted, but it still has an associated instance;
 * **Closed:** The request either completed (an instance was launched and subsequently was interrupted or terminated), or was not fulfilled within the period specified.
+
+## SSH Tunneling
+
+To be detailed.
 
 ## Manager Protocol
 
