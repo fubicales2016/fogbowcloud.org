@@ -58,7 +58,7 @@ compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlu
 
 # Cloud OCCI endpoint
 # Example:
-compute_openstack_occi_url=http://localhost:8182
+compute_occi_url=http://localhost:8182
 
 # Cloud v2 compute endpoint
 # Example:
@@ -67,19 +67,35 @@ compute_openstack_v2api_url=http://localhost:8182
 # Associating local cloud flavors to fogbow flavors
 # Small flavor
 # Example:
-compute_openstack_flavor_small=m1-small
+compute_flavor_small=m1-small
 
 # Medium flavor
 # Example:
-compute_openstack_flavor_medium=m1-medium
+compute_flavor_medium=m1-medium
 
 # Large flavor
 # Example:
-compute_openstack_flavor_large=m1-large
+compute_flavor_large=m1-large
 
-# Image
+# OS Cloud Scheme
 # Example:
-compute_openstack_default_cirros_image=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+compute_occi_os_scheme=http://schemas.openstack.org/template/os#
+
+# Instance Cloud Scheme
+# Example:
+compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
+
+# Resource Cloud Scheme
+# Example:
+compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
+
+# Image (property format: compute_occi_image_image-name)
+# Example (this image will be referenced as linuxx86):
+compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+
+# Network ID (This property is required only if user project has more than one network available)
+# Example:
+compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
 * **Cloud Identity Information:** All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). 
@@ -145,9 +161,13 @@ instance_monitoring_period=120000
 * **SSH Tunnel Properties:** SSH properties are used to give connectivity for instances.
 
 ```bash
-# IP address of shh tunnel host
+# Public IP address of shh tunnel host
 # Example:
-ssh_tunnel_host=10.0.0.1
+ssh_tunnel_public_host=150.160.0.10
+
+# Private IP address of shh tunnel host
+# Example:
+ssh_tunnel_private_host=10.0.0.1
 
 # shh tunnel user is a valid user at tunnel host. This user must not requere password
 # Example:
@@ -156,6 +176,11 @@ ssh_tunnel_user=fogbow
 # shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances
 # Example:
 ssh_tunnel_port_range=50000:59999
+
+# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 22
+# Example:
+ssh_tunnel_host_port=22
+
 ```
 
 * **Manager HTTP Port:** HTTP port which manager component endpoint will be listening.
