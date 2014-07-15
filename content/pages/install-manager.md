@@ -98,17 +98,25 @@ compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-* **Cloud Identity Information:** All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). 
+* **Cloud Identity Information:** All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.
 
 ```bash
 
-# Identity plugin class
+# Local Identity plugin class
 # Example:
-identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
 
 # Cloud identity endpoint
 # Example:
-identity_openstack_url=http://localhost:5000
+local_identity_url=http://localhost:5000
+
+# Federation Identity plugin class
+# Example:
+federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+
+# Cloud identity endpoint
+# Example:
+federation_identity_url=http://localhost:5000
 ```
 
 * **Federation User Information:** Cloud federation user is a local cloud user that will submit requests from remote members.
