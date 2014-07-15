@@ -146,15 +146,23 @@
 
 
 <ul>
-<li><strong>Cloud Identity Information:</strong> All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). </li>
+<li><strong>Cloud Identity Information:</strong> All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.</li>
 </ul>
-<div class="highlight"><pre><span class="c"># Identity plugin class</span>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
 <span class="c"># Example:</span>
-<span class="nv">identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
 
 <span class="c"># Cloud identity endpoint</span>
 <span class="c"># Example:</span>
-<span class="nv">identity_openstack_url</span><span class="o">=</span>http://localhost:5000
+<span class="nv">local_identity_url</span><span class="o">=</span>http://localhost:5000
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="c"># Example:</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+
+<span class="c"># Cloud identity endpoint</span>
+<span class="c"># Example:</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://localhost:5000
 </pre></div>
 
 
