@@ -57,6 +57,16 @@ Once a end-user makes a request, the possible request states are:
 * **Deleted:** The request was deleted, but it still has an associated instance;
 * **Closed:** The request either completed (an instance was launched and subsequently was interrupted or terminated), or was not fulfilled within the period specified.
 
+## Authentication/Authorization
+
+A manager is able to allocate Virtual Machines (VMs) on its associated local private cloud using a user of this cloud specially configured for this purpose by the administrator of the local private cloud. In particular, the administrator autonomously defines the usage policies that apply to this user, eg. the quota that is assigned to it. We will refer to this special user as the fogbow user.
+
+A user of the fogbow federation - referred as a federation user - acquires VMs by interacting with a particular fogbow manager. The process of authentication and authorization involves two levels: the Federation Level, in which the fogbow manager will authenticate federation users and authorize them to create requests in the federation, and the Local Level, used by the underlying cloud services to authenticate users (fogbow or federation users). If the user is not authenticated or authorized at the federation level, than it will not be able to request VMs. Otherwise, it is able to request VMs to the fogbow manager that uses the fogbow user to request resources on behalf of the federation user. Additionally, if the federation user is also authenticated and authorized at the local level, it can request additional resources using its local user.
+
+Authorized federation users may request as many VMs as needed, even if this number is well above their local quota. At first, the fogbow manager will try to create VMs locally within the local user quota. If there are not enough resources available or the federation user is not authenticated or authorized in the local cloud, the fogbow manager will use the fogbow user to request VMs. Again, when there is no more resources available, the fogbow manager will contact other federation members to create VMs in remote private clouds. The remote members, in turn, will use their fogbow user to create VMs for remote requests.
+
+There is a third level of authentication and authorization that involves only the fogbow managers, or members. Federation members exchange X.509 certificates when joining a fogbow federation, and those are used in the authentication and authorization process that tells if a member may ask for or donate resources to a remote member, as per Figure X. This procedure, though, is out of the scope of this document.
+
 ## SSH Tunneling
 
 To be detailed.
