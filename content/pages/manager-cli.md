@@ -52,17 +52,19 @@ Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"
 
 Create a new user token.
 
+Obs.: For to pass the credentials it is necessary the use of dynamic parameters. Follow the example with the credentials of OpenStack :
+
 * **--get** (Required)
 * **--url** (Optional; Default: http://localhost:8182): OCCI endpoint
-* **--password** (Optional) 
-* **--username** (Required)
-* **--tenantName** (Required) 
+* **-Dpassword=** (Optional): Dynamic Parameter
+* **-Dusername=** (Optional): Dynamic Parameter
+* **-DtenantName=** (Optional): Dynamic Parameter
 
 Obs.: If a password is not provided, it will be requested in the console.
 
 Example :
 ```bash
-$ bin/fogbow-cli token --get --password mypassword --username myusername --tenantName mytenantname --url http://localhost:8182
+$ bin/fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname --url http://localhost:8182
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
