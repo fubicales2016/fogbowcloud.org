@@ -110,7 +110,7 @@ All communication is done via XMPP according to the Rendezvous protocol.
       </neighbors>
       <managers>
          <manager id = "federated-cloud-id1" >
-                <cpu-idle>value</cpu-idle>
+               <cpu-idle>value</cpu-idle>
                <cpu-inuse>value</cpu-inuse>
                <mem-idle>value</mem-idle>
                <cpu-inuse>value</mem-inuse>
