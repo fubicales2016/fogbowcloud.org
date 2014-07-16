@@ -108,7 +108,6 @@ All communication is done via XMPP according to the Rendezvous protocol.
         .
         <neighbor> id </neighbor>
       </neighbors>
-      
     <managers>
       <manager id = "federated-cloud-id1" >
              <cpu-idle>value</cpu-idle>
@@ -131,7 +130,6 @@ All communication is done via XMPP according to the Rendezvous protocol.
          </status>
       </manager>
     </managers>
-
 </iq>
 ```
 
