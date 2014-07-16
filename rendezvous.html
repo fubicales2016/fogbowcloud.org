@@ -65,6 +65,7 @@
 <p>Currently, the Rendezvous provides two methods to federation members: IamAlive and WhoIsAlive.</p>
 <p>The first one allows a federation member to report resource information. In this sense, the Rendezvous component will periodically receive information from every federation manager, which will also work as a heartbeat, and tag this information with a timestamp. This data is valid for a given expiration interval, which is configurable. After this timeout, data is considered expired and this member will no longer show up as an active member of the federation.</p>
 <p>The WhoIsAlive method allows a federation member to ask for the set of active federation members. The rendezvous component will then return resource information about all currently active members.</p>
+<p>Also, one rendezvous communicates with other rendevous replicas to synchronize. The synchronization is made through a WhoIsAliveSync method. This method sends a message to all the replicas courrently known by the rendezvous asking for their known neighbors and their known managers alive. The response is then merged with the previous information.</p>
 <p>All communication is done via XMPP according to the Rendezvous protocol.</p>
 <h2>Rendezvous protocol</h2>
 <h3>IAmAlive</h3>
@@ -121,6 +122,52 @@
          <span class="nt">&lt;/status&gt;</span>
       <span class="nt">&lt;/item&gt;</span>
    <span class="nt">&lt;/query&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h3>WhoIsAliveSync</h3>
+<h4>Request</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/synch/whoisalive&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
+<h4>Response</h4>
+<div class="highlight"><pre><span class="nt">&lt;iq</span> <span class="na">type=</span><span class="s">&quot;result&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/synch/whoisalive&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;neighbors&gt;</span>
+        <span class="nt">&lt;neighbor&gt;</span> id <span class="nt">&lt;/neighbor&gt;</span>
+        .
+        .
+        .
+        <span class="nt">&lt;neighbor&gt;</span> id <span class="nt">&lt;/neighbor&gt;</span>
+      <span class="nt">&lt;/neighbors&gt;</span>
+
+    <span class="nt">&lt;managers&gt;</span>
+      <span class="nt">&lt;manager</span> <span class="na">id =</span> <span class="s">&quot;federated-cloud-id1&quot;</span> <span class="nt">&gt;</span>
+             <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+            <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+            <span class="nt">&lt;updated&gt;</span>value<span class="nt">&lt;/updated&gt;</span>  
+         <span class="nt">&lt;/status&gt;</span>
+      <span class="nt">&lt;/manager&gt;</span>
+      .
+      .
+      .
+      <span class="nt">&lt;mananger</span> <span class="na">id=</span><span class="s">&quot;federated-cloud-idn&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;status&gt;</span>
+            <span class="nt">&lt;cpu-idle&gt;</span>value<span class="nt">&lt;/cpu-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/cpu-inuse&gt;</span>
+            <span class="nt">&lt;mem-idle&gt;</span>value<span class="nt">&lt;/mem-idle&gt;</span>
+            <span class="nt">&lt;cpu-inuse&gt;</span>value<span class="nt">&lt;/mem-inuse&gt;</span>
+            <span class="nt">&lt;updated&gt;</span>value<span class="nt">&lt;/updated&gt;</span>  
+         <span class="nt">&lt;/status&gt;</span>
+      <span class="nt">&lt;/manager&gt;</span>
+    <span class="nt">&lt;/managers&gt;</span>
+
 <span class="nt">&lt;/iq&gt;</span>
 </pre></div>
 
