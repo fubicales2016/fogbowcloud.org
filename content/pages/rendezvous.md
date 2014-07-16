@@ -16,6 +16,8 @@ The first one allows a federation member to report resource information. In this
 
 The WhoIsAlive method allows a federation member to ask for the set of active federation members. The rendezvous component will then return resource information about all currently active members.
 
+Also, one rendezvous communicates with other rendevous replicas to synchronize. The synchronization is made through a WhoIsAliveSync method. This method sends a message to all the replicas courrently known by the rendezvous asking for their known neighbors and their known managers alive. The response is then merged with the previous information.
+
 All communication is done via XMPP according to the Rendezvous protocol.
 
 ## Rendezvous protocol
@@ -83,4 +85,54 @@ All communication is done via XMPP according to the Rendezvous protocol.
    </query>
 </iq>
 ```
+
+### WhoIsAliveSync
+
+#### Request
+
+```xml 
+<iq type="get">
+   <query xmlns="http://fogbowcloud.org/rendezvous/synch/whoisalive"/>
+</iq>
+```
+
+#### Response
+
+```xml 
+<iq type="result">
+   <query xmlns="http://fogbowcloud.org/rendezvous/synch/whoisalive"/>
+      <neighbors>
+        <neighbor> id </neighbor>
+        .
+        .
+        .
+        <neighbor> id </neighbor>
+      </neighbors>
+      
+    <managers>
+      <manager id = "federated-cloud-id1" >
+             <cpu-idle>value</cpu-idle>
+            <cpu-inuse>value</cpu-inuse>
+            <mem-idle>value</mem-idle>
+            <cpu-inuse>value</mem-inuse>
+            <updated>value</updated>  
+         </status>
+      </manager>
+      .
+      .
+      .
+      <mananger id="federated-cloud-idn">
+         <status>
+            <cpu-idle>value</cpu-idle>
+            <cpu-inuse>value</cpu-inuse>
+            <mem-idle>value</mem-idle>
+            <cpu-inuse>value</mem-inuse>
+            <updated>value</updated>  
+         </status>
+      </manager>
+    </managers>
+
+</iq>
+```
+
 Obs: The updated value is the timestamp of information. It will be formatted according to ISO 8601 standard. 
