@@ -108,28 +108,29 @@ All communication is done via XMPP according to the Rendezvous protocol.
         .
         <neighbor> id </neighbor>
       </neighbors>
-    <managers>
-      <manager id = "federated-cloud-id1" >
-             <cpu-idle>value</cpu-idle>
-            <cpu-inuse>value</cpu-inuse>
-            <mem-idle>value</mem-idle>
-            <cpu-inuse>value</mem-inuse>
-            <updated>value</updated>  
-         </status>
-      </manager>
-      .
-      .
-      .
-      <mananger id="federated-cloud-idn">
-         <status>
-            <cpu-idle>value</cpu-idle>
-            <cpu-inuse>value</cpu-inuse>
-            <mem-idle>value</mem-idle>
-            <cpu-inuse>value</mem-inuse>
-            <updated>value</updated>  
-         </status>
-      </manager>
-    </managers>
+      <managers>
+         <manager id = "federated-cloud-id1" >
+                <cpu-idle>value</cpu-idle>
+               <cpu-inuse>value</cpu-inuse>
+               <mem-idle>value</mem-idle>
+               <cpu-inuse>value</mem-inuse>
+               <updated>value</updated>  
+            </status>
+         </manager>
+         .
+         .
+         .
+         <mananger id="federated-cloud-idn">
+            <status>
+               <cpu-idle>value</cpu-idle>
+               <cpu-inuse>value</cpu-inuse>
+               <mem-idle>value</mem-idle>
+               <cpu-inuse>value</mem-inuse>
+               <updated>value</updated>  
+            </status>
+         </manager>
+      </managers>
+   </query>
 </iq>
 ```
 
