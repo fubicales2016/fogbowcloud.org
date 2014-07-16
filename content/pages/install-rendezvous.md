@@ -46,6 +46,9 @@ xmpp_port=5347
 
 # Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.
 site_expiration=10000
+
+# Known Rendezvous Neighbor aderesses.
+neighbors=neighbor1@test.com,neighbor2@test.com
 ```
 ## Run
 To start the Rendezvous component, run the start-rendezvous script inside ```./bin```.
