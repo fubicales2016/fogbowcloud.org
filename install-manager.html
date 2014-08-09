@@ -54,11 +54,11 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Manager</h1>
-<p>The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the Rendezvous and other Managers. </p>
+<p>The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. </p>
 <p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface">Openstack's OCCI guide</a> to know more.</p>
-<p>Also, the Manager needs an user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
+<p>Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
 <h2>Install</h2>
-<p>To set up a Manager instance, first, get the latest code from github.</p>
+<p>To set up a manager instance, first, get the latest code from github.</p>
 <div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-manager.git
 </pre></div>
 
@@ -71,7 +71,7 @@
 <h2>Configure</h2>
 <p>After the installation, move the file <code>manager.conf.example</code> to <code>manager.conf</code> and edit its contents:</p>
 <ul>
-<li><strong>XMPP properties:</strong> Manager and Rendezvous XMPP properties that will be used to comunication between components.  </li>
+<li><strong>XMPP properties:</strong> Manager and Rendezvous XMPP properties that will be used for the comunication between components.  </li>
 </ul>
 <div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
 <span class="c"># Example:</span>
@@ -96,7 +96,7 @@
 
 
 <ul>
-<li><strong>Cloud Compute Information:</strong> All compute information required by compute plugin that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently provided by fogbow).</li>
+<li><strong>Cloud Compute Information:</strong> All compute information required by the compute plugins that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently the only one provided by fogbow).</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Compute plugin class</span>
 <span class="c"># Example:</span>
@@ -146,7 +146,7 @@
 
 
 <ul>
-<li><strong>Cloud Identity Information:</strong> All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.</li>
+<li><strong>Cloud Identity Information:</strong> All identity information required by the identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently the only one provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
 <span class="c"># Example:</span>
@@ -184,7 +184,7 @@
 
 
 <ul>
-<li><strong>Validator Member Information:</strong> Validator member is used to define if the manager can receive or donate to another one. It is possible differents implementations for it, and each implementation can require specific properties (as idnetity and compute plugin). This section shows properties required by default member validator (all member can receive and donate resources to each other).</li>
+<li><strong>Validator Member Information:</strong> Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Member validator class</span>
 <span class="c"># Example:</span>
@@ -197,7 +197,7 @@
 
 
 <ul>
-<li><strong>Times Properties:</strong> Time configuration required by Manager Component.</li>
+<li><strong>Times Properties:</strong> Time configuration required by the manager component.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet</span>
 <span class="c"># Uses miliseconds unit</span>
@@ -217,7 +217,7 @@
 
 
 <ul>
-<li><strong>SSH Tunnel Properties:</strong> SSH properties are used to give connectivity for instances.</li>
+<li><strong>SSH Tunnel Properties:</strong> SSH properties are used to provide connectivity to instances.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Public IP address of shh tunnel host</span>
 <span class="c"># Example:</span>
@@ -242,7 +242,7 @@
 
 
 <ul>
-<li><strong>Manager HTTP Port:</strong> HTTP port which manager component endpoint will be listening.</li>
+<li><strong>Manager HTTP Port:</strong> HTTP port to which the manager component endpoint will be listening.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># http port is the Manager Component endpoint port</span>
 <span class="c"># Example:</span>
@@ -251,7 +251,7 @@
 
 
 <h2>Run</h2>
-<p>To start the Manager component, run the start-manager script inside <code>bin</code>.</p>
+<p>To start the manager component, run the start-manager script inside <code>bin</code>.</p>
 <div class="highlight"><pre>./bin/start-manager
 </pre></div>
       </div>
