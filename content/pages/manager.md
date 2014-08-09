@@ -53,7 +53,7 @@ Authorized federation users may request as many VMs as needed, even if this numb
 
 There is a third level of authentication and authorization that involves only the fogbow managers, or members. Federation members exchange X.509 certificates when joining a fogbow federation, and those are used in the authentication and authorization process that tells if a member may ask for or donate resources to a remote member.
 
-# Implementation
+## Implementation
 
 Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack. Plugins for the standard OpenStack API and OpenNebula are under development.
 
@@ -75,7 +75,7 @@ The end user can interact with a manager component to perform the following oper
 
 We have a fogbow command line interface that helps users to interact with a manager. Please, check its [documentation](http://www.fogbowcloud.org/manager-cli) for more information.
 
-## Manager protocol
+### Manager protocol
 
 All communication among Managers is done via XMPP, according to the manager protocol.
 
