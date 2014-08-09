@@ -2,7 +2,7 @@ Title: The fogbow manager
 url: manager
 save_as: manager.html
 section: arch
-index: 2
+index: 3
 
 # The fogbow manager
 
