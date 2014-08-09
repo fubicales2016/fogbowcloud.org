@@ -4,7 +4,7 @@ save_as: rendezvous.html
 section: arch
 index: 1
 
-# The sendezvous service
+# The rendezvous service
 
 The rendezvous service provides a directory for the private clouds that are member of a particular fowbow federation. It allows members to find each other by providing a complete status of the federation. 
 
