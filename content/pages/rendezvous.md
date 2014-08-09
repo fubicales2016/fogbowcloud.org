@@ -1,24 +1,24 @@
-Title: The Rendezvous Service
+Title: The rendezvous service
 url: rendezvous
 save_as: rendezvous.html
 section: arch
 index: 1
 
-# The Rendezvous Service
+# The sendezvous service
 
-The Rendezvous Service provides a directory for the private clouds that are member of a particular fowbow federation. It allows members to find each other by providing a complete status of the federation. 
+The rendezvous service provides a directory for the private clouds that are member of a particular fowbow federation. It allows members to find each other by providing a complete status of the federation. 
 
 ## Service architecture
 
-Currently, the Rendezvous Service provides two methods to the members of a federation: IamAlive and WhoIsAlive.
+Currently, the rendezvous service provides two methods to the members of a federation: IamAlive and WhoIsAlive.
 
-The first one allows a federation member to report resource information. In this sense, the Rendezvous Service will periodically receive information from every federation manager, which will also work as a heartbeat, and tag this information with a timestamp. This data is valid for a given expiration interval, which is configurable. After this timeout, data is considered expired and this member will no longer show up as an active member of the federation.
+The first one allows a federation member to report resource information. In this sense, the rendezvous service will periodically receive information from every federation manager, which will also work as a heartbeat, and tag this information with a timestamp. This data is valid for a given expiration interval, which is configurable. After this timeout, data is considered expired and this member will no longer show up as an active member of the federation.
 
-The WhoIsAlive method allows a federation member to ask for the set of active federation members. The Rendezvous Service will then return resource information about all currently active members.
+The WhoIsAlive method allows a federation member to ask for the set of active federation members. The rendezvous service will then return resource information about all currently active members.
 
-Also, a Rendezvous Service instance can communicate with other Rendezvous Service replicas to synchronize, and provide fault tolerance. The synchronization is made through a WhoIsAliveSync method. This method sends a message to each of the replicas currently known by a Rendezvous Service instance asking for the known neighbors, i.e. replicas of the Rendezvous Service, and the known active members of the federation. The responses received are merged with the information that was previously known.
+Also, more than one instance of a rendezvous service can be active to tolerate faults. A rendezvous service instance communicates with other known rendezvous service replicas to synchronize their states. The synchronization is made through a WhoIsAliveSync method. This method sends a message to each of the replicas currently known by a rendezvous service instance asking for the known neighbors, i.e. replicas of the rendezvous service, and the known active members of the federation. The responses received are merged with the information that was previously known.
 
-All communication is done via XMPP according to the Rendezvous protocol.
+All communication is done via XMPP according to the service protocol.
 
 ## Service protocol
 
@@ -134,4 +134,4 @@ All communication is done via XMPP according to the Rendezvous protocol.
 </iq>
 ```
 
-Obs: The updated value is the timestamp of information. It will be formatted according to ISO 8601 standard. 
+Obs: the updated value is the timestamp of the information; it is formatted according to the ISO 8601 standard. 
