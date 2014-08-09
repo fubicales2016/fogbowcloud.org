@@ -7,6 +7,8 @@ index: 1
 Installation
 ==========
 
+You will need to install and configure an opportunism module in each shared resource (eg. a desktop) that you want to add as a computing node in your private cloud. Obviously, the resource must be connected to the same LAN used by the computing nodes of your private cloud.
+
 The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.
 
 ``` shell
