@@ -6,7 +6,7 @@ index: 0
 
 # Rational
 
-## Private IaaS
+## Why use private IaaS clouds?
 
 From a customer perspective, one of the greatest advantages of the infrastructure-as-a-service (IaaS) cloud computing paradigm is the fact that the customer is no longer required to perform mid/long-term capacity planning of the infrastructure that it will require in the future. S/he can simply allocate as many resources as the current demand requires, increase the capacity when the demand grows, and then release resources when the demand diminishes, at now additional cost for this "elasticity".
 
@@ -18,4 +18,4 @@ Small and medium private IaaS deployments can still take some advantage of the b
 
 In a federation the utilization can be increased mainly because the larger, and potentially more diverse, aggregated workload is likely to require less resources than the aggregated capacity of the IaaS providers, were they to work isolated. Peak loads experienced by a member can be served by other members that are currently experiencing a low utilization of their resources, thus allowing the local capacity of each member to be reduced. A smaller capacity leads to a higher utilization.
 
-## But why fogbow?
+## Why fogbow?
