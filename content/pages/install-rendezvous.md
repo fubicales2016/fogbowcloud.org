@@ -6,12 +6,12 @@ index: 2
 
 # Rendezvous
 
-The Rendezvous component act as a discovery service for a fowbow federation. It allows members to find each other by providing a complete status of the federation.
+The rendezvous component acts as a discovery service for a fowbow federation. It allows members to find each other by providing a complete status of the federation.
 
 ## Install
 
-As the Rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend [prosody](https://prosody.im/) as for its ease of configuration.
+As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
+We recommend [prosody](https://prosody.im/) due to its ease of configuration.
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -51,7 +51,7 @@ site_expiration=10000
 neighbors=neighbor1@test.com,neighbor2@test.com
 ```
 ## Run
-To start the Rendezvous component, run the start-rendezvous script inside ```./bin```.
+To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
 ``` shell
 ./bin/start-rendezvous
 ```
