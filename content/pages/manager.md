@@ -1,24 +1,28 @@
-Title: Manager
+Title: Fogbow manager
 url: manager
 save_as: manager.html
 section: arch
 index: 2
 
-# Manager
+# Fogbow manager
 
-The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the [Rendezvous](http://www.fogbowcloud.org/rendezvous) and other Managers. The end user creates requests for instances via an extended OCCI API by specifying the desired amount of instances. Requests for each instances are then treated individually (e.g., if an user creates requests 3 instances, the manager translates it to 3 single requests of 1 instance). 
+The Manager is the fogbow component that runs in each federation member. It provides an OCCI API for end users and interacts with its associated [Rendezvous Service](http://www.fogbowcloud.org/rendezvous) and other Managers. Fogbow's OCCI implementation provides a unique feature that allows end users to create requests for large amounts of instances, typically beyond what can be provided by the private cloud to which the user has access.
 
-While there are available resources, the manager will create instances in the underlying private cloud. Thereafter, it chooses remote members to submit remaining requests. Open requests are rescheduled regularly until they are fulfilled or no longer valid. 
+Requests for a number of instances are then treated individually (eg., if a user creates a request for 100 instances, the manager translates it to 100 requests of 1 instance). While there are available resources, the manager will create instances in the underlying private cloud. Thereafter, it chooses remote members to submit the remaining requests. Users can start using the instance created as soon as they become available. Open requests are rescheduled regularly until they are fulfilled or no longer valid.
 
-## Manager Architecture
+## Manager architecture
 
-The Manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible to translate fogbow requests to what the underlying cloud understands.  Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack.
+The Manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file.
 
-Internally, the Manager is responsible for three periodic services:
+Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack. Plugins for the standard OpenStack API and OpenNebula are under development.
+
+The standard OCCI features are only available if the underlying cloud provides support to them, since the Manager simply forward these calls to the underlying cloud. On the other hand, the new feature that allows users to request large numbers of instances is always supported by fogbow, for all cloud management middleware for which the appropriate plugins are available.
+
+For that, internally, the Manager is responsible for three periodic activities:
 
 * **Submitting open requests:** the manager submits all open requests periodically. The rescheduling interval is configurable in the manager configuration file;
-* **Monitoring instances:** the manager checks all instances that it is aware of and identifies when an instance is no longer active. Then it updates the state of the corresponding requests according to their type (one-time|persistent). The instance monitoring period is also configurable in the manager configuration file;
-* **Reissuing requests' tokens:** the manager updates requests' tokens when it is needed. When a request was done by an user of the underlying cloud, it is aware of the access token being used. However this access token can expire before  request gets fulfilled or before the valid_until attribute. In this way, the manager updates the request's token when it is necessary. The token update period is configurable in the manager configuration file.
+* **Monitoring instances:** the manager checks all instances that it is aware of and identifies when an instance is no longer active. Then it updates the state of the corresponding request according to its type (one-time|persistent). The instance monitoring period is also configurable in the manager configuration file;
+* **Reissuing requests' tokens:** the manager updates requests' tokens when it is needed. When a request was done by a user of the underlying cloud, it is aware of the access token being used. However this access token can expire before the request gets fulfilled, or before the valid_until attribute. In this way, the manager updates the request's token when it is necessary. The token update period is configurable in the manager configuration file.
 
 The end-user can interact with a Manager component to perform the following operations:
 
@@ -40,14 +44,14 @@ Managers interact with each other to perform the following:
 
 You can check the [Manager Protocol](#manager-protocol) for more information.
 
-A Manager will also interact with a Rendezvous component. Those interactions will:
+A Manager will also interact with a Rendezvous Service. Those interactions will:
 
 * Send liveness messages;
 * List active federation members.
 
 See more details at the [Rendezvous Protocol](http://www.fogbowcloud.org/rendezvous) documentation.
 
-When an end-user requests resoures, s/he is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. An one-time request can only be fulfilled once, whilst a persistent one is considered for scheduling while it has no instance allocated and it is still into the validity period.
+When an end user requests resoures, s/he is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. A one-time request can only be fulfilled once, whilst a persistent one is considered for scheduling while it has no instance allocated and it is still into the validity period.
 
 Once a end-user makes a request, the possible request states are: 
 
