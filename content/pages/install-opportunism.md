@@ -2,7 +2,7 @@ Title: Opportunism
 url: install-opportunism
 save_as: install-opportunism.html
 section: install
-index: 1
+index: 3
 
 Installation
 ==========
