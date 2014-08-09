@@ -2,7 +2,7 @@ Title: Support for multiple platforms
 url: multiplatform
 save_as: multiplatform.html
 section: arch
-index: 5
+index: 6
 
 Support for multiple platforms
 ==========
