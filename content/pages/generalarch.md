@@ -2,7 +2,7 @@ Title: General architecture
 url: architecture
 save_as: architecture.html
 section: arch
-index: 0
+index: 1
 
 # General architecture
 
