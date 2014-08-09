@@ -12,7 +12,7 @@ From a customer perspective, one of the greatest advantages of the infrastructur
 
 Obviously, the capacity planning problem has not disappeared, but has simply moved from the customer’s shoulders, to that of the IaaS providers. On the other hand, from the provider's perspective, IaaS brings a number of advantages that allow for more efficient management of the installed capacity, and consequently a reduced total cost of ownership. One of the main advantages that is the possibility of reducing the overall capacity needed to support the aggregated demand of all customers through the consolidation of servers. This is because it is unlikely that all applications will experience peak demand at the same time. In addition, large IaaS providers also benefit from the economies of scale that arise when the number of customers served is big, and consequently a sizable infrastructure is needed.
 
-## Why federate resources?
+## Why federate these clouds?
 
 Small and medium private IaaS deployments can still take some advantage of the benefits of server consolidation, but they normally experience a smaller utilization of their physical resources, which represents costs that are not amortized by the utility associated with the execution of applications. Federation of private IaaS, by which a number of IaaS providers work together for their mutual benefit, has been advocated as a way to increase the infrastructure utilization, and as a consequence increase the efficiency of the federation members.
 
