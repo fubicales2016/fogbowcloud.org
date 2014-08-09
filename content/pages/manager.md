@@ -12,7 +12,7 @@ Requests for multiple instances are then treated individually. That is to say, t
 
 Instances are allocated to pending requests as follows. While there are available resources, the manager will create instances in the underlying private cloud. Thereafter, it chooses remote members to submit the remaining requests. Users can start using the instances created as soon as they become available. Open requests are rescheduled regularly until they are fulfilled or no longer valid, ie. the user has cancelled them.
 
-## Manager architecture
+## Architecture
 
 The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file.
 
@@ -30,6 +30,8 @@ A manager will also interact with a rendezvous service. Those interactions will:
 * List active federation members.
 
 See more details at the [rendezvous protocol](http://www.fogbowcloud.org/rendezvous) documentation.
+
+## Basic functioning
 
 When an end user requests resoures, s/he is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. A one-time request is fulfilled at most once, whilst a persistent one is considered for scheduling whenever it has no instance allocated to it and it is still into the validity period. This way, new instances are created for **persistent** requests whose instances have failed.
 
@@ -51,7 +53,7 @@ Authorized federation users may request as many VMs as needed, even if this numb
 
 There is a third level of authentication and authorization that involves only the fogbow managers, or members. Federation members exchange X.509 certificates when joining a fogbow federation, and those are used in the authentication and authorization process that tells if a member may ask for or donate resources to a remote member.
 
-## Implementation
+# Implementation
 
 Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack. Plugins for the standard OpenStack API and OpenNebula are under development.
 
