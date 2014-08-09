@@ -63,7 +63,7 @@
 <p>The manager is the fogbow component that runs in each federation member to expose its rivate cloud to the federation. It provides an OCCI API for end users and interacts with its associated <a href="http://www.fogbowcloud.org/rendezvous">rendezvous service</a> and other managers. Fogbow's OCCI implementation provides a unique feature that allows end users to create requests for large amounts of instances, typically beyond what can be provided by the private cloud to which the user has access.</p>
 <p>Requests for multiple instances are then treated individually. That is to say, the user will immediatelly receive handlers for as many requests as the number of instances requested, and these requests will eventually materialize into the allocation of a VM instance. When that happens, the user can access the appropriate informations about a particular instance through the request handler that was received initially. This handler can also be used to monitor the request state, eg. to discover when a VM has been started.</p>
 <p>Instances are allocated to pending requests as follows. While there are available resources, the manager will create instances in the underlying private cloud. Thereafter, it chooses remote members to submit the remaining requests. Users can start using the instances created as soon as they become available. Open requests are rescheduled regularly until they are fulfilled or no longer valid, ie. the user has cancelled them.</p>
-<h2>Manager architecture</h2>
+<h2>Architecture</h2>
 <p>The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file.</p>
 <p>Managers interact with each other to perform the following:</p>
 <ul>
@@ -78,6 +78,7 @@
 <li>List active federation members.</li>
 </ul>
 <p>See more details at the <a href="http://www.fogbowcloud.org/rendezvous">rendezvous protocol</a> documentation.</p>
+<h2>Basic functioning</h2>
 <p>When an end user requests resoures, s/he is able to specify a request type, which can be <strong>one-time</strong> or <strong>persistent</strong>, default set to <strong>one-time</strong>. A one-time request is fulfilled at most once, whilst a persistent one is considered for scheduling whenever it has no instance allocated to it and it is still into the validity period. This way, new instances are created for <strong>persistent</strong> requests whose instances have failed.</p>
 <p>Once an end user makes a request, the possible request states are: </p>
 <ul>
@@ -92,7 +93,7 @@
 <p>A user of the fogbow federation - referred as a federation user - acquires VMs by interacting with a particular fogbow manager. The process of authentication and authorization involves two levels: the Federation Level, in which the fogbow manager will authenticate federation users and authorize them to create requests in the federation, and the Local Level, used by the underlying cloud services to authenticate users (fogbow or federation users). If the user is not authenticated or authorized at the federation level, than it will not be able to request VMs. Otherwise, it is able to request VMs to the fogbow manager that uses the fogbow user to request resources on behalf of the federation user. Additionally, if the federation user is also authenticated and authorized at the local level, it can request additional resources using its local user.</p>
 <p>Authorized federation users may request as many VMs as needed, even if this number is well above their local quota. At first, the fogbow manager will try to create VMs locally within the local user quota. If there are not enough resources available or the federation user is not authenticated or authorized in the local cloud, the fogbow manager will use the fogbow user to request VMs. Again, when there is no more resources available, the fogbow manager will contact other federation members to create VMs in remote private clouds. The remote members, in turn, will use their fogbow user to create VMs for remote requests.</p>
 <p>There is a third level of authentication and authorization that involves only the fogbow managers, or members. Federation members exchange X.509 certificates when joining a fogbow federation, and those are used in the authentication and authorization process that tells if a member may ask for or donate resources to a remote member.</p>
-<h2>Implementation</h2>
+<h1>Implementation</h1>
 <p>Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack. Plugins for the standard OpenStack API and OpenNebula are under development.</p>
 <p>The manager is responsible for three periodic activities:</p>
 <ul>
