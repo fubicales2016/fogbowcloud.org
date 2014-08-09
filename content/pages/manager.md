@@ -1,10 +1,10 @@
-Title: Fogbow manager
+Title: The fogbow manager
 url: manager
 save_as: manager.html
 section: arch
 index: 2
 
-# Fogbow manager
+# The fogbow manager
 
 The Manager is the fogbow component that runs in each federation member. It provides an OCCI API for end users and interacts with its associated [Rendezvous Service](http://www.fogbowcloud.org/rendezvous) and other Managers. Fogbow's OCCI implementation provides a unique feature that allows end users to create requests for large amounts of instances, typically beyond what can be provided by the private cloud to which the user has access.
 
