@@ -20,7 +20,7 @@ In a federation the utilization can be increased mainly because the larger, and 
 
 ## Why fogbow?
 
-Fogbow provides a very lightweight business model for the federation of IaaS providers, based on the exchange of resources (VMs, storage, etc.) between the members of the federation. This <b>B</b>artering <b>O</b>f <b>W</b>ares (and that explains the bow in fogbow) is performed with no need for sophisticated billing, auditing and customer relations services.
+Fogbow provides a very lightweight business model for the federation of IaaS providers, based on the exchange of resources (VMs, storage, etc.) between the members of the federation. This <b>B</b>artering <b>O</b>f <b>W</b>ares (and that explains the <i>bow</i> in fogbow) is performed with no need for sophisticated billing, auditing and customer relations services.
 
 Ok, but what about the <i>fog</i>, in fogbow? Different from a rainbow that displays a bright continuous spectrum of colors, a fogbow has only very weak colors, with a red outer edge and a bluish inner edge. This is because the fog water drops are much smaller than those in the rain. Fogbow targets the federation of small and medium size IaaS providers, rather than large ones. Moreover, although it is possible to appreciate its distinct rings (<b>F</b>ederation, <b>O</b>pportunism and <b>G</b>reenness) in separate, they often provide better results when experienced as a whole.
 
