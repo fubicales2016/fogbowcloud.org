@@ -6,14 +6,14 @@ index: 3
 
 # Manager
 
-The Manager is the fogbow component that runs in each federation member. It provides an extended OCCI API for end users and interacts with the Rendezvous and other Managers. 
+The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
 This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more.
 
-Also, the Manager needs an user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
+Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
 
 ## Install
-To set up a Manager instance, first, get the latest code from github.
+To set up a manager instance, first, get the latest code from github.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
 ```
@@ -25,7 +25,7 @@ mvn install
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
-* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used to comunication between components.  
+* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components.  
 
 ```bash
 # jid of your Manager Component
@@ -49,7 +49,7 @@ xmpp_port=5347
 rendezvous_jid=rendezvous.test.com
 ```
 
-* **Cloud Compute Information:** All compute information required by compute plugin that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently provided by fogbow).
+* **Cloud Compute Information:** All compute information required by the compute plugins that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently the only one provided by fogbow).
 
 ```bash
 # Compute plugin class
@@ -98,7 +98,7 @@ compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-* **Cloud Identity Information:** All identity information required by identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.
+* **Cloud Identity Information:** All identity information required by the identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently the only one provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.
 
 ```bash
 
@@ -135,7 +135,7 @@ federation_user_password=fogbow
 federation_user_tenant_name=demo
 ```
 
-* **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible differents implementations for it, and each implementation can require specific properties (as idnetity and compute plugin). This section shows properties required by default member validator (all member can receive and donate resources to each other).
+* **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
 
 ```bash
 # Member validator class
@@ -147,7 +147,7 @@ member_validator=org.fogbowcloud.manager.core.DefaultMemberValidator
 cert_path=path/certificate/file
 ```
 
-* **Times Properties:** Time configuration required by Manager Component.
+* **Times Properties:** Time configuration required by the manager component.
 
 ```bash
 # Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
@@ -166,7 +166,7 @@ token_update_period=300000
 instance_monitoring_period=120000
 ```
 
-* **SSH Tunnel Properties:** SSH properties are used to give connectivity for instances.
+* **SSH Tunnel Properties:** SSH properties are used to provide connectivity to instances.
 
 ```bash
 # Public IP address of shh tunnel host
@@ -191,7 +191,7 @@ ssh_tunnel_host_port=22
 
 ```
 
-* **Manager HTTP Port:** HTTP port which manager component endpoint will be listening.
+* **Manager HTTP Port:** HTTP port to which the manager component endpoint will be listening.
 
 ```bash
 # http port is the Manager Component endpoint port
@@ -200,7 +200,7 @@ http_port = 8182
 
 ```
 ## Run
-To start the Manager component, run the start-manager script inside ```bin```.
+To start the manager component, run the start-manager script inside ```bin```.
 
 ```bash
 ./bin/start-manager
