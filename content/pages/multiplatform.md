@@ -6,4 +6,4 @@ index: 6
 
 Support for multiple platforms
 ==========
-We are still developing the features to support multiple platforms for exploiting shared resources running multiple platforms. Watch this space.
+We are still developing the features to exploit shared resources running multiple platforms. Watch this space.
