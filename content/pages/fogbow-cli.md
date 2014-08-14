@@ -1,13 +1,13 @@
-Title: Manager client
-url: manager-cli
-save_as: manager-cli.html
+Title: Fogbow CLI
+url: fogbow-cli
+save_as: fogbow-cli.html
 section: usage
 index: 0
 
-Manager CLI
+Fogbow CLI
 ==========
 
-The Manager CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.
+The Fogbow CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.
 
 ## Member operations (```member```)
 
@@ -41,7 +41,7 @@ Example :
 $ bin/fogbow-cli resource --get --url http://localhost:8182
 
 Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
-Category: fogbow-large; scheme="http://schemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
+Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
 Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
 ```
 
