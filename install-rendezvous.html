@@ -25,7 +25,7 @@
             <a href="http://www.fogbowcloud.org/install-general.html">Install it</a>
           </li>
           <li >
-            <a href="http://www.fogbowcloud.org/manager-cli.html">Use it</a>
+            <a href="http://www.fogbowcloud.org/fogbow-cli.html">Use it</a>
           </li>
           <li><a href="#">Contact us</a></li>
         </ul>
@@ -65,7 +65,7 @@ We recommend <a href="https://prosody.im/">prosody</a> due to its ease of config
 
 
 <p>With an XMPP server already installed and configured, get the latest code of the project.</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fogbow/fogbow-rendezvous.git</span>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https:</span><span class="sr">//gi</span><span class="n">thub</span><span class="o">.</span><span class="n">com</span><span class="sr">/fogbow/</span><span class="n">fogbow</span><span class="o">-</span><span class="n">rendezvous</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 
 
@@ -76,29 +76,29 @@ We recommend <a href="https://prosody.im/">prosody</a> due to its ease of config
 
 <h2>Configure</h2>
 <p>After the installation, move the file <code>rendezvous.conf.example</code> to <code>rendezvous.conf</code> and edit its contents:</p>
-<div class="highlight"><pre><span class="cp"># XMPP address of your Rendezvous Component, as configured in the XMPP server.</span>
-<span class="n">xmpp_jid</span><span class="o">=</span><span class="n">rendezvous</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
+<div class="highlight"><pre><span class="c1"># XMPP address of your Rendezvous Component, as configured in the XMPP server.</span>
+<span class="n">xmpp_jid</span><span class="o">=</span><span class="n">rendezvous</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">com</span>
 
-<span class="cp"># XMPP component password, as configured in the XMPP server.</span>
+<span class="c1"># XMPP component password, as configured in the XMPP server.</span>
 <span class="n">xmpp_password</span><span class="o">=</span><span class="n">password</span>
 
-<span class="cp"># Address of the host running the XMPP component.</span>
+<span class="c1"># Address of the host running the XMPP component.</span>
 <span class="n">xmpp_host</span><span class="o">=</span><span class="mf">127.0.0.1</span>
 
-<span class="cp"># Port in which the XMPP server will be listening for components, as configured in the XMPP server.</span>
+<span class="c1"># Port in which the XMPP server will be listening for components, as configured in the XMPP server.</span>
 <span class="n">xmpp_port</span><span class="o">=</span><span class="mi">5347</span>
 
-<span class="cp"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
+<span class="c1"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
 <span class="n">site_expiration</span><span class="o">=</span><span class="mi">10000</span>
 
-<span class="cp"># Known Rendezvous Neighbor aderesses.</span>
-<span class="n">neighbors</span><span class="o">=</span><span class="n">neighbor1</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">,</span><span class="n">neighbor2</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
+<span class="c1"># Known Rendezvous Neighbor aderesses.</span>
+<span class="n">neighbors</span><span class="o">=</span><span class="n">neighbor1</span><span class="nv">@test</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="n">neighbor2</span><span class="nv">@test</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 
 
 <h2>Run</h2>
 <p>To start the rendezvous component, run the start-rendezvous script inside <code>./bin</code>.</p>
-<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">start</span><span class="o">-</span><span class="n">rendezvous</span>
+<div class="highlight"><pre><span class="o">.</span><span class="sr">/bin/s</span><span class="n">tart</span><span class="o">-</span><span class="n">rendezvous</span>
 </pre></div>
       </div>
     </div>

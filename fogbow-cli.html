@@ -25,7 +25,7 @@
             <a href="http://www.fogbowcloud.org/install-general.html">Install it</a>
           </li>
           <li class="active">
-            <a href="http://www.fogbowcloud.org/manager-cli.html">Use it</a>
+            <a href="http://www.fogbowcloud.org/fogbow-cli.html">Use it</a>
           </li>
           <li><a href="#">Contact us</a></li>
         </ul>
@@ -39,13 +39,13 @@
       	<br>
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
             <li class="active">
-            	<a href="manager-cli">Manager client</a>
+            	<a href="fogbow-cli">Fogbow CLI</a>
             </li>
         </ul>
       </div>
       <div class="col-lg-8 page-content">
-      	<h1>Manager CLI</h1>
-<p>The Manager CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.</p>
+      	<h1>Fogbow CLI</h1>
+<p>The Fogbow CLI is a command line interface with the fogbow manager. It makes it easier for fogbow users to create HTTP requests to the manager OCCI API. Through the Manager CLI, users are able to get information about federation members, to create instance requests and to manage the lifecycle of those requests.</p>
 <h2>Member operations (<code>member</code>)</h2>
 <h3>List Federation members</h3>
 <p>Get all federation members.</p>
@@ -72,7 +72,7 @@
 <div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli resource --get --url http://localhost:8182
 
 Category: fogbow-request; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Request new Instances&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/request&quot;</span>; <span class="nv">attributes</span><span class="o">=</span><span class="s2">&quot;org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from&quot;</span>
-Category: fogbow-large; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/template/resource#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Large Flavor&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/large&quot;</span>
+Category: fogbow-large; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://scmhemas.fogbowcloud.org/template/resource#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Large Flavor&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/large&quot;</span>
 Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/template/os#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Linux-x86 Image&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/fogbow-linux-x86&quot;</span>
 </pre></div>
 
