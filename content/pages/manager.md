@@ -73,7 +73,7 @@ The end user can interact with a manager component to perform the following oper
 * List instances;
 * Delete instances.
 
-We have a fogbow command line interface that helps users to interact with a manager. Please, check its [documentation](http://www.fogbowcloud.org/manager-cli) for more information.
+We have a fogbow command line interface that helps users to interact with a manager. Please, check its [documentation](http://www.fogbowcloud.org/fogbow-cli) for more information.
 
 ### Manager protocol
 
