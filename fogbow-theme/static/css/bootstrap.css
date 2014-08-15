@@ -5179,6 +5179,13 @@ button.close {
   color: #BBB;
 }
 
+.below-footer {
+  margin-top: 0px;
+  background-color: #222222;
+  padding: 20px;
+  color: #BBB;
+}
+
 .footer a {
   color: #BBB;
   font-weight: bold;
