@@ -15,8 +15,8 @@ The fogbow CLI is a command line interface for the fogbow manager. It makes it e
 
 Get all federation members.
 
-* **--get** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
 
 Example:
 ```bash
@@ -32,8 +32,8 @@ id=ferationid2;cpuIdle=2;cpuInUse=4;memIdle=150;memInUse=300;flavor:'large, capa
 
 Get all OCCI resources provided by fogbow. 
 
-* **--get** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
 
 Example:
 ```bash
@@ -52,11 +52,11 @@ Create a new user token.
 
 Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
 
-* **--get** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **-Dpassword=** (Optional): dynamic parameter
-* **-Dusername=** (Optional): dynamic parameter
-* **-DtenantName=** (Optional): dynamic parameter
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **-Dpassword=** (optional): dynamic parameter
+* **-Dusername=** (optional): dynamic parameter
+* **-DtenantName=** (optional): dynamic parameter
 
 Note: if a password is not provided, it will be requested in the console.
 
@@ -73,9 +73,9 @@ MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguh
 
 Get all instance requests associated to a particular user's token.
 
-* **--get** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
 
 Example:
 ```bash
@@ -87,10 +87,10 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 
 Get detailed information about a single instance request.
 
-* **--get** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
-* **--id** (Required): request id
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
+* **--id** (required): request id
 
 Example:
 ```bash
@@ -103,12 +103,12 @@ RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435
 
 Create instance requests.
 
-* **--create** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
-* **--n** (Optional; default: 1): number of requests to be created
-* **--image** (Optional; default: fogbow-linux-x86): fogbow image
-* **--flavor** (Optional; default: fogbow-small): fogbow flavor
+* **--create** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
+* **--n** (optional; default: 1): number of requests to be created
+* **--image** (optional; default: fogbow-linux-x86): fogbow image
+* **--flavor** (optional; default: fogbow-small): fogbow flavor
 
 Example:
 ```bash
@@ -129,9 +129,9 @@ X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07
 
 Delete all instance requests associated to a particular user's token.
 
-* **--delete** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
 
 Example:
 ```bash
@@ -144,10 +144,10 @@ Ok
 
 Delete a single instance request.
 
-* **--delete** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
-* **--id** (Required): request id
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
+* **--id** (required): request id
 
 Example:
 ```bash
@@ -162,9 +162,9 @@ Ok
 
 Get all instances associated to a particular user's token.
 
-* **--get**  (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
 
 Example:
 ```bash
@@ -178,10 +178,10 @@ X-OCCI-Location: 4B869582-8907667-123457-0765345c
 
 Get detailed information about a single instance.
 
-* **--get**  (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
-* **--id** (Required): instance id
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
+* **--id** (required): instance id
 
 Example: 
 ```bash
@@ -200,9 +200,9 @@ X-OCCI-Attribute: org.fogbowcloud.request.ssh-address="10.1.0.43:5000"
 
 Delete all instances associated to a particular user's token.
 
-* **--delete**  (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
+* **--delete**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
 
 ```bash
 $ bin/fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
@@ -214,10 +214,10 @@ Ok
 
 Delete a single instance.
 
-* **--delete** (Required)
-* **--url** (Optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Required): user's token
-* **--id** (Required): instance id
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
+* **--id** (required): instance id
 
 ```bash
 $ bin/fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://localhost:8182
