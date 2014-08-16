@@ -14,10 +14,10 @@ The configuration of the fogbow manager associates it with a rendezvous service 
 
 When the local resources are not enough to fulfill the local users' requests, the fogbow manager tries to get resources from other managers belonging to the federation. This communication also uses XMPP.
 
-![General architecture]({filename}/images/fogbow-arch-general.png)
+![General architecture]({filename}/images/federation.png)
 
 ## Federation member overview
 
 The fogbow manager has a plugin layer that allows it to easily interact with different cloud management middleware that might be running on the underlying private cloud. When configuring the fogbow manager, the system administrator informs what are the required plugin needed to interact with a particular private cloud deployment.
 
-![Detailed architecture]({filename}/images/fogbow-arch-detailed.png)
+![Detailed architecture]({filename}/images/manager.png)
