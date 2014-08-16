@@ -16,7 +16,7 @@ When the local resources are not enough to fulfill the local users' requests, th
 
 ![General architecture]({filename}/images/fogbow-arch-general.png)
 
-## Per-member overview
+## Federation member overview
 
 The fogbow manager has a plugin layer that allows it to easily interact with different cloud management middleware that might be running on the underlying private cloud. When configuring the fogbow manager, the system administrator informs what are the required plugin needed to interact with a particular private cloud deployment.
 
