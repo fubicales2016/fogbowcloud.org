@@ -55,7 +55,7 @@ There is a third level of authentication and authorization that involves only th
 
 ## Implementation
 
-Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled Openstack. Plugins for the standard OpenStack API and OpenNebula are under development.
+Currently, fogbow provides a set of plugin implementations that is able to interact with an OCCI-enabled OpenStack. Plugins for the standard OpenStack API and OpenNebula are under development.
 
 The manager is responsible for three periodic activities:
 
