@@ -5186,6 +5186,10 @@ button.close {
   color: #BBB;
 }
 
+.below-footer .col-lg-4 {
+  line-height: 40px;
+}
+
 .footer a {
   color: #BBB;
   font-weight: bold;
@@ -6129,4 +6133,3 @@ label,
   line-height: 1.7;
   margin: 1em 0 15px;
 }
-
