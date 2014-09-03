@@ -20,7 +20,7 @@ Get all federation members.
 
 Example:
 ```bash
-$ bin/fogbow-cli member --get --url http://localhost:8182
+$ fogbow-cli member --get --url http://localhost:8182
 
 id=ferationid1;cpuIdle=1;cpuInUse=2;memIdle=100;memInUse=200;flavor:'small, capacity="1"';
 id=ferationid2;cpuIdle=2;cpuInUse=4;memIdle=150;memInUse=300;flavor:'large, capacity="2"';
@@ -37,7 +37,7 @@ Get all OCCI resources provided by fogbow.
 
 Example:
 ```bash
-$ bin/fogbow-cli resource --get --url http://localhost:8182
+$ fogbow-cli resource --get --url http://localhost:8182
 
 Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
 Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
@@ -50,10 +50,11 @@ Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"
 
 Create a new user token.
 
-Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
+Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
 
 * **--get** (required)
-* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--type** (required) : Identity plugin type
+* **-DauthUrl** (optional; default: http://localhost:8182): Identity plugin endpoint
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
 * **-DtenantName=** (optional): dynamic parameter
@@ -62,7 +63,7 @@ Note: if a password is not provided, it will be requested in the console.
 
 Example:
 ```bash
-$ bin/fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname --url http://localhost:8182
+$ fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl http://localhost:8182 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
@@ -79,7 +80,7 @@ Get all instance requests associated to a particular user's token.
 
 Example:
 ```bash
-$ bin/fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -94,7 +95,7 @@ Get detailed information about a single instance request.
 
 Example:
 ```bash
-$ bin/fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
+$ fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
 
 RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
 ```
@@ -109,10 +110,11 @@ Create instance requests.
 * **--n** (optional; default: 1): number of requests to be created
 * **--image** (optional; default: fogbow-linux-x86): fogbow image
 * **--flavor** (optional; default: fogbow-small): fogbow flavor
+* **--public-key** (optional; path public key): fogbow public key
 
 Example:
 ```bash
-$ bin/fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182
+$ fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -120,7 +122,7 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 
 Example using defaults:
 ```bash
-$ bin/fogbow-cli request --create --url http://localhost:8182
+$ fogbow-cli request --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
@@ -135,7 +137,7 @@ Delete all instance requests associated to a particular user's token.
 
 Example:
 ```bash
-$ bin/fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 ```
@@ -151,7 +153,7 @@ Delete a single instance request.
 
 Example:
 ```bash
-$ bin/fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
+$ fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
 
 Ok
 ```
@@ -168,7 +170,7 @@ Get all instances associated to a particular user's token.
 
 Example:
 ```bash
-$ bin/fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
+$ fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
 
 X-OCCI-Location: 3I235356-3432434-324324-3243242f
 X-OCCI-Location: 4B869582-8907667-123457-0765345c
@@ -185,7 +187,7 @@ Get detailed information about a single instance.
 
 Example: 
 ```bash
-$ bin/fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:10000
+$ fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:10000
 
 Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
 Category: compute; scheme="http://compute"; class="kind"; title="title"; rel="rel"; location="location"
@@ -205,7 +207,7 @@ Delete all instances associated to a particular user's token.
 * **--auth-token** (required): user's token
 
 ```bash
-$ bin/fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 ```
