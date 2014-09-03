@@ -34,10 +34,11 @@ Get all OCCI resources provided by fogbow.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (required): user's token
 
 Example:
 ```bash
-$ fogbow-cli resource --get --url http://localhost:8182
+$ fogbow-cli resource --get --url http://localhost:8182 --auth-token mytoken
 
 Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
 Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
@@ -54,7 +55,7 @@ Note: to pass the credentials and the identity plugin endpoint it is necessary t
 
 * **--get** (required)
 * **--type** (required) : Identity plugin type
-* **-DauthUrl** (optional; default: http://localhost:8182): Identity plugin endpoint
+* **-DauthUrl** (required): Identity plugin endpoint
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
 * **-DtenantName=** (optional): dynamic parameter
@@ -63,7 +64,7 @@ Note: if a password is not provided, it will be requested in the console.
 
 Example:
 ```bash
-$ fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl http://localhost:8182 --type openstack
+$ fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://localhost:8182 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
@@ -222,7 +223,7 @@ Delete a single instance.
 * **--id** (required): instance id
 
 ```bash
-$ bin/fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://localhost:8182
+$ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://localhost:8182
 
 Ok
 ```
