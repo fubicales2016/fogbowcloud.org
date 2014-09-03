@@ -54,7 +54,7 @@
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli member --get --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli member --get --url http://localhost:8182
 
 <span class="nv">id</span><span class="o">=</span>ferationid1;cpuIdle<span class="o">=</span>1;cpuInUse<span class="o">=</span>2;memIdle<span class="o">=</span>100;memInUse<span class="o">=</span>200;flavor:<span class="s1">&#39;small, capacity=&quot;1&quot;&#39;</span>;
 <span class="nv">id</span><span class="o">=</span>ferationid2;cpuIdle<span class="o">=</span>2;cpuInUse<span class="o">=</span>4;memIdle<span class="o">=</span>150;memInUse<span class="o">=</span>300;flavor:<span class="s1">&#39;large, capacity=&quot;2&quot;&#39;</span>;
@@ -69,7 +69,7 @@
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli resource --get --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli resource --get --url http://localhost:8182
 
 Category: fogbow-request; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Request new Instances&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/request&quot;</span>; <span class="nv">attributes</span><span class="o">=</span><span class="s2">&quot;org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from&quot;</span>
 Category: fogbow-large; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://scmhemas.fogbowcloud.org/template/resource#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Large Flavor&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/large&quot;</span>
@@ -80,17 +80,18 @@ Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</spa
 <h2>Token operations (<code>token</code>)</h2>
 <h3>Create a new Token</h3>
 <p>Create a new user token.</p>
-<p>Note: to pass the credentials it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:</p>
+<p>Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:</p>
 <ul>
 <li><strong>--get</strong> (required)</li>
-<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--type</strong> (required) : Identity plugin type</li>
+<li><strong>-DauthUrl</strong> (optional; default: http://localhost:8182): Identity plugin endpoint</li>
 <li><strong>-Dpassword=</strong> (optional): dynamic parameter</li>
 <li><strong>-Dusername=</strong> (optional): dynamic parameter</li>
 <li><strong>-DtenantName=</strong> (optional): dynamic parameter</li>
 </ul>
 <p>Note: if a password is not provided, it will be requested in the console.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli token --get -Dpassword<span class="o">=</span>mypassword -Dusername<span class="o">=</span>myusername -DtenantName<span class="o">=</span>mytenantname --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli token --get -Dpassword<span class="o">=</span>mypassword -Dusername<span class="o">=</span>myusername -DtenantName<span class="o">=</span>mytenantname -DauthUrl http://localhost:8182 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 </pre></div>
@@ -105,7 +106,7 @@ MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguh
 <li><strong>--auth-token</strong> (required): user's token</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -120,7 +121,7 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 <li><strong>--id</strong> (required): request id</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
 
 <span class="nv">RequestId</span><span class="o">=</span>47536d31-0674-4278-ad05-eff5fdd07257; <span class="nv">State</span><span class="o">=</span>open; <span class="nv">InstanceId</span><span class="o">=</span>232135435-5435345-435345435-43545
 </pre></div>
@@ -135,9 +136,10 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 <li><strong>--n</strong> (optional; default: 1): number of requests to be created</li>
 <li><strong>--image</strong> (optional; default: fogbow-linux-x86): fogbow image</li>
 <li><strong>--flavor</strong> (optional; default: fogbow-small): fogbow flavor</li>
+<li><strong>--public-key</strong> (optional; path public key): fogbow public key</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -145,7 +147,7 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 
 
 <p>Example using defaults:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --create --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 </pre></div>
@@ -159,7 +161,7 @@ X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07
 <li><strong>--auth-token</strong> (required): user's token</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 </pre></div>
@@ -174,7 +176,7 @@ Ok
 <li><strong>--id</strong> (required): request id</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
 
 Ok
 </pre></div>
@@ -189,7 +191,7 @@ Ok
 <li><strong>--auth-token</strong> (required): user's token</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
 
 X-OCCI-Location: 3I235356-3432434-324324-3243242f
 X-OCCI-Location: 4B869582-8907667-123457-0765345c
@@ -205,7 +207,7 @@ X-OCCI-Location: 4B869582-8907667-123457-0765345c
 <li><strong>--id</strong> (required): instance id</li>
 </ul>
 <p>Example: </p>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:10000
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --get --auth-token mytoken --id instanceid --url http://localhost:10000
 
 Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
 Category: compute; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://compute&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>; <span class="nv">rel</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;location&quot;</span>
@@ -224,7 +226,7 @@ X-OCCI-Attribute: org.fogbowcloud.request.ssh-address<span class="o">=</span><sp
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
 <li><strong>--auth-token</strong> (required): user's token</li>
 </ul>
-<div class="highlight"><pre><span class="nv">$ </span>bin/fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 </pre></div>
