@@ -54,8 +54,8 @@ Create a new user token.
 Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
 
 * **--get** (required)
-* **--type** (required) : Identity plugin type
-* **-DauthUrl** (required): Identity plugin endpoint
+* **--type** (required) : identity plugin type
+* **-DauthUrl** (required): identity plugin endpoint
 * **-Dpassword=** (optional): dynamic parameter
 * **-Dusername=** (optional): dynamic parameter
 * **-DtenantName=** (optional): dynamic parameter
