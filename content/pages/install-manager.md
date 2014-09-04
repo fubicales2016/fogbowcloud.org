@@ -67,15 +67,15 @@ compute_openstack_v2api_url=http://localhost:8182
 # Associating local cloud flavors to fogbow flavors
 # Small flavor
 # Example:
-compute_flavor_small=m1-small
+compute_occi_flavor_small=m1-small
 
 # Medium flavor
 # Example:
-compute_flavor_medium=m1-medium
+compute_occi_flavor_medium=m1-medium
 
 # Large flavor
 # Example:
-compute_flavor_large=m1-large
+compute_occi_flavor_large=m1-large
 
 # OS Cloud Scheme
 # Example:
@@ -119,20 +119,27 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenSta
 federation_identity_url=http://localhost:5000
 ```
 
+* **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.
+```bash
+# Federation Authorization plugin class
+# Example 
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
+```
+
 * **Federation User Information:** Cloud federation user is a local cloud user that will submit requests from remote members.
 
 ```bash
 # Federation user name
 # Example:
-federation_user_name=fogbow
+local_proxy_account_user_name=fogbow
 
 # Federation user password
 # Example:
-federation_user_password=fogbow
+local_proxy_account_password=fogbow
 
 # Federation user tenant (project) name
 # Example:
-federation_user_tenant_name=demo
+local_proxy_account_tenant_name=demo
 ```
 
 * **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
@@ -142,12 +149,16 @@ federation_user_tenant_name=demo
 # Example:
 member_validator=org.fogbowcloud.manager.core.DefaultMemberValidator
 
+# Member certificates authorities path
+# Example
+member_validator_ca_dir=
+
 # Member certificate file contains the certificate the should be used by the manager 
 # Example:
 cert_path=path/certificate/file
 ```
 
-* **Times Properties:** Time configuration required by the manager component.
+* **Intervals:** Properties related to scheduling, token update and instance monitoring.
 
 ```bash
 # Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
@@ -177,17 +188,13 @@ ssh_tunnel_public_host=150.160.0.10
 # Example:
 ssh_tunnel_private_host=10.0.0.1
 
-# shh tunnel user is a valid user at tunnel host. This user must not requere password
+# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 2222
 # Example:
-ssh_tunnel_user=fogbow
+ssh_tunnel_host_port=2222
 
-# shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances
+# shh tunnel host http port defines the port to be used when doing comunication with que ssh tunnel host
 # Example:
-ssh_tunnel_port_range=50000:59999
-
-# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 22
-# Example:
-ssh_tunnel_host_port=22
+ssh_tunnel_host_http_port=2223
 
 ```
 
