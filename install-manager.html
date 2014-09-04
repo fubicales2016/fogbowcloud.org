@@ -113,15 +113,15 @@
 <span class="c"># Associating local cloud flavors to fogbow flavors</span>
 <span class="c"># Small flavor</span>
 <span class="c"># Example:</span>
-<span class="nv">compute_flavor_small</span><span class="o">=</span>m1-small
+<span class="nv">compute_occi_flavor_small</span><span class="o">=</span>m1-small
 
 <span class="c"># Medium flavor</span>
 <span class="c"># Example:</span>
-<span class="nv">compute_flavor_medium</span><span class="o">=</span>m1-medium
+<span class="nv">compute_occi_flavor_medium</span><span class="o">=</span>m1-medium
 
 <span class="c"># Large flavor</span>
 <span class="c"># Example:</span>
-<span class="nv">compute_flavor_large</span><span class="o">=</span>m1-large
+<span class="nv">compute_occi_flavor_large</span><span class="o">=</span>m1-large
 
 <span class="c"># OS Cloud Scheme</span>
 <span class="c"># Example:</span>
@@ -167,19 +167,28 @@
 
 
 <ul>
+<li><strong>Cloud Authorization Information:</strong> Cloud authorization is used to get the authorization in the federation.</li>
+</ul>
+<div class="highlight"><pre><span class="c"># Federation Authorization plugin class</span>
+<span class="c"># Example </span>
+<span class="nv">federation_authorization_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
+</pre></div>
+
+
+<ul>
 <li><strong>Federation User Information:</strong> Cloud federation user is a local cloud user that will submit requests from remote members.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Federation user name</span>
 <span class="c"># Example:</span>
-<span class="nv">federation_user_name</span><span class="o">=</span>fogbow
+<span class="nv">local_proxy_account_user_name</span><span class="o">=</span>fogbow
 
 <span class="c"># Federation user password</span>
 <span class="c"># Example:</span>
-<span class="nv">federation_user_password</span><span class="o">=</span>fogbow
+<span class="nv">local_proxy_account_password</span><span class="o">=</span>fogbow
 
 <span class="c"># Federation user tenant (project) name</span>
 <span class="c"># Example:</span>
-<span class="nv">federation_user_tenant_name</span><span class="o">=</span>demo
+<span class="nv">local_proxy_account_tenant_name</span><span class="o">=</span>demo
 </pre></div>
 
 
@@ -190,6 +199,10 @@
 <span class="c"># Example:</span>
 <span class="nv">member_validator</span><span class="o">=</span>org.fogbowcloud.manager.core.DefaultMemberValidator
 
+<span class="c"># Member certificates authorities path</span>
+<span class="c"># Example</span>
+<span class="nv">member_validator_ca_dir</span><span class="o">=</span>
+
 <span class="c"># Member certificate file contains the certificate the should be used by the manager </span>
 <span class="c"># Example:</span>
 <span class="nv">cert_path</span><span class="o">=</span>path/certificate/file
@@ -197,7 +210,7 @@
 
 
 <ul>
-<li><strong>Times Properties:</strong> Time configuration required by the manager component.</li>
+<li><strong>Intervals:</strong> Properties related to scheduling, token update and instance monitoring.</li>
 </ul>
 <div class="highlight"><pre><span class="c"># Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet</span>
 <span class="c"># Uses miliseconds unit</span>
@@ -227,17 +240,13 @@
 <span class="c"># Example:</span>
 <span class="nv">ssh_tunnel_private_host</span><span class="o">=</span>10.0.0.1
 
-<span class="c"># shh tunnel user is a valid user at tunnel host. This user must not requere password</span>
+<span class="c"># shh tunnel host port defines the port to be used when doing ssh. If this property isn&#39;t set, the default value is 2222</span>
 <span class="c"># Example:</span>
-<span class="nv">ssh_tunnel_user</span><span class="o">=</span>fogbow
+<span class="nv">ssh_tunnel_host_port</span><span class="o">=</span>2222
 
-<span class="c"># shh tunnel port range defines set of ports that should be used to create reverse tunnels to the instances</span>
+<span class="c"># shh tunnel host http port defines the port to be used when doing comunication with que ssh tunnel host</span>
 <span class="c"># Example:</span>
-<span class="nv">ssh_tunnel_port_range</span><span class="o">=</span>50000:59999
-
-<span class="c"># shh tunnel host port defines the port to be used when doing ssh. If this property isn&#39;t set, the default value is 22</span>
-<span class="c"># Example:</span>
-<span class="nv">ssh_tunnel_host_port</span><span class="o">=</span>22
+<span class="nv">ssh_tunnel_host_http_port</span><span class="o">=</span>2223
 </pre></div>
 
 
