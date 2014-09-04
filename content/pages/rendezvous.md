@@ -168,7 +168,7 @@ iq type="result">
 </iq>
 
 #### WhoIsAliveSync using RSM
-The protocol used is basically the same as the one for WhoIsAlive. As it could be necessary to apply RSM for both managers response items and neighbors response items, the ```xml <query>``` tag should be followed by <neighbors>  and/or <managers> tags, and inside those is where the <set> tag and whatever is inside it should be.
+The protocol used is basically the same as the one for WhoIsAlive. As it could be necessary to apply RSM for both managers response items and neighbors response items, the ```<query>``` tag should be followed by ```<neighbors>```  and/or ```<managers>``` tags, and inside those is where the ```<set>``` tag and whatever is inside it should be.
 
 
 
