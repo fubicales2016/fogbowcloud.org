@@ -29,7 +29,7 @@ glance_api_servers=10.1.0.43:9292
 rabbit_host=10.1.0.43
 rabbit_password=labstack
 
-#Neutron is an OpenStack project to provide "networking as a service" between interface devices (e.g., vNICs) managed by #other Openstack services (e.g., nova)
+#Neutron is an OpenStack project to provide "networking as a service" between interface devices (e.g., vNICs) managed by other Openstack services (e.g., nova)
 neutron_url=http://10.1.0.43:9696  
 neutron_admin_username=neutron 
 neutron_admin_password=labstack 
@@ -37,7 +37,7 @@ neutron_admin_tenant_name=service
 neutron_region_name=RegionOne 
 neutron_admin_auth_url=http://10.1.0.43:5000/v2.0 
 
-#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific #data
+#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific data
 nova_metadata_host=10.1.0.43
 nova_metadata_port=8775 
 auth_host=10.1.0.43 
