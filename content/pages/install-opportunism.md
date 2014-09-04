@@ -9,9 +9,10 @@ Installation
 
 You will need to install and configure an opportunism module in each shared resource (eg. a desktop) that you want to add as a computing node in your private cloud. Obviously, the resource must be connected to the same LAN used by the computing nodes of your private cloud.
 
-On Unix:
+Unix
 ==========
 
+##Installation
 The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.
 
 ``` shell
@@ -22,15 +23,8 @@ sudo python setup.py install
 
 The opportunistic module files will be located at /var/lib/fogbow-opportunism.
 
-On Windows:
-==========
+##Configuration
 
-The opportunism module is included on Windows Nova Computem module, so by installing that you will also get this feature
-
-
-
-Configuration-Unix
-==========
 After the installation, you can configure which monitors will be used and how much time the powernap will wait before assuming that the host is idle.
 
 The configuration file is located at ```/etc/powernap/config```. A commented configuration file follows on:
@@ -183,8 +177,15 @@ mysqld-io = "mysql"
 sda = y
 ```
 
-Configuration-Windows
+
+Windows
 ==========
+
+##Installation
+The opportunism module is included on Windows Nova Computem module, so by installing that you will also get this feature
+
+##Configuration
+
 ```bash
 [GENERAL]
 nova_conf_file = C:\\nova\\nova.conf
