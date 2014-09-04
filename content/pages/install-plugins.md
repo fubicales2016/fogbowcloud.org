@@ -8,7 +8,7 @@ index: 1
 
 The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.
 
-The plugins can be classified into two categories: Identity Plugin and Compute Plugin.
+The plugins can be classified into two categories: **Identity Plugin** and **Compute Plugin**.
 
 ## Idnetity Plugin
 
