@@ -65,17 +65,19 @@
 <h1>Configuration</h1>
 <p>After the installation you will have to configure the nova.conf file providing information about the cloud management tools used by openstack. Contact your cloud admnistrator about this information</p>
 <p>The configuration file is located at the installation directory of the Windows Nova Compute Module</p>
-<p>The information cited bellow should be changed on the file to fit cloud:</p>
+<p>The information cited bellow should be changed on the file to fit your cloud:</p>
 <div class="highlight"><pre><span class="o">[</span>DEFAULT<span class="o">]</span>
 
-<span class="c">#The Glance project provides services for discovering, registering, and retrieving virtual machine images. </span>
+<span class="c">#The Glance project provides services for discovering, registering, and retrieving virtual</span>
+<span class="c">#machine images. </span>
 <span class="nv">glance_api_servers</span><span class="o">=</span>10.1.0.43:9292
 
 <span class="c">#RabbitMQ is the default AMQP server used by many OpenStack services.</span>
 <span class="nv">rabbit_host</span><span class="o">=</span>10.1.0.43
 <span class="nv">rabbit_password</span><span class="o">=</span>labstack
 
-<span class="c">#Neutron is an OpenStack project to provide &quot;networking as a service&quot; between interface devices (e.g., vNICs) managed by other Openstack services (e.g., nova)</span>
+<span class="c">#Neutron is an OpenStack project to provide &quot;networking as a service&quot; between interface</span>
+<span class="c">#devices (e.g., vNICs) managed by other Openstack services (e.g., nova)</span>
 <span class="nv">neutron_url</span><span class="o">=</span>http://10.1.0.43:9696  
 <span class="nv">neutron_admin_username</span><span class="o">=</span>neutron 
 <span class="nv">neutron_admin_password</span><span class="o">=</span>labstack 
@@ -83,10 +85,14 @@
 <span class="nv">neutron_region_name</span><span class="o">=</span>RegionOne 
 <span class="nv">neutron_admin_auth_url</span><span class="o">=</span>http://10.1.0.43:5000/v2.0 
 
-<span class="c">#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific data</span>
+<span class="c">#The Compute service uses a special metadata service to enable virtual machine instances</span>
+<span class="c">#to retrieve instance-specific data</span>
 <span class="nv">nova_metadata_host</span><span class="o">=</span>10.1.0.43
 <span class="nv">nova_metadata_port</span><span class="o">=</span>8775 
 <span class="nv">auth_host</span><span class="o">=</span>10.1.0.43 
+
+
+<span class="c">##Commonly these four services are run on the same machine</span>
 </pre></div>
       </div>
     </div>
