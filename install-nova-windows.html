@@ -65,56 +65,28 @@
 <h1>Configuration</h1>
 <p>After the installation you will have to configure the nova.conf file providing information about the cloud management tools used by openstack. Contact your cloud admnistrator about this information</p>
 <p>The configuration file is located at the installation directory of the Windows Nova Compute Module</p>
-<p>An example of a nova.conf file configuration is shown bellow. the lines marked with the "#=&gt;Necessary" tags are the one with information the needs to pertain to your cloud</p>
+<p>The information cited bellow should be changed on the file to fit cloud:</p>
 <div class="highlight"><pre><span class="o">[</span>DEFAULT<span class="o">]</span>
 
-<span class="c">#glance</span>
-<span class="nv">glance_api_servers</span><span class="o">=</span>10.1.0.43:9292 <span class="c">#=&gt;Necessary</span>
-<span class="nv">host</span><span class="o">=</span>windows-host2 <span class="c">#=&gt;Necessary</span>
-<span class="c">#Rabbit configuration</span>
-<span class="nv">rabbit_host</span><span class="o">=</span>10.1.0.43 <span class="c">#=&gt;Necessary</span>
-<span class="nv">rabbit_password</span><span class="o">=</span>labstack <span class="c">#=&gt;Necessary</span>
+<span class="c">#The Glance project provides services for discovering, registering, and retrieving virtual machine images. </span>
+<span class="nv">glance_api_servers</span><span class="o">=</span>10.1.0.43:9292
 
-<span class="c">#Neutron configuration</span>
-<span class="nv">service_neutron_metadata_proxy</span><span class="o">=</span>True
-<span class="nv">network_api_class</span><span class="o">=</span>nova.network.neutronv2.api.API
-<span class="nv">neutron_url</span><span class="o">=</span>http://10.1.0.43:9696  <span class="c">#=&gt;Necessary</span>
-<span class="nv">neutron_admin_username</span><span class="o">=</span>neutron <span class="c">#=&gt;Necessary</span>
-<span class="nv">neutron_admin_password</span><span class="o">=</span>labstack <span class="c">#=&gt;Necessary</span>
-<span class="nv">neutron_admin_tenant_name</span><span class="o">=</span>service <span class="c">#=&gt;Necessary</span>
-<span class="nv">neutron_region_name</span><span class="o">=</span>RegionOne <span class="c">#=&gt;Necessary</span>
-<span class="nv">neutron_admin_auth_url</span><span class="o">=</span>http://10.1.0.43:5000/v2.0 <span class="c">#=&gt; Necessary</span>
-<span class="nv">neutron_auth_strategy</span><span class="o">=</span>keystone
+<span class="c">#RabbitMQ is the default AMQP server used by many OpenStack services.</span>
+<span class="nv">rabbit_host</span><span class="o">=</span>10.1.0.43
+<span class="nv">rabbit_password</span><span class="o">=</span>labstack
 
-<span class="c">#security groups</span>
-<span class="nv">security_group_api</span><span class="o">=</span>neutron
+<span class="c">#Neutron is an OpenStack project to provide &quot;networking as a service&quot; between interface devices (e.g., vNICs) managed by #other Openstack services (e.g., nova)</span>
+<span class="nv">neutron_url</span><span class="o">=</span>http://10.1.0.43:9696  
+<span class="nv">neutron_admin_username</span><span class="o">=</span>neutron 
+<span class="nv">neutron_admin_password</span><span class="o">=</span>labstack 
+<span class="nv">neutron_admin_tenant_name</span><span class="o">=</span>service
+<span class="nv">neutron_region_name</span><span class="o">=</span>RegionOne 
+<span class="nv">neutron_admin_auth_url</span><span class="o">=</span>http://10.1.0.43:5000/v2.0 
 
-<span class="c">#logs and debug</span>
-<span class="nv">debug</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">verbose</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">default_log_levels</span><span class="o">=</span><span class="nv">amqplib</span><span class="o">=</span>WARN,sqlalchemy<span class="o">=</span>WARN,boto<span class="o">=</span>WARN,suds<span class="o">=</span>INFO,keystone<span class="o">=</span>INFO,eventlet.wsgi.server<span class="o">=</span>WARN
-<span class="nv">log_file</span><span class="o">=</span>C:<span class="se">\i</span>mages-nova<span class="se">\l</span>og
-
-<span class="c">#driver</span>
-<span class="nv">compute_driver</span><span class="o">=</span>qemuwin.QemuWinDriver
-<span class="nv">qemu_home</span><span class="o">=</span>C:<span class="se">\P</span>rogram Files<span class="se">\q</span>emu 
-
-
-<span class="c">#network</span>
-<span class="nv">qemuwin_vif_driver</span> <span class="o">=</span> nova.virt.qemuwin.vif.LibvirtHybridOVSBridgeDriver
-<span class="nv">firewall_driver</span> <span class="o">=</span> nova.virt.qemuwin.firewall.IptablesFirewallDriver
-<span class="nv">instances_path</span><span class="o">=</span>C:<span class="se">\i</span>mages-nova<span class="se">\i</span>nstances
-
-<span class="c">#keystone</span>
-<span class="nv">auth_strategy</span><span class="o">=</span>keystone
-
-<span class="c">#Metadata configuration</span>
-<span class="nv">nova_metadata_host</span><span class="o">=</span>10.1.0.43 <span class="c">#=&gt;Necessary</span>
-<span class="nv">nova_metadata_port</span><span class="o">=</span>8775 <span class="c">#=&gt;Necessary</span>
-
-<span class="o">[</span>keystone_authtoken<span class="o">]</span>
-<span class="nv">auth_strategy</span><span class="o">=</span>keystone
-<span class="nv">auth_host</span><span class="o">=</span>10.1.0.43 <span class="c">#=&gt;Necessary</span>
+<span class="c">#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific #data</span>
+<span class="nv">nova_metadata_host</span><span class="o">=</span>10.1.0.43
+<span class="nv">nova_metadata_port</span><span class="o">=</span>8775 
+<span class="nv">auth_host</span><span class="o">=</span>10.1.0.43 
 </pre></div>
       </div>
     </div>
