@@ -49,13 +49,13 @@ The property below references the lenght of time, in seconds, that the rendezvou
 # Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.
 site_expiration=10000
 ```
-The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the replication strategy used to avoid system crashes. 
+The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the [replication strategy](http://www.fogbowcloud.org/rendezvous) used to avoid system crashes. 
 ``` shell
 # Known Rendezvous Neighbor aderesses.
 neighbors=neighbor1@test.com,neighbor2@test.com
 ```
 
-The properties below are part the Result Set Management strategy used to limit, in size, the rendezvous' responses.
+The properties below are part the [Result Set Management strategy](http://www.fogbowcloud.org/rendezvous) used to limit, in size, the rendezvous' responses.
 ``` shell
 # Maximum number of managers that should be returned in a whoIsAlive response.
 max_whoisalive_manager_count=100
