@@ -49,6 +49,16 @@ site_expiration=10000
 
 # Known Rendezvous Neighbor aderesses.
 neighbors=neighbor1@test.com,neighbor2@test.com
+
+# Maximum number of managers that should be returned in a whoIsAlive response.
+max_whoisalive_manager_count=100
+
+# Maximum number of managers that should be returned in a whoIsAliveSyncresponse.
+max_whoisalivesync_manager_count=100
+
+# Maximum number of neighbors that should be returned in a whoIsAliveSyncresponse.
+max_whoisalivesync_neighbor_count=100
+
 ```
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
