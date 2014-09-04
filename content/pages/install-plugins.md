@@ -6,26 +6,60 @@ index: 1
 
 # Plugins
 
-The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
+The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently fogbow project make available some plugins, and you can feel free to implement new plugins.
 
-This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more.
+The plugins can be splited into two categories: Identity Plugin and Compute Plugin.
 
-Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
+## Idnetity Plugin
 
-## Install
-To set up a manager instance, first, get the latest code from github.
+The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins to local and federation identities providers. 
+
+### Configure
+
+**OpenStack Idnetity Plugin**
+
 ```bash
-git clone https://github.com/fogbow/fogbow-manager.git
+# jid of your Manager Component
+# Example:
+xmpp_jid=manager.test.com
+
 ```
-Then, install it with Maven
+
+**OpenNebula Idnetity Plugin** .  
+
 ```bash
-mvn install
+# jid of your Manager Component
+# Example:
+xmpp_jid=manager.test.com
+
 ```
 
-## Configure
-As you can see at manager instal page, after installation move the file ```manager.conf.example``` to ```manager.conf``` and add the plugins contents according to choosen plugin:
+**OpenStack X509 Plugin** .  
 
-* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components.  
+```bash
+# jid of your Manager Component
+# Example:
+xmpp_jid=manager.test.com
+
+```
+
+**OpenStack VOMs Plugin** .  
+
+```bash
+# jid of your Manager Component
+# Example:
+xmpp_jid=manager.test.com
+
+```
+
+## Compute Plugin
+
+The Compute Plugin is responsible for requesting, getting, and deleting virtual instances at the local cloud. Different plugins can require different information depending on their implementation. 
+
+### Configure
+As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the plugins contents according to choosen plugin:
+
+* **OpenStack Compute Plugin:** Manager and Rendezvous XMPP properties that will be used for the comunication between components.  
 
 ```bash
 # jid of your Manager Component
