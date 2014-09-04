@@ -18,55 +18,27 @@ After the installation you will have to configure the nova.conf file providing i
 
 The configuration file is located at the installation directory of the Windows Nova Compute Module
 
-An example of a nova.conf file configuration is shown bellow. the lines marked with the "#=>Necessary" tags are the one with information the needs to pertain to your cloud
+The information cited bellow should be changed on the file to fit cloud:
 ```bash
 [DEFAULT]
 
-#glance
-glance_api_servers=10.1.0.43:9292 #=>Necessary
-host=windows-host2 #=>Necessary
-#Rabbit configuration
-rabbit_host=10.1.0.43 #=>Necessary
-rabbit_password=labstack #=>Necessary
+#The Glance project provides services for discovering, registering, and retrieving virtual machine images. 
+glance_api_servers=10.1.0.43:9292
 
-#Neutron configuration
-service_neutron_metadata_proxy=True
-network_api_class=nova.network.neutronv2.api.API
-neutron_url=http://10.1.0.43:9696  #=>Necessary
-neutron_admin_username=neutron #=>Necessary
-neutron_admin_password=labstack #=>Necessary
-neutron_admin_tenant_name=service #=>Necessary
-neutron_region_name=RegionOne #=>Necessary
-neutron_admin_auth_url=http://10.1.0.43:5000/v2.0 #=> Necessary
-neutron_auth_strategy=keystone
+#RabbitMQ is the default AMQP server used by many OpenStack services.
+rabbit_host=10.1.0.43
+rabbit_password=labstack
 
-#security groups
-security_group_api=neutron
+#Neutron is an OpenStack project to provide "networking as a service" between interface devices (e.g., vNICs) managed by #other Openstack services (e.g., nova)
+neutron_url=http://10.1.0.43:9696  
+neutron_admin_username=neutron 
+neutron_admin_password=labstack 
+neutron_admin_tenant_name=service
+neutron_region_name=RegionOne 
+neutron_admin_auth_url=http://10.1.0.43:5000/v2.0 
 
-#logs and debug
-debug=true
-verbose=true
-default_log_levels=amqplib=WARN,sqlalchemy=WARN,boto=WARN,suds=INFO,keystone=INFO,eventlet.wsgi.server=WARN
-log_file=C:\images-nova\log
-
-#driver
-compute_driver=qemuwin.QemuWinDriver
-qemu_home=C:\Program Files\qemu 
-
-
-#network
-qemuwin_vif_driver = nova.virt.qemuwin.vif.LibvirtHybridOVSBridgeDriver
-firewall_driver = nova.virt.qemuwin.firewall.IptablesFirewallDriver
-instances_path=C:\images-nova\instances
-
-#keystone
-auth_strategy=keystone
-
-#Metadata configuration
-nova_metadata_host=10.1.0.43 #=>Necessary
-nova_metadata_port=8775 #=>Necessary
-
-[keystone_authtoken]
-auth_strategy=keystone
-auth_host=10.1.0.43 #=>Necessary
+#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific #data
+nova_metadata_host=10.1.0.43
+nova_metadata_port=8775 
+auth_host=10.1.0.43 
 ```
