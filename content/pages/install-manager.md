@@ -49,75 +49,11 @@ xmpp_port=5347
 rendezvous_jid=rendezvous.test.com
 ```
 
-* **Cloud Compute Information:** All compute information required by the compute plugins that will be used. Different plugins can require different information depending on their implementation. This section shows properties required by OpenStack compute plugin (currently the only one provided by fogbow).
+* **Cloud Compute Information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-```bash
-# Compute plugin class
-# Example:
-compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
-# Cloud OCCI endpoint
-# Example:
-compute_occi_url=http://localhost:8182
+* **Cloud Identity Information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-# Cloud v2 compute endpoint
-# Example:
-compute_openstack_v2api_url=http://localhost:8182
-
-# Associating local cloud flavors to fogbow flavors
-# Small flavor
-# Example:
-compute_occi_flavor_small=m1-small
-
-# Medium flavor
-# Example:
-compute_occi_flavor_medium=m1-medium
-
-# Large flavor
-# Example:
-compute_occi_flavor_large=m1-large
-
-# OS Cloud Scheme
-# Example:
-compute_occi_os_scheme=http://schemas.openstack.org/template/os#
-
-# Instance Cloud Scheme
-# Example:
-compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
-
-# Resource Cloud Scheme
-# Example:
-compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
-
-# Image (property format: compute_occi_image_image-name)
-# Example (this image will be referenced as linuxx86):
-compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
-
-# Network ID (This property is required only if user project has more than one network available)
-# Example:
-compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
-```
-
-* **Cloud Identity Information:** All identity information required by the identity plugin that will be used. Cloud identity is used to get and authenticate tokens for local and federation cloud users. This section shows properties required by OpenStack identity plugin (currently the only one provided by fogbow). Note that the Local Identity Provider and the Federation Identity Provider are the same, this happens when the authentication is done at the Local Cloud Identity Provider.
-
-```bash
-
-# Local Identity plugin class
-# Example:
-local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
-
-# Cloud identity endpoint
-# Example:
-local_identity_url=http://localhost:5000
-
-# Federation Identity plugin class
-# Example:
-federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
-
-# Cloud identity endpoint
-# Example:
-federation_identity_url=http://localhost:5000
-```
 
 * **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.
 ```bash
