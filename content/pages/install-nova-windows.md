@@ -18,18 +18,20 @@ After the installation you will have to configure the nova.conf file providing i
 
 The configuration file is located at the installation directory of the Windows Nova Compute Module
 
-The information cited bellow should be changed on the file to fit cloud:
+The information cited bellow should be changed on the file to fit your cloud:
 ```bash
 [DEFAULT]
 
-#The Glance project provides services for discovering, registering, and retrieving virtual machine images. 
+#The Glance project provides services for discovering, registering, and retrieving virtual
+#machine images. 
 glance_api_servers=10.1.0.43:9292
 
 #RabbitMQ is the default AMQP server used by many OpenStack services.
 rabbit_host=10.1.0.43
 rabbit_password=labstack
 
-#Neutron is an OpenStack project to provide "networking as a service" between interface devices (e.g., vNICs) managed by other Openstack services (e.g., nova)
+#Neutron is an OpenStack project to provide "networking as a service" between interface
+#devices (e.g., vNICs) managed by other Openstack services (e.g., nova)
 neutron_url=http://10.1.0.43:9696  
 neutron_admin_username=neutron 
 neutron_admin_password=labstack 
@@ -37,8 +39,12 @@ neutron_admin_tenant_name=service
 neutron_region_name=RegionOne 
 neutron_admin_auth_url=http://10.1.0.43:5000/v2.0 
 
-#The Compute service uses a special metadata service to enable virtual machine instances to retrieve instance-specific data
+#The Compute service uses a special metadata service to enable virtual machine instances
+#to retrieve instance-specific data
 nova_metadata_host=10.1.0.43
 nova_metadata_port=8775 
 auth_host=10.1.0.43 
+
+
+##Commonly these four services are run on the same machine
 ```
