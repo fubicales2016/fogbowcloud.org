@@ -187,18 +187,21 @@
 
 
 <h5>Response</h5>
-<p>iq type="result"&gt;
-   <query xmlns="http://fogbowcloud.org/rendezvous/whoisalive">
+<div class="highlight"><pre>iq type=&quot;result&quot;&gt;
+   <span class="nt">&lt;query</span> <span class="na">xmlns=</span><span class="s">&quot;http://fogbowcloud.org/rendezvous/whoisalive&quot;</span><span class="nt">&gt;</span>
       .
       .
       .
-   </query>
-   <set>
-      <first> first </first>
-      <last> last </last>
-      <count> count </count>
-   </set>
-</iq></p>
+   <span class="nt">&lt;/query&gt;</span>
+   <span class="nt">&lt;set&gt;</span>
+      <span class="nt">&lt;first&gt;</span> first <span class="nt">&lt;/first&gt;</span>
+      <span class="nt">&lt;last&gt;</span> last <span class="nt">&lt;/last&gt;</span>
+      <span class="nt">&lt;count&gt;</span> count <span class="nt">&lt;/count&gt;</span>
+   <span class="nt">&lt;/set&gt;</span>
+<span class="nt">&lt;/iq&gt;</span>
+</pre></div>
+
+
 <h4>WhoIsAliveSync using RSM</h4>
 <p>The protocol used is basically the same as the one for WhoIsAlive. As it could be necessary to apply RSM for both managers response items and neighbors response items, the <code>&lt;query&gt;</code> tag should be followed by <code>&lt;neighbors&gt;</code>  and/or <code>&lt;managers&gt;</code> tags, and inside those is where the <code>&lt;set&gt;</code> tag and whatever is inside it should be.</p>
 <p>Obs: the updated value is the timestamp of the information; it is formatted according to the ISO 8601 standard. </p>
