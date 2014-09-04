@@ -18,7 +18,7 @@ The WhoIsAlive method allows a federation member to ask for the set of active fe
 
 Also, more than one instance of a rendezvous service can be active to tolerate faults. A rendezvous service instance communicates with other known rendezvous service replicas to synchronize their states. The synchronization is made through a WhoIsAliveSync method. This method sends a message to each of the replicas currently known by a rendezvous service instance asking for the known neighbors, i.e. replicas of the rendezvous service, and the known active members of the federation. The responses received are merged with the information that was previously known.
 
-The rendezvous' response protocols use Result Set Management http://xmpp.org/extensions/xep-0059.html to limit the size of their response. Each user can specify how many items should come in response to a whoIsAlive or whoIsAliveSync call. Each rendezvous has a hard-coded maximum number of items that could come in response, currently, that number is 100. Even if the user defines a maximum number larger, the response will not be longer than the hard-coded constant. The user can also page fowards, which means asking for a response starting from a specific item. 
+The rendezvous' response protocols use Result Set Management http://xmpp.org/extensions/xep-0059.html to limit the size of their response. Each user can specify how many items should come in response to a whoIsAlive or whoIsAliveSync call. Each rendezvous has a hard-coded maximum number of items that could come in response, currently, that number is 100. Even if the user defines a maximum number larger or not define a number at all, the response will not be longer than the hard-coded constant. The user can also page fowards, which means asking for a response starting from a specific item. 
 
 All communication is done via XMPP according to the service protocol.
 
@@ -135,5 +135,41 @@ All communication is done via XMPP according to the service protocol.
    </query>
 </iq>
 ```
+### Pagination
+
+#### WhoIsAlive using RSM
+
+##### Request
+
+```xml 
+<iq type="get">
+   <query xmlns="http://fogbowcloud.org/rendezvous/whoisalive">
+      <set xmlns="http://jabber.org/protocol/rsm">
+         <max> maximum </max>
+         <after> after </after>
+      </set>
+   </query>
+</iq>
+```
+
+##### Response
+
+iq type="result">
+   <query xmlns="http://fogbowcloud.org/rendezvous/whoisalive">
+      .
+      .
+      .
+   </query>
+   <set>
+      <first> first </first>
+      <last> last </last>
+      <count> count </count>
+   </set>
+</iq>
+
+#### WhoIsAliveSync using RSM
+The protocol used is basically the same as the one for WhoIsAlive. As it could be necessary to apply RSM for both managers response items and neighbors response items, the <query> tag should be followed by <neighbors>  and/or <managers> tags, and inside those is where the <set> tag and whatever is inside it should be.
+
+
 
 Obs: the updated value is the timestamp of the information; it is formatted according to the ISO 8601 standard. 
