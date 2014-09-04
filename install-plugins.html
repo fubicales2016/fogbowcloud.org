@@ -60,24 +60,45 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Plugins</h1>
-<p>The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. </p>
-<p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface">Openstack's OCCI guide</a> to know more.</p>
-<p>Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
-<h2>Install</h2>
-<p>To set up a manager instance, first, get the latest code from github.</p>
-<div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-manager.git
+<p>The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently fogbow project make available some plugins, and you can feel free to implement new plugins.</p>
+<p>The plugins can be splited into two categories: Identity Plugin and Compute Plugin.</p>
+<h2>Idnetity Plugin</h2>
+<p>The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins to local and federation identities providers. </p>
+<h3>Configure</h3>
+<p><strong>OpenStack Idnetity Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
+<span class="c"># Example:</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
 </pre></div>
 
 
-<p>Then, install it with Maven</p>
-<div class="highlight"><pre>mvn install
+<p><strong>OpenNebula Idnetity Plugin</strong> .  </p>
+<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
+<span class="c"># Example:</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
 </pre></div>
 
 
-<h2>Configure</h2>
-<p>As you can see at manager instal page, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code> and add the plugins contents according to choosen plugin:</p>
+<p><strong>OpenStack X509 Plugin</strong> .  </p>
+<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
+<span class="c"># Example:</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+</pre></div>
+
+
+<p><strong>OpenStack VOMs Plugin</strong> .  </p>
+<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
+<span class="c"># Example:</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+</pre></div>
+
+
+<h2>Compute Plugin</h2>
+<p>The Compute Plugin is responsible for requesting, getting, and deleting virtual instances at the local cloud. Different plugins can require different information depending on their implementation. </p>
+<h3>Configure</h3>
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the plugins contents according to choosen plugin:</p>
 <ul>
-<li><strong>XMPP properties:</strong> Manager and Rendezvous XMPP properties that will be used for the comunication between components.  </li>
+<li><strong>OpenStack Compute Plugin:</strong> Manager and Rendezvous XMPP properties that will be used for the comunication between components.  </li>
 </ul>
 <div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
 <span class="c"># Example:</span>
