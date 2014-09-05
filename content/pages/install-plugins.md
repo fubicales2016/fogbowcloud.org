@@ -10,7 +10,7 @@ The manager component was designed to be agnostic to the underlying cloud techno
 
 The plugins can be classified into two categories: **Identity Plugin** and **Compute Plugin**.
 
-## Idnetity Plugin
+## Identity Plugin
 
 The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. 
 
@@ -160,4 +160,20 @@ compute_one_network_id=1
 # Example (this image will be referenced as linuxx86):
 compute_one_image_linuxx86=0
 
+```
+
+## Authorization Plugin
+
+The Authorization Plugin is responsible for getting authorization with the federation. 
+
+### Configure
+
+As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the authorization plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
+
+**Allow All Authorization Plugin**
+
+```bash
+# Federation Authorization plugin class
+# Example 
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
 ```
