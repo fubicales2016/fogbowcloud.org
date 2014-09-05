@@ -8,7 +8,7 @@ index: 2
 
 The rendezvous component acts as a discovery service for a fowbow federation. It allows members to find each other by providing a complete status of the federation.
 
-## Install
+## Install from source
 
 As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
 We recommend [prosody](https://prosody.im/) due to its ease of configuration.
