@@ -66,12 +66,8 @@ rendezvous_jid=rendezvous.test.com
 * **Cloud Identity Information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
 
-* **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.
-```bash
-# Federation Authorization plugin class
-# Example 
-federation_authorization_class=org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
-```
+* **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+
 
 * **Local User Information:** Cloud local user is a local cloud user that will submit requests from remote members.
 
