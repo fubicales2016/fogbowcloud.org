@@ -8,7 +8,7 @@ index: 5
 
 blablabla
 
-## Install
+## Install from source
 
 To set up the reverse tunnel server, first, get the latest code from github.
 ```bash
@@ -17,6 +17,17 @@ git clone https://github.com/fogbow/fogbow-reverse-tunnel.git
 Then, install it with Maven
 ```bash
 mvn install
+```
+
+## Install from debian package
+To set up the reverse tunnel server, first, download to the latest debian package
+```bash
+Link here
+```
+
+Then, install it with dkpg
+```bash
+dpkg -i fogbow-reverse-tunnel.deb 
 ```
 
 ## Configure
