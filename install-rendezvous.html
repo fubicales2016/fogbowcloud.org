@@ -102,13 +102,13 @@ We recommend <a href="https://prosody.im/">prosody</a> due to its ease of config
 </pre></div>
 
 
-<p>The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the replication strategy used to avoid system crashes. </p>
+<p>The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the <a href="http://www.fogbowcloud.org/rendezvous">replication strategy</a> used to avoid system crashes. </p>
 <div class="highlight"><pre><span class="cp"># Known Rendezvous Neighbor aderesses.</span>
 <span class="n">neighbors</span><span class="o">=</span><span class="n">neighbor1</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">,</span><span class="n">neighbor2</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
 </pre></div>
 
 
-<p>The properties below are part the Result Set Management strategy used to limit, in size, the rendezvous' responses.</p>
+<p>The properties below are part the <a href="http://www.fogbowcloud.org/rendezvous">Result Set Management strategy</a> used to limit, in size, the rendezvous' responses.</p>
 <div class="highlight"><pre><span class="cp"># Maximum number of managers that should be returned in a whoIsAlive response.</span>
 <span class="n">max_whoisalive_manager_count</span><span class="o">=</span><span class="mi">100</span>
 
