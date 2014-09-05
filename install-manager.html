@@ -66,7 +66,7 @@
 <p>The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. </p>
 <p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface">Openstack's OCCI guide</a> to know more.</p>
 <p>Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
-<h2>Install</h2>
+<h2>Install from source</h2>
 <p>To set up a manager instance, first, get the latest code from github.</p>
 <div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-manager.git
 </pre></div>
@@ -74,6 +74,17 @@
 
 <p>Then, install it with Maven</p>
 <div class="highlight"><pre>mvn install
+</pre></div>
+
+
+<h2>Install from debian package</h2>
+<p>To set up a manager instance, first, download to the latest debian package</p>
+<div class="highlight"><pre>Url 
+</pre></div>
+
+
+<p>Then, install it with dkpg</p>
+<div class="highlight"><pre>dpkg -i fogbow-manager.deb 
 </pre></div>
 
 
@@ -122,17 +133,17 @@
 
 
 <ul>
-<li><strong>Federation User Information:</strong> Cloud federation user is a local cloud user that will submit requests from remote members.</li>
+<li><strong>Local User Information:</strong> Cloud local user is a local cloud user that will submit requests from remote members.</li>
 </ul>
-<div class="highlight"><pre><span class="c"># Federation user name</span>
+<div class="highlight"><pre><span class="c"># Local user name</span>
 <span class="c"># Example:</span>
 <span class="nv">local_proxy_account_user_name</span><span class="o">=</span>fogbow
 
-<span class="c"># Federation user password</span>
+<span class="c"># Local user password</span>
 <span class="c"># Example:</span>
 <span class="nv">local_proxy_account_password</span><span class="o">=</span>fogbow
 
-<span class="c"># Federation user tenant (project) name</span>
+<span class="c"># Local user tenant (project) name</span>
 <span class="c"># Example:</span>
 <span class="nv">local_proxy_account_tenant_name</span><span class="o">=</span>demo
 </pre></div>
