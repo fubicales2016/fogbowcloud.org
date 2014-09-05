@@ -125,7 +125,7 @@
 
 
 <h2>Compute Plugin</h2>
-<p>The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. </p>
+<p>The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at <code>manager.conf</code> file are correct. If not, the behaviour of federation may not be the expected.</p>
 <h3>Configure</h3>
 <p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. </p>
 <p><strong>OpenStack Compute Plugin</strong></p>
