@@ -60,65 +60,136 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Plugins</h1>
-<p>The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently fogbow project make available some plugins, and you can feel free to implement new plugins.</p>
-<p>The plugins can be splited into two categories: Identity Plugin and Compute Plugin.</p>
+<p>The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.</p>
+<p>The plugins can be classified into two categories: Identity Plugin and Compute Plugin.</p>
 <h2>Idnetity Plugin</h2>
-<p>The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins to local and federation identities providers. </p>
+<p>The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. </p>
 <h3>Configure</h3>
-<p><strong>OpenStack Idnetity Plugin</strong></p>
-<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the identity plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. You can configure different plugins for local and federation idnetity providers.</p>
+<p><strong>OpenStack Idnetity Plugin</strong> </p>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+
+<span class="c"># Cloud identity endpoint</span>
+<span class="nv">local_identity_url</span><span class="o">=</span>http://localhost:5000
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+
+<span class="c"># Cloud identity endpoint</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://localhost:5000
 </pre></div>
 
 
-<p><strong>OpenNebula Idnetity Plugin</strong> .  </p>
-<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+<p><strong>OpenNebula Idnetity Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+
+<span class="c"># Cloud identity endpoint</span>
+<span class="nv">local_identity_url</span><span class="o">=</span>http://localhost:2633/RPC2
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+
+<span class="c"># Cloud identity endpoint</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://localhost:2633/RPC2
 </pre></div>
 
 
-<p><strong>OpenStack X509 Plugin</strong> .  </p>
-<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+<p><strong>X509 Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
+
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.</span>
+<span class="nv">x509_ca_dir_path</span><span class="o">=</span>/path/to/ca/directory
 </pre></div>
 
 
-<p><strong>OpenStack VOMs Plugin</strong> .  </p>
-<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+<p><strong>VOMs Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugin
+
+<span class="c"># Directory where are the VOMS server information. </span>
+<span class="c"># List of voms servers in order to issue a proxy. </span>
+<span class="c"># Default : &quot;~/.glite/vomses&quot;</span>
+<span class="nv">path_vomses</span><span class="o">=</span>/path/vomes
+
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.</span>
+<span class="c"># Default : &quot;/etc/grid-security/certificates&quot;</span>
+<span class="nv">path_trust_anchors</span><span class="o">=</span>/path/trust/anchors
+
+<span class="c"># Directory where are the certificates of VOMS that you trust.</span>
+<span class="c"># Default : &quot;/etc/grid-security/vomsdir&quot;</span>
+<span class="nv">path_vomsdir</span><span class="o">=</span>/path/voms/dir
 </pre></div>
 
 
 <h2>Compute Plugin</h2>
-<p>The Compute Plugin is responsible for requesting, getting, and deleting virtual instances at the local cloud. Different plugins can require different information depending on their implementation. </p>
+<p>The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. </p>
 <h3>Configure</h3>
-<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the plugins contents according to choosen plugin:</p>
-<ul>
-<li><strong>OpenStack Compute Plugin:</strong> Manager and Rendezvous XMPP properties that will be used for the comunication between components.  </li>
-</ul>
-<div class="highlight"><pre><span class="c"># jid of your Manager Component</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_jid</span><span class="o">=</span>manager.test.com
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. </p>
+<p><strong>OpenStack Compute Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
 
-<span class="c"># Component password</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_password</span><span class="o">=</span>password
+<span class="c"># Cloud OCCI endpoint</span>
+<span class="nv">compute_occi_url</span><span class="o">=</span>http://localhost:8182
 
-<span class="c"># IP address.</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_host</span><span class="o">=</span>127.0.0.1
+<span class="c"># Cloud v2 compute endpoint</span>
+<span class="nv">compute_openstack_v2api_url</span><span class="o">=</span>http://localhost:8182
 
-<span class="c"># Port in which the server will be listening.</span>
-<span class="c"># Example:</span>
-<span class="nv">xmpp_port</span><span class="o">=</span>5347
+<span class="c"># Associating local cloud flavors to fogbow flavors</span>
+<span class="c"># Small flavor</span>
+<span class="nv">compute_occi_flavor_small</span><span class="o">=</span>m1-small
 
-<span class="c"># jid of your Rendezvous Component</span>
+<span class="c"># Medium flavor</span>
+<span class="nv">compute_occi_flavor_medium</span><span class="o">=</span>m1-medium
+
+<span class="c"># Large flavor</span>
+<span class="nv">compute_occi_flavor_large</span><span class="o">=</span>m1-large
+
+<span class="c"># OS Cloud Scheme</span>
+<span class="nv">compute_occi_os_scheme</span><span class="o">=</span>http://schemas.openstack.org/template/os#
+
+<span class="c"># Instance Cloud Scheme</span>
+<span class="nv">compute_occi_instance_scheme</span><span class="o">=</span>http://schemas.openstack.org/compute/instance#
+
+<span class="c"># Resource Cloud Scheme</span>
+<span class="nv">compute_occi_resource_scheme</span><span class="o">=</span>http://schemas.openstack.org/template/resource#
+
+<span class="c"># Image (property format: compute_occi_image_image-name). You can add as many image as you want.</span>
+<span class="c"># Example (this image will be referenced as linuxx86):</span>
+<span class="nv">compute_occi_image_linuxx86</span><span class="o">=</span>cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+
+<span class="c"># Network ID (This property is required only if user project has more than one network available)</span>
 <span class="c"># Example:</span>
-<span class="nv">rendezvous_jid</span><span class="o">=</span>rendezvous.test.com
+<span class="nv">compute_occi_network_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
+</pre></div>
+
+
+<p><strong>OpenNebula Compute Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaComputePlugin
+
+<span class="c"># Cloud opennebula compute endpoint</span>
+<span class="nv">compute_one_url</span><span class="o">=</span>http://localhost:2633/RPC2
+
+<span class="c"># Associating properties flavors to fogbow flavors</span>
+<span class="c"># Small flavor</span>
+<span class="nv">compute_one_flavor_small</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>128, <span class="nv">cpu</span><span class="o">=</span>1<span class="o">}</span>
+
+<span class="c"># Medium flavor</span>
+<span class="nv">compute_one_flavor_medium</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>256, <span class="nv">cpu</span><span class="o">=</span>2<span class="o">}</span>
+
+<span class="c"># Large flavor</span>
+<span class="nv">compute_one_flavor_large</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>512, <span class="nv">cpu</span><span class="o">=</span>4<span class="o">}</span>
+
+<span class="c"># Network ID to be used for instances</span>
+<span class="nv">compute_one_network_id</span><span class="o">=</span>1
+
+<span class="c"># Image (property format: compute_one_image_image-name). You can add as many image as you want.</span>
+<span class="c"># Example (this image will be referenced as linuxx86):</span>
+<span class="nv">compute_one_image_linuxx86</span><span class="o">=</span>0
 </pre></div>
       </div>
     </div>
