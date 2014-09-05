@@ -28,6 +28,17 @@ Then, install it
 mvn install
 ```
 
+## Install from debian package
+With an XMPP server already installed and configured, download to the latest debian package
+```bash
+Link here
+```
+
+Then, install it with dkpg
+```bash
+dpkg -i fogbow-rendezvous.deb 
+```
+
 ## Configure
 After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
 
