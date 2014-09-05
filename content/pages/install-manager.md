@@ -12,7 +12,7 @@ This tutorial assumes you have Openstack's OCCI API enabled in your underlying c
 
 Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
 
-## Install
+## Install from source
 To set up a manager instance, first, get the latest code from github.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
@@ -20,6 +20,17 @@ git clone https://github.com/fogbow/fogbow-manager.git
 Then, install it with Maven
 ```bash
 mvn install
+```
+
+## Install from debian package
+To set up a manager instance, first, download to the latest debian package
+```bash
+Url 
+```
+
+Then, install it with dkpg
+```bash
+dpkg -i fogbow-manager.deb 
 ```
 
 ## Configure
@@ -62,18 +73,18 @@ rendezvous_jid=rendezvous.test.com
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
 ```
 
-* **Federation User Information:** Cloud federation user is a local cloud user that will submit requests from remote members.
+* **Local User Information:** Cloud local user is a local cloud user that will submit requests from remote members.
 
 ```bash
-# Federation user name
+# Local user name
 # Example:
 local_proxy_account_user_name=fogbow
 
-# Federation user password
+# Local user password
 # Example:
 local_proxy_account_password=fogbow
 
-# Federation user tenant (project) name
+# Local user tenant (project) name
 # Example:
 local_proxy_account_tenant_name=demo
 ```
@@ -142,7 +153,7 @@ ssh_tunnel_host_http_port=2223
 http_port = 8182
 
 ```
-## Run
+## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
 ```bash
