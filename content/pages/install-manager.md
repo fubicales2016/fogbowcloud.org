@@ -25,7 +25,7 @@ mvn install
 ## Install from debian package
 To set up a manager instance, first, download to the latest debian package
 ```bash
-Url 
+Link here
 ```
 
 Then, install it with dkpg
