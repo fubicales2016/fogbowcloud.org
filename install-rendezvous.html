@@ -93,14 +93,23 @@ We recommend <a href="https://prosody.im/">prosody</a> due to its ease of config
 
 <span class="cp"># Port in which the XMPP server will be listening for components, as configured in the XMPP server.</span>
 <span class="n">xmpp_port</span><span class="o">=</span><span class="mi">5347</span>
+</pre></div>
 
-<span class="cp"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
+
+<p>The property below references the lenght of time, in seconds, that the rendezvous should keep a memeber as "alive".</p>
+<div class="highlight"><pre><span class="cp"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
 <span class="n">site_expiration</span><span class="o">=</span><span class="mi">10000</span>
+</pre></div>
 
-<span class="cp"># Known Rendezvous Neighbor aderesses.</span>
+
+<p>The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep himself updated. This is part of the replication strategy used to avoid system crashes. </p>
+<div class="highlight"><pre><span class="cp"># Known Rendezvous Neighbor aderesses.</span>
 <span class="n">neighbors</span><span class="o">=</span><span class="n">neighbor1</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">,</span><span class="n">neighbor2</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
+</pre></div>
 
-<span class="cp"># Maximum number of managers that should be returned in a whoIsAlive response.</span>
+
+<p>The properties below are part the Result Set Management strategy used to limit, in size, the rendezvous' responses.</p>
+<div class="highlight"><pre><span class="cp"># Maximum number of managers that should be returned in a whoIsAlive response.</span>
 <span class="n">max_whoisalive_manager_count</span><span class="o">=</span><span class="mi">100</span>
 
 <span class="cp"># Maximum number of managers that should be returned in a whoIsAliveSyncresponse.</span>
