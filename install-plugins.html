@@ -65,7 +65,7 @@
       	<h1>Plugins</h1>
 <p>The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.</p>
 <p>The plugins can be classified into two categories: <strong>Identity Plugin</strong> and <strong>Compute Plugin</strong>.</p>
-<h2>Idnetity Plugin</h2>
+<h2>Identity Plugin</h2>
 <p>The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. </p>
 <h3>Configure</h3>
 <p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the identity plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. You can configure different plugins for local and federation idnetity providers.</p>
@@ -193,6 +193,17 @@
 <span class="c"># Image (property format: compute_one_image_image-name). You can add as many image as you want.</span>
 <span class="c"># Example (this image will be referenced as linuxx86):</span>
 <span class="nv">compute_one_image_linuxx86</span><span class="o">=</span>0
+</pre></div>
+
+
+<h2>Authorization Plugin</h2>
+<p>The Authorization Plugin is responsible for getting authorization with the federation. </p>
+<h3>Configure</h3>
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the authorization plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. </p>
+<p><strong>Allow All Authorization Plugin</strong></p>
+<div class="highlight"><pre><span class="c"># Federation Authorization plugin class</span>
+<span class="c"># Example </span>
+<span class="nv">federation_authorization_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
 </pre></div>
       </div>
     </div>
