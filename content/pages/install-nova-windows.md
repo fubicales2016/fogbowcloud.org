@@ -9,7 +9,7 @@ Installation
 
 You will need to install and configure an Windows Nova Compute module in each shared resource (eg. a desktop) that you want to add as a computing node in your private cloud that uses Windows as the OS. Obviously, the resource must be connected to the same LAN used by the computing nodes of your private cloud.
 
-The Windows Nova Compute module has an installer, so all you have to do is to download and run the fogbow-nova-compute [last stable executable](http://downloads.fogbowcloud.org/stable/windows/v0.2.0/fogbow-nova-win32-setup.exe).
+The Windows Nova Compute module has an installer, so all you have to do is to download and run the fogbow-nova-compute [latest stable executable](http://downloads.fogbowcloud.org/stable/windows/v0.2.0/fogbow-nova-win32-setup.exe).
 
 Configuration
 ==========
