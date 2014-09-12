@@ -30,7 +30,7 @@ wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-manager/fogbow
 
 Then, install it with dkpg
 ```bash
-dpkg -i fogbow-manager.deb 
+dpkg -i fogbow-manager_v0.2.0.deb 
 ```
 
 ## Configure
