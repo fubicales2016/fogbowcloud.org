@@ -36,7 +36,7 @@ wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-rendezvous/fog
 
 Then, install it with dkpg
 ```bash
-dpkg -i fogbow-rendezvous.deb 
+dpkg -i fogbow-rendezvous_v0.2.0.deb 
 ```
 
 ## Configure
