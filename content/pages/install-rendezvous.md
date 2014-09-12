@@ -29,9 +29,9 @@ mvn install
 ```
 
 ## Install from debian package
-With an XMPP server already installed and configured, download to the latest debian package
+With an XMPP server already installed and configured, download to the [latest debian package](http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-rendezvous/fogbow-rendezvous_v0.2.0.deb)
 ```bash
-http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-rendezvous/fogbow-rendezvous_v0.2.0.deb
+wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-rendezvous/fogbow-rendezvous_v0.2.0.deb
 ```
 
 Then, install it with dkpg
