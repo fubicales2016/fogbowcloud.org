@@ -27,7 +27,7 @@ wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-reverse-tunnel
 
 Then, install it with dkpg
 ```bash
-dpkg -i fogbow-reverse-tunnel.deb 
+dpkg -i fogbow-reverse-tunnel_v0.2.0.deb 
 ```
 
 ## Configure
