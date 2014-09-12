@@ -13,12 +13,23 @@ Unix
 ==========
 
 ##Installation
+###Install from source
 The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.
 
-``` shell
+``` bash
 git clone https://github.com/fogbow/fogbow-opportunism.git
 cd fogbow-opportunism
 sudo python setup.py install
+```
+
+###Install from debian package
+Download the [lastest stable package](http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-powernap/fogbow-powernap_v0.2.0.deb)
+```bash
+wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-powernap/fogbow-powernap_v0.2.0.deb
+```
+And install it with dpkg
+```bash
+sudo dpkg -i fogbow-powernap_v0.2.0.deb
 ```
 
 The opportunistic module files will be located at /var/lib/fogbow-opportunism.
@@ -182,7 +193,7 @@ Windows
 ==========
 
 ##Installation
-The opportunism module is included on Windows Nova Computem module, so by installing that you will also get this feature
+The opportunism module is included on Windows Nova Compute module, so by installing that you will also get this feature
 
 ##Configuration
 
