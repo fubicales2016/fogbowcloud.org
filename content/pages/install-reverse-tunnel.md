@@ -6,7 +6,7 @@ index: 5
 
 # Reverse Tunnel
 
-blablabla
+
 
 ## Install from source
 
@@ -21,9 +21,7 @@ mvn install
 
 ## Install from debian package
 To set up the reverse tunnel server, first, download to the latest debian package
-```bash
-Link here
-```
+http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.0.deb
 
 Then, install it with dkpg
 ```bash
