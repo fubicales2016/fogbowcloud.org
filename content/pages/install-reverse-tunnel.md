@@ -35,11 +35,14 @@ dpkg -i fogbow-reverse-tunnel_v0.2.0.deb
 After the installation, move the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
 
 ```bash
-# Tunnel port for ssh
+# Port for SSH tunnels
 tunnel_port=2222
 
-# Port for requests HTTP
+# Port for HTTP requests
 http_port=2223
+
+# IP that the service will attach to
+tunnel_host=0.0.0.0
 
 # Range for external ports
 external_port_range=40000:50000
@@ -51,8 +54,18 @@ host_key_path=hostkey.ser
 
 ## Run
 
-To start the reverse tunnel server, run the start-tunnel-server.
+### If installed from source
+
+Execute the start-tunnel-server script:
 
 ```bash
 ./start-tunnel-server
+```
+
+### If installed via the debian package
+
+The Fogbow Reverse Tunnel will start automatically after the installation. To restart it, do the following:
+
+```bash
+service fogbow-reverse-tunnel start
 ```
