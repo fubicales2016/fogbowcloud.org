@@ -8,7 +8,7 @@ index: 1
 
 The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.
 
-The plugins can be classified into two categories: **Identity Plugin** and **Compute Plugin**.
+There three different categories of plugin: the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
 
 ## Identity Plugin
 
@@ -16,27 +16,34 @@ The Identity Plugin is responsible for getting and authenticating tokens for loc
 
 ### Configure
 
-As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the identity plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. You can configure different plugins for local and federation idnetity providers.
+As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), when the installation is done, rename the file ```manager.conf.example``` to ```manager.conf```. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that come along with the Fogbow Manager. You can configure different plugins for local and federation identity providers.
 
-**OpenStack Idnetity Plugin** 
+**Keystone Identity Plugin** 
 
 ```bash
 
 # Local Identity plugin class
-local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
 
-# Cloud identity endpoint
+# Cloud Identity endpoint
 local_identity_url=http://localhost:5000
 
 # Federation Identity plugin class
-federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackIdentityPlugin
+federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
 
-# Cloud identity endpoint
+# Federation identity endpoint
 federation_identity_url=http://localhost:5000
+
+# Proxy account for remote requests @ the local identity provider 
+local_proxy_account_user_name=fogbow
+# Password of such account
+local_proxy_account_password=fogbow
+# Tenant of such account
+local_proxy_account_tenant_name=demo
 
 ```
 
-**OpenNebula Idnetity Plugin**
+**OpenNebula Identity Plugin**
 
 ```bash
 
@@ -51,6 +58,11 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNe
 
 # Cloud identity endpoint
 federation_identity_url=http://localhost:2633/RPC2
+
+# Proxy account for remote requests @ the local identity provider 
+local_proxy_account_user_name=fogbow
+# Password of such account
+local_proxy_account_password=fogbow
 
 ```
 
@@ -94,7 +106,7 @@ The Compute Plugin is responsible for requesting, getting, and deleting instance
 
 As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
 
-**OpenStack Compute Plugin**
+**OpenStack OCCI Compute Plugin**
 
 ```bash
 # Compute plugin class
@@ -134,6 +146,30 @@ compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
+**OpenStack Nova V2 Compute Plugin**
+```bash
+# Plugin class
+compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackNovaV2ComputePlugin
+
+# Nova V2 API URL
+compute_novav2_url=http://localhost:8774
+
+# Small Flavour Identifier
+compute_novav2_flavor_small=1
+
+# Medium Flavour Identifier
+compute_novav2_flavor_medium=2
+
+# Large Flavour Identifier
+compute_novav2_flavor_large=3
+
+# Identifier for the fogbow-linux-x86 image (you can have several of these)
+compute_novav2_image_fogbow-linux-x86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+
+# Network id (This property is required only if user project has more than one network available)
+compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+```
+
 **OpenNebula Compute Plugin**
 
 ```bash
@@ -164,16 +200,16 @@ compute_one_image_linuxx86=0
 
 ## Authorization Plugin
 
-The Authorization Plugin is responsible for getting authorization with the federation. 
+The Authorization Plugin tells whether a given user (with a proper authenticated token) is able to create requests in the Fedartion. 
 
 ### Configure
 
-As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the authorization plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
+The **federation_authorization_class** property must be set to a Authorization Plugin implementation. The Fogbow Manager comes with a single implementation that simply authorizes any user/token.
 
 **Allow All Authorization Plugin**
 
 ```bash
 # Federation Authorization plugin class
 # Example 
-federation_authorization_class=org.fogbowcloud.manager.core.plugins.openstack.AllowAllAuthorizationPlugin
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
 ```
