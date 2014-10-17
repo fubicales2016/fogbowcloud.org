@@ -46,6 +46,26 @@
       <div class="col-lg-8 page-content">
       	<h1>Fogbow CLI</h1>
 <p>The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members, create instance requests and manage the lifecycle of those requests.</p>
+<h2>Installation</h2>
+<h3>Install from source</h3>
+<p>The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.</p>
+<div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-cli.git
+<span class="nb">cd </span>fogbow-cli
+mvn install
+</pre></div>
+
+
+<h3>Install from debian package</h3>
+<p>Download the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-cli/fogbow-cli_v0.2.0.deb">lastest stable package</a></p>
+<div class="highlight"><pre>wget http://downloads.fogbowcloud.org/stable/debian/v0.2.0/fogbow-cli/fogbow-cli_v0.2.0.deb
+</pre></div>
+
+
+<p>And install it with dpkg</p>
+<div class="highlight"><pre>sudo dpkg -i fogbow-cli_v0.2.0.deb
+</pre></div>
+
+
 <h2>Member operations (<code>member</code>)</h2>
 <h3>List federation members</h3>
 <p>Get all federation members.</p>
