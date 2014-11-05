@@ -97,6 +97,7 @@ path_trust_anchors=/path/trust/anchors
 path_vomsdir=/path/voms/dir
 
 ```
+Note : In the implementation of VOMS Plugin was used the [VOMS Api Java](https://github.com/italiangrid/voms-api-java). This Api does not support the JVM of oracle.
 
 ## Compute Plugin
 
