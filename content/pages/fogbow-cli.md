@@ -11,7 +11,6 @@ The fogbow CLI is a command line interface for the fogbow manager. It makes it e
 
 ##Installation
 ###Install from source
-The opportunism module uses python's Distutils, so all you need to do is to get the latest code and run the setup.py.
 
 ``` bash
 git clone https://github.com/fogbow/fogbow-cli.git
