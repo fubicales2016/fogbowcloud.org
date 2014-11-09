@@ -11,7 +11,7 @@ The fogbow CLI is a command line interface for the fogbow manager. It makes it e
 
 ##Installation
 ###Install from source
-
+Get the latest code of the project.
 ``` bash
 git clone https://github.com/fogbow/fogbow-cli.git
 cd fogbow-cli
