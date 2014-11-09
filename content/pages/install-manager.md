@@ -36,7 +36,7 @@ dpkg -i fogbow-manager_v0.2.0.deb
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
-* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components.  
+* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section.
 
 ```bash
 # jid of your Manager Component
@@ -141,7 +141,7 @@ ssh_tunnel_host_http_port=2223
 
 ```
 
-* **Manager HTTP Port:** HTTP port to which the manager component endpoint will be listening.
+* **Manager HTTP Port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
 
 ```bash
 # http port is the Manager Component endpoint port
@@ -149,6 +149,9 @@ ssh_tunnel_host_http_port=2223
 http_port = 8182
 
 ```
+
+* **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
+
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
