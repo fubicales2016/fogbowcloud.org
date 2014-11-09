@@ -6,6 +6,7 @@ index: 1
 
 Fogbow Dashboard
 ==========
+The fogbow is a extension of [horizon](https://github.com/openstack/horizon), which provides a web based user interface to fogbow manager.
 
 ##Installation
 
