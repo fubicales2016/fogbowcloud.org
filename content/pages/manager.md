@@ -6,7 +6,7 @@ index: 3
 
 # The fogbow manager
 
-The manager is the fogbow component that runs in each federation member to expose its rivate cloud to the federation. It provides an OCCI API for end users and interacts with its associated [rendezvous service](http://www.fogbowcloud.org/rendezvous) and other managers. Fogbow's OCCI implementation provides a unique feature that allows end users to create requests for large amounts of instances, typically beyond what can be provided by the private cloud to which the user has access.
+The manager is the fogbow component that runs in each federation member to expose its private cloud to the federation. It provides an OCCI API for end users and interacts with its associated [rendezvous service](http://www.fogbowcloud.org/rendezvous) and other managers. Fogbow's OCCI implementation provides a unique feature that allows end users to create requests for large amounts of instances, typically beyond what can be provided by the private cloud to which the user has access.
 
 Requests for multiple instances are then treated individually. That is to say, the user will immediatelly receive handlers for as many requests as the number of instances requested, and these requests will eventually materialize into the allocation of a VM instance. When that happens, the user can access the appropriate informations about a particular instance through the request handler that was received initially. This handler can also be used to monitor the request state, eg. to discover when a VM has been started.
 
