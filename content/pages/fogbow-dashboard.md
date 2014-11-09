@@ -20,10 +20,13 @@ cd fogbow-dashboard
 After the installation, open local_settings.py and edit its contents:
 
 ``` bash
+# Manager endpoint that will be used.
 FOGBOW_MANAGER_ENDPOINT = "http://localhost:5000"
 ```
 
 ##RUN
+To start the fogbow dashboard component, use the following command.
+
 ``` bash
 ./run_tests.sh --runserver localhost:9000
 ```
