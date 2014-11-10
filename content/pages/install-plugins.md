@@ -140,7 +140,7 @@ compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 
 # Image (property format: compute_occi_image_image-name). You can add as many image as you want.
 # Example (this image will be referenced as linuxx86):
-compute_occi_image_linuxx86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+compute_occi_image_fogbow-linux-x86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 
 # Network ID (This property is required only if user project has more than one network available)
 # Example:
@@ -195,9 +195,18 @@ compute_one_network_id=1
 
 # Image (property format: compute_one_image_image-name). You can add as many image as you want.
 # Example (this image will be referenced as linuxx86):
-compute_one_image_linuxx86=0
+compute_one_image_fogbow-linux-x86=0
 
 ```
+
+### About Image Property
+
+As you can see above, you can configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses the global image names for requests, then it is interesting to exist as equal image name as possible between the managers. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have available resource, the request is passed on to another cloud, cloud B, and will be fulfilled only if cloud B manager was configured with **image-ubuntu** (even if the cloud has the same image configured with different name, **image-ubuntu1204**, the request is not fulfilled). That is the reason we provide the most commom image names used by current fogbow installations:
+
+ * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
+ * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; password defined by admin
+
+Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
 
 ## Authorization Plugin
 
