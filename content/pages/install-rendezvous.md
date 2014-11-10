@@ -19,6 +19,11 @@ Component "rendezvous.test.com"
        component_secret = "password"
 ```
 
+After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+``` shell
+rendezvous.test.com.        22      IN      A       199.27.76.133
+```
+
 With an XMPP server already installed and configured, get the latest code of the project.
 ``` shell
 git clone https://github.com/fogbow/fogbow-rendezvous.git
