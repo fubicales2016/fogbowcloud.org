@@ -14,6 +14,8 @@ There three different categories of plugin: the **Identity Plugins**, the **Auth
 
 The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. 
 
+Make sure to have the identity plugin ports opened in your network firewall configuration, to allow authentication by federation users from outside the local network, If you are using Keystone Identity Plugin, open the port 5000, or the port 2633 for OpenNebula Identity Plugin.
+
 ### Configure
 
 As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), when the installation is done, rename the file ```manager.conf.example``` to ```manager.conf```. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that come along with the Fogbow Manager. You can configure different plugins for local and federation identity providers.
