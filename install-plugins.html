@@ -175,7 +175,7 @@
 
 <span class="c"># Image (property format: compute_occi_image_image-name). You can add as many image as you want.</span>
 <span class="c"># Example (this image will be referenced as linuxx86):</span>
-<span class="nv">compute_occi_image_linuxx86</span><span class="o">=</span>cadf2e29-7216-4a5e-9364-cf6513d5f1fd
+compute_occi_image_fogbow-linux-x86<span class="o">=</span>cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 
 <span class="c"># Network ID (This property is required only if user project has more than one network available)</span>
 <span class="c"># Example:</span>
@@ -229,10 +229,17 @@ compute_novav2_image_fogbow-linux-x86<span class="o">=</span>cadf2e29-7216-4a5e-
 
 <span class="c"># Image (property format: compute_one_image_image-name). You can add as many image as you want.</span>
 <span class="c"># Example (this image will be referenced as linuxx86):</span>
-<span class="nv">compute_one_image_linuxx86</span><span class="o">=</span>0
+compute_one_image_fogbow-linux-x86<span class="o">=</span>0
 </pre></div>
 
 
+<h3>About Image Property</h3>
+<p>As you can see above, you can configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses the global image names for requests, then it is interesting to exist as equal image name as possible between the managers. For example, if the user requests for one instance of <strong>image-ubuntu</strong> in cloud A and that cloud does not have available resource, the request is passed on to another cloud, cloud B, and will be fulfilled only if cloud B manager was configured with <strong>image-ubuntu</strong> (even if the cloud has the same image configured with different name, <strong>image-ubuntu1204</strong>, the request is not fulfilled). That is the reason we provide the most commom image names used by current fogbow installations:</p>
+<ul>
+<li><strong>fogbow-linux-x86</strong>: Cirros 0.3.3 image; cirros as username; and cubswin:) as password</li>
+<li><strong>fogbow-ubuntu-12.04-with-java</strong>: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; password defined by admin</li>
+</ul>
+<p>Furthermore, Fogbow also expects that all images configured at manager have <strong>cloud-init</strong> working properly.</p>
 <h2>Authorization Plugin</h2>
 <p>The Authorization Plugin tells whether a given user (with a proper authenticated token) is able to create requests in the Fedartion. </p>
 <h3>Configure</h3>
