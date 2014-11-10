@@ -52,6 +52,8 @@ host_key_path=hostkey.ser
 
 ```
 
+After the configuration, open firewall to allow access to all ports in the configuration such as tunnel_port, http_port and the range of ports.
+
 ## Run
 
 ### If installed from source
