@@ -13,7 +13,21 @@ This tutorial assumes you have Openstack's OCCI API enabled in your underlying c
 Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
 
 ## Install from source
-To set up a manager instance, first, get the latest code from github.
+As the manger runs as an XMPP component, you need an XMPP server running and properly configured.
+We recommend [prosody](https://prosody.im/) due to its ease of configuration.
+
+If you are using Prosody, you can add a component to its configuration with:
+``` shell
+Component "manager.test.com"
+       component_secret = "password"
+```
+
+After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+``` shell
+manager.test.com.        22      IN      A       199.27.76.133
+```
+
+With an XMPP server already installed and configured, get the latest code of the project.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
 ```
@@ -36,7 +50,7 @@ dpkg -i fogbow-manager_v0.2.0.deb
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
-* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section.
+* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the "Install from source" section.
 
 ```bash
 # jid of your Manager Component
