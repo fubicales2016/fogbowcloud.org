@@ -73,6 +73,11 @@ We recommend <a href="https://prosody.im/">prosody</a> due to its ease of config
 </pre></div>
 
 
+<p>After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.</p>
+<div class="highlight"><pre><span class="n">rendezvous</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>        <span class="mi">22</span>      <span class="n">IN</span>      <span class="n">A</span>       <span class="mf">199.27.76.133</span>
+</pre></div>
+
+
 <p>With an XMPP server already installed and configured, get the latest code of the project.</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fogbow/fogbow-rendezvous.git</span>
 </pre></div>
