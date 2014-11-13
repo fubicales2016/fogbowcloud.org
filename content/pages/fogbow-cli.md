@@ -25,7 +25,7 @@ wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-cli/fogbow-cli_lates
 ```
 And install it with dpkg
 ```bash
-sudo dpkg -i fogbow-cli_v0.2.0.deb
+sudo dpkg -i fogbow-cli_latest.deb
 ```
 
 ## Member operations (```member```)
