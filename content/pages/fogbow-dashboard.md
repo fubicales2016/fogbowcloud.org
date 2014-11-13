@@ -6,27 +6,28 @@ index: 1
 
 Fogbow Dashboard
 ==========
-The fogbow is a extension of [horizon](https://github.com/openstack/horizon), which provides a web based user interface to fogbow manager.
+The Fogbow Dashboard is an implemetation of a [horizon](https://github.com/openstack/horizon) dashboard and provides a web based user interface to the Fogbow Manager. The operations that can be performed via the Fogbow Dashboard are the same provided by the [Fogbow CLI](http://www.fogbowcloud.org/fogbow-cli).
 
 ##Installation
 
-``` bash
+```bash
 git clone https://github.com/fogbow/fogbow-dashboard.git
 cd fogbow-dashboard
-./run_tests.sh (to download libraries)
+# Download libraries and run tests
+./run_tests.sh
 ```
 
 ##Configure
-After the installation, open local_settings.py and edit its contents:
+After the installation, edit the ```local_settings.py``` file to point the Fogbow Dashboard to the HTTP endpoint of a Fogbow Manager:
 
 ``` bash
-# Manager endpoint that will be used.
-FOGBOW_MANAGER_ENDPOINT = "http://localhost:5000"
+# Fogbow Manager to be used.
+FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
 ```
 
-##RUN
-To start the fogbow dashboard component, use the following command.
-
+##Run
 ``` bash
 ./run_tests.sh --runserver localhost:9000
 ```
+
+To know more about the Horizon project, and how to deploy it within different environments, see the [Horizon docs](http://docs.openstack.org/developer/horizon/index.html).
