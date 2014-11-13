@@ -99,7 +99,7 @@ path_trust_anchors=/path/trust/anchors
 path_vomsdir=/path/voms/dir
 
 ```
-Note: The VOMS Plugin uses the [VOMS Api Java](https://github.com/italiangrid/voms-api-java). This API only works with JREs provided by Oracle.
+Note: The VOMS Plugin uses the [VOMS Api Java](https://github.com/italiangrid/voms-api-java). This API only works with JREs provided by Oracle with the [unlimited strength file installed](http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters).
 
 ## Compute Plugin
 
