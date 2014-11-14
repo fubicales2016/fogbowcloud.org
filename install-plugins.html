@@ -140,7 +140,7 @@
 </pre></div>
 
 
-<p>Note : In the implementation of VOMS Plugin was used the <a href="https://github.com/italiangrid/voms-api-java">VOMS Api Java</a>. This Api does not support the JVM of oracle.</p>
+<p>Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java">VOMS Api Java</a>. This API only works with JREs provided by Oracle.</p>
 <h2>Compute Plugin</h2>
 <p>The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at <code>manager.conf</code> file are correct. If not, the behaviour of federation may not be the expected.</p>
 <h3>Configure</h3>
