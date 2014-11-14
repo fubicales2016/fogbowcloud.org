@@ -23,13 +23,13 @@ sudo python setup.py install
 ```
 
 ###Install from debian package
-Download the [lastest stable package](http://downloads.fogbowcloud.org/nightly/debian/fogbow-powernap/fogbow-powernap_latest.deb)
+Download the [lastest stable package](http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-powernap/fogbow-powernap_v0.2.1.deb)
 ```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-powernap/fogbow-powernap_latest.deb
+wget http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-powernap/fogbow-powernap_v0.2.1.deb
 ```
 And install it with dpkg
 ```bash
-sudo dpkg -i fogbow-powernap_latest.deb
+sudo dpkg -i fogbow-powernap_v0.2.1.deb
 ```
 
 The opportunistic module files will be located at /var/lib/fogbow-opportunism.

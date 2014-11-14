@@ -37,14 +37,14 @@ mvn install
 ```
 
 ## Install from debian package
-To set up a manager instance, first, download to the [latest debian package](http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb)
+To set up a manager instance, first, download to the [latest debian package](http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-manager/fogbow-manager_v0.2.1.deb)
 ```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
+wget http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-manager/fogbow-manager_v0.2.1.deb
 ```
 
 Then, install it with dkpg
 ```bash
-dpkg -i fogbow-manager_latest.deb 
+dpkg -i fogbow-manager_v0.2.1.deb 
 ```
 
 ## Configure

@@ -19,13 +19,13 @@ mvn install
 ```
 
 ###Install from debian package
-Download the [lastest stable package](http://downloads.fogbowcloud.org/nightly/debian/fogbow-cli/fogbow-cli_latest.deb)
+Download the [lastest stable package](http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-cli/fogbow-cli_v0.2.1.deb)
 ```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-cli/fogbow-cli_latest.deb
+wget http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-cli/fogbow-cli_v0.2.1.deb
 ```
 And install it with dpkg
 ```bash
-sudo dpkg -i fogbow-cli_latest.deb
+sudo dpkg -i fogbow-cli_v0.2.1.deb
 ```
 
 ## Member operations (```member```)
