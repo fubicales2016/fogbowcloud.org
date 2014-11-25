@@ -106,7 +106,7 @@ Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</spa
 <p>Create a new user token.</p>
 <p>Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:</p>
 <ul>
-<li><strong>--get</strong> (required)</li>
+<li><strong>--create</strong> (required)</li>
 <li><strong>--type</strong> (required) : identity plugin type</li>
 <li><strong>-DauthUrl</strong> (required): identity plugin endpoint</li>
 <li><strong>-Dpassword=</strong> (optional): dynamic parameter</li>
@@ -115,7 +115,7 @@ Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</spa
 </ul>
 <p>Note: if a password is not provided, it will be requested in the console.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli token --get -Dpassword<span class="o">=</span>mypassword -Dusername<span class="o">=</span>myusername -DtenantName<span class="o">=</span>mytenantname -DauthUrl<span class="o">=</span>http://localhost:8182 --type openstack
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli token --create -Dpassword<span class="o">=</span>mypassword -Dusername<span class="o">=</span>myusername -DtenantName<span class="o">=</span>mytenantname -DauthUrl<span class="o">=</span>http://localhost:8182 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 </pre></div>
