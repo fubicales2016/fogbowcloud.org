@@ -72,7 +72,7 @@ Create a new user token.
 
 Note: to pass the credentials and the identity plugin endpoint it is necessary the use of dynamic parameters; follow the example with the OpenStack credentials:
 
-* **--get** (required)
+* **--create** (required)
 * **--type** (required) : identity plugin type
 * **-DauthUrl** (required): identity plugin endpoint
 * **-Dpassword=** (optional): dynamic parameter
@@ -83,7 +83,7 @@ Note: if a password is not provided, it will be requested in the console.
 
 Example:
 ```bash
-$ fogbow-cli token --get -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://localhost:8182 --type openstack
+$ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -DtenantName=mytenantname -DauthUrl=http://localhost:8182 --type openstack
 
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
