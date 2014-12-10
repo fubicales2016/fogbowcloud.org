@@ -37,7 +37,7 @@
           <li >
             <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
           </li>
-          <li class="active">
+          <li >
             <a href="http://www.fogbowcloud.org/install-general.html">Install it</a>
           </li>
           <li >
@@ -54,84 +54,18 @@
       <div class="col-lg-4">
       	<br>
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-            <li >
-            	<a href="install-general">Get started</a>
-            </li>
-            <li >
-            	<a href="install-manager">Manager</a>
-            </li>
-            <li >
-            	<a href="install-plugins">Plugins</a>
-            </li>
-            <li >
-            	<a href="install-rendezvous">Rendezvous</a>
-            </li>
-            <li >
-            	<a href="install-opportunism">Opportunism</a>
-            </li>
-            <li >
-            	<a href="install-nova-windows">Windows Nova Compute</a>
-            </li>
             <li class="active">
-            	<a href="install-reverse-tunnel">Reverse Tunnel</a>
+            	<a href="contact">Contact us</a>
             </li>
         </ul>
       </div>
       <div class="col-lg-8 page-content">
-      	<h1>Reverse Tunnel</h1>
-<h2>Install from source</h2>
-<p>To set up the reverse tunnel server, first, get the latest code from github.</p>
-<div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-reverse-tunnel.git
-</pre></div>
-
-
-<p>Then, install it with Maven</p>
-<div class="highlight"><pre>mvn install
-</pre></div>
-
-
-<h2>Install from debian package</h2>
-<p>To set up the reverse tunnel server, first, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.1.deb">latest debian package</a></p>
-<div class="highlight"><pre>wget http://downloads.fogbowcloud.org/stable/debian/v0.2.1/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.1.deb
-</pre></div>
-
-
-<p>Then, install it with dkpg</p>
-<div class="highlight"><pre>dpkg -i fogbow-reverse-tunnel_v0.2.1.deb 
-</pre></div>
-
-
-<h2>Configure</h2>
-<p>After the installation, move the file <code>reverse-tunnel.conf.example</code> to <code>reverse-tunnel.conf</code> and edit its contents:</p>
-<div class="highlight"><pre><span class="c"># Port for SSH tunnels</span>
-<span class="nv">tunnel_port</span><span class="o">=</span>2222
-
-<span class="c"># Port for HTTP requests</span>
-<span class="nv">http_port</span><span class="o">=</span>2223
-
-<span class="c"># IP that the service will attach to</span>
-<span class="nv">tunnel_host</span><span class="o">=</span>0.0.0.0
-
-<span class="c"># Range for external ports</span>
-<span class="nv">external_port_range</span><span class="o">=</span>40000:50000
-
-<span class="c"># Path for host key file</span>
-<span class="nv">host_key_path</span><span class="o">=</span>hostkey.ser
-</pre></div>
-
-
-<p>After the configuration, open firewall to allow access to all ports in the configuration such as tunnel_port, http_port and the range of ports.</p>
-<h2>Run</h2>
-<h3>If installed from source</h3>
-<p>Execute the start-tunnel-server script:</p>
-<div class="highlight"><pre>./start-tunnel-server
-</pre></div>
-
-
-<h3>If installed via the debian package</h3>
-<p>The Fogbow Reverse Tunnel will start automatically after the installation. To restart it, do the following:</p>
-<div class="highlight"><pre>service fogbow-reverse-tunnel start
-</pre></div>
+      	<h1>Contact us</h1>
+<h2>Via our contact email address</h2>
+<p>E-mail us at <a href="mailto:contact@fogbowcloud.org">contact@fogbowcloud.org</a>.</p>
+<h2>Join the mailing lists</h2>
+<h3>Development</h3>
+<p>Join <a href="mailto:fogbow-dev-l@lsd.ufcg.edu.br">fogbow-dev-l@lsd.ufcg.edu.br</a>.</p>
       </div>
     </div>
     </div>
