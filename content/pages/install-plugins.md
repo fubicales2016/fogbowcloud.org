@@ -18,6 +18,34 @@ Those plugins could also benefit from the fact that they are called when new req
 
 ### Configure
 
+```bash
+# Image Storage Plugin class
+image_storage_class=org.fogbowcloud.manager.core.plugins.egi.EgiImageStoragePlugin
+
+# Base URL of the VM marketplace, if not provided, 
+# the system will still work with images provided statically 
+image_storage_egi_base_url=http://vms.fogbowcloud.org/~base/ 
+
+# If the VM marketplace requires authentication, a Java Keystore can be provided
+image_storage_egi_keystore_path=/path/to/keystore
+image_storage_egi_keystore_password=passpass
+
+# Temporary folder where images from the VM marketplace are stored
+image_storage_egi_tmp_storage=/tmp/
+
+# Static mapping of global image ids to local image ids
+image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
+image_storage_static_fogbow-ubuntu-1204=81765250-a4e4-440d-a215-43c9c0849120
+
+```
+
+As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
+
+ * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
+ * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; SSH login via publickey.
+
+Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
+
 ## Identity Plugin
 
 The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. 
@@ -148,10 +176,6 @@ compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
 # Resource Cloud Scheme
 compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 
-# Image (property format: compute_occi_image_image-name). You can add as many image as you want.
-# Example (this image will be referenced as linuxx86):
-compute_occi_image_fogbow-linux-x86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
-
 # Network ID (This property is required only if user project has more than one network available)
 # Example:
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
@@ -173,9 +197,6 @@ compute_novav2_flavor_medium=2
 
 # Large Flavour Identifier
 compute_novav2_flavor_large=3
-
-# Identifier for the fogbow-linux-x86 image (you can have several of these)
-compute_novav2_image_fogbow-linux-x86=cadf2e29-7216-4a5e-9364-cf6513d5f1fd
 
 # Network id (This property is required only if user project has more than one network available)
 compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
@@ -203,20 +224,7 @@ compute_one_flavor_large={mem=512, cpu=4}
 # Network ID to be used for instances
 compute_one_network_id=1
 
-# Image (property format: compute_one_image_image-name). You can add as many image as you want.
-# Example (this image will be referenced as linuxx86):
-compute_one_image_fogbow-linux-x86=0
-
 ```
-
-### About Image Property
-
-As you can see above, you can configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses the global image names for requests, then it is interesting to exist as equal image name as possible between the managers. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have available resource, the request is passed on to another cloud, cloud B, and will be fulfilled only if cloud B manager was configured with **image-ubuntu** (even if the cloud has the same image configured with different name, **image-ubuntu1204**, the request is not fulfilled). That is the reason we provide the most commom image names used by current fogbow installations:
-
- * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
- * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; password defined by admin
-
-Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
 
 ## Authorization Plugin
 
