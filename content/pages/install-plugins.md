@@ -8,7 +8,15 @@ index: 1
 
 The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.
 
-There three different categories of plugin: the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
+There are four different categories of plugins: the **Image Storage Plugins**, the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
+
+## Image Storage Plugin
+
+New requests arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
+
+Those plugins could also benefit from the fact that they are called when new requests arrive, and, for instance, perform dynamic upload of images fetched from VM marketplaces to the underlying cloud, which is exactly what the ```EgiImageStoragePlugin``` does.
+
+### Configure
 
 ## Identity Plugin
 
