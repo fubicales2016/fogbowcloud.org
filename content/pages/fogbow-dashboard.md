@@ -12,17 +12,28 @@ The Fogbow Dashboard is an implemetation of a [horizon](https://github.com/opens
 
 ```bash
 git clone https://github.com/fogbow/fogbow-dashboard.git
+sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev
 cd fogbow-dashboard
 # Download libraries and run tests
 ./run_tests.sh
 ```
 
 ##Configure
-After the installation, edit the ```local_settings.py``` file to point the Fogbow Dashboard to the HTTP endpoint of a Fogbow Manager:
+After the installation, edit the ```openstack_dashboard/local/local_settings.py``` file to point the Fogbow Dashboard to the HTTP endpoint of a Fogbow Manager:
 
 ``` bash
 # Fogbow Manager to be used.
 FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
+
+# Endpoint Local 
+FOGBOW_LOCAL_AUTH_ENDPOINT = 'http://localhost:5000'
+# types : keystone, opennebula, token
+FOGBOW_LOCAL_AUTH_TYPE = 'keystone'
+
+# Endpoint Federation 
+FOGBOW_FEDERATION_AUTH_ENDPOINT = 'http://localhost:5000' 
+# types : keystone, opennebula, voms, token
+FOGBOW_FEDERATION_AUTH_TYPE = 'voms'
 ```
 
 ##Run
