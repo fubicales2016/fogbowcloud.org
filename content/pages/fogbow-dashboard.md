@@ -12,7 +12,7 @@ The Fogbow Dashboard is an implemetation of a [horizon](https://github.com/opens
 
 ```bash
 git clone https://github.com/fogbow/fogbow-dashboard.git
-sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev
+sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
 cd fogbow-dashboard
 # Download libraries and run tests
 ./run_tests.sh
