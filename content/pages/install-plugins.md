@@ -127,6 +127,8 @@ local_identity_class=org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugi
 path_vomses=/path/vomes
 
 # Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.
+# You need to have the certificate, CRL (certificate revocation list), info, namespaces and signing_policy files for each CA.
+# These files need to have read permission grant to the user that runs the fogbow manager
 # Default : "/etc/grid-security/certificates"
 path_trust_anchors=/path/trust/anchors
 
