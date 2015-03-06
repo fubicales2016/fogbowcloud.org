@@ -226,6 +226,20 @@ compute_one_flavor_large={mem=512, cpu=4}
 # Network ID to be used for instances
 compute_one_network_id=1
 
+# Settings used by ONE compute plugin to register new images in the cloud
+# ID of datastore to register the image
+compute_one_datastore_id=1
+# To register a new image, the image file needs to be in the some machine where ONE is running
+# If the fogbow manager is running in a different machine, set the SSH properties to transfer the image
+# Or if the fogbow manager is in the same machine, leave it blank
+compute_one_ssh_host=127.0.0.1
+compute_one_ssh_port=22
+compute_one_ssh_username=fogbow
+# The SSH try to access using private key, set the path to ssh id_rsa file
+compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
+# Set the directory to copy images in remote host
+compute_one_ssh_target_temp_folder=/tmp/images
+
 ```
 
 ## Authorization Plugin
