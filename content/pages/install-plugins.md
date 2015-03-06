@@ -110,7 +110,8 @@ local_proxy_account_password=fogbow
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
 
-# Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.
+# Directory where are the certificates of Certificate Authorities (CA). 
+# They are certificates that you trust.
 x509_ca_dir_path=/path/to/ca/directory
 
 ```
@@ -126,9 +127,12 @@ local_identity_class=org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugi
 # Default : "~/.glite/vomses"
 path_vomses=/path/vomes
 
-# Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.
-# You need to have the certificate, CRL (certificate revocation list), info, namespaces and signing_policy files for each CA.
-# These files need to have read permission grant to the user that runs the fogbow manager
+# Directory where are the certificates of Certificate Authorities (CA). 
+# They are certificates that you trust.
+# You need to have the certificate, CRL (certificate revocation list), 
+# info, namespaces and signing_policy files for each CA.
+# These files need to have read permission grant to the user that runs
+# the fogbow manager
 # Default : "/etc/grid-security/certificates"
 path_trust_anchors=/path/trust/anchors
 
@@ -178,7 +182,8 @@ compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
 # Resource Cloud Scheme
 compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 
-# Network ID (This property is required only if user project has more than one network available)
+# Network ID (This property is required only if user project has more 
+# than one network available)
 # Example:
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
@@ -200,7 +205,8 @@ compute_novav2_flavor_medium=2
 # Large Flavour Identifier
 compute_novav2_flavor_large=3
 
-# Network id (This property is required only if user project has more than one network available)
+# Network id (This property is required only if user project has more 
+# than one network available)
 compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
