@@ -162,7 +162,8 @@ image_storage_static_fogbow-ubuntu-1204<span class="o">=</span>81765250-a4e4-440
 <div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
 <span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
 
-<span class="c"># Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.</span>
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). </span>
+<span class="c"># They are certificates that you trust.</span>
 <span class="nv">x509_ca_dir_path</span><span class="o">=</span>/path/to/ca/directory
 </pre></div>
 
@@ -176,9 +177,12 @@ image_storage_static_fogbow-ubuntu-1204<span class="o">=</span>81765250-a4e4-440
 <span class="c"># Default : &quot;~/.glite/vomses&quot;</span>
 <span class="nv">path_vomses</span><span class="o">=</span>/path/vomes
 
-<span class="c"># Directory where are the certificates of Certificate Authorities (CA). They are certificates that you trust.</span>
-<span class="c"># You need to have the certificate, CRL (certificate revocation list), info, namespaces and signing_policy files for each CA.</span>
-<span class="c"># These files need to have read permission grant to the user that runs the fogbow manager</span>
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). </span>
+<span class="c"># They are certificates that you trust.</span>
+<span class="c"># You need to have the certificate, CRL (certificate revocation list), </span>
+<span class="c"># info, namespaces and signing_policy files for each CA.</span>
+<span class="c"># These files need to have read permission grant to the user that runs</span>
+<span class="c"># the fogbow manager</span>
 <span class="c"># Default : &quot;/etc/grid-security/certificates&quot;</span>
 <span class="nv">path_trust_anchors</span><span class="o">=</span>/path/trust/anchors
 
@@ -222,7 +226,8 @@ image_storage_static_fogbow-ubuntu-1204<span class="o">=</span>81765250-a4e4-440
 <span class="c"># Resource Cloud Scheme</span>
 <span class="nv">compute_occi_resource_scheme</span><span class="o">=</span>http://schemas.openstack.org/template/resource#
 
-<span class="c"># Network ID (This property is required only if user project has more than one network available)</span>
+<span class="c"># Network ID (This property is required only if user project has more </span>
+<span class="c"># than one network available)</span>
 <span class="c"># Example:</span>
 <span class="nv">compute_occi_network_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
 </pre></div>
@@ -244,7 +249,8 @@ image_storage_static_fogbow-ubuntu-1204<span class="o">=</span>81765250-a4e4-440
 <span class="c"># Large Flavour Identifier</span>
 <span class="nv">compute_novav2_flavor_large</span><span class="o">=</span>3
 
-<span class="c"># Network id (This property is required only if user project has more than one network available)</span>
+<span class="c"># Network id (This property is required only if user project has more </span>
+<span class="c"># than one network available)</span>
 <span class="nv">compute_novav2_network_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
 </pre></div>
 
