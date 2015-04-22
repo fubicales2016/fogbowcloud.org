@@ -14,7 +14,7 @@ Also, the manager needs a user registered in the underlying private cloud in ord
 
 ## Install from source
 As the manger runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend [prosody](https://prosody.im/) due to its ease of configuration.
+We recommend [prosody](https://prosody.im/) 0.9.8+ due to its ease of configuration.
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
