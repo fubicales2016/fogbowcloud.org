@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <ul id="navbar-main" class="nav collapse navbar-nav navbar-right">
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
           <li {% for page in pages if page.section == 'arch' and page.save_as == output_file %}class="active"{% endfor %}>
             <a href="{{ SITEURL }}/rational.html">Understand it</a>
           </li>
