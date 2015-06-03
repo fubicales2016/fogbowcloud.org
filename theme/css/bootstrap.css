@@ -5217,6 +5217,8 @@ button.close {
 .cloudy-background {
   background: url('../img/bg/fogbow.jpg');
   background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .modal-footer .btn + .btn {
