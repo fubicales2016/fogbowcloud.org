@@ -1,4 +1,14 @@
 {% extends "base.html" %} {% set active_page = "index" %}
+{% block extrahead %}
+  <style>
+    .navbar {
+      opacity: 0.8;
+    }
+    body {
+      margin-top: 0px;
+    }
+  </style>
+{% endblock %}
 {% block jumbo %}
   <div class="jumbotron cloudy-background">
     <div class="container">
