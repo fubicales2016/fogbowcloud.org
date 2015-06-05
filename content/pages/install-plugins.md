@@ -250,7 +250,7 @@ compute_one_ssh_target_temp_folder=/tmp/images
 
 ## Authorization Plugin
 
-The Authorization Plugin tells whether a given user (with a proper authenticated token) is able to create requests in the Fedartion. 
+The Authorization Plugin tells whether a given user (with a proper authenticated token) is able to create requests in the Federation. 
 
 ### Configure
 
