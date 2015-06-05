@@ -299,12 +299,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #008cba;
+  color: #4f388e;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #00526e;
+  color: #4f388e;
   text-decoration: underline;
 }
 a:focus {
@@ -3582,7 +3582,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #ffffff;
-  background-color: #008cba;
+  background-color: #4f388e;
 }
 .nav-stacked > li {
   float: none;
@@ -4035,7 +4035,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #ffffff;
 }
 .navbar-inverse {
-  background-color: #008cba;
+  background-color: #4f388e;
   border-color: #006687;
 }
 .navbar-inverse .navbar-brand {
@@ -4372,7 +4372,7 @@ a.badge:focus {
 }
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #008cba;
+  color: #4f388e;
   background-color: #ffffff;
 }
 .nav-pills > li > a > .badge {
