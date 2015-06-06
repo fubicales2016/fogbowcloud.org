@@ -20,7 +20,7 @@ The distributed and complex nature of a federation of private clouds and the num
 
 <center>![Architecture of the Fogbow Manager]({filename}/images/FM.png)</center>
 
-The functionalities of the FM are exposed to its clients via a REST-ful API that implements [OCCI[(http://occi-wg.org/) extensions. This API can be used to manage asynchronous requests for VMs, as well as functionalities that allow querying the federation members. All other functionalities made available to the local users of the underlying cloud are only available through the native API exposed by the underlying cloud (eg. OpenStack, OpenNebula, OCCI etc.).
+The functionalities of the FM are exposed to its clients via a REST-ful API that implements [OCCI](http://occi-wg.org/) extensions. This API can be used to manage asynchronous requests for VMs, as well as functionalities that allow querying the federation members. All other functionalities made available to the local users of the underlying cloud are only available through the native API exposed by the underlying cloud (eg. OpenStack, OpenNebula, OCCI etc.).
 
 ## Dealing with firewalls and NATs
 
