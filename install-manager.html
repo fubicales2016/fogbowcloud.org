@@ -79,11 +79,11 @@
       <div class="col-lg-8 page-content">
       	<h1>Manager</h1>
 <p>The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. </p>
-<p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface">Openstack's OCCI guide</a> to know more.</p>
-<p>Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
+<p>This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface" target=_blank>Openstack's OCCI guide</a> to know more.</p>
+<p>Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users" target=_blank>Openstack Ops guide</a>. The configuration section of this page explains it in more detail.</p>
 <h2>Install from source</h2>
 <p>As the manger runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend <a href="https://prosody.im/">prosody</a> 0.9.8+ due to its ease of configuration.</p>
+We recommend <a href="https://prosody.im/" target=_blank>prosody 0.9.8+</a> due to its ease of configuration.</p>
 <p>If you are using Prosody, you can add a component to its configuration with:</p>
 <div class="highlight"><pre><span class="n">Component</span> <span class="s">&quot;manager.test.com&quot;</span>
        <span class="n">component_secret</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
