@@ -2,11 +2,11 @@ Title: Rendezvous
 url: install-rendezvous
 save_as: install-rendezvous.html
 section: install
-index: 2
+index: 3
 
 # Rendezvous
 
-The rendezvous component acts as a discovery service for a fowbow federation. It allows members to find each other by providing a complete status of the federation.
+The rendezvous component acts as a discovery service for a fogbow federation. It allows members to find each other by providing a complete status of the federation.
 
 ## Install from source
 
