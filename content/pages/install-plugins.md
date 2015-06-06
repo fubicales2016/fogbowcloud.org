@@ -2,7 +2,7 @@ Title: Plugins
 url: install-plugins
 save_as: install-plugins.html
 section: install
-index: 1
+index: 1.1
 
 # Plugins
 
