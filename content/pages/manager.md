@@ -16,7 +16,11 @@ There are two types of requests: one-time and persistent. The lifecycle of a req
 
 For one-time requests, once the request is fulfilled, if the associated VM instance is lost, i.e. deleted by the client or pre-empted by the provider, the request is automatically closed.
 
+<center>![Lifecycle of one-time requests]({filename}/images/one-time.png)</center>
+
 For the persistent requests, if the VM instance associated to a request that was fulfilled is lost, the request goes back to the open state, and a new VM instance can be associated to it. The client needs to delete a persistent request, when VM instances associated to that request are no longer needed.
+
+<center>![Lifecycle of persistent requests]({filename}/images/persistent.png)</center>
 
 Instances are allocated to pending requests as follows. While there are available resources, the manager will create instances in the underlying local private cloud. Thereafter, it tries to reclaim resources in the local cloud that are being used to serve remote requests coming from other fogbow managers, and uses these resources to fulfil the local request. If these resources are still not enough to fully serve the request, the fogbow manager contacts the other fogbow managers and tries to obtain from them the extra resources needed. When a fogbow manager receives a request from another fogbow manager, it offers any idle resources available in its local cloud to fulfil the remote request. If these are not enough, the fogbow manager uses some prioritization policy to decide whether resources previously allocated to other fogbow managers should be reclaimed for serving the newly received request. This is done in such a way as to optimize the objective function – e.g. fairness – defined by the federation as a whole, or by each individual member. Clients can start using the instances created as soon as they become available. Open requests are rescheduled regularly until they are fulfilled or no longer valid, ie. the client has deleted them.
 
