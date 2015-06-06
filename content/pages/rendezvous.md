@@ -6,7 +6,7 @@ index: 2
 
 # The rendezvous service
 
-The rendezvous service provides a directory for the private clouds that are member of a particular fogbow federation. It allows members to find each other by providing a complete status of the federation. 
+The rendezvous service provides a directory for the private clouds that are member of a particular fogbow federation. It allows members to find each other by providing a complete status of the federation. The service may be implemented by replicated components running at different sites. These components run a lazy replication protocol to keep all components eventually synchronized. Strong consistency is not required, since the service only gives a hint of the clouds that currently belong to the federation.
 
 ## Service architecture
 
@@ -16,7 +16,7 @@ The first one allows a federation member to report resource information. In this
 
 The WhoIsAlive method allows a federation member to ask for the set of active federation members. The rendezvous service will then return resource information about all currently active members.
 
-Also, more than one instance of a rendezvous service can be active to tolerate faults. A rendezvous service instance communicates with other known rendezvous service replicas to synchronize their states. The synchronization is made through a WhoIsAliveSync method. This method sends a message to each of the replicas currently known by a rendezvous service instance asking for the known neighbors, i.e. replicas of the rendezvous service, and the known active members of the federation. The responses received are merged with the information that was previously known.
+Also, as explained above, more than one instance of a rendezvous service can be active to tolerate faults. A rendezvous service instance communicates with other known rendezvous service replicas to synchronize their states. The synchronization is made through a WhoIsAliveSync method. This method sends a message to each of the replicas currently known by a rendezvous service instance asking for the known neighbors, i.e. replicas of the rendezvous service, and the known active members of the federation. The responses received are merged with the information that was previously known.
 
 The rendezvous' response protocols use Result Set Management http://xmpp.org/extensions/xep-0059.html to limit the size of their response. Each user can specify how many items should come in response to a whoIsAlive or whoIsAliveSync call. Each rendezvous has a hard-coded maximum number of items that could come in response, currently, that number is 100. Even if the user defines a maximum number larger or not define a number at all, the response will not be longer than the hard-coded constant. The user can also page foward, which means asking for a response starting from a specific item. 
 
