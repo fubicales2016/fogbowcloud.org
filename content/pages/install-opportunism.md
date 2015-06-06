@@ -233,7 +233,7 @@ auth_host=10.1.0.43
 ##Commonly these four services are run on the same machine
 ```
 
-You also need to configure:
+You also need to configure the Monitor:
 
 ```bash
 [GENERAL]
