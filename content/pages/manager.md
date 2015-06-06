@@ -34,8 +34,6 @@ Managers interact with each other to perform the following:
 * Get detailed information about remote instances;
 * Remove remote instances.
 
-You can check the [manager protocol](#manager-protocol) documentation for more information.
-
 A manager will also interact with a rendezvous service. Those interactions will:
 
 * Send liveness messages;
