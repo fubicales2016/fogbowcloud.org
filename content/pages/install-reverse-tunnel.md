@@ -18,7 +18,7 @@ mvn install
 ```
 
 ## Install from debian package
-To set up the reverse tunnel server, first, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.2.deb> target=_blank>latest debian package</a>
+To set up the reverse tunnel server, first, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.2.deb" target=_blank>latest debian package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-reverse-tunnel/fogbow-reverse-tunnel_v0.2.2.deb
 ```
