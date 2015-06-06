@@ -11,7 +11,7 @@ The rendezvous component acts as a discovery service for a fogbow federation. It
 ## Install from source
 
 As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend [prosody](https://prosody.im/) due to its ease of configuration.
+We recommend <a href="https://prosody.im/" target=_blank>prosody</a> due to its ease of configuration.
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -34,7 +34,7 @@ mvn install
 ```
 
 ## Install from debian package
-With an XMPP server already installed and configured, download to the [latest debian package](http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb)
+With an XMPP server already installed and configured, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb" target=_blank>latest debian package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb
 ```
