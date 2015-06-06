@@ -26,7 +26,7 @@ Instances are allocated to pending requests as follows. While there are availabl
 
 ## Architecture
 
-The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file.
+The manager component was designed to be agnostic to the underlying cloud technology. There is an interoperability plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file.
 
 Managers interact with each other to perform the following:
 
@@ -45,7 +45,7 @@ See more details at the [rendezvous protocol](http://www.fogbowcloud.org/rendezv
 
 ## Basic functioning
 
-When an end user requests resoures, s/he is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. A one-time request is fulfilled at most once, whilst a persistent one is considered for scheduling whenever it has no instance allocated to it and it is still into the validity period. This way, new instances are created for **persistent** requests whose instances have failed.
+When a client requests resoures, it is able to specify a request type, which can be **one-time** or **persistent**, default set to **one-time**. A one-time request is fulfilled at most once, whilst a persistent one is considered for scheduling whenever it has no instance allocated to it and it is still into the validity period. This way, new instances are created for **persistent** requests whose instances have failed.
 
 Once an end user makes a request, the possible request states are: 
 
@@ -75,7 +75,7 @@ The manager is responsible for three periodic activities:
 * **Monitoring instances:** the manager checks all instances that it is aware of and identifies when an instance is no longer active; then it updates the state of the corresponding request according to its type (one-time|persistent); the instance monitoring period is also configurable in the manager configuration file;
 * **Reissuing requests' tokens:** the manager updates requests' tokens when this is needed; when a request was issued by a user of the underlying cloud, it is aware of the access token being used. However this access token can expire before the request gets fulfilled, or before the valid_until attribute. In this way, the manager updates the request's token when it is necessary. The token update period is configurable in the manager configuration file.
 
-The end user can interact with a manager component to perform the following operations:
+The client can interact with a manager component to perform the following operations:
 
 * List the federation members;
 * Get a token access id;
