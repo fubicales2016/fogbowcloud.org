@@ -80,7 +80,7 @@
 <p>Opportunism is a feature that allows shared resources to be used as processing nodes of a private infrastructure-as-a-service cloud. Each shared resource can be configured to define when it is deemed usable by the cloud, eg. when it is idle, or when the utilization is below some threshold. When the resources are in a state that allows them to be used by the cloud, then they show up to the cloud manager and can be used to have VM instances allocated to them, otherwise they are removed from the cloud, in which case, any VM instance that is still running in the resource is either suspended or simply terminated.</p>
 <p>A fogbow manager can be used to federate an opportunistic cloud with other private clouds that also use shared resources in an opportunistic way, or that use dedicated resources in the conventional way.</p>
 <h2>Implementation</h2>
-<p>In the current implementation it is possible to create opportunistic private clouds managed by OpenStack that use desktops in a LAN as computing nodes. We support only desktops running Linux. Resources are deemed usable by the cloud when there is no mouse/keyboard activity for a configurable period of time.</p>
+<p>In the current implementation it is possible to create opportunistic private clouds managed by OpenStack that use desktops in a LAN as computing nodes. We support desktops running both Linux and Windows. Resources are deemed usable by the cloud when there is no mouse/keyboard activity for a configurable period of time.</p>
 <h3>Monitoring</h3>
 <p>The monitoring is implemented using PowerNap, a configurable deamon that executes some actions when the system is idle. The idleness is determined by monitors that can be configured to watch CPU load, processes, mouse/keyboard, etc.</p>
 <p>PowerNap allows to customize an action script to determine the action to be executed when the system is deemed idle, but doesn't have a way to define the action executed when the system is back in activity. Also, PowerNap only triggers the recovery action when running in powersave mode (ACTION_METHOD=0).</p>
@@ -88,7 +88,7 @@
 <p>PowerNap has some monitors to check if the host is idle, but the monitor that checks for input devices (mouse and keyboard) just watches USB devices, so a new monitor named PS2Monitor was added to also check PS2 devices.</p>
 <p>With those changes, PowerNap is able to be used in the fogbow opportunistic component that allows shared resources to be used in a private cloud.</p>
 <h3>Action</h3>
-<p>The action part is implemented by two scripts (start-node and stop-node), one for starting the compute node and another for stopping it. Both scripts use the Python client for NOVA API to enable/disable specific services in order to start/stop the compute node.</p>
+<p>The action part is implemented by two scripts (start-node and stop-node), one for starting the NOVA compute node and another for stopping it. Both scripts use the Python client for NOVA API to enable/disable specific services in order to start/stop the compute node. For desktops running Windows versions that do not support the standard NOVA compute node, we provide a modified version of this component that run in these machines.</p>
 <p>The NOVA client interacts with the compute API and allows for service and VM management. The start-node action script just enables network and compute services. The stop-node action script looks for active VMs, stops them and disables the network and compute services.</p>
       </div>
     </div>
