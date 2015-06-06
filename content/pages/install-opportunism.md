@@ -23,7 +23,7 @@ sudo python setup.py install
 ```
 
 ###Install from debian package
-Download the [lastest stable package](http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-powernap/fogbow-powernap_v0.2.2.deb)
+Download the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-powernap/fogbow-powernap_v0.2.2.deb" target=_blank>latest stable package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-powernap/fogbow-powernap_v0.2.2.deb
 ```
@@ -195,7 +195,7 @@ Windows
 
 You will need to install and configure a Windows Nova Compute module in each shared resource (eg. a desktop) that you want to add as a computing node in your private cloud that uses Windows as the OS. Obviously, the resource must be connected to the same LAN used by the computing nodes of your private cloud. The opportunism module for Windows is also included on the Windows Nova Compute module, so by installing that you will also get this feature.
 
-The Windows Nova Compute module has an installer, so all you have to do is to download and run the fogbow-nova-compute [latest stable executable](http://downloads.fogbowcloud.org/stable/windows/v0.2.0/fogbow-nova-win32-setup.exe).
+The Windows Nova Compute module has an installer, so all you have to do is to download and run the fogbow-nova-compute <a href="http://downloads.fogbowcloud.org/stable/windows/v0.2.0/fogbow-nova-win32-setup.exe" target=_blank>latest stable executable</a>.
 
 ##Configuration
 
