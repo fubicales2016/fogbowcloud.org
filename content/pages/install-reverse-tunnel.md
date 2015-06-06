@@ -2,11 +2,9 @@ Title: Reverse Tunnel
 url: install-reverse-tunnel
 save_as: install-reverse-tunnel.html
 section: install
-index: 5
+index: 4
 
 # Reverse Tunnel
-
-
 
 ## Install from source
 
