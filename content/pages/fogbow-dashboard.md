@@ -41,4 +41,4 @@ FOGBOW_FEDERATION_AUTH_TYPE = 'voms'
 ./run_tests.sh --runserver localhost:9000
 ```
 
-To know more about the Horizon project, and how to deploy it within different environments, see the [Horizon docs](http://docs.openstack.org/developer/horizon/index.html).
+To know more about the Horizon project, and how to deploy it within different environments, see the <a href="http://docs.openstack.org/developer/horizon/index.html" target=_blank>Horizon docs</a>.
