@@ -20,9 +20,10 @@ Federation of private IaaS, by which a number of IaaS providers work together fo
 
 ## Why fogbow?
 
+Fogbow is a middleware to federate private clouds. It provides OCCI extensions to deal with federation membership and asynchronous requests. Asynchronous requests are the appropriate way to issue the remote creation of VMs in a federation and avoid failures due to timeouts. The middleware also provides extra functionalities useful for the federation of private clouds, such as a reverse tunnelling service to allow access to VMs with only private IPs, and mechanisms to deploy OpenStack-based private clouds backed up by desktops exploited opportunistically and with power save capabilities.
+
 By deafult, fogbow provides a very lightweight business model for the federation of IaaS providers, based on the exchange of resources (VMs, storage, etc.) between the members of the federation. This <b>B</b>artering <b>O</b>f <b>W</b>ares (and that explains the <i>bow</i> in fogbow) is performed with no need for sophisticated billing, auditing and customer relations services. Of course, other even simpler or more sophisticated business models may well be introduced as new needs are identified by the comunity engaged in developing the software.
 
 Ok, but what about the <i>fog</i>, in fogbow? Different from a rainbow that displays a bright continuous spectrum of colors, a fogbow has only very weak colors, with a red outer edge and a bluish inner edge. This is because the fog water drops are much smaller than those in the rain. Fogbow targets the federation of small and medium size IaaS providers, rather than large ones. Moreover, although it is possible to experience its distinct "edges" (<b>F</b>ederation, <b>O</b>pportunism and <b>G</b>reenness) in separate, they often provide a better effect when appreciated as a whole.
 
 Fogbow has also been designed to make it simple to be extended. This is achieved by the use of an architecture based on plugins, and enforcing a high test coverage of the source code. New functionalities can be easily included by implementing additional plugins, while tests give higher confidence to developers that the system will continue to work even if new contributions are constantly added.
-
