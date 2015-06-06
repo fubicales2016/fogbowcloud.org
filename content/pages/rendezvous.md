@@ -6,7 +6,7 @@ index: 2
 
 # The rendezvous service
 
-The rendezvous service provides a directory for the private clouds that are member of a particular fogbow federation. It allows members to find each other by providing a complete status of the federation. The service may be implemented by replicated components running at different sites. These components run a lazy replication protocol to keep all components eventually synchronized. Strong consistency is not required, since the service only gives a hint of the clouds that currently belong to the federation.
+The rendezvous service provides a directory for the private clouds that are member of a particular fogbow federation. It allows members to find each other by providing a complete status of the federation. The service may be implemented by replicated components running at different sites. These components run a lazy replication protocol to keep all components eventually synchronized. Strong consistency is not required, since the service only gives a hint of the clouds that currently belong to the federation, together with the estimated amount of resources that they are making available to the federation.
 
 ## Service architecture
 
