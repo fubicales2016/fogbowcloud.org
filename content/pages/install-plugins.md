@@ -6,9 +6,11 @@ index: 1.1
 
 # Plugins
 
-The manager component was designed to be agnostic to the underlying cloud technology. There is a plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbowcloud project make available some plugins, and you can feel free to implement new ones.
+The manager component was designed to be agnostic to the underlying cloud technology. There is an interoperability plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow's requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbow makes available some plugins, and new ones can be contributed by the fogbow developers' community.
 
-There are four different categories of plugins: the **Image Storage Plugins**, the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
+There are four different categories of interoperability plugins: the **Image Storage Plugins**, the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
+
+In addition to interoperability plugins, there are also behavioural plugins. These are used to specify the way each fogbow manager should act when serving clients' requests.
 
 ## Image Storage Plugin
 
