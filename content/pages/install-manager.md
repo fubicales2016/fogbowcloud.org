@@ -8,13 +8,13 @@ index: 1
 
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
-This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the [Openstack's OCCI guide](https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface) to know more.
+This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface" target=_blank>Openstack's OCCI guide</a> to know more.
 
-Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the [Openstack Ops guide](http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users). The configuration section of this page explains it in more detail.
+Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users" target=_blank>Openstack Ops guide</a>. The configuration section of this page explains it in more detail.
 
 ## Install from source
 As the manger runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend [prosody](https://prosody.im/) 0.9.8+ due to its ease of configuration.
+We recommend <a href="https://prosody.im/" target=_blank>prosody 0.9.8+</a> due to its ease of configuration.
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -37,7 +37,7 @@ mvn install
 ```
 
 ## Install from debian package
-To set up a manager instance, first, download to the [latest debian package](http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-manager/fogbow-manager_v0.2.2.deb)
+To set up a manager instance, first, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-manager/fogbow-manager_v0.2.2.deb">latest debian package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-manager/fogbow-manager_v0.2.2.deb
 ```
