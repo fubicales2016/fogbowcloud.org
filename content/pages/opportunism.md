@@ -2,7 +2,7 @@ Title: Opportunism
 url: opportunism
 save_as: opportunism.html
 section: arch
-index: 4
+index: 2
 
 Opportunism
 ==========
