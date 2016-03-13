@@ -1,8 +1,6 @@
 Title: The rendezvous service
 url: rendezvous
 save_as: rendezvous.html
-section: arch
-index: 2
 
 # The rendezvous service
 
