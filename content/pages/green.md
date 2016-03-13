@@ -2,7 +2,7 @@ Title: Greenness
 url: green
 save_as: green.html
 section: arch
-index: 5
+index: 3
 
 ##What is the Fogbow Green Sitter and why is it necessary?
 
