@@ -1,6 +1,7 @@
 Title: Contact us
 url: contact
 save_as: contact.html
+section: contact
 index: 0
 
 # Contact us
