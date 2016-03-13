@@ -1,6 +1,7 @@
 Title: Success stories
 url: stories
 save_as: stories.html
+section: stories
 index: 0
 
 # Success stories
