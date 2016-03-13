@@ -1,4 +1,4 @@
-Title: General architecture
+Title: Federation
 url: architecture
 save_as: architecture.html
 section: arch
@@ -12,7 +12,7 @@ The architecture of a fogbow federation of private clouds is based on two main c
 
 ## Fogbow Rendezvous
 
-The FR is in charge of finding out which members of the federation are currently active. It implements a gossip-style lazy replication communication protocol to discover the addresses of other FRs belonging to the same federation, as well as the addresses and estimated capacity of their associated FMs. FRs exchange periodic information among them in order to keep their membership information updated. From time to time, the FM running at a given site interacts with its associated FR to provide its current available idle capacity and to retrieve a list of other currently active FMs, together with an estimation of the resources that they can make available to the federation.
+The FR is in charge of finding out which members of the federation are currently active. It implements a gossip-style synchronization protocol to discover the addresses of the FM known by other FRs. FRs exchange periodic information among themselves in order to keep their membership information updated. From time to time, the FM running at a given site interacts with its associated FR in order to notify its availability and to retrieve the list of other currently active FMs.
 
 ## Fogbow Manager
 
