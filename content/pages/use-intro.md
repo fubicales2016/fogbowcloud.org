@@ -1,7 +1,7 @@
 Title: Get started
 url: use-intro
 save_as: use-intro.html
-section: use
+section: usage
 index: 0
 
 # Get started
