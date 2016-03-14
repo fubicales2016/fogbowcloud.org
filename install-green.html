@@ -65,10 +65,10 @@
             <li >
             	<a href="install-manager">Manager</a>
             </li>
-            <li class="active">
+            <li >
             	<a href="install-rendezvous">Rendezvous</a>
             </li>
-            <li >
+            <li class="active">
             	<a href="install-green">Greeness</a>
             </li>
             <li >
@@ -77,87 +77,8 @@
         </ul>
       </div>
       <div class="col-lg-8 page-content">
-      	<h1>Rendezvous</h1>
-<p>The rendezvous component acts as a discovery service for a fogbow federation. It allows members to find each other by providing a complete status of the federation.</p>
-<h2>Install from source</h2>
-<p>As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend <a href="https://prosody.im/" target=_blank>prosody</a> due to its ease of configuration.</p>
-<p>If you are using Prosody, you can add a component to its configuration with:</p>
-<div class="highlight"><pre><span class="n">Component</span> <span class="s">&quot;rendezvous.test.com&quot;</span>
-       <span class="n">component_secret</span> <span class="o">=</span> <span class="s">&quot;password&quot;</span>
-</pre></div>
-
-
-<p>After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.</p>
-<div class="highlight"><pre><span class="n">rendezvous</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">.</span>        <span class="mi">22</span>      <span class="n">IN</span>      <span class="n">A</span>       <span class="mf">199.27.76.133</span>
-</pre></div>
-
-
-<p>With an XMPP server already installed and configured, get the latest code of the project.</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fogbow/fogbow-rendezvous.git</span>
-</pre></div>
-
-
-<p>Then, install it</p>
-<div class="highlight"><pre><span class="n">mvn</span> <span class="n">install</span>
-</pre></div>
-
-
-<h2>Install from debian package</h2>
-<p>With an XMPP server already installed and configured, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb" target=_blank>latest debian package</a></p>
-<div class="highlight"><pre>wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb
-</pre></div>
-
-
-<p>Then, install it with dkpg</p>
-<div class="highlight"><pre>dpkg -i fogbow-rendezvous_v0.2.2.deb 
-</pre></div>
-
-
-<h2>Configure</h2>
-<p>After the installation, move the file <code>rendezvous.conf.example</code> to <code>rendezvous.conf</code> and edit its contents:</p>
-<div class="highlight"><pre><span class="cp"># XMPP address of your Rendezvous Component, as configured in the XMPP server.</span>
-<span class="n">xmpp_jid</span><span class="o">=</span><span class="n">rendezvous</span><span class="p">.</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
-
-<span class="cp"># XMPP component password, as configured in the XMPP server.</span>
-<span class="n">xmpp_password</span><span class="o">=</span><span class="n">password</span>
-
-<span class="cp"># Address of the host running the XMPP component.</span>
-<span class="n">xmpp_host</span><span class="o">=</span><span class="mf">127.0.0.1</span>
-
-<span class="cp"># Port in which the XMPP server will be listening for components, as configured in the XMPP server.</span>
-<span class="n">xmpp_port</span><span class="o">=</span><span class="mi">5347</span>
-</pre></div>
-
-
-<p>The property below references the lenght of time, in seconds, that the rendezvous should keep a memeber as "alive".</p>
-<div class="highlight"><pre><span class="cp"># Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.</span>
-<span class="n">site_expiration</span><span class="o">=</span><span class="mi">10000</span>
-</pre></div>
-
-
-<p>The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the <a href="http://www.fogbowcloud.org/rendezvous">replication strategy</a> used to avoid system crashes. </p>
-<div class="highlight"><pre><span class="cp"># Known Rendezvous Neighbor aderesses.</span>
-<span class="n">neighbors</span><span class="o">=</span><span class="n">neighbor1</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span><span class="p">,</span><span class="n">neighbor2</span><span class="err">@</span><span class="n">test</span><span class="p">.</span><span class="n">com</span>
-</pre></div>
-
-
-<p>The properties below are part the <a href="http://www.fogbowcloud.org/rendezvous">Result Set Management strategy</a> used to limit, in size, the rendezvous' responses.</p>
-<div class="highlight"><pre><span class="cp"># Maximum number of managers that should be returned in a whoIsAlive response.</span>
-<span class="n">max_whoisalive_manager_count</span><span class="o">=</span><span class="mi">100</span>
-
-<span class="cp"># Maximum number of managers that should be returned in a whoIsAliveSyncresponse.</span>
-<span class="n">max_whoisalivesync_manager_count</span><span class="o">=</span><span class="mi">100</span>
-
-<span class="cp"># Maximum number of neighbors that should be returned in a whoIsAliveSyncresponse.</span>
-<span class="n">max_whoisalivesync_neighbor_count</span><span class="o">=</span><span class="mi">100</span>
-</pre></div>
-
-
-<h2>Run</h2>
-<p>To start the rendezvous component, run the start-rendezvous script inside <code>./bin</code>.</p>
-<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">start</span><span class="o">-</span><span class="n">rendezvous</span>
-</pre></div>
+      	<h1>Greeness</h1>
+<p>To be included.</p>
       </div>
     </div>
     </div>
