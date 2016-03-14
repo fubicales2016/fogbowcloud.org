@@ -2,7 +2,7 @@ Title: Greeness
 url: install-green
 save_as: install-green.html
 section: install
-index: 3
+index: 4
 
 # Greeness
 
