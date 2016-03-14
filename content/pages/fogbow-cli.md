@@ -2,7 +2,7 @@ Title: Fogbow CLI
 url: fogbow-cli
 save_as: fogbow-cli.html
 section: usage
-index: 0
+index: 2
 
 Fogbow CLI
 ==========
