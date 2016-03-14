@@ -2,7 +2,7 @@ Title: Rendezvous
 url: install-rendezvous
 save_as: install-rendezvous.html
 section: install
-index: 3
+index: 2
 
 # Rendezvous
 
