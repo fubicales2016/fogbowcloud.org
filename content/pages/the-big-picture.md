@@ -7,4 +7,4 @@ index: 1
 The Big Picture
 ==========
 
-
+<center>![The big picture]({filename}/images/the-big-picture.png)</center>
