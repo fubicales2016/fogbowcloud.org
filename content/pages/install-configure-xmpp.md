@@ -9,14 +9,14 @@ Install and configure XMPP
 Extensible Messaging and Presence Protocol (XMPP) is a communications protocol for message-oriented middleware based on XML (Extensible Markup Language). It enables the near-real-time exchange of structured yet extensible data between any two or more network entities.
 
 ## Install
-We recomend use the [prosody](http://prosody.im/) with server XMPP. For install:
+We recomend use the [prosody](http://prosody.im/) with server XMPP. For install to this:
 ``` shell
 $ apt-get update
 $ apt-get install prosody
 ```
 
 ## Configure
-Access the file configuration prosody.cfg.lua(/etc/prosody/prosody.cfg.lua) and add the components that you need.
+Access the configuration file prosody.cfg.lua(/etc/prosody/prosody.cfg.lua) and add the components that you need.
  
 ```bash
 # Manager component
