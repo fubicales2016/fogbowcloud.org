@@ -8,13 +8,13 @@ index: 3
 
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
-This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface" target=_blank>Openstack's OCCI guide</a> to know more.
+This tutorial assumes you have Openstack's OCCI API enabled in your underlying cloud setup. Please read the <a href="https://wiki.openstack.org/wiki/Occi#How_to_use_the_OCCI_interface" target="_blank">Openstack's OCCI guide</a> to know more.
 
-Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users" target=_blank>Openstack Ops guide</a>. The configuration section of this page explains it in more detail.
+Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users" target="_blank">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.
 
-## Install from source
-As the manger runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend <a href="https://prosody.im/" target=_blank>prosody 0.9.8+</a> due to its ease of configuration.
+## Configuration before install
+As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how install e configure the XMPP, access <a  href="/install-configure-xmpp" target="_blank">here</a>.
+We recommend <a href="https://prosody.im/" target="_blank">prosody 0.9.8+</a> due to its ease of configuration. 
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -27,6 +27,7 @@ After add the component to your XMPP server, you need to add a new entry in your
 manager.test.com.        22      IN      A       199.27.76.133
 ```
 
+## Install from source
 With an XMPP server already installed and configured, get the latest code of the project.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
