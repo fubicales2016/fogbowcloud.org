@@ -22,13 +22,13 @@ No arquivo de configuração do prosody(/etc/prosody/prosody.cfg.lua), adicione 
  
 ```bash
 # Manager component
-Component "manager.name"
-        component_secret = "manager.password"
+Component "manager.test.com"
+        component_secret = "password"
 
 # Rendezvous component
 # Required when your deployment use a Rendezvous own
-Component "rendezvous.name"
-        component_secret = "rendezvous.password"
+Component "rendezvous.test.com"
+        component_secret = "password"
 ```
 
 ## Iniciar
