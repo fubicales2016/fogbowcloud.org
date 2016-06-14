@@ -12,7 +12,7 @@ Esse protocolo é utilizado para a comunicação entre os componentes do FOGBOW.
 
 ## Instalação:
 Nós aconselhamos usar o prosody e para instalar devemos seguir os seguintes passos.
-```bash
+``` shell
 $ apt-get update
 $ apt-get install prosody
 ```
@@ -29,4 +29,9 @@ Component "manager.name"
 # Required when your deployment use a Rendezvous own
 Component "rendezvous.name"
         component_secret = "rendezvous.password"
+```
+
+## Iniciar
+``` shell
+$ service prosody start
 ```
