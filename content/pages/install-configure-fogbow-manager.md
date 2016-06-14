@@ -76,13 +76,33 @@ rendezvous_jid=rendezvous.test.com
 
 * **Cloud Compute Information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
+By default, we are using openstack plugin with example.
+``` shell
+compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
+compute_novav2_url=http://localhost:8774
+compute_glancev2_url=http://localhost:9292
+compute_glancev2_image_visibility=private
+compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+```
 
 * **Cloud Identity Information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
+By default, we are using openstack plugin with example.
+``` shell
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+local_identity_url=http://localhost:5000
+```
 
 * **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-* **Mapper User Information:** .
+By default, we are using the plugin that authorize all users.
+``` shell
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
+```
+
+* **Mapper User Information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+ 
+By default, we are the plugin that map any user for one unique project.
 ``` shell
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
