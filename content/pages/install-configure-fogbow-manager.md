@@ -82,23 +82,14 @@ rendezvous_jid=rendezvous.test.com
 
 * **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
+* **Mapper User Information:** .
 
-* **Local User Information:** Cloud local user is a local cloud user that will submit requests from remote members.
+## Mapper Plugin / Local Credentials
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
-```bash
-# Local user name
-# Example:
-local_proxy_account_user_name=fogbow
-
-# Local user password
-# Example:
-local_proxy_account_password=fogbow
-
-# Local user tenant (project) name
-# Example:
-local_proxy_account_tenant_name=demo
-```
-
+mapper_defaults_username=fogbow
+mapper_defaults_password=fogbow-pass
+mapper_defaults_tenantName=fogbow-project
 
 * **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
 
