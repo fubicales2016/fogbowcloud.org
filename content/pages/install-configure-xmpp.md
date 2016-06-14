@@ -11,7 +11,7 @@ Extensible Messaging and Presence Protocol (XMPP) é um protocolo aberto para si
 Esse protocolo é utilizado para a comunicação entre os componentes do FOGBOW.
 
 ## Instalação:
-Nós aconselhamos usar o prosody e para instalar devemos seguir os seguintes passos.
+Nós aconselhamos o uso do [prosody](http://prosody.im/). Para instalar devemos seguir os seguintes passos:
 ``` shell
 $ apt-get update
 $ apt-get install prosody
