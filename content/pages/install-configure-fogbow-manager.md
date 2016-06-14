@@ -12,23 +12,8 @@ This tutorial assumes you have Openstack's OCCI API enabled in your underlying c
 
 Also, the manager needs a user registered in the underlying private cloud in order to proxy remote requests to its local resources. For Openstack, you can add new users and projects as is described in the <a href="http://docs.openstack.org/trunk/openstack-ops/content/projects_users.html#create_new_users" target="_blank">Openstack Ops guide</a>. The configuration section of this page explains it in more detail.
 
-## Configuration before install
-As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how install e configure the XMPP, access <a  href="/install-configure-xmpp" target="_blank">here</a>.
-We recommend <a href="https://prosody.im/" target="_blank">prosody 0.9.8+</a> due to its ease of configuration. 
-
-If you are using Prosody, you can add a component to its configuration with:
-``` shell
-Component "manager.test.com"
-       component_secret = "password"
-```
-
-After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
-``` shell
-manager.test.com.        22      IN      A       199.27.76.133
-```
-
 ## Install from source
-With an XMPP server already installed and configured, get the latest code of the project.
+Get the latest code of the project.
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
 ```
@@ -48,10 +33,24 @@ Then, install it with dkpg
 dpkg -i fogbow-manager_latest.deb
 ```
 
+## Actions before configure
+As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how install e configure the XMPP, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>. For example:
+
+If you are using Prosody, you can add a component to its configuration with:
+``` shell
+Component "manager.test.com"
+       component_secret = "password"
+```
+
+After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+``` shell
+manager.test.com.        22      IN      A       199.27.76.133
+```
+
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
-* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the "Install from source" section.
+* **XMPP properties:** Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
 
 ```bash
 # jid of your Manager Component
