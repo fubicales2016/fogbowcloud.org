@@ -93,11 +93,33 @@ local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.Key
 local_identity_url=http://localhost:5000
 ```
 
+* **Cloud Storage Information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+
+By default, we are using openstack plugin with example.
+``` shell
+storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+storage_v2_url=http://localhost:8776
+```
+
+* **Cloud Network Information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+
+By default, we are using openstack plugin with example.
+``` shell
+network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+network_openstack_v2_url=http://localhost:9696
+external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
+```
+
 * **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
 By default, we are using the plugin that authorize all users.
 ``` shell
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
+```
+* **Member picker Information:** Choice of a federation member that Fogbow Manager will order for resource.
+By default, we are using the plugin that choose in a list.
+``` shell
+member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
 
 * **Mapper User Information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
