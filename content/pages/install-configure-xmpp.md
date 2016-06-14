@@ -18,11 +18,15 @@ $ apt-get install prosody
 ```
 
 ## Configuração
-No arquivo de configuração do prosody, adicione os componentes que estarão vinculados a esse XMPP caso necessário. 
+No arquivo de configuração do prosody(/etc/prosody/prosody.cfg.lua), adicione os componentes que estarão vinculados a esse XMPP caso necessário. 
  
 ```bash
+# Manager component
 Component "manager.name"
         component_secret = "manager.password"
+
+# Rendezvous component
+# Required when your deployment use a Rendezvous own
 Component "rendezvous.name"
         component_secret = "rendezvous.password"
 ```
