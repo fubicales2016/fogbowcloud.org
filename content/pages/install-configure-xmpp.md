@@ -6,19 +6,17 @@ index: 2
 
 Install and configure XMPP
 ==========
+Extensible Messaging and Presence Protocol (XMPP) is a communications protocol for message-oriented middleware based on XML (Extensible Markup Language). It enables the near-real-time exchange of structured yet extensible data between any two or more network entities.
 
-Extensible Messaging and Presence Protocol (XMPP) é um protocolo aberto para sistemas de mensagens instantâneas, desenvolvido originalmente para mensagens instantâneas e informação de presença formalizado pelo IETF.
-Esse protocolo é utilizado para a comunicação entre os componentes do FOGBOW.
-
-## Instalação:
-Nós aconselhamos o uso do [prosody](http://prosody.im/). Para instalar devemos seguir os seguintes passos:
+## Install
+We recomend use the [prosody](http://prosody.im/) with server XMPP. For install:
 ``` shell
 $ apt-get update
 $ apt-get install prosody
 ```
 
-## Configuração
-No arquivo de configuração do prosody(/etc/prosody/prosody.cfg.lua), adicione os componentes que estarão vinculados a esse XMPP caso necessário. 
+## Configure
+Access the file configuration prosody.cfg.lua(/etc/prosody/prosody.cfg.lua) and add the components that you need.
  
 ```bash
 # Manager component
@@ -31,7 +29,7 @@ Component "rendezvous.test.com"
         component_secret = "password"
 ```
 
-## Iniciar
+## Run
 ``` shell
 $ service prosody start
 ```
