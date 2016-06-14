@@ -46,7 +46,6 @@ rendezvous.test.com.        22      IN      A       199.27.76.133
 
 ## Configure
 After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
-
 ``` shell
 # XMPP address of your Rendezvous Component, as configured in the XMPP server.
 xmpp_jid=rendezvous.test.com
@@ -60,11 +59,7 @@ xmpp_host=127.0.0.1
 # Port in which the XMPP server will be listening for components, as configured in the XMPP server.
 xmpp_port=5347
 ```
-The property below references the lenght of time, in seconds, that the rendezvous should keep a memeber as "alive".
-``` shell
-# Maximum amount of time that the Rendezvous Component will keep a member active without a heartbeat.
-site_expiration=10000
-```
+
 The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the [replication strategy](http://www.fogbowcloud.org/rendezvous) used to avoid system crashes. 
 ``` shell
 # Known Rendezvous Neighbor aderesses.
@@ -82,6 +77,20 @@ max_whoisalivesync_manager_count=100
 # Maximum number of neighbors that should be returned in a whoIsAliveSyncresponse.
 max_whoisalivesync_neighbor_count=100
 ```
+
+The properties below reference to message "iamalive" sent from Fogbow Manager.
+``` shell
+# How many time the Fogbow Manager send the message "iamalive" in miliseconds.
+iamalive_period=30000
+# How many times the Fogbow Rendezvous wait the message "iamalive".
+iamalive_max_message_lost=3
+```
+
+The property below reference which members are allowed by Fogbow Rendezvous.
+``` shell
+white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
+``` 
+
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
 ``` shell
