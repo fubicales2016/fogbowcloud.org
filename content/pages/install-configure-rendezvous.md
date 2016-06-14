@@ -10,22 +10,7 @@ Install and configure rendezvous
 The rendezvous component acts as a discovery service for a fogbow federation. It allows members to find each other by providing a complete status of the federation.
 
 ## Install from source
-
-As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
-We recommend <a href="https://prosody.im/" target=_blank>prosody</a> due to its ease of configuration.
-
-If you are using Prosody, you can add a component to its configuration with:
-``` shell
-Component "rendezvous.test.com"
-       component_secret = "password"
-```
-
-After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
-``` shell
-rendezvous.test.com.        22      IN      A       199.27.76.133
-```
-
-With an XMPP server already installed and configured, get the latest code of the project.
+Get the latest code of the project.
 ``` shell
 git clone https://github.com/fogbow/fogbow-rendezvous.git
 ```
@@ -35,14 +20,28 @@ mvn install
 ```
 
 ## Install from debian package
-With an XMPP server already installed and configured, download to the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb" target=_blank>latest debian package</a>
+With an XMPP server already installed and configured, download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-rendezvous/fogbow-rendezvous_latest.deb" target=_blank>latest debian package</a>
 ```bash
-wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-rendezvous/fogbow-rendezvous_v0.2.2.deb
+wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-rendezvous/fogbow-rendezvous_latest.deb
 ```
 
 Then, install it with dkpg
 ```bash
-dpkg -i fogbow-rendezvous_v0.2.2.deb 
+dpkg -i fogbow-rendezvous_latest.deb
+```
+
+As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
+We recommend <a href="https://prosody.im/" target="_blank">prosody</a> due to its ease of configuration.
+
+If you are using Prosody, you can add a component to its configuration with:
+``` shell
+Component "rendezvous.test.com"
+       component_secret = "password"
+```
+# Actions before configure
+After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+``` shell
+rendezvous.test.com.        22      IN      A       199.27.76.133
 ```
 
 ## Configure
