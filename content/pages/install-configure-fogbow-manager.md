@@ -99,6 +99,7 @@ local_proxy_account_password=fogbow
 local_proxy_account_tenant_name=demo
 ```
 
+
 * **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
 
 ```bash
