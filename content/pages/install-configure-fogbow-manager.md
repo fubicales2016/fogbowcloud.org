@@ -73,6 +73,23 @@ xmpp_port=5347
 # Example:
 rendezvous_jid=rendezvous.test.com
 ```
+* **Manager Datastore Information:** Database that stores orders.
+``` shell
+manager_datastore_url=jdbc:sqlite:/tmp/dbManagerSQLite.db
+```
+
+* **Instance Federated Datastore Information:** Stores instance federated.
+``` shell
+instance_datastore_url=jdbc:sqlite:/tmp/federated_instance
+```
+* **Instance Federated Datastore Information:** Stores storage federated.
+``` shell
+storage_datastore_url=jdbc:sqlite:/tmp/federated_storage
+```
+* **Instance Federated Datastore Information:** Stores network federated.
+``` shell
+network_datastore_url=jdbc:sqlite:/tmp/federated_network
+```
 
 * **Cloud Compute Information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
