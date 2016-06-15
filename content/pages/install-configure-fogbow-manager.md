@@ -93,7 +93,7 @@ network_datastore_url=jdbc:sqlite:/tmp/federated_network
 
 * **Cloud Compute Information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin with example.
+By default, we are using openstack plugin as example.
 ``` shell
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
 compute_novav2_url=http://localhost:8774
@@ -104,7 +104,7 @@ compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 
 * **Cloud Identity Information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin with example.
+By default, we are using openstack plugin as example.
 ``` shell
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
 local_identity_url=http://localhost:5000
@@ -112,7 +112,7 @@ local_identity_url=http://localhost:5000
 
 * **Cloud Storage Information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin with example.
+By default, we are using openstack plugin as example.
 ``` shell
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
 storage_v2_url=http://localhost:8776
@@ -120,7 +120,7 @@ storage_v2_url=http://localhost:8776
 
 * **Cloud Network Information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin with example.
+By default, we are using openstack plugin as example.
 ``` shell
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
 network_openstack_v2_url=http://localhost:9696
@@ -202,8 +202,7 @@ ssh_tunnel_host_port=2222
 
 # shh tunnel host http port defines the port to be used when doing comunication with que ssh tunnel host
 # Example:
-ssh_tunnel_host_http_port=2223
-
+ssh_tunnel_host_http_port=2223wi
 ```
 
 * **Manager HTTP Port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
@@ -212,7 +211,6 @@ ssh_tunnel_host_http_port=2223
 # http port is the Manager Component endpoint port
 # Example:
 http_port = 8182
-
 ```
 
 * **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
