@@ -58,7 +58,7 @@ Make sure to have the identity plugin ports opened in your network firewall conf
 
 As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), when the installation is done, rename the file ```manager.conf.example``` to ```manager.conf```. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that come along with the Fogbow Manager. You can configure different plugins for local and federation identity providers.
 
-**Keystone Identity Plugin** 
+#####Keystone Identity Plugin
 
 ```bash
 
@@ -83,7 +83,7 @@ local_proxy_account_tenant_name=demo
 
 ```
 
-**OpenNebula Identity Plugin**
+#####OpenNebula Identity Plugin
 
 ```bash
 
@@ -106,7 +106,7 @@ local_proxy_account_password=fogbow
 
 ```
 
-**X509 Plugin**
+#####X509 Plugin
 
 ```bash
 # Local Identity plugin class
@@ -118,7 +118,7 @@ x509_ca_dir_path=/path/to/ca/directory
 
 ```
 
-**VOMs Plugin**
+#####VOMs Plugin
 
 ```bash
 # Local Identity plugin class
@@ -153,7 +153,7 @@ The Compute Plugin is responsible for requesting, getting, and deleting instance
 
 As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
 
-**OpenStack OCCI Compute Plugin**
+#####OpenStack OCCI Compute Plugin
 
 ```bash
 # Compute plugin class
@@ -190,7 +190,7 @@ compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-**OpenStack Nova V2 Compute Plugin**
+#####OpenStack Nova V2 Compute Plugin
 ```bash
 # Plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackNovaV2ComputePlugin
@@ -212,7 +212,7 @@ compute_novav2_flavor_large=3
 compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-**OpenNebula Compute Plugin**
+#####OpenNebula Compute Plugin
 
 ```bash
 # Compute plugin class
@@ -257,7 +257,7 @@ The Authorization Plugin tells whether a given user (with a proper authenticated
 
 The **federation_authorization_class** property must be set to a Authorization Plugin implementation. The Fogbow Manager comes with a single implementation that simply authorizes any user/token.
 
-**Allow All Authorization Plugin**
+#####Allow All Authorization Plugin
 
 ```bash
 # Federation Authorization plugin class
