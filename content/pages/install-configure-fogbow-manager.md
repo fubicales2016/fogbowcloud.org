@@ -70,31 +70,43 @@ xmpp_host=127.0.0.1
 xmpp_port=5347
 
 # jid of your Rendezvous Component
+# Optional if not to enter federation
 # Example:
 rendezvous_jid=rendezvous.test.com
-```
-* **Manager Datastore Information:** Database that stores orders.
-``` shell
-manager_datastore_url=jdbc:sqlite:/tmp/dbManagerSQLite.db
+
+# jid of your Greensitter
+# Optional
+# Example:
+greensitter_jid=greensitter.test.com
 ```
 
-* **Instance Federated Datastore Information:** Stores instance federated.
+* **Manager datastore information:** Database that stores orders.
 ``` shell
+# Example:
+manager_datastore_url=jdbc:sqlite:/tmp/db_manager_orders.db
+```
+
+* **Instance federated datastore information:** Database that stores instance federated.
+``` shell
+# Example:
 instance_datastore_url=jdbc:sqlite:/tmp/federated_instance
 ```
-* **Instance Federated Datastore Information:** Stores storage federated.
+* **Instance federated datastore information:** Stores storage federated.
 ``` shell
+# Example:
 storage_datastore_url=jdbc:sqlite:/tmp/federated_storage
 ```
-* **Instance Federated Datastore Information:** Stores network federated.
+* **Instance federated datastore information:** Stores network federated.
 ``` shell
+# Example:
 network_datastore_url=jdbc:sqlite:/tmp/federated_network
 ```
 
-* **Cloud Compute Information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-By default, we are using openstack plugin as example.
+By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
 ``` shell
+# Example:
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
 compute_novav2_url=http://localhost:8774
 compute_glancev2_url=http://localhost:9292
@@ -102,47 +114,54 @@ compute_glancev2_image_visibility=private
 compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-* **Cloud Identity Information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-By default, we are using openstack plugin as example.
+By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
 ``` shell
+# Example:
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
 local_identity_url=http://localhost:5000
 ```
 
-* **Cloud Storage Information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin as example.
+By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
 ``` shell
+# Example:
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
 storage_v2_url=http://localhost:8776
 ```
 
-* **Cloud Network Information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
 
-By default, we are using openstack plugin as example.
+By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
 ``` shell
+# Example:
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
 network_openstack_v2_url=http://localhost:9696
 external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-* **Cloud Authorization Information:** Cloud authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
 By default, we are using the plugin that authorize all users.
 ``` shell
+# Example:
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
 ```
-* **Member picker Information:** Choice of a federation member that Fogbow Manager will order for resource.
-By default, we are using the plugin that choose in a list.
+* **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.
+
+By default , we are using the plugin que choose in the list by alphabetic order.
 ``` shell
+# Example:
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
 
-* **Mapper User Information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
  
 By default, we are the plugin that map any user for one unique project.
 ``` shell
+# Example:
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 mapper_defaults_username=fogbow
@@ -150,7 +169,7 @@ mapper_defaults_password=fogbow-pass
 mapper_defaults_tenantName=fogbow-project
 ```
 
-* **Validator Member Information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
+* **Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
 
 ```bash
 # Member validator class
@@ -185,7 +204,7 @@ token_update_period=300000
 instance_monitoring_period=120000
 ```
 
-* **SSH Tunnel Properties:** SSH properties are used to provide connectivity to instances.
+* **SSH tunnel properties:** SSH properties are used to provide connectivity to instances.
 
 ```bash
 # Public IP address of shh tunnel host
@@ -205,7 +224,7 @@ ssh_tunnel_host_port=2222
 ssh_tunnel_host_http_port=2223wi
 ```
 
-* **Manager HTTP Port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
+* **Manager HTTP port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
 
 ```bash
 # http port is the Manager Component endpoint port
