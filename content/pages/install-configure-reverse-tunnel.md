@@ -31,7 +31,7 @@ dpkg -i ffogbow-reverse-tunnel_latest.deb
 ```
 
 ## Configure
-After the installation, move the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
+After the installation, rename the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
 
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
