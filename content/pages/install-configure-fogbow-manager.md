@@ -256,24 +256,29 @@ simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 * **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
 By default, we are the plugin that determine the same power rating for any VM.
 ```bash
+# Example:
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
 ```
 
 * **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
-* **Image storage plugin configuration:**
+* **Image storage plugin configuration:**  Get images by image storage plugin.
+By default, we are the plugin that download the image.
 ```bash
-## Image Storage Plugin (HTTPDownload)
+# Example:
 image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
 image_storage_http_base_url=http://appliance-repo.egi.eu/images
 image_storage_http_tmp_storage=/tmp/
 ```
 
+* **Staic mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
 ```bash
-## Static mapping between local image ids and image names
-## Applies to all image storage plugins
+# Example:
 image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
 image_storage_static_fogbow-ubuntu-1204=81765250-a4e4-440d-a215-43c9c0849120
+
+# fogbow-linux-x86 is the local name and your id is 55d938ef-57d1-44ea-8155-6036d170780a
+# fogbow-ubuntu-1204 is the local name and your id is 81765250-a4e4-440d-a215-43c9c0849120
 ```
 
 ## Run 
