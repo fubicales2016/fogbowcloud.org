@@ -242,6 +242,21 @@ benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenc
 
 * **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
+* **Image storage plugin configuration:**
+```bash
+## Image Storage Plugin (HTTPDownload)
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+image_storage_http_base_url=http://appliance-repo.egi.eu/images
+image_storage_http_tmp_storage=/tmp/
+```
+
+```bash
+## Static mapping between local image ids and image names
+## Applies to all image storage plugins
+image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
+image_storage_static_fogbow-ubuntu-1204=81765250-a4e4-440d-a215-43c9c0849120
+```
+
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
