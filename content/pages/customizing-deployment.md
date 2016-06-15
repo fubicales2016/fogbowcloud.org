@@ -247,7 +247,6 @@ compute_one_ssh_username=fogbow
 compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
 # Set the directory to copy images in remote host
 compute_one_ssh_target_temp_folder=/tmp/images
-
 ```
 
 ## Authorization Plugin
@@ -265,3 +264,37 @@ The **federation_authorization_class** property must be set to a Authorization P
 # Example 
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
 ```
+
+## Storage Plugin
+...
+
+### Configure
+
+**OpenStack V2 Storage Plugin** 
+
+## Network Plugin
+...
+
+### Configure
+
+**OpenStack V2 Network Plugin** 
+
+## Accounting Plugin
+...
+## Storage accounting plugin
+...
+
+## Benchmarking Plugin
+...
+
+## Capacity controller plugin
+...
+
+## Member Validator
+...
+
+## Mapper Plugin
+...
+
+## Prioritization Plugin
+...
