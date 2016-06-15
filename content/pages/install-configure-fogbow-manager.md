@@ -271,7 +271,7 @@ image_storage_http_base_url=http://appliance-repo.egi.eu/images
 image_storage_http_tmp_storage=/tmp/
 ```
 
-* **Staic mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
+* **Static mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
 ```bash
 # Example:
 image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
