@@ -270,14 +270,14 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.Allow
 
 ### Configure
 
-####OpenStack V2 Storage Plugin** 
+##### OpenStack V2 Storage Plugin
 
 ## Network Plugin
 ...
 
 ### Configure
 
-####OpenStack V2 Network Plugin** 
+##### OpenStack V2 Network Plugin
 
 ## Accounting Plugin
 ...
