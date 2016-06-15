@@ -213,6 +213,27 @@ ssh_tunnel_host_http_port=2223wi
 http_port = 8182
 ```
 
+* **Compute accounting plugin configuration:** Stores compute accounting information.
+```bash
+# default for accounting plugins
+# the period for update of the accounting
+accounting_update_period=300000
+
+accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+# path to the database
+fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
+```
+* **Storage accounting plugin configuration:** Stores compute accounting information.
+```bash
+# default for accounting plugins
+# the period for update of the accounting
+accounting_update_period=300000
+
+storage_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
+# path to the database
+simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
+```
+
 * **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
 By default, we are the plugin that determine the same power rating for any VM.
 ```bash
