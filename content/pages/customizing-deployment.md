@@ -145,6 +145,19 @@ path_vomsdir=/path/voms/dir
 ```
 Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
 
+##### No Cloud Identity Plugin
+...
+##### Simple Token Identity Plugin
+...
+##### EC2 Identity Plugin
+...
+##### Azure Identity Plugin
+...
+##### CLoudStack Identity Plugin
+...
+##### Shiboleth Identity Plugin
+...
+
 ## Compute Plugin
 
 The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
@@ -153,7 +166,7 @@ The Compute Plugin is responsible for requesting, getting, and deleting instance
 
 As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install-manager), after installation move the file ```manager.conf.example``` to ```manager.conf```. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. 
 
-#####OpenStack OCCI Compute Plugin
+##### OpenStack OCCI Compute Plugin
 
 ```bash
 # Compute plugin class
@@ -190,7 +203,7 @@ compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
 compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-#####OpenStack Nova V2 Compute Plugin
+##### OpenStack Nova V2 Compute Plugin
 ```bash
 # Plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.openstack.OpenStackNovaV2ComputePlugin
@@ -212,7 +225,7 @@ compute_novav2_flavor_large=3
 compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 
-#####OpenNebula Compute Plugin
+##### OpenNebula Compute Plugin
 
 ```bash
 # Compute plugin class
@@ -248,6 +261,14 @@ compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
 # Set the directory to copy images in remote host
 compute_one_ssh_target_temp_folder=/tmp/images
 ```
+##### No Cloud Compute Plugin
+... 
+##### EC2 Compute Plugin
+... 
+##### Azure Compute Plugin
+... 
+##### CloudStack Compute Plugin
+... 
 
 ## Authorization Plugin
 
@@ -257,13 +278,17 @@ The Authorization Plugin tells whether a given user (with a proper authenticated
 
 The **federation_authorization_class** property must be set to a Authorization Plugin implementation. The Fogbow Manager comes with a single implementation that simply authorizes any user/token.
 
-#####Allow All Authorization Plugin
+##### Allow All Authorization Plugin
 
 ```bash
 # Federation Authorization plugin class
 # Example 
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
 ```
+##### VO White List Authorization Plugin
+...
+##### Edu Person White List Authorization Plugin
+...
 
 ## Storage Plugin
 ...
@@ -325,9 +350,6 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.Allow
 ##### Satisfaction Driven Capacity Controller Plugin
 ...
 
-## Member Validator
-...
-
 ## Mapper Plugin
 ...
 ### Configure
@@ -341,4 +363,13 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.Allow
 ...
 
 ## Prioritization Plugin
+...
+### Configure
+##### Priotize Remove Order Plugin
+...
+##### Two Fold Prioritization Plugin
+...
+##### Nof Prioritization Plugin
+...
+##### FCFS Prioritization Plugin
 ...
