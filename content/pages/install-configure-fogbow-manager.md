@@ -213,6 +213,12 @@ ssh_tunnel_host_http_port=2223wi
 http_port = 8182
 ```
 
+* **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
+By default, we are the plugin that determine the same power rating for any VM.
+```bash
+benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
+```
+
 * **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
 ## Run 
