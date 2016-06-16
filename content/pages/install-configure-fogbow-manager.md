@@ -46,7 +46,7 @@ manager.test.com        22      IN      A       199.27.76.133
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
 
-* <a id="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
+* <a name="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
 
 ```bash
 # jid of your Manager Component
