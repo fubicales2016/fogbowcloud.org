@@ -27,11 +27,33 @@ wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbo
 
 Then, install it with dkpg
 ```bash
-dpkg -i ffogbow-reverse-tunnel_latest.deb
+dpkg -i fogbow-reverse-tunnel_latest.deb
 ```
 
 ## Configure
 After the installation, rename the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
+```bash
+# The range of port used for creation of tunnel's server .
+tunnel_port_range=2224:2242
+
+# Amount of port released for each tunnel server.
+ports_per_ssh_server=5
+tunnel_host=0.0.0.0
+
+# Http port of the Fogbow Reverse Tunnel.
+http_port=2223
+
+# The range of external port.
+external_port_range=20000:30000
+
+host_key_path=hostkey.ser
+
+# Checking time of token.
+idle_token_timeout=86400
+
+# Checking of the interval of idle ports in the tunnel 's server.
+check_ssh_servers_interval=120
+```
 
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
