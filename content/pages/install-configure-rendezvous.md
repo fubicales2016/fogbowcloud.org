@@ -7,7 +7,7 @@ index: 6
 Install and configure rendezvous
 ==========
 
-The rendezvous component acts as a discovery service for a fogbow federation. It allows members to find each other by providing a complete status of the federation.
+The rendezvous component is the discovery service of a fogbow federation, allowing members to find each other.
 
 ## Install from source
 Get the latest code of the project.
@@ -30,8 +30,12 @@ Then, install it with dkpg
 dpkg -i fogbow-rendezvous_latest.deb
 ```
 
-As the rendezvous runs as an XMPP component, you need an XMPP server running and properly configured.
+Since the rendezvous is a XMPP component, you need a XMPP server running and properly configured to be able to communicate to other members in the fogbow federation.
+
+TODO: remover essa frase e adicionar link para xmpp config
 We recommend <a href="https://prosody.im/" target="_blank">prosody</a> due to its ease of configuration.
+
+TODO: talvez essa linha nao seja necessaria
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -39,7 +43,7 @@ Component "rendezvous.test.com"
        component_secret = "password"
 ```
 # Actions before configure
-After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
 ``` shell
 rendezvous.test.com.        22      IN      A       199.27.76.133
 ```
@@ -47,20 +51,23 @@ rendezvous.test.com.        22      IN      A       199.27.76.133
 ## Configure
 After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
 ``` shell
-# XMPP address of your Rendezvous Component, as configured in the XMPP server.
+# XMPP address of your Rendezvous Component
 xmpp_jid=rendezvous.test.com
 
-# XMPP component password, as configured in the XMPP server.
+# XMPP component password
 xmpp_password=password
 
-# Address of the host running the XMPP component.
+# Address of the host running the XMPP server.
 xmpp_host=127.0.0.1
 
-# Port in which the XMPP server will be listening for components, as configured in the XMPP server.
+# XMPP server port (to listen for components communication)
 xmpp_port=5347
 ```
 
-The property below references a list of ids of other existent rendezvous, with whom this component can exchange information about managers alive and keep itself updated. This is part of the [replication strategy](http://www.fogbowcloud.org/rendezvous) used to avoid system crashes. 
+TODO: nao entendi "system crashes"
+
+The **neighbors** property indicates other existent rendezvous which this component can exchange information about **Fogbow Managers** liveness. This is part of the [replication strategy](http://www.fogbowcloud.org/rendezvous) used to avoid system crashes.
+
 ``` shell
 # Known Rendezvous Neighbor aderesses.
 neighbors=neighbor1@test.com,neighbor2@test.com
