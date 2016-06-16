@@ -145,7 +145,7 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorizatio
 
 * **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
 
-By default , we are using the plugin that choose in the list by alphabetic order. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#round-robin-member-picker-plugin) for more information.
+By default , we are using the plugin that choose in the list by alphabetic order. Access [Round Robin Member Picker Plugin  session](http://www.fogbowcloud.org/customazing-deployment#round-robin-member-picker-plugin) for more information.
 ``` shell
 # Example:
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
