@@ -100,7 +100,7 @@ network_datastore_url=jdbc:sqlite:/tmp/federated_network
 
 * **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
 
-By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#openstack-nova-v2-compute-plugin) for more information.
+By default, we are using openstack plugin as example. Access [Openstack Nova V2 Compute Plugin session](http://www.fogbowcloud.org/customazing-deployment#openstack-nova-v2-compute-plugin) for more information.
 ``` shell
 # Example:
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
@@ -112,7 +112,7 @@ compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 
 * **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-By default, we are using keystobe plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#keystone-identity-plugin) for more information.
+By default, we are using keystobe plugin as example. Access [Keystone Identity Plugin session](http://www.fogbowcloud.org/customazing-deployment#keystone-identity-plugin) for more information.
 ``` shell
 # Example:
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
@@ -121,7 +121,7 @@ local_identity_url=http://localhost:5000
 
 * **Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
 
-By default, we are using no cloud plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-storage-plugin) for more information.
+By default, we are using no cloud plugin as example. Access [No Cloud Storage Plugin session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-storage-plugin) for more information.
 ``` shell
 # Example:
 storage_class=org.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
@@ -228,7 +228,7 @@ http_port = 8182
 
 * **Compute accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
 
-By default , we are using the FCU Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#fcu-accounting-plugin) for more information.
+By default , we are using the FCU Accounting Plugin. Access [FCU Accounting Plugin   session](http://www.fogbowcloud.org/customazing-deployment#fcu-accounting-plugin) for more information.
 ```bash
 # default for accounting plugins
 # the period for update of the accounting
@@ -240,7 +240,7 @@ fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
 ```
 * **Storage accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
  
-By default , we are using the Simple Storage Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
+By default , we are using the Simple Storage Accounting Plugin. Access [Simple Storage Accouting Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
 ```bash
 # default for accounting plugins
 # the period for update of the accounting
@@ -254,7 +254,7 @@ simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 * **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
 By default, we are the plugin that determine the same power rating for any VM. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#benchmarking-plugin).
 
-By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
+By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Simple Storage Accounting Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
 ```bash
 # Example:
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
@@ -262,8 +262,9 @@ benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenc
 
 * **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
-* **Image storage plugin configuration:**  Get images by image storage plugin.
-By default, we are the plugin that download the image.
+* **Image storage plugin configuration:**  Get images by image storage plugin. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#image-storage).
+
+By default, we are the plugin that download the image. Access [HTTP Download Image Storage Plugin  session](http://www.fogbowcloud.org/customazing-deployment#http-download-image-storage-plugin) for more information.
 ```bash
 # Example:
 image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
