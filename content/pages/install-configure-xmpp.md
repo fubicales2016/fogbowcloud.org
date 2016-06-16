@@ -21,10 +21,8 @@ $ apt-get install prosody
 
 TODO: what is a component?
 
-Edit the configuration file `/etc/prosody/prosody.cfg.lua` and add the XMPP components that you need.
-
 For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is necessary to add a new component to the `/etc/prosody/prosody.cfg.lua` configuration file. Also, the **Fogbow Manager** and **Fogbow Rendezvous** **xmpp_jid** and 
-**xmpp_password** specified in the [Configure Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure) should be used as the **component name** and **component_secret**.
+**xmpp_password** properties, specified in the [Configure Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure), should be used as the **component name** and **component_secret**, as shown below.
 
 ```bash
 # Manager component
