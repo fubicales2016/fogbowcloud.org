@@ -129,7 +129,7 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStorag
 
 * **Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
 
-By default, we are using no cloud plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-network-plugin) for more information.
+By default, we are using no cloud plugin as example. Access [No Cloud Network Plugin session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-network-plugin) for more information.
 ``` shell
 # Example:
 network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
@@ -137,23 +137,23 @@ network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetwor
 
 * **Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
 
-By default, we are using the plugin that authorize all users.
+By default, we are using the plugin that authorize all users. Access [Allow All AUthorization Plugin session](http://www.fogbowcloud.org/customazing-deployment#allow-all-authorization-plugin) for more information.
 ``` shell
 # Example:
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
 ```
 
-* **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.
+* **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
 
-By default , we are using the plugin que choose in the list by alphabetic order.
+By default , we are using the plugin that choose in the list by alphabetic order. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#round-robin-member-picker-plugin) for more information.
 ``` shell
 # Example:
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
 
-* **Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
+* **Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
  
-By default, we are the plugin that map any user for one unique project.
+By default, we are the plugin that map any user for one unique project. Access [Simple Mapper Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-mapper-plugin) for more information.
 ``` shell
 # Example:
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
@@ -163,7 +163,7 @@ mapper_defaults_password=fogbow-pass
 mapper_defaults_tenantName=fogbow-project
 ```
 
-* **Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other).
+* **Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other). 
 
 ```bash
 # Member validator class
@@ -213,7 +213,7 @@ ssh_tunnel_private_host=10.0.0.1
 # Example:
 ssh_tunnel_host_port=2222
 
-# shh tunnel host http port defines the port to be used when doing comunication with que ssh tunnel host
+# shh tunnel host http port defines the port to be used when doing comunication with ssh tunnel host
 # Example:
 ssh_tunnel_host_http_port=2223wi
 ```
@@ -226,7 +226,9 @@ ssh_tunnel_host_http_port=2223wi
 http_port = 8182
 ```
 
-* **Compute accounting plugin configuration:** Stores compute accounting information.
+* **Compute accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
+
+By default , we are using the FCU Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#fcu-accounting-plugin) for more information.
 ```bash
 # default for accounting plugins
 # the period for update of the accounting
@@ -236,7 +238,9 @@ accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPl
 # path to the database
 fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
 ```
-* **Storage accounting plugin configuration:** Stores compute accounting information.
+* **Storage accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
+ 
+By default , we are using the Simple Storage Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
 ```bash
 # default for accounting plugins
 # the period for update of the accounting
@@ -248,7 +252,9 @@ simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 ```
 
 * **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
-By default, we are the plugin that determine the same power rating for any VM.
+By default, we are the plugin that determine the same power rating for any VM. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#benchmarking-plugin).
+
+By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Round Robin Member Picker PLugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
 ```bash
 # Example:
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
