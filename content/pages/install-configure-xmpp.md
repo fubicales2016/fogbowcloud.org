@@ -18,11 +18,12 @@ $ apt-get install prosody
 ## Configure
 Edit the configuration file prosody.cfg.lua(/etc/prosody/prosody.cfg.lua) and add the XMPP components that you need.
  
+Per example, it is used in the configuration for fogbow manager. You can see in the [Configure Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure).
 ```bash
 # Manager component
 Component "manager.test.com"
         component_secret = "password"
-
+        
 # Rendezvous component
 # Required when your deployment use a Rendezvous own
 Component "rendezvous.test.com"
