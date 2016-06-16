@@ -1,4 +1,4 @@
-Title: Customazing and deployment
+Title: Customizing and deployment
 url: customazing-deployment
 save_as: customazing-deployment.html
 section: customazing-deployment
@@ -8,7 +8,7 @@ index: 1
 
 The manager component was designed to be agnostic to the underlying cloud technology. There is an interoperability plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow's requests to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbow makes available some plugins, and new ones can be contributed by the fogbow developers' community.
 
-There are four different categories of interoperability plugins: the **Image Storage Plugins**, the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins**.
+There are four different categories of interoperability plugins: the **Image Storage Plugins**, the **Identity Plugins**, the **Authorization Plugins** and the **Compute Plugins** ........
 
 In addition to interoperability plugins, there are also behavioural plugins. These are used to specify the way each fogbow manager should act when serving clients' requests.
 
@@ -146,17 +146,23 @@ path_vomsdir=/path/voms/dir
 Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
 
 ##### No Cloud Identity Plugin
-...
+```bash
+```
 ##### Simple Token Identity Plugin
-...
+```bash
+```
 ##### EC2 Identity Plugin
-...
+```bash
+```
 ##### Azure Identity Plugin
-...
+```bash
+```
 ##### CloudStack Identity Plugin
-...
+```bash
+```
 ##### Shiboleth Identity Plugin
-...
+```bash
+```
 
 ## Compute Plugin
 
@@ -262,13 +268,17 @@ compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
 compute_one_ssh_target_temp_folder=/tmp/images
 ```
 ##### No Cloud Compute Plugin
-... 
+```bash
+```
 ##### EC2 Compute Plugin
-... 
+```bash
+```
 ##### Azure Compute Plugin
-... 
+```bash
+``` 
 ##### CloudStack Compute Plugin
-... 
+```bash
+``` 
 
 ## Authorization Plugin
 
@@ -286,9 +296,11 @@ The **federation_authorization_class** property must be set to a Authorization P
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
 ```
 ##### VO White List Authorization Plugin
-...
+```bash
+```
 ##### Edu Person White List Authorization Plugin
-...
+```bash
+```
 
 ## Storage Plugin
 The Storage Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
@@ -296,99 +308,158 @@ The Storage Plugin is responsible for requesting, getting, and deleting storage 
 ### Configure
 
 ##### OpenStack V2 Storage Plugin
-...
+```bash
+```
 ##### Opennebula Storage Plugin
-...
+```bash
+```
 ##### No CLoud Storage Plugin
-...
+```bash
+```
 ##### EC2 Storage Plugin
-...
+```bash
+```
 ##### Azure Storage Plugin
-...
+```bash
+```
 
 ## Network Plugin
 The Network Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
 
 ### Configure
 ##### OpenStack V2 Network Plugin
-...
+```bash
+```
 ##### Opennebula Network Plugin
-...
+```bash
+```
 ##### No Cloud Network Plugin
-...
+```bash
+```
 ##### EC2 Cloud Network Plugin
-...
+```bash
+```
 
 ## Accounting Plugin
 The Accounting Plugin is responsible for accounting of the instances and storages. 
 ### Configure
 ##### FCU Accounting Plugin
-...
+```bash
+```
 ##### Simple Storage Accounting Plugin
-...
+```bash
+```
 
 ## Benchmarking Plugin
 Benchmarking used to calculate the power rating of the VM. 
 ### Configure
 ##### SSH Benchmarking Plugin
-...
+```bash
+```
 ##### Vanilla Benchmarking Plugin
-...
+```bash
+```
 
 ## Member Picker Plugin
 Choice of a federation member that Fogbow Manager will order for resource.
 ### Configure
 ##### Round Robin Member Picker Plugin
-...
+```bash
+```
 ##### NOF Member Picker Plugin
-... 
-
+```bash
+```
 
 ## Capacity controller plugin
 ### Configure
 ##### Fairness Driven Capacity Controller Plugin
-...
+```bash
+```
 ##### Global Fairness Driven Controller Plugin
-...
+```bash
+```
 ##### Hill Climbing Algorithm Plugin
-...
+```bash
+```
 ##### Pairwise Fairnesse Driven Controller Plugin
-...
+```bash
+```
 ##### Two Fold Capacity Controller Plugin
-...
+```bash
+```
 ##### Satisfaction Driven Capacity Controller Plugin
-...
+```bash
+```
 
 ## Mapper Plugin
  Policy to map the user in one determinate project in the cloud.
 ### Configure
 ##### Federation User Based Mapper Plugin
-...
+```bash
+```
 ##### Member Based Mapper Plugin
-...
+```bash
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.MemberBasedMapperPlugin
+```
 ##### Simple Mapper Plugin
-...
+```bash
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+```
 ##### VOBased Mapper Plugin
-...
+```bash
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.VOBasedMapperPlugin
+```
 
 ## Prioritization Plugin
 ...
 ### Configure
 ##### Priotize Remove Order Plugin
-...
+```bash
+```
 ##### Two Fold Prioritization Plugin
-...
+```bash
+```
 ##### Nof Prioritization Plugin
-...
+```bash
+remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.nof.NoFPrioritizationPlugin
+nof_prioritize_local=true
+nof_trustworthy=false
+```
 ##### FCFS Prioritization Plugin
-...
+```bash
+local_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.fcfs.FCFSPrioritizationPlugin
+## Remote Prioritization Plugin
+
+```
 
 ## Image Storage
 ...
 ### Configure
 ##### VMCatcher Storage Plugin
-...
+```bash
+## Image Storage Plugin (VMCatcher)
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
+image_storage_vmcatcher_use_sudo=false
+image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
+## glancepush specific
+# image_storage_vmcatcher_push_method=glancepush
+# image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
+## one specific
+# image_storage_vmcatcher_push_method=cesga
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
+# image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
+```
+
 ##### HTTP Download Image Storage Plugin
-... 
+```bash
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+image_storage_http_base_url=http://appliance-repo.egi.eu/images
+image_storage_http_tmp_storage=/tmp/
+```
+
 ##### Static Image Storage Plugin
 ...
