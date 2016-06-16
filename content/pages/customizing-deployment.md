@@ -161,9 +161,6 @@ storage_ec2_availability_zone=us-east-1b
 ##### Azure Identity Plugin
 ```bash
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
-mapper_defaults_subscription_id=subscription_id
-mapper_defaults_keystore_path=/etc/keystore/azure
-mapper_defaults_keystore_password=test123
 ```
 ##### CloudStack Identity Plugin
 ```bash
