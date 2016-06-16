@@ -40,7 +40,7 @@ Component "manager.test.com"
 
 After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
 ``` shell
-manager.test.com.        22      IN      A       199.27.76.133
+manager.test.com        22      IN      A       199.27.76.133
 ```
 
 ## Configure
@@ -98,9 +98,9 @@ storage_datastore_url=jdbc:sqlite:/tmp/federated_storage
 network_datastore_url=jdbc:sqlite:/tmp/federated_network
 ```
 
-* **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
+* **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
 
-By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
+By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#openstack-nova-v2-compute-plugin) for more information.
 ``` shell
 # Example:
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
@@ -112,39 +112,37 @@ compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 
 * **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
+By default, we are using keystobe plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#keystone-identity-plugin) for more information.
 ``` shell
 # Example:
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
 local_identity_url=http://localhost:5000
 ```
 
-* **Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
 
-By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
+By default, we are using no cloud plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-storage-plugin) for more information.
 ``` shell
 # Example:
-storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://localhost:8776
+storage_class=org.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
 ```
 
-* **Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/install-plugins).
+* **Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
 
-By default, we are using openstack plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment) for more information.
+By default, we are using no cloud plugin as example. Access [Customazing and Deployment session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-network-plugin) for more information.
 ``` shell
 # Example:
-network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://localhost:9696
-external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
+network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
 ```
 
-* **Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
+* **Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
 
 By default, we are using the plugin that authorize all users.
 ``` shell
 # Example:
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
 ```
+
 * **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.
 
 By default , we are using the plugin que choose in the list by alphabetic order.
