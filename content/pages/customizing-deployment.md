@@ -150,12 +150,20 @@ Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-
 ```
 ##### Simple Token Identity Plugin
 ```bash
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.simpletoken.SimpleTokenIdentityPlugin
+simple_token_identity_valid_token_id=9398ybc43r-c9871btr7
 ```
 ##### EC2 Identity Plugin
 ```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
+storage_ec2_availability_zone=us-east-1b
 ```
 ##### Azure Identity Plugin
 ```bash
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+mapper_defaults_subscription_id=subscription_id
+mapper_defaults_keystore_path=/etc/keystore/azure
+mapper_defaults_keystore_password=test123
 ```
 ##### CloudStack Identity Plugin
 ```bash
