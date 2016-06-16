@@ -36,6 +36,7 @@ Component "rendezvous.test.com"
 ```
 
 ## Run
+After editing the prosody configuration, run below command to restart it.
 ``` shell
-$ service prosody start
+$ service prosody restart
 ```
