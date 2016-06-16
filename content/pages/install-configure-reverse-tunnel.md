@@ -16,11 +16,11 @@ git clone https://github.com/fogbow/fogbow-reverse-tunnel.git
 ```
 Then, install it
 ``` shell
-mvn install
+mvn install 
 ```
 
 ## Install from debian package
-Download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbow-reverse-tunnel_latest.deb" target=_blank>latest debian package</a>
+Download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbow-reverse-tunnel_latest.deb" target=_blank>latest debian package</a>.
 ```bash
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbow-reverse-tunnel_latest.deb
 ```
