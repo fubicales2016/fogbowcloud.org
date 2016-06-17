@@ -466,6 +466,7 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 ### Configure
 ##### Federation User Based Mapper Plugin
 ```bash
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.FederationUserBasedMapperPlugin
 ```
 ##### Member Based Mapper Plugin
 ```bash
