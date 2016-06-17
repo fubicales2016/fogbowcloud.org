@@ -7,7 +7,7 @@ index: 6
 Install and configure reverse tunnel
 ==========
 
-The reverse tunnel component acts ....
+A reverse tunneling service provides public IP access to all virtual machines created in the private clouds, even if the local cloud offers only private IPs to these virtual machines.
 
 TODO: precisamos explicar que na verdade, temos multiplos servidores. na configuracao precisamos deixar claro que é especificado o numero de 
 
