@@ -40,10 +40,9 @@ CUSTOM_THEME = 'naf-theme'
 ```
 
 ##Run
-TODO: colocar o redirect e o nohup
 
 ``` bash
-./run_tests.sh --runserver localhost:9000
+nohup ./run_tests.sh --runserver localhost:9000 &
 ```
 
 The Fogbow Dashboard is based on the [horizon](https://github.com/openstack/horizon) dashboard. To know more about the Horizon project, for example how to deploy it in different environments, see the <a href="http://docs.openstack.org/developer/horizon/index.html" target=_blank>Horizon docs</a>.
