@@ -326,9 +326,13 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.Allow
 ```
 ##### VO White List Authorization Plugin
 ```bash
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.voms.VOWhiteListAuthorizationPlugin
+authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
 ```
 ##### Edu Person White List Authorization Plugin
 ```bash
+federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
+authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
 ```
 
 ## Storage Plugin
