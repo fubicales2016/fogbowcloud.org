@@ -273,17 +273,27 @@ compute_one_ssh_key_file=/home/fogbow/.ssh/id_rsa
 compute_one_ssh_target_temp_folder=/tmp/images
 ```
 ##### No Cloud Compute Plugin
+Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
 ```bash
+compute_class=org.fogbowcloud.manager.core.plugins.compute.nocloud.NoCloudComputePlugin
 ```
 ##### EC2 Compute Plugin
 ```bash
+# Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.ec2.EC2ComputePlugin
+# Region where will create the VM
 compute_ec2_region=us-east-1
+# Security group id given in the user's account
 compute_ec2_security_group_id=sg-12345678
+# Subnet id given in the user's account
 compute_ec2_subnet_id=subnet-12345678
+# 
 compute_ec2_image_bucket_name=s3-bucket-for-images
+# amount maximum of vCPU
 compute_ec2_max_vcpu=10
+# amount maximum of RAM
 compute_ec2_max_ram=10240
+# amount maximum of instances
 compute_ec2_max_instances=10
 ```
 ##### Azure Compute Plugin
@@ -350,6 +360,7 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebula
 storage_one_datastore_default_device_prefix=vd
 ```
 ##### No Cloud Storage Plugin
+Cloud Storage Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
 ```bash
 storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 ```
@@ -385,6 +396,8 @@ network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebula
 network_one_bridge=br0
 ```
 ##### No Cloud Network Plugin
+Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
+
 ```bash
 network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
 ```
