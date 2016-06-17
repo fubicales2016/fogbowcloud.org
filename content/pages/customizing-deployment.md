@@ -342,18 +342,33 @@ The Storage Plugin is responsible for requesting, getting, and deleting storage 
 
 ##### OpenStack V2 Storage Plugin
 ```bash
+class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+storage_v2_url=http://localhost:8776
 ```
 ##### Opennebula Storage Plugin
 ```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
+# Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
+storage_one_datastore_default_device_prefix=vd
 ```
-##### No CLoud Storage Plugin
+##### No Cloud Storage Plugin
 ```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 ```
 ##### EC2 Storage Plugin
 ```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
+storage_ec2_availability_zone=us-east-1b
 ```
 ##### Azure Storage Plugin
 ```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+compute_azure_storage_account_name=
+compute_azure_storage_key=
+```
+##### CloudStack Storage Plugin
+```bash
+storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 ```
 
 ## Network Plugin
