@@ -377,15 +377,23 @@ The Network Plugin is responsible for requesting, getting, and deleting storage 
 ### Configure
 ##### OpenStack V2 Network Plugin
 ```bash
+network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+network_openstack_v2_url=http://localhost:9696
+external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 ##### Opennebula Network Plugin
 ```bash
+network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
+network_one_bridge=br0
 ```
 ##### No Cloud Network Plugin
 ```bash
+network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
 ```
 ##### EC2 Cloud Network Plugin
 ```bash
+network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
+network_ec2_region=
 ```
 
 ## Accounting Plugin
