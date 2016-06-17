@@ -147,6 +147,7 @@ Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-
 
 ##### No Cloud Identity Plugin
 ```bash
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
 ```
 ##### Simple Token Identity Plugin
 ```bash
@@ -155,8 +156,7 @@ simple_token_identity_valid_token_id=9398ybc43r-c9871btr7
 ```
 ##### EC2 Identity Plugin
 ```bash
-storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
-storage_ec2_availability_zone=us-east-1b
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
 ```
 ##### Azure Identity Plugin
 ```bash
@@ -164,9 +164,12 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.Az
 ```
 ##### CloudStack Identity Plugin
 ```bash
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+local_identity_url=http://127.0.0.1:8080/client/api/
 ```
 ##### Shiboleth Identity Plugin
 ```bash
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.shibboleth.ShibbolethIdentityPlugin
 ```
 
 ## Compute Plugin
