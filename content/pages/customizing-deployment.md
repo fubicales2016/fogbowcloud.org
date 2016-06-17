@@ -401,9 +401,14 @@ The Accounting Plugin is responsible for accounting of the instances and storage
 ### Configure
 ##### FCU Accounting Plugin
 ```bash
+accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+accounting_update_period=300000
+fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
 ```
 ##### Simple Storage Accounting Plugin
 ```bash
+storage_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
+simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 ```
 
 ## Benchmarking Plugin
@@ -411,9 +416,16 @@ Benchmarking used to calculate the power rating of the VM.
 ### Configure
 ##### SSH Benchmarking Plugin
 ```bash
+benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.SSHBenchmarkingPlugin
+# Benchmarking script to use with SSH Benchmarking plugin
+ssh_benchmarking_script_url=http://downloads.fogbowcloud.org/benchmark/script_ssh_benchmarking.sh
+# Manager public and private keys
+ssh_private_key=/etc/fogbow-manager/ssh/id_rsa
+ssh_public_key=/etc/fogbow-manager/ssh/id_rsa.pub
 ```
 ##### Vanilla Benchmarking Plugin
 ```bash
+benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
 ```
 
 ## Member Picker Plugin
@@ -421,9 +433,11 @@ Choice of a federation member that Fogbow Manager will order for resource.
 ### Configure
 ##### Round Robin Member Picker Plugin
 ```bash
+member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
 ##### NOF Member Picker Plugin
 ```bash
+member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberPickerPlugin
 ```
 
 ## Capacity controller plugin
