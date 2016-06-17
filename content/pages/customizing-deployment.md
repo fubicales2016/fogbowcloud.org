@@ -80,7 +80,6 @@ local_proxy_account_user_name=fogbow
 local_proxy_account_password=fogbow
 # Tenant of such account
 local_proxy_account_tenant_name=demo
-
 ```
 
 #####OpenNebula Identity Plugin
@@ -280,12 +279,34 @@ compute_one_ssh_target_temp_folder=/tmp/images
 ```
 ##### EC2 Compute Plugin
 ```bash
+compute_class=org.fogbowcloud.manager.core.plugins.compute.ec2.EC2ComputePlugin
+compute_ec2_region=us-east-1
+compute_ec2_security_group_id=sg-12345678
+compute_ec2_subnet_id=subnet-12345678
+compute_ec2_image_bucket_name=s3-bucket-for-images
+compute_ec2_max_vcpu=10
+compute_ec2_max_ram=10240
+compute_ec2_max_instances=10
 ```
 ##### Azure Compute Plugin
 ```bash
+compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
+compute_azure_max_vcpu=10
+compute_azure_max_ram=10240
+compute_azure_region=East US
+compute_azure_storage_account_name=storage1
+compute_azure_storage_key=abcd12345
 ``` 
 ##### CloudStack Compute Plugin
 ```bash
+compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+compute_cloudstack_api_url=http://127.0.0.1:8080/client/api
+compute_cloudstack_zone_id=d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
+compute_cloudstack_image_download_base_url=http://127.0.0.1/downloads/
+compute_cloudstack_image_download_base_path=/var/www/downloads/
+compute_cloudstack_hypervisor=KVM
+compute_cloudstack_image_download_os_type_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+compute_cloudstack_expunge_on_destroy=true
 ``` 
 
 ## Authorization Plugin
