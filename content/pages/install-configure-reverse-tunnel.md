@@ -39,7 +39,9 @@ After the installation, rename the file ```reverse-tunnel.conf.example``` to ```
 # The HTTP service handles request to create and get tunneled ports.
 http_port=2223
 
-# The reverse tunnel service employs multiple tunnel servers to balance the service load. The service allocates one port to each server. This property defines the range of servers' ports, thus the number of servers.
+# The reverse tunnel service employs multiple tunnel servers to balance the service load.
+# The service allocates one port to each server.
+# The tunnel_port_range property defines the range of servers' ports, thus the number of servers.
 tunnel_port_range=2224:4224
 
 # Number of ssh ports to be allocated in each server.
@@ -52,8 +54,9 @@ external_port_range=20000:30000
 host_key_path=hostkey.ser
 
 # Expiration time to a tunnel port token
-# A token is associated with the created tunneled ports. The token expires after not been used for idle_token_timeout seconds.
-# After expiration, the port is reclaimed and can be used in another request.
+# A token is associated with a created tunneled port.
+# The token expires after not been used for idle_token_timeout seconds.
+# After expiration, the port is reclaimed and can be used by another request.
 idle_token_timeout=86400
 
 # Period interval in seconds to verify token expiration
