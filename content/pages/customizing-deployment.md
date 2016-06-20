@@ -12,32 +12,35 @@ In addition to interoperability plugins, there are also behavioural plugins. The
 
 ## Image Storage Plugin
 
-New requests arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
+New orders arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
 
-Those plugins could also benefit from the fact that they are called when new requests arrive, and, for instance, perform dynamic upload of images fetched from VM marketplaces to the underlying cloud, which is exactly what the ```EgiImageStoragePlugin``` does.
-
-### Configure
-
+##### VMCatcher Storage Plugin
 ```bash
-# Image Storage Plugin class
-image_storage_class=org.fogbowcloud.manager.core.plugins.egi.EgiImageStoragePlugin
-
-# Base URL of the VM marketplace, if not provided, 
-# the system will still work with images provided statically 
-image_storage_egi_base_url=http://vms.fogbowcloud.org/~base/ 
-
-# If the VM marketplace requires authentication, a Java Keystore can be provided
-image_storage_egi_keystore_path=/path/to/keystore
-image_storage_egi_keystore_password=passpass
-
-# Temporary folder where images from the VM marketplace are stored
-image_storage_egi_tmp_storage=/tmp/
-
-# Static mapping of global image ids to local image ids
-image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
-image_storage_static_fogbow-ubuntu-1204=81765250-a4e4-440d-a215-43c9c0849120
-
+## Image Storage Plugin (VMCatcher)
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
+image_storage_vmcatcher_use_sudo=false
+image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
+## glancepush specific
+# image_storage_vmcatcher_push_method=glancepush
+# image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
+## one specific
+# image_storage_vmcatcher_push_method=cesga
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
+# image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
 ```
+
+##### HTTP Download Image Storage Plugin
+```bash
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+image_storage_http_base_url=http://appliance-repo.egi.eu/images
+image_storage_http_tmp_storage=/tmp/
+```
+
+##### Static Image Storage Plugin
 
 As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
 
@@ -522,35 +525,3 @@ local_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritiz
 ## Remote Prioritization Plugin
 
 ```
-
-## Image Storage
-...
-### Configure
-##### VMCatcher Storage Plugin
-```bash
-## Image Storage Plugin (VMCatcher)
-image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
-image_storage_vmcatcher_use_sudo=false
-image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
-## glancepush specific
-# image_storage_vmcatcher_push_method=glancepush
-# image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
-# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
-## one specific
-# image_storage_vmcatcher_push_method=cesga
-# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
-# image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
-```
-
-##### HTTP Download Image Storage Plugin
-```bash
-image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
-image_storage_http_base_url=http://appliance-repo.egi.eu/images
-image_storage_http_tmp_storage=/tmp/
-```
-
-##### Static Image Storage Plugin
-...
