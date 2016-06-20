@@ -41,6 +41,10 @@ image_storage_http_tmp_storage=/tmp/
 ```
 
 ##### Static Image Storage Plugin
+```bash
+image_storage_static_fogbow-linux-x86=
+image_storage_static_fogbow-ubuntu-12.04-with-java=
+```
 
 As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
 
