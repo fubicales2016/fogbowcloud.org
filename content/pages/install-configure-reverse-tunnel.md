@@ -37,33 +37,36 @@ TODO: acho que precisamos especificar os diretorios em que o package será insta
 ## Configure
 After the installation, rename the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
 ```bash
-# The range of port used for creation of tunnel's server .
-# melhorrar desc.
+# The range of ports used for creation of tunnel's server .
+# These ports defines the number of servers to be used
 tunnel_port_range=2224:2242
 
-# Amount of port released for each tunnel server.
+# Number of ports to be allocated in each server.
 ports_per_ssh_server=5
 
-#explicar para que isso eh usado
+# This property defines the hosts address of Reverse Tunnel's server
+# 0.0.0.0 sets the server to listen on all interfaces
 tunnel_host=0.0.0.0
 
 # Http port of the Fogbow Reverse Tunnel.
-# melhorrar desc.
+# Port to run the HTTP service of the Reverse Tunnel
+# Where the manager should do requests to create or get ports to use in tunnel
 http_port=2223
 
 # The range of external ports.
 # valore nao casam
 external_port_range=20000:30000
 
-#para que isso
+# Path to save the generated key pair for the SSH Server
+# It should be defined to the server use the same key even after restart
 host_key_path=hostkey.ser
 
 # Checking time of token.
-# para que isso
+# Amount of time before mark a token as expired
 idle_token_timeout=86400
 
 # Checking of the interval of idle ports in the tunnel 's server.
-# para que isso
+# Interval between the check for idle tokens in each server to remove the tunnel
 check_ssh_servers_interval=120
 ```
 
