@@ -20,6 +20,7 @@ $ apt-get install prosody
 ## Configure
 
 TODO: what is a component?
+In XMPP servers we have tradicionally two kinds of server-side components: internal components, which utilize the internal API of a server, and external components, which communicate with a server over a wire protocol and therefore are not tied to any particular server implementation. In Fogbow we have two XMPP external components, the **Fogbow Manager** and **Fogbow Rendezvous**.
 
 For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is necessary to add a new component to the `/etc/prosody/prosody.cfg.lua` configuration file. Also, the **Fogbow Manager** and **Fogbow Rendezvous** **xmpp_jid** and 
 **xmpp_password** properties, specified in the [Configure Manager](http://www.fogbowcloud.org/install-configure-fogbow-manager#configure), should be used as the **component name** and **component_secret**, as shown below.
