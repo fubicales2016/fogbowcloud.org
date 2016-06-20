@@ -71,7 +71,7 @@ check_ssh_servers_interval=120
 ```
 
 ## Run
-To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
+To start the reverse tunnel server, run the start-tunnel-server script inside ```./bin```.
 ``` shell
 ./bin/start-tunnel-server
 ```
