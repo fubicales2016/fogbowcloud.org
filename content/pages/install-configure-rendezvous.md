@@ -7,7 +7,7 @@ index: 6
 Install and configure rendezvous
 ==========
 
-The rendezvous component is the discovery service of a fogbow federation, allowing members to find each other.
+The **Rendezvous** is the discovery service that allows fogbow members to find each other in a fogbow federation.
 
 ## Install from source
 Get the latest code of the project.
