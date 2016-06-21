@@ -15,21 +15,42 @@ In addition to interoperability plugins, there are also behavioural plugins. The
 New orders arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
 
 ##### VMCatcher Storage Plugin
+
+Allows users to subscribe to virtual machine Virtual Machine Image Lists following the HEPIX Virtualisation working groups specification, cache the images referenced to in the Virtual Machine Image List, validate the images list with x509 based public key cryptography, and validate the images against sha512 hashes in the images lists and provide events for further applications to process updates or expiries of virtual machine images without having to further validate the images.
+
+For more information about vmcatcher, access [vmcatcher page on github.](https://github.com/hepix-virtualisation/vmcatcher)
 ```bash
 ## Image Storage Plugin (VMCatcher)
+# Image storage class
 image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
+# Run with "sudo"
 image_storage_vmcatcher_use_sudo=false
+# Path database
 image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
+# Path where stores the images downloaded
 image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
+# Path where stores the images are being download
 image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
+# Path where stores the images expired
 image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
-## glancepush specific
+
+## Use "glancepush specification" for openstack or "one specification" for opennebula
+
+### Plugin for openstack
+### glancepush specific
+## Option for use the openstack plugin
 # image_storage_vmcatcher_push_method=glancepush
 # image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
+## Path of the plugin
 # image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
-## one specific
+
+### Plugin for opennebula
+### one specific
+## Option for use the openstack plugin
 # image_storage_vmcatcher_push_method=cesga
+## Path of the plugin
 # image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
+## Path where are the user's credentiais
 # image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
 ```
 
