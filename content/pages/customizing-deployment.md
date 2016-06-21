@@ -408,11 +408,13 @@ The Storage Plugin is responsible for requesting, getting, and deleting storage 
 
 ##### OpenStack V2 Storage Plugin
 ```bash
-class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+# Storage Plugin class
+storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
 storage_v2_url=http://localhost:8776
 ```
 ##### Opennebula Storage Plugin
 ```bash
+# Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
 # Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
 storage_one_datastore_default_device_prefix=vd
@@ -420,21 +422,25 @@ storage_one_datastore_default_device_prefix=vd
 ##### No Cloud Storage Plugin
 Cloud Storage Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
 ```bash
+# Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 ```
 ##### EC2 Storage Plugin
 ```bash
+# Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
 storage_ec2_availability_zone=us-east-1b
 ```
 ##### Azure Storage Plugin
 ```bash
+# Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
 compute_azure_storage_account_name=
 compute_azure_storage_key=
 ```
 ##### CloudStack Storage Plugin
 ```bash
+# Storage Plugin class
 storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 ```
 
@@ -444,12 +450,14 @@ The Network Plugin is responsible for requesting, getting, and deleting storage 
 ### Configure
 ##### OpenStack V2 Network Plugin
 ```bash
+# Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
 network_openstack_v2_url=http://localhost:9696
 external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 ##### Opennebula Network Plugin
 ```bash
+# Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
 network_one_bridge=br0
 ```
@@ -457,10 +465,12 @@ network_one_bridge=br0
 Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
 
 ```bash
+# Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
 ```
 ##### EC2 Cloud Network Plugin
 ```bash
+# Network Plugin class
 network_class=org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
 network_ec2_region=
 ```
@@ -498,6 +508,7 @@ Benchmarking used to calculate the power rating of the VM.
 ### Configure
 ##### SSH Benchmarking Plugin
 ```bash
+# Benchmarking class
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.SSHBenchmarkingPlugin
 # Benchmarking script to use with SSH Benchmarking plugin
 ssh_benchmarking_script_url=http://downloads.fogbowcloud.org/benchmark/script_ssh_benchmarking.sh
@@ -507,6 +518,7 @@ ssh_public_key=/etc/fogbow-manager/ssh/id_rsa.pub
 ```
 ##### Vanilla Benchmarking Plugin
 ```bash
+# Benchmarking class
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
 ```
 
