@@ -289,10 +289,15 @@ compute_ec2_max_instances=10
 ```bash
 # Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
+# Limit of vCPUs to use
 compute_azure_max_vcpu=10
+# Limit of memory to use
 compute_azure_max_ram=10240
+# Region in Azure to create VMs and resources
 compute_azure_region=East US
+# Name of the storage account to create the VM storage disk
 compute_azure_storage_account_name=storage1
+# Access key of the configured storage account
 compute_azure_storage_key=abcd12345
 ``` 
 
@@ -300,12 +305,19 @@ compute_azure_storage_key=abcd12345
 ```bash
 # Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+# URL of CloudStack API
 compute_cloudstack_api_url=http://127.0.0.1:8080/client/api
+# ID of the CloudStack zone to create VMs
 compute_cloudstack_zone_id=d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
+# Base URL of the webserver where your image repository is configured
 compute_cloudstack_image_download_base_url=http://127.0.0.1/downloads/
+# Absolute path of your image repository in the webserver
 compute_cloudstack_image_download_base_path=/var/www/downloads/
+# Hypervisor type used in CloudStack
 compute_cloudstack_hypervisor=KVM
+# ID of the default OS type to register new images
 compute_cloudstack_image_download_os_type_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+# Defines if the VM should be completely removed on terminate
 compute_cloudstack_expunge_on_destroy=true
 ``` 
 
@@ -392,16 +404,17 @@ The **federation_authorization_class** property must be set to a Authorization P
 
 ```bash
 # Federation Authorization plugin class
-# Example 
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
 ```
 ##### VO White List Authorization Plugin
 ```bash
+# Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.voms.VOWhiteListAuthorizationPlugin
 authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
 ```
 ##### Edu Person White List Authorization Plugin
 ```bash
+# Federation Authorization plugin class
 federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
 authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
 ```
