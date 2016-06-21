@@ -485,6 +485,7 @@ accounting_update_period=300000
 ```
 
 ##### FCU Accounting Plugin
+O calculo é feito pela soma de minutos usados mais a potência determinada pelo plugin do benchmarking.
 
 ```bash
 # Accounting class
@@ -507,6 +508,8 @@ simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 Benchmarking used to calculate the power rating of the VM. 
 ### Configure
 ##### SSH Benchmarking Plugin
+Calculo da potência da instância é determinado pelo tempo de execução de um script executado na instância via SSH. 
+
 ```bash
 # Benchmarking class
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.SSHBenchmarkingPlugin
@@ -517,6 +520,8 @@ ssh_private_key=/etc/fogbow-manager/ssh/id_rsa
 ssh_public_key=/etc/fogbow-manager/ssh/id_rsa.pub
 ```
 ##### Vanilla Benchmarking Plugin
+Calculo da potência da instância é determinado pela quantidade de VPUs e memória.
+
 ```bash
 # Benchmarking class
 benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
