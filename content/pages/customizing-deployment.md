@@ -680,27 +680,37 @@ The Prioritization Plugin is responsible for prioritizing a request over another
 It only comes into play when the quota for creating new resources is exceeded.
 In these cases, it must verify if in that given time there is any fulfilled/ongoing request from a member with lower priority than the new requester.
 If this condition is true, that request must preempted so that the new request can be met.
+
 ### Configure
 ##### Priotize Remove Order Plugin
+Priotize the remote orders.
+
 ```bash
+# Priorization Plugin class
+remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.PriotizeRemoteOrderPlugin
 ```
 ##### Two Fold Prioritization Plugin
 This plugin allows a more refined prioritization policy by allowing that two other plugins be used by composition.
 One is used for prioritization of locar orders, and the other for prioritization of remote orders.
 ```bash
+# Priorization Plugin class
+remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.TwoFoldPrioritizationPlugin
 ```
+
 ##### Nof Prioritization Plugin
 This plugin uses the Network of Favors as policy. Roughly, the Network of Favors prioritizes members from which it owes more favors.
 ```bash
+# Priorization Plugin class
 remote_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.nof.NoFPrioritizationPlugin
 nof_prioritize_local=true
 nof_trustworthy=false
 ```
+
 ##### FCFS Prioritization Plugin
 This plugin doesn't perform any prioritization. The first request to come is the first to be served. 
 Obviously, the request is only met if there is free quota.
 ```bash
+# Priorization Plugin class
 local_prioritization_plugin_class=org.fogbowcloud.manager.core.plugins.prioritization.fcfs.FCFSPrioritizationPlugin
-## Remote Prioritization Plugin
 
 ```
