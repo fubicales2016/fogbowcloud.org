@@ -349,9 +349,16 @@ image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache
 ```
 
 ##### HTTP Download Image Storage Plugin
+This plugin allows users to request instances using an image URL, that should be an absolute URL or a suffix that will be appended to the base URL configured, then the plugin tries to download and register the new image in the cloud if it doesn't exists.
+
 ```bash
 image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+
+# Base URL of the image repository like the EGI Applications Database
+# If the user supplies an relative URL in the request, the base URL will be used to find the image
 image_storage_http_base_url=http://appliance-repo.egi.eu/images
+
+# Path to the temporary directory where the images should be downloaded to
 image_storage_http_tmp_storage=/tmp/
 ```
 
@@ -524,22 +531,66 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 ```
 
 ## Mapper Plugin
- Policy to map the user in one determinate project in the cloud.
+Policy to map the user in one determinate project in the cloud. Esse mapeamento é feito com um identificador que será determinado pelo plugins mais as credenciais referentes ao plugin local de identidade. Quando nao for possível encontrar o identificador é usado um default obrigatoriamente.
+
+```bash
+Fórmula : 
+mapper_ + {Identificador} + _ + {Credential}
+
+# Openstack credentals: username, password, tenantName
+# Identificador: defaults
+mapper_defaults_username=fogbow
+mapper_defaults_password=fogbow
+mapper_defaults_tenantName=fogbow
+
+# Identificador: other
+# mapper_other_username=
+# mapper_other_password=
+# mapper_other_tenantName=
+
+# Opennebula credentals: username, password
+# Identificador: defaults
+mapper_defaults_username=fogbow
+mapper_defaults_password=fogbowpass
+
+# EC2 credentals: accessKey, secretKey
+# Identificador: defaults
+mapper_defaults_accessKey=AKIALSKQLKFD7AHQLKEUO
+mapper_defaults_secretKey=Iuaooiad&891/2309asd0123+akplkdh
+
+# EC2 credentals: apiKey, secretKey
+# Identificador: defaults
+mapper_defaults_apiKey=user_api_key
+mapper_defaults_secretKey=user_secret_key
+```
+
 ### Configure
 ##### Federation User Based Mapper Plugin
+O mapeamento é feito por intermédio do username do usuário logado.
+
 ```bash
+# Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.FederationUserBasedMapperPlugin
 ```
 ##### Member Based Mapper Plugin
+O mapeamento é feito baseado no membro da federação que pediu o recurso.
+
 ```bash
+# Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.MemberBasedMapperPlugin
 ```
 ##### Simple Mapper Plugin
+Mapeamento apenas com o defaults.
+
 ```bash
+# Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 ```
 ##### VOBased Mapper Plugin
+O mapeamento é feito com o CN do usuário do token VOMS.
+
 ```bash
+# Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.VOBasedMapperPlugin
 ```
 
