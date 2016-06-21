@@ -26,17 +26,15 @@ As you can see at the [Manager Install Guide](http://www.fogbowcloud.org/install
 
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
-
 # Cloud Identity endpoint
 local_identity_url=http://localhost:5000
 
 # Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
-
-# Federation identity endpoint
+# Federation Identity endpoint
 federation_identity_url=http://localhost:5000
 
-# Proxy account for remote requests @ the local identity provider 
+# Proxy account for remote requests @ the local identity provider
 local_proxy_account_user_name=fogbow
 # Password of such account
 local_proxy_account_password=fogbow
@@ -50,17 +48,15 @@ local_proxy_account_tenant_name=demo
 
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
-
 # Cloud identity endpoint
 local_identity_url=http://localhost:2633/RPC2
 
 # Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
-
-# Cloud identity endpoint
+# Federation Identity endpoint
 federation_identity_url=http://localhost:2633/RPC2
 
-# Proxy account for remote requests @ the local identity provider 
+# Proxy account for remote order @ the local identity provider 
 local_proxy_account_user_name=fogbow
 # Password of such account
 local_proxy_account_password=fogbow
@@ -73,17 +69,22 @@ local_proxy_account_password=fogbow
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
 
+# Federation Identity plugin class
+federation_identity_class=org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
+
 # Directory where are the certificates of Certificate Authorities (CA). 
 # They are certificates that you trust.
 x509_ca_dir_path=/path/to/ca/directory
-
 ```
 
-#####VOMs Plugin
+#####VOMS Plugin
 
 ```bash
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugin
+
+# Federation Identity plugin class
+federation_identity_class=org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugin
 
 # Directory where are the VOMS server information. 
 # List of voms servers in order to issue a proxy. 
@@ -107,25 +108,42 @@ path_vomsdir=/path/voms/dir
 Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.
 
 ##### No Cloud Identity Plugin
-Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
+Cloud Compute Plugin describe a scenary that does not exist an cloud that is associate to a Fogbow manager.
 ```bash
-federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
 ```
+
 ##### Simple Token Identity Plugin
 ```bash
+# Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.simpletoken.SimpleTokenIdentityPlugin
+# Token to check
 simple_token_identity_valid_token_id=9398ybc43r-c9871btr7
 ```
+
 ##### EC2 Identity Plugin
 ```bash
+# Local Identity plugin class
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
+
+# Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
 ```
 ##### Azure Identity Plugin
 ```bash
+# Local Identity plugin class
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+
+# Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
 ```
 ##### CloudStack Identity Plugin
 ```bash
+# Federation Identity plugin class
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+federation_identity_url=http://127.0.0.1:8080/client/api/
+
+# Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
 local_identity_url=http://127.0.0.1:8080/client/api/
 ```
