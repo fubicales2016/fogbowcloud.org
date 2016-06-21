@@ -531,13 +531,13 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 ```
 
 ## Mapper Plugin
-Policy to map the user in one determinate project in the cloud. Esse mapeamento é feito com um identificador que será determinado pelo plugins mais as credenciais referentes ao plugin local de identidade. Quando nao for possível encontrar o identificador é usado um default obrigatoriamente.
+Policy to map the federation user in one determinate user in the cloud. Esse mapeamento é feito com um identificador, que será determinado por um dos plugins, e as credenciais referentes ao plugin local de identidade. Quando não for possível encontrar o identificador via plugin é usado o identificador default obrigatoriamente.
 
-```bash
 Fórmula : 
 mapper_ + {Identificador} + _ + {Credential}
 
-# Openstack credentals: username, password, tenantName
+```bash
+# Openstack credentials: username, password, tenantName
 # Identificador: defaults
 mapper_defaults_username=fogbow
 mapper_defaults_password=fogbow
@@ -548,7 +548,7 @@ mapper_defaults_tenantName=fogbow
 # mapper_other_password=
 # mapper_other_tenantName=
 
-# Opennebula credentals: username, password
+# Opennebula credentials: username, password
 # Identificador: defaults
 mapper_defaults_username=fogbow
 mapper_defaults_password=fogbowpass
@@ -566,11 +566,22 @@ mapper_defaults_secretKey=user_secret_key
 
 ### Configure
 ##### Federation User Based Mapper Plugin
-O mapeamento é feito por intermédio do username do usuário logado.
+O mapeamento é feito por intermédio do username logado como identificador.
 
 ```bash
 # Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.FederationUserBasedMapperPlugin
+
+# Example 
+# Identificador: fulado
+mapper_fulano_username=fogbow
+mapper_fulano_password=fogbow
+mapper_fulano_tenantName=fogbow
+
+# defaults
+mapper_defaults_username=fogbowDefault
+mapper_defaults_defaults_password=fogbowDefault
+mapper_defaults_tenantName=fogbowDefaults
 ```
 ##### Member Based Mapper Plugin
 O mapeamento é feito baseado no membro da federação que pediu o recurso.
@@ -578,6 +589,17 @@ O mapeamento é feito baseado no membro da federação que pediu o recurso.
 ```bash
 # Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.MemberBasedMapperPlugin
+
+# Example 
+# Identificador: manager.com.br
+mapper_manager.com.br_username=fogbow
+mapper_manager.com.br_password=fogbow
+mapper_manager.com.br_tenantName=fogbow
+
+# defaults
+mapper_defaults_username=fogbowDefault
+mapper_defaults_defaults_password=fogbowDefault
+mapper_defaults_tenantName=fogbowDefaults
 ```
 ##### Simple Mapper Plugin
 Mapeamento apenas com o defaults.
@@ -585,6 +607,12 @@ Mapeamento apenas com o defaults.
 ```bash
 # Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
+# Example 
+# Identificador: defaults
+mapper_defaults_username=fogbow
+mapper_defaults_defaults_password=fogbow
+mapper_defaults_tenantName=fogbow
 ```
 ##### VOBased Mapper Plugin
 O mapeamento é feito com o CN do usuário do token VOMS.
@@ -592,6 +620,17 @@ O mapeamento é feito com o CN do usuário do token VOMS.
 ```bash
 # Mapper class
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.VOBasedMapperPlugin
+
+# Example 
+# Identificador: CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_username=fogbow
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_password=fogbow
+mapper_CN->Fulano,OU->DSC,O->UFCG,O->UFFBrGridCA,O->ICPEDU,C->BR_tenantName=fogbow
+
+# defaults
+mapper_defaults_username=fogbowDefault
+mapper_defaults_defaults_password=fogbowDefault
+mapper_defaults_tenantName=fogbowDefaults
 ```
 
 ## Prioritization Plugin
