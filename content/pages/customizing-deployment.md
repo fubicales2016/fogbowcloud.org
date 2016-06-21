@@ -110,6 +110,7 @@ Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-
 ##### No Cloud Identity Plugin
 Cloud Compute Plugin describe a scenary that does not exist an cloud that is associate to a Fogbow manager.
 ```bash
+# Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
 ```
 
@@ -141,14 +142,17 @@ federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.Az
 ```bash
 # Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+# Federation Identity endpoint
 federation_identity_url=http://127.0.0.1:8080/client/api/
 
 # Local Identity plugin class
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+# Cloud Identity endpoint
 local_identity_url=http://127.0.0.1:8080/client/api/
 ```
 ##### Shiboleth Identity Plugin
 ```bash
+# Federation Identity plugin class
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.shibboleth.ShibbolethIdentityPlugin
 ```
 
