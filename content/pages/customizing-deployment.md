@@ -499,13 +499,20 @@ benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenc
 
 ## Member Picker Plugin
 Choice of a federation member that Fogbow Manager will order for resource.
+
 ### Configure
 ##### Round Robin Member Picker Plugin
+O plugin escolhe o membro por ordem alfabética em uma lista.
+
 ```bash
+# Member picker class
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
 ```
+
 ##### NOF Member Picker Plugin
+Este plugin usa o plugin do accounting para tomar a decisão de escolha do membro. Essa escolha é determinda com base no débito do membro da federação com o membro local. Quando maior o débido, mais proprício a ser escolhido.
 ```bash
+# Member picker class
 member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberPickerPlugin
 ```
 
