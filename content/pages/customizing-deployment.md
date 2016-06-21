@@ -262,6 +262,7 @@ compute_one_ssh_target_temp_folder=/tmp/images
 ##### No Cloud Compute Plugin
 Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.
 ```bash
+# Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.nocloud.NoCloudComputePlugin
 ```
 ##### EC2 Compute Plugin
@@ -283,8 +284,10 @@ compute_ec2_max_ram=10240
 # amount maximum of instances
 compute_ec2_max_instances=10
 ```
+
 ##### Azure Compute Plugin
 ```bash
+# Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
 compute_azure_max_vcpu=10
 compute_azure_max_ram=10240
@@ -292,8 +295,10 @@ compute_azure_region=East US
 compute_azure_storage_account_name=storage1
 compute_azure_storage_key=abcd12345
 ``` 
+
 ##### CloudStack Compute Plugin
 ```bash
+# Compute plugin class
 compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
 compute_cloudstack_api_url=http://127.0.0.1:8080/client/api
 compute_cloudstack_zone_id=d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
