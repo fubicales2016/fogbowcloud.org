@@ -468,15 +468,28 @@ network_ec2_region=
 ## Accounting Plugin
 The Accounting Plugin is responsible for accounting of the instances and storages. 
 ### Configure
-##### FCU Accounting Plugin
+Configuração comum: 
 ```bash
-accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+# Periodo de atualização do accouting em milisegundos
 accounting_update_period=300000
+```
+
+##### FCU Accounting Plugin
+
+```bash
+# Accounting class
+accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+# Path database
 fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
 ```
+
 ##### Simple Storage Accounting Plugin
+O calculo é feito pela soma de minutos usados mais o tamanho do storage.
+
 ```bash
+# Accounting class
 storage_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
+# Path database
 simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
 ```
 
