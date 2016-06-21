@@ -10,70 +10,6 @@ The manager component was designed to be agnostic to the underlying cloud techno
 
 In addition to interoperability plugins, there are also behavioural plugins. These are used to specify the way each fogbow manager should act when serving client's orders.
 
-## Image Storage Plugin
-
-New orders arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
-
-##### VMCatcher Storage Plugin
-
-Allows users to subscribe to virtual machine Virtual Machine Image Lists following the HEPIX Virtualisation working groups specification, cache the images referenced to in the Virtual Machine Image List, validate the images list with x509 based public key cryptography, and validate the images against sha512 hashes in the images lists and provide events for further applications to process updates or expiries of virtual machine images without having to further validate the images.
-
-For more information about vmcatcher, access [vmcatcher page on github.](https://github.com/hepix-virtualisation/vmcatcher)
-```bash
-## Image Storage Plugin (VMCatcher)
-# Image storage class
-image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
-# Run with "sudo"
-image_storage_vmcatcher_use_sudo=false
-# Path database
-image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
-# Path where stores the images downloaded
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
-# Path where stores the images are being download
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
-# Path where stores the images expired
-image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
-
-## Use "glancepush specification" for openstack or "one specification" for opennebula
-
-### Plugin for openstack
-### glancepush specific
-## Option for use the openstack plugin
-# image_storage_vmcatcher_push_method=glancepush
-# image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
-## Path of the plugin
-# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
-
-### Plugin for opennebula
-### one specific
-## Option for use the openstack plugin
-# image_storage_vmcatcher_push_method=cesga
-## Path of the plugin
-# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
-## Path where are the user's credentiais
-# image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
-```
-
-##### HTTP Download Image Storage Plugin
-```bash
-image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
-image_storage_http_base_url=http://appliance-repo.egi.eu/images
-image_storage_http_tmp_storage=/tmp/
-```
-
-##### Static Image Storage Plugin
-```bash
-image_storage_static_fogbow-linux-x86=
-image_storage_static_fogbow-ubuntu-12.04-with-java=
-```
-
-As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
-
- * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
- * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; SSH login via publickey.
-
-Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
-
 ## Identity Plugin
 
 The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. 
@@ -345,6 +281,70 @@ compute_cloudstack_hypervisor=KVM
 compute_cloudstack_image_download_os_type_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 compute_cloudstack_expunge_on_destroy=true
 ``` 
+
+## Image Storage Plugin
+
+New orders arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.
+
+##### VMCatcher Storage Plugin
+
+Allows users to subscribe to virtual machine Virtual Machine Image Lists following the HEPIX Virtualisation working groups specification, cache the images referenced to in the Virtual Machine Image List, validate the images list with x509 based public key cryptography, and validate the images against sha512 hashes in the images lists and provide events for further applications to process updates or expiries of virtual machine images without having to further validate the images.
+
+For more information about vmcatcher, access [vmcatcher page on github.](https://github.com/hepix-virtualisation/vmcatcher)
+```bash
+## Image Storage Plugin (VMCatcher)
+# Image storage class
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
+# Run with "sudo"
+image_storage_vmcatcher_use_sudo=false
+# Path database
+image_storage_vmcatcher_env_VMCATCHER_RDBMS="sqlite:////var/lib/vmcatcher/vmcatcher.db"
+# Path where stores the images downloaded
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE="/var/lib/vmcatcher/cache"
+# Path where stores the images are being download
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD="/var/lib/vmcatcher/cache/partial"
+# Path where stores the images expired
+image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE="/var/lib/vmcatcher/cache/expired"
+
+## Use "glancepush specification" for openstack or "one specification" for opennebula
+
+### Plugin for openstack
+### glancepush specific
+## Option for use the openstack plugin
+# image_storage_vmcatcher_push_method=glancepush
+# image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping
+## Path of the plugin
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/gpvcmupdate.py"
+
+### Plugin for opennebula
+### one specific
+## Option for use the openstack plugin
+# image_storage_vmcatcher_push_method=cesga
+## Path of the plugin
+# image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT="python /var/lib/vmcatcher/vmcatcher_eventHndl_ON"
+## Path where are the user's credentiais
+# image_storage_vmcatcher_env_ONE_AUTH="/etc/vmcatcher/one_auth"
+```
+
+##### HTTP Download Image Storage Plugin
+```bash
+image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+image_storage_http_base_url=http://appliance-repo.egi.eu/images
+image_storage_http_tmp_storage=/tmp/
+```
+
+##### Static Image Storage Plugin
+```bash
+image_storage_static_fogbow-linux-x86=
+image_storage_static_fogbow-ubuntu-12.04-with-java=
+```
+
+As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of **image-ubuntu** in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with **image-ubuntu** or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:
+
+ * **fogbow-linux-x86**: Cirros 0.3.3 image; cirros as username; and cubswin:) as password
+ * **fogbow-ubuntu-12.04-with-java**: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; SSH login via publickey.
+
+Furthermore, Fogbow also expects that all images configured at manager have **cloud-init** working properly.
 
 ## Authorization Plugin
 
