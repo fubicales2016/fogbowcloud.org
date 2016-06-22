@@ -20,10 +20,11 @@ Get all federation members.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (Text)  or **--auth-file** (Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli member --get --url http://localhost:8182
+$ fogbow-cli member --get --url http://localhost:8182 --auth-file /tmp/token
 
 federation.member.one.com
 federation.member.two.com
@@ -36,9 +37,7 @@ Get the quota of the federation member
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
 * **--memberId** (required)
-* **--auth-token** (required); Text;
-or
-* **--auth-file** (required); Path;
+* **--auth-token** (Text) or **--auth-file** (Path); (required)
 
 Example:
 ```bash
@@ -54,10 +53,7 @@ Get the usage of the federation member
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--usage** (required)
 * **--memberId** (required)
-* **--auth-token** (required); Text;
-or
-* **--auth-file** (required); Path;
-
+* **--auth-token**  or **--auth-file** (Path); (required)
 Example:
 ```bash
 $ fogbow-cli member --get --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
