@@ -348,3 +348,68 @@ $ fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://
 
 Ok
 ```
+
+## Network operations (```network```)
+
+### Get all networks
+
+Get all networks associated to a particular user's token.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+Example:
+```bash
+$ fogbow-cli network --get --auth-token  mytoken --url http://localhost:8182
+
+X-OCCI-Location: 3I235356-3432434-324324-3243242f
+X-OCCI-Location: 4B869582-8907667-123457-0765345c
+```
+
+### Get a single network
+
+Get detailed information about a single network.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): network id
+
+Example: 
+```bash
+$ fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:10000
+
+...
+```
+
+### Delete all networks
+
+Delete all networks associated to a particular user's token.
+
+* **--delete**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+```bash
+$ fogbow-cli network --delete --auth-token mytoken --url http://localhost:8182
+
+Ok
+```
+
+### Delete a single network
+
+Delete a single network.
+
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): network id
+
+```bash
+$ fogbow-cli network --delete --auth-token mytoken --id networkid --url http://localhost:8182
+
+Ok
+```
+
+## Attachment operations (```network```)
