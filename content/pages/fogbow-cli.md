@@ -7,10 +7,10 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members, create instance, create network, create storage, create orders and manage the lifecycle of those orders.
+The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, create storage and create orders.
 
 ##Installation
-[here](url)
+Follow these steps, <a  href="/install-configure-manager" target="_blank">Instalation and configuration Fogbow cli</a>
 
 ## Member operations (```member```)
 
@@ -25,8 +25,9 @@ Example:
 ```bash
 $ fogbow-cli member --get --url http://localhost:8182
 
-id=ferationid1;cpuIdle=1;cpuInUse=2;memIdle=100;memInUse=200;flavor:'small, capacity="1"';
-id=ferationid2;cpuIdle=2;cpuInUse=4;memIdle=150;memInUse=300;flavor:'large, capacity="2"';
+federation.member.one.com
+federation.member.two.com
+federation.member.three.com
 ```
 
 ## Resource operations (```resource```)
@@ -38,6 +39,37 @@ Get all OCCI resources provided by fogbow.
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (required): user's token
+
+### Get quota
+Get the quota of the federation member
+
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--quota** (required)
+* **--memberId** (required)
+
+Example:
+```bash
+$ fogbow-cli member --get --url http://localhost:8182 --quota --memberId id123
+
+cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;instancesQuota=1;instancesInUse=1;instancesInUseByUser=1
+```
+
+### Get usage
+Get the usage of the federation member
+
+* **--get** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--usage** (required)
+* **--memberId** (required)
+
+Example:
+```bash
+$ fogbow-cli member --get --url http://localhost:8182 --usage --memberId id123
+
+memberId=federation.member.one.com
+compute usage=10
+```
 
 Example:
 ```bash
