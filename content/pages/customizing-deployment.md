@@ -570,10 +570,12 @@ member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberP
 ### Configure
 ##### Fairness Driven Capacity Controller Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.FairnessDrivenCapacityController
 ```
 ##### Global Fairness Driven Controller Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.GlobalFairnessDrivenController
 controller_delta=
 controller_minimum_threshold=
@@ -582,10 +584,12 @@ controller_maximum_capacity=
 ```
 ##### Hill Climbing Algorithm Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.HillClimbingAlgorithm
 ```
 ##### Pairwise Fairnesse Driven Controller Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.PairwiseFairnessDrivenController
 controller_delta=
 controller_minimum_threshold=
@@ -594,10 +598,12 @@ controller_maximum_capacity=
 ```
 ##### Two Fold Capacity Controller Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.TwoFoldCapacityController
 ```
 ##### Satisfaction Driven Capacity Controller Plugin
 ```bash
+# Capacity Controller class
 capacity_controller_class=org.fogbowcloud.manager.core.plugins.capacitycontroller.satisfactiondriven.SatisfactionDrivenCapacityControllerPlugin
 ```
 
