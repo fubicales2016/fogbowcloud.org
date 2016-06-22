@@ -6,6 +6,7 @@ index: 3
 
 # Manager
 TODO: manel, melhorar a descricao do manager. alinha com o que escrevemos no big picture.
+
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
 ## Install from source
@@ -31,6 +32,8 @@ dpkg -i fogbow-manager_latest.deb
 
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
+
+[]
 
 * <a name="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
 
