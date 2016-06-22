@@ -622,7 +622,7 @@ mapper_defaults_secretKey=user_secret_key
 ```
 
 ##### Federation User Based Mapper Plugin
-O mapeamento é feito por intermédio do username logado como identificador.
+This mapping is done per intermediate of the user name logged like identificator.
 
 ```bash
 # Mapper class
@@ -636,11 +636,11 @@ mapper_fulano_tenantName=fogbow
 
 # defaults
 mapper_defaults_username=fogbowDefault
-mapper_defaults_defaults_password=fogbowDefault
+mapper_defaults_password=fogbowDefault
 mapper_defaults_tenantName=fogbowDefaults
 ```
 ##### Member Based Mapper Plugin
-O mapeamento é feito baseado no membro da federação que pediu o recurso.
+This mapping is done per intermediate of the federation member that order the resource.
 
 ```bash
 # Mapper class
@@ -654,11 +654,11 @@ mapper_manager.com.br_tenantName=fogbow
 
 # defaults
 mapper_defaults_username=fogbowDefault
-mapper_defaults_defaults_password=fogbowDefault
+mapper_defaults_password=fogbowDefault
 mapper_defaults_tenantName=fogbowDefaults
 ```
 ##### Simple Mapper Plugin
-Mapeamento apenas com o defaults.
+This mapping is done only with the default.
 
 ```bash
 # Mapper class
@@ -671,7 +671,7 @@ mapper_defaults_defaults_password=fogbow
 mapper_defaults_tenantName=fogbow
 ```
 ##### VOBased Mapper Plugin
-O mapeamento é feito com o CN do usuário do token VOMS.
+This mapping is done with de CN of the VOMS user token.
 
 ```bash
 # Mapper class
