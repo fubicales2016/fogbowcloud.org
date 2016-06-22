@@ -463,7 +463,7 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStack
 ```
 
 ## Network Plugin
-The Network Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
+The Network Plugin is responsible for requesting, getting, and deleting network at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
 
 ### Configure
 ##### OpenStack V2 Network Plugin
