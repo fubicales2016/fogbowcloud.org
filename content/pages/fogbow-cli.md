@@ -7,26 +7,10 @@ index: 2
 Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members, create instance requests and manage the lifecycle of those requests.
+The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members, create instance, create network, create storage, create orders and manage the lifecycle of those orders.
 
 ##Installation
-###Install from source
-Get the latest code and install it with maven.
-``` bash
-git clone https://github.com/fogbow/fogbow-cli.git
-cd fogbow-cli
-mvn install
-```
-
-###Install from debian package
-Download the [lastest stable package](http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-cli/fogbow-cli_v0.2.2.deb)
-```bash
-wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-cli/fogbow-cli_v0.2.2.deb
-```
-And install it with dpkg
-```bash
-sudo dpkg -i fogbow-cli_v0.2.2.deb
-```
+[here](url)
 
 ## Member operations (```member```)
 
