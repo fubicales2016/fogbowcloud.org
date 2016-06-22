@@ -286,3 +286,65 @@ $ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http:/
 Ok
 ```
 
+## Storage operations (```storage```)
+
+### Get all storages
+
+Get all storages associated to a particular user's token.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+Example:
+```bash
+$ fogbow-cli storage --get --auth-token  mytoken --url http://localhost:8182
+
+X-OCCI-Location: 3I235356-3432434-324324-3243242f
+X-OCCI-Location: 4B869582-8907667-123457-0765345c
+```
+
+### Get a single storage
+
+Get detailed information about a single storage.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): storage id
+
+Example: 
+```bash
+$ fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:10000
+
+...
+```
+
+### Delete all storages
+
+Delete all storages associated to a particular user's token.
+
+* **--delete**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+```bash
+$ fogbow-cli storage --delete --auth-token mytoken --url http://localhost:8182
+
+Ok
+```
+
+### Delete a single storage
+
+Delete a single storage.
+
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): storage id
+
+```bash
+$ fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://localhost:8182
+
+Ok
+```
