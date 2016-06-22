@@ -5,11 +5,11 @@ section: install-configure
 index: 3
 
 # Manager
-
+TODO: manel, melhorar a descricao do manager. alinha com o que escrevemos no big picture.
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
 ## Install from source
-Get the latest code of the project.
+Get the latest version of the source code
 ```bash
 git clone https://github.com/fogbow/fogbow-manager.git
 ```
@@ -19,7 +19,7 @@ mvn install
 ```
 
 ## Install from debian package
-To set up a manager instance, first, download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>
+To set up a Fogbow Manager instance, first, download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
 ```
@@ -29,8 +29,29 @@ Then, install it with dkpg
 dpkg -i fogbow-manager_latest.deb
 ```
 
-## Actions before configure
-As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how install e configure the XMPP, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>. For example:
+## Configure
+After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
+
+* <a name="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
+
+```bash
+# jid of the Fogbow Manager xmpp component
+xmpp_jid=my-site.manager.com
+
+# password the Fogbow Manager xmpp component
+xmpp_password=password
+
+# IP address
+xmpp_host=127.0.0.1
+
+# Port in which the server will be listening.
+# Example:
+xmpp_port=5347
+
+# jid of your Rendezvous xmpp component
+rendezvous_jid=rendezvous.test.com
+```
+As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how to install e configure the XMPP server, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>. Considering you are using Prosody, as we recommend in the XMPP documentation, it is required to associate the Fogbow Manager identity to the XMPP server configuration file. 
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
@@ -41,39 +62,6 @@ Component "manager.test.com"
 After add the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
 ``` shell
 manager.test.com        22      IN      A       199.27.76.133
-```
-
-## Configure
-After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
-
-* <a name="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
-
-```bash
-# jid of your Manager Component
-# Example:
-xmpp_jid=manager.test.com
-
-# Component password
-# Example:
-xmpp_password=password
-
-# IP address.
-# Example:
-xmpp_host=127.0.0.1
-
-# Port in which the server will be listening.
-# Example:
-xmpp_port=5347
-
-# jid of your Rendezvous Component
-# Optional if not to enter federation
-# Example:
-rendezvous_jid=rendezvous.test.com
-
-# jid of your Greensitter
-# Optional
-# Example:
-greensitter_jid=greensitter.test.com
 ```
 
 * **Manager datastore information:** Database that stores orders.
