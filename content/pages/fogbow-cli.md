@@ -20,7 +20,7 @@ Get all federation members.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (Text)  or **--auth-file** (Path); (required)
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
@@ -37,7 +37,7 @@ Get the quota of the federation member
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
 * **--memberId** (required)
-* **--auth-token** (Text) or **--auth-file** (Path); (required)
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
@@ -53,7 +53,7 @@ Get the usage of the federation member
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--usage** (required)
 * **--memberId** (required)
-* **--auth-token**  or **--auth-file** (Path); (required)
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 Example:
 ```bash
 $ fogbow-cli member --get --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
@@ -63,7 +63,6 @@ compute usage=10
 storage usage=10
 ```
 
-
 ## Resource operations (```resource```)
 
 ### Get all fogbow resources 
@@ -72,7 +71,7 @@ Get all OCCI resources provided by fogbow.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
@@ -81,6 +80,7 @@ $ fogbow-cli resource --get --url http://localhost:8182 --auth-token mytoken
 Category: fogbow-request; scheme="http://schemas.fogbowcloud.org/request#"; class="kind"; title="Request new Instances"; location="http://localhost:8182/request"; attributes="org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from"
 Category: fogbow-large; scheme="http://scmhemas.fogbowcloud.org/template/resource#"; class="mixin"; title="Large Flavor"; location="http://localhost:8182/large"
 Category: fogbow-linux-x86; scheme="http://schemas.fogbowcloud.org/template/os#"; class="mixin"; title="Linux-x86 Image"; location="http://localhost:8182/fogbow-linux-x86"
+...
 ```
 
 ## Token operations (```token```)
@@ -107,53 +107,73 @@ $ fogbow-cli token --create -Dpassword=mypassword -Dusername=myusername -Dtenant
 MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguheyJhY2Nlc3MiOiB7InRva2VuIjogeyJpc3N1ZWRfYXQiOiAiMjAxNC0wNS0
 ```
 
+Others credentails:
+```bash
+* x509
+   -Dx509CertificatePath (Required)
+* keystone
+   -Dusername (Required)
+   -Dpassword (Required)
+   -DtenantName (Required)
+   -DauthUrl (Required)
+* voms
+   -Dpassword (Required)
+   -DserverName (Required)
+   -DpathUserCred (Optional) - default :$HOME/.globus
+   -DpathUserKey (Optional) - default :$HOME/.globus
+* opennebula
+   -Dusername (Required)
+   -Dpassword (Required)
+```
+
 ## Request operations (```request```)
 
-### Get request 
+### Get order 
 
-Get all instance requests associated to a particular user's token.
+Get all instance orders associated to a particular user's token.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli order --get --auth-token mytoken --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 ```
 
-Get detailed information about a single instance request.
+Get detailed information about a single instance order.
 
 * **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
-* **--id** (required): request id
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): order id
 
 Example:
 ```bash
-$ fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
+$ fogbow-cli order --get --auth-token mytoken --id orderid --url http://localhost:8182
 
-RequestId=47536d31-0674-4278-ad05-eff5fdd07257; State=open; InstanceId=232135435-5435345-435345435-43545
+
 ```
 
-### Create requests 
+### Create order 
 
-Create instance requests.
+Create instance orders.
 
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
-* **--n** (optional; default: 1): number of requests to be created
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--n** (optional; default: 1): number of orders to be created
 * **--image** (optional; default: fogbow-linux-x86): fogbow image
 * **--flavor** (optional; default: fogbow-small): fogbow flavor
 * **--public-key** (optional; path public key): fogbow public key
+* **--requirements** (optinal): 
 
 Example:
 ```bash
-$ fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
+$ fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -161,38 +181,38 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 
 Example using defaults:
 ```bash
-$ fogbow-cli request --create --url http://localhost:8182
+$ fogbow-cli order --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 ```
 
-### Delete all requests
+### Delete all orders
 
-Delete all instance requests associated to a particular user's token.
+Delete all instance orders associated to a particular user's token.
 
 * **--delete** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli order --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 ```
 
-### Delete a single request
+### Delete a single order
 
-Delete a single instance request.
+Delete a single instance order.
 
 * **--delete** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
-* **--id** (required): request id
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): order id
 
 Example:
 ```bash
-$ fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
+$ fogbow-cli order --delete --auth-token mytoken --id requestid --url http://localhost:8182
 
 Ok
 ```
@@ -205,7 +225,7 @@ Get all instances associated to a particular user's token.
 
 * **--get**  (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
@@ -221,7 +241,7 @@ Get detailed information about a single instance.
 
 * **--get**  (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 * **--id** (required): instance id
 
 Example: 
@@ -243,7 +263,7 @@ Delete all instances associated to a particular user's token.
 
 * **--delete**  (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 ```bash
 $ fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
@@ -257,7 +277,7 @@ Delete a single instance.
 
 * **--delete** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
-* **--auth-token** (required): user's token
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 * **--id** (required): instance id
 
 ```bash
@@ -265,3 +285,4 @@ $ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http:/
 
 Ok
 ```
+
