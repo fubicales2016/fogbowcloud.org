@@ -59,26 +59,27 @@ After configuring the Fogbow Manager, you need to add a new entry in your DNS to
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
 
-* **Manager datastore information:** Database that stores orders.
+* **Manager datastore information:** The path to the sqlite database that stores orders.
 ``` shell
-# Example:
-manager_datastore_url=jdbc:sqlite:/tmp/db_manager_orders.db
+manager_datastore_url=jdbc:sqlite:/home/fogbow/db_manager_orders.db
 ```
 
-* **Instance federated datastore information:** Database that stores instance federated.
+**TODO melhorar essa descricao**
+* **Instance federated datastore information:** The path to the database that stores instance federated.
 ``` shell
-# Example:
-instance_datastore_url=jdbc:sqlite:/tmp/federated_instance
+instance_datastore_url=jdbc:sqlite:/home/fogbow/federated_instance
 ```
-* **Instance federated datastore information:** Stores storage federated.
+
+**TODO melhorar essa descricao**
+* **Instance federated datastore information:** The path to the database that stores storage federated.
 ``` shell
-# Example:
-storage_datastore_url=jdbc:sqlite:/tmp/federated_storage
+storage_datastore_url=jdbc:sqlite:/home/fogbow/federated_storage
 ```
-* **Instance federated datastore information:** Stores network federated.
+
+**TODO melhorar essa descricao**
+* **Instance federated datastore information:** The path to the database that stores network federated.
 ``` shell
-# Example:
-network_datastore_url=jdbc:sqlite:/tmp/federated_network
+network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
 ```
 
 * **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
