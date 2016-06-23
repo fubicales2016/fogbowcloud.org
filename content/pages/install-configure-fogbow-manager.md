@@ -5,7 +5,7 @@ section: install-configure
 index: 3
 
 # Manager
-TODO: manel, melhorar a descricao do manager. alinha com o que escrevemos no big picture.
+TODO: manel, melhorar a descricao do manager. alinhar com o que escrevemos no big picture.
 
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
@@ -25,36 +25,35 @@ To set up a Fogbow Manager instance, first, download the <a href="http://downloa
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
 ```
 
-Then, install it with dkpg
+Then, install it with dpkg
 ```bash
 dpkg -i fogbow-manager_latest.deb
 ```
 
 ## Configure
-After the installation, move the file ```manager.conf.example``` to ```manager.conf``` and edit its contents:
+After the installation, move the file ```manager.conf.example``` to ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. In this document, we cover in more details the general properties. The Fogbow Manager plugins are covered **here**.
 
-[]
-
-* <a name="xmpp-properties"> **XMPP properties:**</a> Manager and Rendezvous XMPP properties that will be used for the comunication between components. These components are XMPP components and need to be added to the XMPP configuration in the components section, as mentioned in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>.
+As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. For more information about how to install and configure an XMPP server, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> session. After the installation of the XMPP server, you need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties:
 
 ```bash
-# jid of the Fogbow Manager xmpp component
+# jid of the Fogbow Manager XMPP component
 xmpp_jid=my-site.manager.com
 
-# password the Fogbow Manager xmpp component
+# password of the Fogbow Manager XMPP component
 xmpp_password=password
 
-# IP address
-xmpp_host=127.0.0.1
+# XMPP server IP address
+xmpp_host=150.1.1.1
 
-# Port in which the server will be listening.
-# Example:
+# Port in which the XMPP server will be listening.
 xmpp_port=5347
 
-# jid of your Rendezvous xmpp component
-rendezvous_jid=rendezvous.test.com
+# jid of your Rendezvous XMPP component
+rendezvous_jid=my-site.rendezvous.com
 ```
-As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how to install e configure the XMPP server, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>. Considering you are using Prosody, as we recommend in the XMPP documentation, it is required to associate the Fogbow Manager identity to the XMPP server configuration file. 
+It is important to note that some XMPP properties defined in the configuration of the Fogbow Manager, such as the **xmpp_jid** and the **xmpp_password**, are meant to be used in 
+
+As the manager runs as an XMPP component, you need an XMPP server running and properly configured. For more information about how to install and configure the XMPP server, access <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP session</a>. Considering you are using Prosody, as we recommend in the XMPP documentation, it is required to associate the Fogbow Manager identity to the XMPP server configuration file. 
 
 If you are using Prosody, you can add a component to its configuration with:
 ``` shell
