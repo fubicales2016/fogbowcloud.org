@@ -59,83 +59,60 @@ After configuring the Fogbow Manager, you need to add a new entry in your DNS to
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
 
-* **Manager datastore information:** The path to the sqlite database that stores orders.
+**Manager datastore information:** The path to the sqlite database that stores orders.
 ``` shell
 manager_datastore_url=jdbc:sqlite:/home/fogbow/db_manager_orders.db
 ```
 
 **TODO melhorar essa descricao**
-* **Instance federated datastore information:** The path to the database that stores instance federated.
+
+**Instance federated datastore information:** The path to the database that stores instance federated.
 ``` shell
 instance_datastore_url=jdbc:sqlite:/home/fogbow/federated_instance
 ```
 
 **TODO melhorar essa descricao**
-* **Instance federated datastore information:** The path to the database that stores storage federated.
+
+**Instance federated datastore information:** The path to the database that stores storage federated.
 ``` shell
 storage_datastore_url=jdbc:sqlite:/home/fogbow/federated_storage
 ```
 
 **TODO melhorar essa descricao**
-* **Instance federated datastore information:** The path to the database that stores network federated.
+
+**Instance federated datastore information:** The path to the database that stores network federated.
 ``` shell
 network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
 ```
 
-* **Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
+**TODO: listar os plugins**
 
-By default, we are using openstack plugin as example. Access [Openstack Nova V2 Compute Plugin session](http://www.fogbowcloud.org/customazing-deployment#openstack-nova-v2-compute-plugin) for more information.
-``` shell
-# Example:
-compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
-compute_novav2_url=http://localhost:8774
-compute_glancev2_url=http://localhost:9292
-compute_glancev2_image_visibility=private
-compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
-```
+**Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
 
-* **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
+**TODO: listar os plugins**
 
-By default, we are using keystobe plugin as example. Access [Keystone Identity Plugin session](http://www.fogbowcloud.org/customazing-deployment#keystone-identity-plugin) for more information.
-``` shell
-# Example:
-local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
-local_identity_url=http://localhost:5000
-```
+**Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-* **Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
+**TODO: listar os plugins**
 
-By default, we are using no cloud plugin as example. Access [No Cloud Storage Plugin session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-storage-plugin) for more information.
-``` shell
-# Example:
-storage_class=org.fogbowcloud.manager.core.plugins.storage.nocloud.NoCloudStoragePlugin
-```
+**Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
 
-* **Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
+**TODO: listar os plugins**
 
-By default, we are using no cloud plugin as example. Access [No Cloud Network Plugin session](http://www.fogbowcloud.org/customazing-deployment#no-cloud-network-plugin) for more information.
-``` shell
-# Example:
-network_class=org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
-```
+**Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
 
-* **Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
+**TODO: listar os plugins**
 
-By default, we are using the plugin that authorize all users. Access [Allow All AUthorization Plugin session](http://www.fogbowcloud.org/customazing-deployment#allow-all-authorization-plugin) for more information.
-``` shell
-# Example:
-federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorization.AllowAllAuthorizationPlugin
-```
+**Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
 
-* **Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
 
-By default , we are using the plugin that choose in the list by alphabetic order. Access [Round Robin Member Picker Plugin  session](http://www.fogbowcloud.org/customazing-deployment#round-robin-member-picker-plugin) for more information.
-``` shell
-# Example:
-member_picker_class=org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
-```
+**TODO: listar os plugins**
 
-* **Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
+**Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
+
+**TODO: listar os plugins**
+
+**Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
  
 By default, we are the plugin that map any user for one unique project. Access [Simple Mapper Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-mapper-plugin) for more information.
 ``` shell
@@ -147,7 +124,9 @@ mapper_defaults_password=fogbow-pass
 mapper_defaults_tenantName=fogbow-project
 ```
 
-* **Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other). 
+**TODO: listar os plugins**
+
+**Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other). 
 
 ```bash
 # Member validator class
