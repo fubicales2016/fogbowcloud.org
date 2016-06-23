@@ -412,4 +412,7 @@ $ fogbow-cli network --delete --auth-token mytoken --id networkid --url http://l
 Ok
 ```
 
-## Attachment operations (```network```)
+## Attachment operations (```attachment```)
+...
+## Accounting operations (```accounting```)
+...
