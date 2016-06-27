@@ -287,7 +287,22 @@ Ok
 ```
 
 ### Create instance
+
+Create a instance
+
+* **--create** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--flavor** (optional) 
+* **--image** (required)
+* **--publicKey** (optional)
+* **--userDataFile** (optional)
+
+```bash
+$ fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
+
 ...
+```
 
 ## Storage operations (```storage```)
 
@@ -353,7 +368,19 @@ Ok
 ```
 
 ### Create storage
+
+Create a storage
+
+* **--create** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--size** (required; Unit GB) 
+
+```bash
+$ fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --size 20
+
 ...
+```
 
 ## Network operations (```network```)
 
@@ -419,6 +446,9 @@ Ok
 ```
 
 ### Create network
+
+Create a network
+
 * **--create** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
@@ -429,7 +459,7 @@ Ok
 ```bash
 $ fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
 
-Ok
+...
 ```
 
 ## Attachment operations (```attachment```)
