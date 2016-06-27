@@ -413,6 +413,35 @@ Ok
 ```
 
 ## Attachment operations (```attachment```)
+### Get all attachment
+
+Get all attachment associated to a particular user's token.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+```bash
+$ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:10000
+
 ...
+```
+
+### Get a single attachment
+
+Get detailed information about a single attachment.
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): attachment id
+
+Example: 
+```bash
+$ fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://localhost:10000
+
+...
+```
+
 ## Accounting operations (```accounting```)
 ...
