@@ -59,6 +59,57 @@ After configuring the Fogbow Manager, you need to add a new entry in your DNS to
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
 
+**Intervals:** Properties related to scheduling, token update and instance monitoring.
+
+```bash
+# Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
+# Uses miliseconds unit
+# Example:
+scheduler_period=30000
+
+# Token update period is the interval of time that the Manager Component will check if it is needed to get new token for requests and get it if yes
+# Uses miliseconds unit
+# Example:
+token_update_period=300000
+
+# Instance monitoring period is the interval of time that the Manager Component will check if the request's instance still exists. If not, the manager will update request state according to request's attributes
+# Uses miliseconds unit
+# Example:
+instance_monitoring_period=120000
+```
+
+**SSH tunnel properties:** SSH properties are used to provide connectivity to instances.
+
+```bash
+# Public IP address of shh tunnel host
+# Example:
+ssh_tunnel_public_host=150.160.0.10
+
+# Private IP address of shh tunnel host
+# Example:
+ssh_tunnel_private_host=10.0.0.1
+
+# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 2222
+# Example:
+ssh_tunnel_host_port=2222
+
+# shh tunnel host http port defines the port to be used when doing comunication with ssh tunnel host
+# Example:
+ssh_tunnel_host_http_port=2223wi
+```
+
+**Manager HTTP port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
+
+```bash
+# http port is the Manager Component endpoint port
+# Example:
+http_port = 8182
+```
+
+*TODO: introduzir que vamos iniciar a seção de plugins. falar que eles serão descritos em seus detalhes em outra seção. descrever que configurações típicas de plugins em alguns federações podem ser vistas em outras seções.*
+
+**Member validation:** Member validation is used to the define to whom the Fogbow Manager can receive or donate resources. The example below shows the properties required by the default member validator (this default allow to receive and donate resource from/to any Fogbow Manager). 
+
 **Manager datastore information:** The path to the sqlite database that stores orders.
 ``` shell
 manager_datastore_url=jdbc:sqlite:/home/fogbow/db_manager_orders.db
@@ -125,69 +176,6 @@ mapper_defaults_tenantName=fogbow-project
 ```
 
 **TODO: listar os plugins**
-
-**Validator member information:** Validator member is used to define if the manager can receive or donate to another one. It is possible different implementations for it, and each implementation can require specific properties (as identity and compute plugins). This section shows properties required by the default member validator (all members can receive and donate resources to each other). 
-
-```bash
-# Member validator class
-# Example:
-member_validator=org.fogbowcloud.manager.core.DefaultMemberValidator
-
-# Member certificates authorities path
-# Example
-member_validator_ca_dir=
-
-# Member certificate file contains the certificate the should be used by the manager 
-# Example:
-cert_path=path/certificate/file
-```
-
-* **Intervals:** Properties related to scheduling, token update and instance monitoring.
-
-```bash
-# Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
-# Uses miliseconds unit
-# Example:
-scheduler_period=30000
-
-# Token update period is the interval of time that the Manager Component will check if it is needed to get new token for requests and get it if yes
-# Uses miliseconds unit
-# Example:
-token_update_period=300000
-
-# Instance monitoring period is the interval of time that the Manager Component will check if the request's instance still exists. If not, the manager will update request state according to request's attributes
-# Uses miliseconds unit
-# Example:
-instance_monitoring_period=120000
-```
-
-* **SSH tunnel properties:** SSH properties are used to provide connectivity to instances.
-
-```bash
-# Public IP address of shh tunnel host
-# Example:
-ssh_tunnel_public_host=150.160.0.10
-
-# Private IP address of shh tunnel host
-# Example:
-ssh_tunnel_private_host=10.0.0.1
-
-# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 2222
-# Example:
-ssh_tunnel_host_port=2222
-
-# shh tunnel host http port defines the port to be used when doing comunication with ssh tunnel host
-# Example:
-ssh_tunnel_host_http_port=2223wi
-```
-
-* **Manager HTTP port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
-
-```bash
-# http port is the Manager Component endpoint port
-# Example:
-http_port = 8182
-```
 
 * **Compute accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
 
