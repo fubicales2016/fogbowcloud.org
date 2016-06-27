@@ -443,5 +443,36 @@ $ fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://l
 ...
 ```
 
+### Delete a single attachment
+
+Delete a single attachment.
+
+* **--delete** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--id** (required): attachment id
+
+```bash
+$ fogbow-cli attachment --delete --auth-token mytoken --id networkid --url http://localhost:8182
+
+Ok
+```
+
+### Create attachment 
+
+Create a new attachment
+
+* **--create** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--computeId** (required)
+* **--storageId** (required)
+
+```bash
+$ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId computeid --storageId storageid
+
+Ok
+```
+
 ## Accounting operations (```accounting```)
 ...
