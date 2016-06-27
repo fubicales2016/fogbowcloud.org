@@ -59,23 +59,16 @@ After configuring the Fogbow Manager, you need to add a new entry in your DNS to
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
 
-**Intervals:** Properties related to scheduling, token update and instance monitoring.
+**Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ConfigurationConstants.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
 
 ```bash
-# Scheduler period is the interval of time that the Manager Component will periodicaly submit requests that are not fulfilled yet
-# Uses miliseconds unit
-# Example:
+# The scheduler_period property is the time interval (in milliseconds) in which
+# the Fogbow Manager submit requests that are not fulfilled yet
 scheduler_period=30000
 
-# Token update period is the interval of time that the Manager Component will check if it is needed to get new token for requests and get it if yes
-# Uses miliseconds unit
-# Example:
-token_update_period=300000
-
-# Instance monitoring period is the interval of time that the Manager Component will check if the request's instance still exists. If not, the manager will update request state according to request's attributes
-# Uses miliseconds unit
-# Example:
-instance_monitoring_period=120000
+# The accounting_update_period is the time interval (in milliseconds) in which
+# the Fogbow Manager calculate the resource usage accounting
+accounting_update_period=300000
 ```
 
 **SSH tunnel properties:** SSH properties are used to provide connectivity to instances.
