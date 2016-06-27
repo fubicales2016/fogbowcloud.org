@@ -475,4 +475,15 @@ Ok
 ```
 
 ## Accounting operations (```accounting```)
-...
+
+Get accouting
+
+* **--get**  (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+
+```bash
+$ fogbow-cli accouting --get --auth-token mytoken --url http://localhost:8182
+
+
+```
