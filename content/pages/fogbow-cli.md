@@ -286,6 +286,9 @@ $ fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http:/
 Ok
 ```
 
+### Create instance
+...
+
 ## Storage operations (```storage```)
 
 ### Get all storages
@@ -348,6 +351,9 @@ $ fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://
 
 Ok
 ```
+
+### Create storage
+...
 
 ## Network operations (```network```)
 
@@ -412,6 +418,9 @@ $ fogbow-cli network --delete --auth-token mytoken --id networkid --url http://l
 Ok
 ```
 
+### Create network
+...
+
 ## Attachment operations (```attachment```)
 ### Get all attachment
 
@@ -424,7 +433,8 @@ Get all attachment associated to a particular user's token.
 ```bash
 $ fogbow-cli attachment --get --auth-token mytoken --url http://localhost:10000
 
-...
+X-OCCI-Location: 687V5356-3432434-324324-3243242f
+X-OCCI-Location: 09129582-8907667-123457-0765345c
 ```
 
 ### Get a single attachment
@@ -440,7 +450,10 @@ Example:
 ```bash
 $ fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://localhost:10000
 
-...
+occi.core.source=587V5356-3432434-324324-3243242f
+occi.core.target=13029582-8907667-123457-0765345c
+occi.core.id=E423CS82-8907667-123457-0765345c
+occi.storagelink.provadingMemberId=
 ```
 
 ### Delete a single attachment
@@ -476,14 +489,14 @@ Ok
 
 ## Accounting operations (```accounting```)
 
-Get accouting
+Get accounting
 
 * **--get**  (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 ```bash
-$ fogbow-cli accouting --get --auth-token mytoken --url http://localhost:8182
+$ fogbow-cli accounting --auth-token mytoken --url http://localhost:8182
 
 
 ```
