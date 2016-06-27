@@ -10,7 +10,7 @@ Fogbow CLI
 The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, create storage and create orders.
 
 ##Installation
-Follow these steps, <a  href="/install-configure-manager" target="_blank">Instalation and configuration Fogbow cli</a>
+Follow these steps, <a  href="/install-configure-manager" target="_blank">Instalation and configuration Fogbow cli</a> .
 
 ## Member operations (```member```)
 
@@ -419,7 +419,18 @@ Ok
 ```
 
 ### Create network
-...
+* **--create** (required)
+* **--url** (optional; default: http://localhost:8182): OCCI endpoint
+* **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
+* **--cird** (required; format: ##.##.##.##/##) 
+* **--gateway** (optional)
+* **--allocation** (optional ;options: dynamic or static; default: dynamic)
+
+```bash
+$ fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
+
+Ok
+```
 
 ## Attachment operations (```attachment```)
 ### Get all attachment
