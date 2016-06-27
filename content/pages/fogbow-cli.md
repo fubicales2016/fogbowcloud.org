@@ -494,7 +494,7 @@ $ fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://l
 occi.core.source=587V5356-3432434-324324-3243242f
 occi.core.target=13029582-8907667-123457-0765345c
 occi.core.id=E423CS82-8907667-123457-0765345c
-occi.storagelink.provadingMemberId=
+occi.storagelink.provadingMemberId=provading_member
 ```
 
 ### Delete a single attachment
@@ -525,19 +525,18 @@ Create a new attachment
 ```bash
 $ fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId computeid --storageId storageid
 
-Ok
+X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@provading_member
 ```
 
 ## Accounting operations (```accounting```)
 
 Get accounting
 
-* **--get**  (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 ```bash
 $ fogbow-cli accounting --auth-token mytoken --url http://localhost:8182
 
-
+user; requesting_member; provading_member; 20
 ```
