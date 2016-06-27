@@ -419,6 +419,30 @@ federation_authorization_class=org.fogbowcloud.manager.core.plugins.authorizatio
 authorization_vo_whitelist=memberOfListOne, memberOfListTwo, memberOfListThree
 ```
 
+## Member Authorization Plugin
+
+### Configure
+The **member_validator_class** property must be set to a Member Authorization Plugin implementation.
+
+##### Default Member Authorization
+```bash
+# member validator class
+member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.DefaultMemberAuthorizationPlugin
+```
+
+##### VOMS Member Authorization
+```bash
+# member validator class
+member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.VOMSMemberAuthorizationPlugin
+member_validator_ca_dir=
+```
+
+##### White List Member Authorization
+```bash
+# member validator class
+member_validator_class=org.fogbowcloud.manager.core.plugins.memberauthorization.WhitelistMemberAuthorizationPlugin
+```
+
 ## Storage Plugin
 The Storage Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at ```manager.conf``` file are correct. If not, the behaviour of federation may not be the expected.
 
