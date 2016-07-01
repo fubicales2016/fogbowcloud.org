@@ -18,22 +18,21 @@ Follow these steps, <a  href="/install-configure-manager" target="_blank">Instal
 
 Get all federation members.
 
-* **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 
 Example:
 ```bash
-$ fogbow-cli member --get --url http://localhost:8182 --auth-file /tmp/token
+$ fogbow-cli member --url http://localhost:8182 --auth-file /tmp/token
 
 federation.member.one.com
 federation.member.two.com
 federation.member.three.com
 ```
+
 ### Get quota
 Get the quota of the federation member
 
-* **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--quota** (required)
 * **--memberId** (required)
@@ -41,7 +40,7 @@ Get the quota of the federation member
 
 Example:
 ```bash
-$ fogbow-cli member --get --url http://localhost:8182 --quota --memberId id123 --auth-token mytoken
+$ fogbow-cli member --url http://localhost:8182 --quota --memberId id123 --auth-token mytoken
 
 cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;instancesQuota=1;instancesInUse=1;instancesInUseByUser=1
 ```
@@ -49,14 +48,13 @@ cpuQuota=1;cpuInUse=1;cpuInUseByUser=1;memQuota=1;memInUse=1;memInUseByUser=1;in
 ### Get usage
 Get the usage of the federation member
 
-* **--get** (required)
 * **--url** (optional; default: http://localhost:8182): OCCI endpoint
 * **--usage** (required)
 * **--memberId** (required)
 * **--auth-token** (user's token/Text)  or **--auth-file** (user's token/Path); (required)
 Example:
 ```bash
-$ fogbow-cli member --get --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
+$ fogbow-cli member --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
 
 memberId=federation.member.one.com
 compute usage=10
