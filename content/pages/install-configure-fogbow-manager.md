@@ -128,30 +128,27 @@ network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
 ```
 
 ### Plugins
+In this section, we overview the purpose of each plugin category adopted by the Fogbow Manager. In section **XPTO** we provide an detailed description of all current implementations for each plugin category, including their configuration.
 
-*TODO: introduzir que vamos iniciar a seção de plugins. falar que eles serão descritos em seus detalhes em outra seção. descrever que configurações típicas de plugins em alguns federações podem ser vistas em outras seções.*
+**Member validation plugin:** The Member validation plugin category is used to the define to whom the Fogbow Manager can receive or donate resources.
 
-**Member validation plugin:** Member validation is used to the define to whom the Fogbow Manager can receive or donate resources. The example below shows the properties required by the default member validator (this default allow to receive and donate resource from/to any Fogbow Manager). 
-
-**Cloud compute plugin:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
-
-**TODO: listar os plugins**
+** [Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):**
 
 **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-**Cloud storage plugin:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
+**[Cloud storage plugin]((http://www.fogbowcloud.org/customazing-deployment#storage-plugin)):**
 
-**Cloud network plugin:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
+**[Cloud network plugin](http://www.fogbowcloud.org/customazing-deployment#network-plugin):**
 
-**Manager authorization plugin:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
+**[Manager authorization plugin](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin):**
 
-**Member picker plugin:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
+**[Member picker plugin](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin):** Choice of a federation member that Fogbow Manager will order for resource.
 
-**Mapper user plugin:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
+**[Mapper user plugin](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin):** Policy to map the user in one determinate project in the cloud.
 
-**Compute accounting plugin:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
+**[Compute accounting plugin]((http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page].
 
-**Storage accounting plugin:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
+**[Storage accounting plugin]((http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information.
  
 **Benchmarking plugin:** Benchmarking used to calculate the power rating of the VM.
 
@@ -159,19 +156,9 @@ By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Si
 
 **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
-**Image storage plugin:**  Get images by image storage plugin. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#image-storage).
-
-By default, we are the plugin that download the image. Access [HTTP Download Image Storage Plugin  session](http://www.fogbowcloud.org/customazing-deployment#http-download-image-storage-plugin) for more information.
+**[Image storage plugin](http://www.fogbowcloud.org/customazing-deployment#image-storage):**  Get images by image storage plugin.
 
 **Static mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
-```bash
-# Example:
-image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
-image_storage_static_fogbow-ubuntu-1204=81765250-a4e4-440d-a215-43c9c0849120
-
-# fogbow-linux-x86 is the local name and your id is 55d938ef-57d1-44ea-8155-6036d170780a
-# fogbow-ubuntu-1204 is the local name and your id is 81765250-a4e4-440d-a215-43c9c0849120
-```
 
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
