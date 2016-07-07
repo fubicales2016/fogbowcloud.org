@@ -71,7 +71,7 @@ scheduler_period=30000
 accounting_update_period=300000
 ```
 
-**SSH tunnel properties:** SSH properties are used to provide connectivity to instances.
+**SSH tunnel properties:** These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet.
 
 ```bash
 # Public IP address of shh tunnel host
