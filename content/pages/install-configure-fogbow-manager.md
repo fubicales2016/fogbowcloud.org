@@ -7,6 +7,8 @@ index: 3
 # Manager
 TODO: manel, melhorar a descricao do manager. alinhar com o que escrevemos no big picture.
 
+TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precisa ser consistente em toda a documentacao
+
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
 ## Install from source
@@ -59,7 +61,7 @@ After configuring the Fogbow Manager, you need to add a new entry in your DNS to
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
 
-**Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ConfigurationConstants.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
+**Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
 
 ```bash
 # The scheduler_period property is the time interval (in milliseconds) in which
@@ -74,17 +76,18 @@ accounting_update_period=300000
 **SSH tunnel properties:** These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet.
 
 ```bash
-# Public IP address of shh tunnel host
-ssh_tunnel_public_host=150.160.0.10
+# The token_host_public_address property defines the public IP address of the FRT service
+token_host_public_address=150.160.0.10
 
-# Private IP address of shh tunnel host
-ssh_tunnel_private_host=10.0.0.1
+# The token_host_private_address property defines the private IP address of the FRT service
+token_host_private_address=10.0.0.1
 
-# shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 2222
-ssh_tunnel_host_port=2222
+# The token_host_port property defines the port to be used when doing ssh.
+# If this property isn't set, the default value is 2222
+token_host_port=2222
 
-# shh tunnel host http port defines the port to be used when doing comunication with ssh tunnel host
-ssh_tunnel_host_http_port=2223wi
+# The token_host_http_port property defines the port to be used when communicating with the FRT
+token_host_http_port=2223
 ```
 
 **Manager HTTP port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
