@@ -75,19 +75,15 @@ accounting_update_period=300000
 
 ```bash
 # Public IP address of shh tunnel host
-# Example:
 ssh_tunnel_public_host=150.160.0.10
 
 # Private IP address of shh tunnel host
-# Example:
 ssh_tunnel_private_host=10.0.0.1
 
 # shh tunnel host port defines the port to be used when doing ssh. If this property isn't set, the default value is 2222
-# Example:
 ssh_tunnel_host_port=2222
 
 # shh tunnel host http port defines the port to be used when doing comunication with ssh tunnel host
-# Example:
 ssh_tunnel_host_http_port=2223wi
 ```
 
