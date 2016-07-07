@@ -9,6 +9,8 @@ TODO: manel, melhorar a descricao do manager. alinhar com o que escrevemos no bi
 
 TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precisa ser consistente em toda a documentacao
 
+TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
+
 The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
 
 ## Install from source
@@ -34,6 +36,8 @@ dpkg -i fogbow-manager_latest.deb
 
 ## Configure
 After the installation, move the file ```manager.conf.example``` to ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. In this document, we cover in more details the general properties. The Fogbow Manager plugins are covered **here**.
+
+### General properties
 
 **XMPP information:**
 As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. For more information about how to install and configure an XMPP server, read the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> session. After the installation of the XMPP server, you need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties:
@@ -97,10 +101,6 @@ token_host_http_port=2223
 http_port = 8182
 ```
 
-*TODO: introduzir que vamos iniciar a seção de plugins. falar que eles serão descritos em seus detalhes em outra seção. descrever que configurações típicas de plugins em alguns federações podem ser vistas em outras seções.*
-
-**Member validation:** Member validation is used to the define to whom the Fogbow Manager can receive or donate resources. The example below shows the properties required by the default member validator (this default allow to receive and donate resource from/to any Fogbow Manager). 
-
 **Manager datastore information:** The path to the sqlite database that stores orders.
 ``` shell
 manager_datastore_url=jdbc:sqlite:/home/fogbow/db_manager_orders.db
@@ -127,94 +127,43 @@ storage_datastore_url=jdbc:sqlite:/home/fogbow/federated_storage
 network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
 ```
 
-**TODO: listar os plugins**
+### Plugins
 
-**Cloud compute information:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
+*TODO: introduzir que vamos iniciar a seção de plugins. falar que eles serão descritos em seus detalhes em outra seção. descrever que configurações típicas de plugins em alguns federações podem ser vistas em outras seções.*
+
+**Member validation plugin:** Member validation is used to the define to whom the Fogbow Manager can receive or donate resources. The example below shows the properties required by the default member validator (this default allow to receive and donate resource from/to any Fogbow Manager). 
+
+**Cloud compute plugin:** All compute information required by the compute plugins that will be used. You can see the required information by each compute plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#compute-plugin).
 
 **TODO: listar os plugins**
 
 **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-**TODO: listar os plugins**
+**Cloud storage plugin:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
 
-**Cloud storage  information:** All storage information required by the storage plugins that will be used. You can see the required information by each storage plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#storage-plugin).
+**Cloud network plugin:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
 
-**TODO: listar os plugins**
+**Manager authorization plugin:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
 
-**Cloud network information:** All network information required by the network plugins that will be used. You can see the required information by each network plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#network-plugin).
+**Member picker plugin:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
 
-**TODO: listar os plugins**
+**Mapper user plugin:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
 
-**Manager authorization information:** Manager authorization is used to get the authorization in the federation.  You can see the required information by each authorization plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin).
+**Compute accounting plugin:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
 
-
-**TODO: listar os plugins**
-
-**Member picker information:** Choice of a federation member that Fogbow Manager will order for resource.  You can see the required information by each member picker plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin).
-
-**TODO: listar os plugins**
-
-**Mapper user information:** Policy to map the user in one determinate project in the cloud. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin).
+**Storage accounting plugin:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
  
-By default, we are the plugin that map any user for one unique project. Access [Simple Mapper Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-mapper-plugin) for more information.
-``` shell
-# Example:
-federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
-
-mapper_defaults_username=fogbow
-mapper_defaults_password=fogbow-pass
-mapper_defaults_tenantName=fogbow-project
-```
-
-**TODO: listar os plugins**
-
-* **Compute accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
-
-By default , we are using the FCU Accounting Plugin. Access [FCU Accounting Plugin   session](http://www.fogbowcloud.org/customazing-deployment#fcu-accounting-plugin) for more information.
-```bash
-# default for accounting plugins
-# the period for update of the accounting
-accounting_update_period=300000
-
-accounting_class=org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
-# path to the database
-fcu_accounting_datastore_url=jdbc:sqlite:/tmp/computeusage
-```
-* **Storage accounting plugin configuration:** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin).
- 
-By default , we are using the Simple Storage Accounting Plugin. Access [Simple Storage Accouting Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
-```bash
-# default for accounting plugins
-# the period for update of the accounting
-accounting_update_period=300000
-
-storage_accounting_class=org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
-# path to the database
-simple_storage_accounting_datastore_url=jdbc:sqlite:/tmp/storageusage
-```
-
-* **Benchmarking configuration:** Benchmarking used to calculate the power rating of the VM.
-By default, we are the plugin that determine the same power rating for any VM. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#benchmarking-plugin).
+**Benchmarking plugin:** Benchmarking used to calculate the power rating of the VM.
 
 By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Simple Storage Accounting Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
-```bash
-# Example:
-benchmarking_class=org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
-```
 
-* **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
+**Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
-* **Image storage plugin configuration:**  Get images by image storage plugin. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#image-storage).
+**Image storage plugin:**  Get images by image storage plugin. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment#image-storage).
 
 By default, we are the plugin that download the image. Access [HTTP Download Image Storage Plugin  session](http://www.fogbowcloud.org/customazing-deployment#http-download-image-storage-plugin) for more information.
-```bash
-# Example:
-image_storage_class=org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
-image_storage_http_base_url=http://appliance-repo.egi.eu/images
-image_storage_http_tmp_storage=/tmp/
-```
 
-* **Static mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
+**Static mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
 ```bash
 # Example:
 image_storage_static_fogbow-linux-x86=55d938ef-57d1-44ea-8155-6036d170780a 
