@@ -132,11 +132,11 @@ In this section, we overview the purpose of each plugin category adopted by the 
 
 **Member validation plugin:** The Member validation plugin category is used to the define to whom the Fogbow Manager can receive or donate resources.
 
-** [Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):**
+**[Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):**
 
 **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
-**[Cloud storage plugin]((http://www.fogbowcloud.org/customazing-deployment#storage-plugin)):**
+**[Cloud storage plugin](http://www.fogbowcloud.org/customazing-deployment#storage-plugin):**
 
 **[Cloud network plugin](http://www.fogbowcloud.org/customazing-deployment#network-plugin):**
 
@@ -146,9 +146,9 @@ In this section, we overview the purpose of each plugin category adopted by the 
 
 **[Mapper user plugin](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin):** Policy to map the user in one determinate project in the cloud.
 
-**[Compute accounting plugin]((http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page].
+**[Compute accounting plugin](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page].
 
-**[Storage accounting plugin]((http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information.
+**[Storage accounting plugin](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information.
  
 **Benchmarking plugin:** Benchmarking used to calculate the power rating of the VM.
 
