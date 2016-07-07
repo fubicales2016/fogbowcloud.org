@@ -90,11 +90,10 @@ token_host_port=2222
 token_host_http_port=2223
 ```
 
-**Manager HTTP port:** HTTP port to which the manager component endpoint will be listening. In order to add the manager to federation and make it available from outside the local network, add the manager http port to your firewall.
+**Manager HTTP port:** This property indicates the HTTP port to which the Fogbow Manager component endpoint will be listening to requests. Since the Fogbow Manager service should be available from outside the local network (when it joins a federation) the firewall in your organization must allow communication through this por.
 
 ```bash
-# http port is the Manager Component endpoint port
-# Example:
+# The http_port property indicates http port of the Fogbow Manager service endpoint
 http_port = 8182
 ```
 
