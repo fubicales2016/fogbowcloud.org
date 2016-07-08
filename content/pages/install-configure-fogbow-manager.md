@@ -127,11 +127,13 @@ network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
 ```
 
 ### Plugins
-In this section, we overview the purpose of each plugin category adopted by the Fogbow Manager. In section **XPTO** we provide an detailed description of all current implementations for each plugin category, including their configuration.
+In this section, we overview the purpose of each plugin adopted by the Fogbow Manager. In section **XPTO** we provide an detailed description of all current implementations of each plugin, including their configuration.
 
-**Member validation plugin:** The Member validation plugin category is used to the define to whom the Fogbow Manager can receive or donate resources.
+**Member validation plugin:** The Member validation plugin is used to the define to whom the Fogbow Manager can receive or donate resources.
 
-**[Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):**
+**TODO:** Member validation refers to the **FederationMemberAuthorizationPlugin** and is specified via the property **member_validator_class**. Should we change the doc (or the code) to have a consistent description. For example, saying we have a **Federation Member authorization** plugin.
+
+**[Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):** The Cloud compute plugin deals with the allocation, monitoring and management of computing resources in the cloud infrastructure. 
 
 **Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
 
