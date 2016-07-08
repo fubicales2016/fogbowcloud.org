@@ -5,13 +5,12 @@ section: install-configure
 index: 3
 
 # Manager
-TODO: manel, melhorar a descricao do manager. alinhar com o que escrevemos no big picture.
 
 TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precisa ser consistente em toda a documentacao
 
 TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
 
-The manager is the fogbow's component that runs in each federation member. It provides a OCCI API for end users and interacts with the rendezvous and other managers. 
+Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as a binary package for the debian distribution or as source code. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
 Get the latest version of the source code
