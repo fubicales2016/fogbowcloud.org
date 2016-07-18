@@ -10,20 +10,34 @@ TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precis
 
 TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
 
-Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as a binary package for the debian distribution or as source code. Choose the best distribution for your system, download it and install it as follow.
+Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as source code or as a binary package for the debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
-Get the latest version of the source code
+There are two stable versions of the **fogbow-manager** source code. The first keeps track of the latest fogbow release and is based on the master branch. The second keeps track of the latest stable version (which may contain some feature not yet released) and is based on the develop branch.
+
+It is possible to get the source code of these stable versions via the **git** command line
 ```bash
-git clone https://github.com/fogbow/fogbow-manager.git
+git clone https://github.com/fogbow/fogbow-manager.git -b master
 ```
-Then, install it with Maven
 ```bash
+git clone https://github.com/fogbow/fogbow-manager.git -b develop
+```
+or by direct downloading them
+```bash
+wget https://github.com/fogbow/fogbow-manager/archive/master.zip
+```
+```bash
+wget https://github.com/fogbow/fogbow-manager/archive/develop.zip
+```
+
+Then, enter the source code tree and install it with Maven
+```bash
+cd fogbow-manager
 mvn install
 ```
 
 ## Install from debian package
-To set up a Fogbow Manager instance, first, download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>
+Download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>
 ```bash
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
 ```
