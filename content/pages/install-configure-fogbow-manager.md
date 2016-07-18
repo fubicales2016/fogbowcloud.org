@@ -10,10 +10,10 @@ TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precis
 
 TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
 
-Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as source code or as a binary package for the debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
+Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
-There are two stable versions of the **fogbow-manager** source code. The first keeps track of the latest fogbow release and is based on the master branch. The second keeps track of the latest stable version (which may contain some feature not yet released) and is based on the develop branch.
+There are two stable versions of the **fogbow-manager** source code. The first one keeps track of the latest fogbow release and is based on the master branch of the git repository. The second one keeps track of the most recent stable version (which may contain some features not yet released) and is based on the develop branch of the git repository.
 
 It is possible to get the source code of these stable versions via the **git** command line
 ```bash
