@@ -7,9 +7,11 @@ index: 2
 Install and configure Fogbow CLI
 ==========
 
-The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests. Through the fogbow CLI, users are able to get information about federation members, order resources and manage the lifecycle of those resources.
+The Fogbow Manager is controlled via a command line interface (CLI) that makes easier for the fogbow users to get information about the federation members, to order resources and to manage the lifecycle of those resources.
 
 ##Installation
+The Fogbow CLI can be installed from its source or from from a binary package for debian-based distributions. Download the best choice for your systems and install the CLI as follow.
+
 ###Install from source
 Get the latest code and install it with maven.
 ``` bash
