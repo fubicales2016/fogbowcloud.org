@@ -10,16 +10,20 @@ The Fogbow Dashboard is a web interface to the Fogbow Manager. It provides all t
 
 ##Installation
 
-TODO: adicionar uma frase de resumo. p.ex podemos dizer que o codigo sera baixado do repositorio do fogbow, e as demais configs
+Before installing the Fogbow Dashboard, we need to install its depencies. In a debian-based distribution, this can be done as follow.
+
+```bash
+sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
+```
+
+To install the Fogbow Dashboard, download its source code through the **git clone** command. After the download, assign proper permissions to the configuration files.
 
 ```bash
 git clone https://github.com/fogbow/fogbow-dashboard.git
-sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
+
 cd fogbow-dashboard
 chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
-# Download libraries and run tests
-./run_tests.sh
 ```
 
 ##Configure
@@ -29,17 +33,13 @@ After the installation, edit the ```openstack_dashboard/local/local_settings.py`
 # Fogbow Manager to be used.
 FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
 
-# Endpoint Federation
-# types : keystone, opennebula, voms, raw_opennebula, raw_keystone, shibboleth, simpletoken
 FOGBOW_FEDERATION_AUTH_TYPE = 'keystone'
 FOGBOW_FEDERATION_AUTH_ENDPOINT = 'http://localhost:5000' 
 
-# Custom interface theme
-# not required
-CUSTOM_THEME = 'naf-theme'
 ```
 
 ##Run
+Finally, run the **run_tests.sh** script to start the Fogbow Dashboard.
 
 ``` bash
 nohup ./run_tests.sh --runserver localhost:9000 &
