@@ -22,11 +22,11 @@ For each new **Fogbow Manager** and **Fogbow Rendezvous** installed, it is neces
 
 ```bash
 # Manager component
-Component "my-site.manager.com"
+Component "my-manager.internal.mydomain"
         component_secret = "manager_password"
         
 # Rendezvous component
-Component "my-site.rendezvous.com"
+Component "my-rendezvous.internal.mydomain"
         component_secret = "rendezvouz_password"
 ```
 
