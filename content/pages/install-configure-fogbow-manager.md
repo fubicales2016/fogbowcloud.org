@@ -10,50 +10,48 @@ TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precis
 
 TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
 
-Before running the Fogbow Manager, it must first be installed. It is distributed in two options: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
+The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
-There are two stable versions of the **fogbow-manager** source code. The first one keeps track of the latest fogbow release and is based on the master branch of the git repository. The second one keeps track of the most recent stable version (which may contain some features not yet released) and is based on the develop branch of the git repository.
+To get the lastest stable version of the component, download it from our repository as follows:
 
-It is possible to get the source code of these stable versions via the **git** command line
-```bash
-git clone https://github.com/fogbow/fogbow-manager.git -b master
-```
-```bash
-git clone https://github.com/fogbow/fogbow-manager.git -b develop
-```
-or by direct downloading them
 ```bash
 wget https://github.com/fogbow/fogbow-manager/archive/master.zip
 ```
+
+Then, decompress it:
+
 ```bash
-wget https://github.com/fogbow/fogbow-manager/archive/develop.zip
+unzip master.zip
 ```
 
-Then, enter the source code tree and install it with Maven
+Now, install it with Maven:
+
 ```bash
 cd fogbow-manager
 mvn install
 ```
 
 ## Install from debian package
-Download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>
+Download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>:
+
 ```bash
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
 ```
 
-Then, install it with dpkg
+Then, install it with dpkg:
+
 ```bash
 dpkg -i fogbow-manager_latest.deb
 ```
 
 ## Configure
-After the installation, move the file ```manager.conf.example``` to ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. In this document, we cover in more details the general properties. The Fogbow Manager plugins are covered **here**.
+After the installation, move the file ```manager.conf.example``` to ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these propoerties need to be adjusted to match your particular installation. In this document, we cover in more details the general properties that might need to be changed. The Fogbow Manager plugins are covered in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation.
 
 ### General properties
 
 **XMPP information:**
-As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. For more information about how to install and configure an XMPP server, read the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> session. After the installation of the XMPP server, you need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties:
+As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. You need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties, considering the example XMPP installation described in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation:
 
 ```bash
 # jid of the Fogbow Manager XMPP component
@@ -71,9 +69,9 @@ xmpp_port=5347
 # jid of your Rendezvous XMPP component
 rendezvous_jid=my-site.rendezvous.com
 ```
-It is important to note that some XMPP properties defined in this configuration file, such as the **xmpp_jid** and the **xmpp_password**, are meant to be used in the XMPP server configuration, as explained <a  href="/install-configure-xmpp" target="_blank">here</a>.
 
-After configuring the Fogbow Manager, you need to add a new entry in your DNS to resolve your component name to a IP address like in example below. It is needed for all XMPP components such as rendezvous and Fogbow manager.
+After configuring the Fogbow Manager, you need to add a new entry in your DNS to resolve your component name to an IP address like in the example below.
+
 ``` shell
 my-site.manager.com        22      IN      A       150.1.1.2
 ```
@@ -90,7 +88,7 @@ scheduler_period=30000
 accounting_update_period=300000
 ```
 
-**SSH tunnel properties:** These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet.
+**SSH tunnel properties:** These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet. The example below shows how these propoerties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel </a> section of our documentation:
 
 ```bash
 # The token_host_public_address property defines the public IP address of the FRT service
@@ -107,41 +105,15 @@ token_host_port=2222
 token_host_http_port=2223
 ```
 
-**Manager HTTP port:** This property indicates the HTTP port to which the Fogbow Manager component endpoint will be listening to requests. Since the Fogbow Manager service should be available from outside the local network (when it joins a federation) the firewall in your organization must allow communication through this por.
+**Manager HTTP port:** This property indicates the HTTP port to which the Fogbow Manager component endpoint will be listening to requests.
 
 ```bash
 # The http_port property indicates http port of the Fogbow Manager service endpoint
 http_port = 8182
 ```
 
-**Manager datastore information:** The path to the sqlite database that stores orders.
-``` shell
-manager_datastore_url=jdbc:sqlite:/home/fogbow/db_manager_orders.db
-```
-
-**TODO melhorar essa descricao**
-
-**Instance federated datastore information:** The path to the database that stores instance federated.
-``` shell
-instance_datastore_url=jdbc:sqlite:/home/fogbow/federated_instance
-```
-
-**TODO melhorar essa descricao**
-
-**Instance federated datastore information:** The path to the database that stores storage federated.
-``` shell
-storage_datastore_url=jdbc:sqlite:/home/fogbow/federated_storage
-```
-
-**TODO melhorar essa descricao**
-
-**Instance federated datastore information:** The path to the database that stores network federated.
-``` shell
-network_datastore_url=jdbc:sqlite:/home/fogbow/federated_network
-```
-
 ### Plugins
-In this section, we overview the purpose of each plugin adopted by the Fogbow Manager. In section **XPTO** we provide an detailed description of all current implementations of each plugin, including their configuration.
+In this section, we overview the purpose of each plugin adopted by the Fogbow Manager. In the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation we provide a detailed description of all current implementations of each plugin, including their configuration. The example file comes with default values for all these plugins.
 
 **Member validation plugin:** The Member validation plugin is used to the define to whom the Fogbow Manager can receive or donate resources.
 
@@ -167,7 +139,7 @@ In this section, we overview the purpose of each plugin adopted by the Fogbow Ma
  
 **Benchmarking plugin:** Benchmarking used to calculate the power rating of the VM.
 
-By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Simple Storage Accounting Plugin  session](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
+By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Simple Storage Accounting Plugin  section](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
 
 **Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
 
