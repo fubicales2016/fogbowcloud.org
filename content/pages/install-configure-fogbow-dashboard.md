@@ -10,7 +10,7 @@ The Fogbow Dashboard is a web interface to the Fogbow Manager. It provides all t
 
 ##Installation
 
-Before installing the Fogbow Dashboard, we need to install its depencies. In a debian-based distribution, this can be done as follow.
+Before installing the Fogbow Dashboard, we need to install its depencies. In a debian-based distribution, this can be done as follow
 
 ```bash
 sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
@@ -33,9 +33,7 @@ chmod 600 openstack_dashboard/test/.secret_key_store
 
 then, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard:
 
-After the installation, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard:
-
-``` bash
+``` python
 # Fogbow Manager to be used.
 FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
 
