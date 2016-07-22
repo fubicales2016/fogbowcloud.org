@@ -39,12 +39,10 @@ FOGBOW_MANAGER_ENDPOINT = "http://localhost:8182"
 
 FOGBOW_FEDERATION_AUTH_TYPE = 'keystone'
 FOGBOW_FEDERATION_AUTH_ENDPOINT = 'http://localhost:5000' 
-
 ```
 
 ##Run
-
-Finally, run the **run_tests.sh** script to start the Fogbow Dashboard.
+To start the Fogbow Dashboard, run the **run_tests.sh** script indicating the port that the dashboard will handle requests (**9000**).
 
 ``` bash
 nohup ./run_tests.sh --runserver localhost:9000 &
