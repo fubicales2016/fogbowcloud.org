@@ -16,17 +16,23 @@ Before installing the Fogbow Dashboard, we need to install its depencies. In a d
 sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
 ```
 
-To install the Fogbow Dashboard, download its source code through the **git clone** command. After the download, assign proper permissions to the configuration files.
+To install the Fogbow Dashboard, download its source code through the **git clone** command
 
 ```bash
 git clone https://github.com/fogbow/fogbow-dashboard.git
+```
 
+##Configure
+After the installation, assign the proper permissions to the **keystore** files
+
+```bash
 cd fogbow-dashboard
 chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
 ```
 
-##Configure
+then, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard:
+
 After the installation, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard:
 
 ``` bash
@@ -39,10 +45,9 @@ FOGBOW_FEDERATION_AUTH_ENDPOINT = 'http://localhost:5000'
 ```
 
 ##Run
+
 Finally, run the **run_tests.sh** script to start the Fogbow Dashboard.
 
 ``` bash
 nohup ./run_tests.sh --runserver localhost:9000 &
 ```
-
-The Fogbow Dashboard is based on the [horizon](https://github.com/openstack/horizon) dashboard. To know more about the Horizon project, for example how to deploy it in different environments, see the <a href="http://docs.openstack.org/developer/horizon/index.html" target=_blank>Horizon docs</a>.
