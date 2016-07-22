@@ -6,14 +6,10 @@ index: 3
 
 # Manager
 
-TODO: manel, verificar valores das propriedades, p.ex portas. lembrar que precisa ser consistente em toda a documentacao
-
-TODO: verificar no manager.conf do branch master se há alguma propriedade que não foi descrita, se os nomes das propriedades que usamos estão corretos e se há alguma propriedade que descrevemos que não mais existe.
-
 The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
-To get the lastest stable version of the component, download it from our repository as follows:
+To get the lastest stable version of the component, download it from our repository:
 
 ```bash
 wget https://github.com/fogbow/fogbow-manager/archive/master.zip
@@ -33,7 +29,8 @@ mvn install
 ```
 
 ## Install from debian package
-Download the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb">latest debian package</a>:
+
+Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a>:
 
 ```bash
 wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
