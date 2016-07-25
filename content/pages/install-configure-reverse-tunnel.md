@@ -4,33 +4,42 @@ save_as: install-configure-reverse-tunnel.html
 section: install-configure
 index: 6
 
-Install and configure reverse tunnel
+Install and configure Fogbow Reverse Tunnel
 ==========
 
-The reverse tunneling service provides public IP access to virtual machines created in the private cloud, even if the local cloud offers only private IPs to these virtual machines.
+The reverse tunneling service provides public IP access to virtual machines created in the private cloud, even if the local cloud offers only private IPs to these virtual machines. The Fogbow Reverse Tunnel is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow
 
 ## Install from source
-Get the latest code of the project.
+To get the lastest stable version of the component, download it from our repository
+
 ``` shell
-git clone https://github.com/fogbow/fogbow-reverse-tunnel.git
+wget https://github.com/fogbow/fogbow-reverse-tunnel/archive/master.zip
 ```
+
+Then, decompress it:
+``` shell
+unzip master.zip
+```
+
+Now, install it with Maven:
+
+```
+cd fogbow-reverse-tunnel-master
+mvn install
+```
+
 Then, install it
 ``` shell
 mvn install 
 ```
 
 ## Install from debian package
-Download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbow-reverse-tunnel_latest.deb" target=_blank>latest debian package</a>.
-```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-reverse-tunnel/fogbow-reverse-tunnel_latest.deb
-```
 
-Then, install it with dkpg
-```bash
-dpkg -i fogbow-reverse-tunnel_latest.deb
-```
+Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
 
-TODO: acho que precisamos especificar os diretorios em que o package será instalado (na verdade, onde estarão os arquivos de config)
+```bash
+dpkg -i fogbow-reverse-tunnel_$version.deb
+```
 
 ## Configure
 After the installation, rename the file ```reverse-tunnel.conf.example``` to ```reverse-tunnel.conf``` and edit its contents:
