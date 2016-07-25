@@ -4,34 +4,36 @@ save_as: install-configure-rendezvous.html
 section: install-configure
 index: 6
 
-Install and configure rendezvous
+Install and configure the Fogbow Rendezvous
 ==========
 
-intro
-
-The **Rendezvous** is the discovery service that allows fogbow members to find each other in a fogbow federation.
-
-##Installation
+The Fogbow Rendevouz is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
 ## Install from source
-Get the latest code of the project.
+To get the lastest stable version of the component, download it from our repository
+
 ``` shell
-git clone https://github.com/fogbow/fogbow-rendezvous.git
+wget https://github.com/fogbow/fogbow-rendezvous/archive/master.zip
 ```
-Then, install it
+
+Then, decompress it:
 ``` shell
+unzip master.zip
+```
+
+Now, install it with Maven:
+
+```
+cd fogbow-rendezvous-master
 mvn install
 ```
 
 ## Install from debian package
-With an XMPP server already installed and configured, download to the <a href="http://downloads.fogbowcloud.org/nightly/debian/fogbow-rendezvous/fogbow-rendezvous_latest.deb" target=_blank>latest debian package</a>
-```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-rendezvous/fogbow-rendezvous_latest.deb
-```
 
-Then, install it with dkpg
+Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
+
 ```bash
-dpkg -i fogbow-rendezvous_latest.deb
+dpkg -i fogbow-rendezvous_$version.deb
 ```
 
 Since the rendezvous is a XMPP component, you need a XMPP server running and properly configured to be able to communicate to other members in the fogbow federation.
