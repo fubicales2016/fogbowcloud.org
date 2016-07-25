@@ -7,25 +7,30 @@ index: 2
 Install and configure Fogbow CLI
 ==========
 
-The Fogbow Manager is controlled via a command line interface (CLI) that makes easier for the fogbow users to get information about the federation members, to order resources and to manage the lifecycle of those resources.
+The Fogbow Manager is controlled via a command line interface (CLI) that makes easier for the fogbow users to get information about the federation members, to order resources and to manage the lifecycle of those resources. The Fogbow CLI is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
-##Installation
-The Fogbow CLI can be installed from its source or from from a binary package for debian-based distributions. Download the best choice for your systems and install the CLI as follow.
+##Install from source
 
-###Install from source
-Get the latest code and install it with maven.
-``` bash
-git clone https://github.com/fogbow/fogbow-cli.git
-cd fogbow-cli
+To get the lastest stable version of the component, download it from our repository
+```shell
+wget https://github.com/fogbow/fogbow-cli/archive/master.zip
+``` 
+
+Then, decompress it:
+```shell
+unzip master.zip
+```
+
+Now, install it with Maven:
+```
+cd fogbow-cli-master
 mvn install
 ```
 
-###Install from debian package
-Download the [lastest stable package](http://downloads.fogbowcloud.org/nightly/debian/fogbow-cli/fogbow-cli_latest.deb)
+## Install from debian package
+
+Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
+
 ```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-cli/fogbow-cli_latest.deb
-```
-And install it with dpkg
-```bash
-sudo dpkg -i fogbow-cli_latest.deb
+dpkg -i fogbow-cli_$version.deb
 ```
