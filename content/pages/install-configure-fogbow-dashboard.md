@@ -10,16 +10,28 @@ The Fogbow Dashboard is a web interface to the Fogbow Manager. It provides all t
 
 ##Installation
 
-Before installing the Fogbow Dashboard, we need to install its depencies. In a debian-based distribution, this can be done as follow
+Before installing the Fogbow Dashboard, we need to install its depencies. In a debian-based distribution, this can be done as follow:
 
 ```bash
 sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
 ```
 
-To install the Fogbow Dashboard, download its source code through the **git clone** command
+To install the Fogbow Dashboard, download its lastest stable version from our repository
 
-```bash
-git clone https://github.com/fogbow/fogbow-dashboard.git
+``` shell
+wget https://github.com/fogbow/fogbow-dashboard/archive/master.zip
+```
+
+Then, decompress it:
+``` shell
+unzip master.zip
+```
+
+Now, install it with Maven:
+
+```
+cd fogbow-dashboard-master
+mvn install
 ```
 
 ##Configure
