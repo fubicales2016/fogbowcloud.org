@@ -50,37 +50,27 @@ xmpp_host=127.0.0.1
 
 # XMPP server port (to listen for components communication)
 xmpp_port=5347
-```
 
-The **neighbors** property indicates other existent rendezvous which this component can exchange information about **Fogbow Managers** liveness.
-
-``` shell
-# Known Rendezvous Neighbor aderesses.
+# The neighbors property indicates other existent rendezvous
+# which this component can exchange information about Fogbow Managers liveness.
 neighbors=neighbor1@domain1.com,neighbor2@domain2.com
-```
 
-The properties below are part the [Result Set Management strategy](http://www.fogbowcloud.org/rendezvous) used to limit, in size, the rendezvous' responses.
-``` shell
+# The properties below are used to limit, in size, the rendezvous' responses.
 # Maximum number of managers that should be returned in a whoIsAlive response.
 max_whoisalive_manager_count=100
-
 # Maximum number of managers that should be returned in a whoIsAliveSyncresponse.
 max_whoisalivesync_manager_count=100
-
 # Maximum number of neighbors that should be returned in a whoIsAliveSyncresponse.
 max_whoisalivesync_neighbor_count=100
-```
 
-The properties below reference to message "iamalive" sent from Fogbow Manager.
-``` shell
-# How many time the Fogbow Manager send the message "iamalive" in miliseconds.
+# The properties below control "iamalive" mechanism
+# The period in milliseconds between successive "iamalive" messages.
 iamalive_period=30000
-# How many times the Fogbow Rendezvous wait the message "iamalive".
+# How many "iamalive" messages should be lost before the Fogbow Rendezvous suspects
+# the Fogbow Manager is not available.
 iamalive_max_message_lost=3
-```
 
-The property below reference which members are allowed by Fogbow Rendezvous.
-``` shell
+# The property below indicates the WhiteList pluging used by the rendevouz.
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
 
