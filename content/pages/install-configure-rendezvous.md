@@ -36,29 +36,11 @@ Download a stable version from our <a href="http://downloads.fogbowcloud.org/sta
 dpkg -i fogbow-rendezvous_$version.deb
 ```
 
-Since the rendezvous is a XMPP component, you need a XMPP server running and properly configured to be able to communicate to other members in the fogbow federation.
-
-TODO: remover essa frase e adicionar link para xmpp config
-We recommend <a href="https://prosody.im/" target="_blank">prosody</a> due to its ease of configuration.
-
-TODO: talvez essa linha nao seja necessaria
-
-If you are using Prosody, you can add a component to its configuration with:
-``` shell
-Component "rendezvous.test.com"
-       component_secret = "password"
-```
-# Actions before configure
-After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
-``` shell
-rendezvous.test.com.        22      IN      A       199.27.76.133
-```
-
 ## Configure
 After the installation, move the file ```rendezvous.conf.example``` to ```rendezvous.conf``` and edit its contents:
 ``` shell
 # XMPP address of your Rendezvous Component
-xmpp_jid=rendezvous.test.com
+xmpp_jid=my-rendezvous.internal.mydomain
 
 # XMPP component password
 xmpp_password=password
@@ -70,13 +52,11 @@ xmpp_host=127.0.0.1
 xmpp_port=5347
 ```
 
-TODO: nao entendi "system crashes"
-
-The **neighbors** property indicates other existent rendezvous which this component can exchange information about **Fogbow Managers** liveness. This is part of the [replication strategy](http://www.fogbowcloud.org/rendezvous) used to avoid system crashes.
+The **neighbors** property indicates other existent rendezvous which this component can exchange information about **Fogbow Managers** liveness.
 
 ``` shell
 # Known Rendezvous Neighbor aderesses.
-neighbors=neighbor1@test.com,neighbor2@test.com
+neighbors=neighbor1@domain1.com,neighbor2@domain2.com
 ```
 
 The properties below are part the [Result Set Management strategy](http://www.fogbowcloud.org/rendezvous) used to limit, in size, the rendezvous' responses.
@@ -103,6 +83,25 @@ The property below reference which members are allowed by Fogbow Rendezvous.
 ``` shell
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
+
+Since the rendezvous is a XMPP component, you need a XMPP server running and properly configured to be able to communicate to other members in the fogbow federation.
+
+TODO: remover essa frase e adicionar link para xmpp config
+We recommend <a href="https://prosody.im/" target="_blank">prosody</a> due to its ease of configuration.
+
+TODO: talvez essa linha nao seja necessaria
+
+If you are using Prosody, you can add a component to its configuration with:
+``` shell
+Component "rendezvous.test.com"
+       component_secret = "password"
+```
+# Actions before configure
+After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
+``` shell
+rendezvous.test.com.        22      IN      A       199.27.76.133
+```
+
 
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
