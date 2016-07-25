@@ -28,11 +28,6 @@ cd fogbow-reverse-tunnel-master
 mvn install
 ```
 
-Then, install it
-``` shell
-mvn install 
-```
-
 ## Install from debian package
 
 Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
