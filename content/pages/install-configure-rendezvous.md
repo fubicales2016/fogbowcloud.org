@@ -46,7 +46,7 @@ xmpp_jid=my-rendezvous.internal.mydomain
 xmpp_password=password
 
 # Address of the host running the XMPP server.
-xmpp_host=127.0.0.1
+xmpp_host=150.1.1.1
 
 # XMPP server port (to listen for components communication)
 xmpp_port=5347
@@ -74,24 +74,12 @@ iamalive_max_message_lost=3
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
 
-Since the rendezvous is a XMPP component, you need a XMPP server running and properly configured to be able to communicate to other members in the fogbow federation.
+Remember that the **xmpp_jid** and **xmpp_password** must match the values assigned during the XMPPP configuration.
 
-TODO: remover essa frase e adicionar link para xmpp config
-We recommend <a href="https://prosody.im/" target="_blank">prosody</a> due to its ease of configuration.
-
-TODO: talvez essa linha nao seja necessaria
-
-If you are using Prosody, you can add a component to its configuration with:
-``` shell
-Component "rendezvous.test.com"
-       component_secret = "password"
-```
-# Actions before configure
 After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
 ``` shell
-rendezvous.test.com.        22      IN      A       199.27.76.133
+my-rendezvous.internal.mydomain        22      IN      A       150.1.1.3
 ```
-
 
 ## Run
 To start the rendezvous component, run the start-rendezvous script inside ```./bin```.
