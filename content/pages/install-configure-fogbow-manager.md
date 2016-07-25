@@ -4,7 +4,7 @@ save_as: install-configure-fogbow-manager.html
 section: install-configure
 index: 3
 
-# Manager
+# Fogbow Manager
 
 The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.
 
@@ -30,16 +30,10 @@ mvn install
 
 ## Install from debian package
 
-Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a>:
+Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:
 
 ```bash
-wget http://downloads.fogbowcloud.org/nightly/debian/fogbow-manager/fogbow-manager_latest.deb
-```
-
-Then, install it with dpkg:
-
-```bash
-dpkg -i fogbow-manager_latest.deb
+dpkg -i fogbow-manager_$version.deb
 ```
 
 ## Configure
