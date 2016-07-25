@@ -16,7 +16,7 @@ Before installing the Fogbow Dashboard, we need to install its depencies. In a d
 sudo apt-get install git python-dev python-virtualenv libssl-dev libffi-dev libxml2-dev libxslt1-dev
 ```
 
-To install the Fogbow Dashboard, download its lastest stable version from our repository
+To install the Fogbow Dashboard, download its lastest stable version from our repository:
 
 ``` shell
 wget https://github.com/fogbow/fogbow-dashboard/archive/master.zip
@@ -43,7 +43,7 @@ chmod 600 openstack_dashboard/local/.secret_key_store
 chmod 600 openstack_dashboard/test/.secret_key_store
 ```
 
-then, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard:
+then, edit the ```openstack_dashboard/local/local_settings.py``` file to indicate the HTTP endpoint of the Fogbow Manager associated with the Fogbow Dashboard (here we consider that the Fogbow Dashboard and the Fogbow Manager are installed in the same host):
 
 ``` python
 # Fogbow Manager to be used.
