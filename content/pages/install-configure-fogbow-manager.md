@@ -41,15 +41,19 @@ After the installation, edit the file ```manager.conf```. In this file, some gen
 
 ### General properties
 
+The **xmpp_jid** and **xmpp_password** properties below, in yout ```manager.conf``` file, must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation:
+
 **XMPP information:**
 As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. You need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties, considering the example XMPP installation described in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation:
 
+
+
 ```bash
 # jid of the Fogbow Manager XMPP component
-xmpp_jid=my-site.manager.com
+xmpp_jid=my-manager.internal.mydomain
 
 # password of the Fogbow Manager XMPP component
-xmpp_password=password
+xmpp_password=manager_password
 
 # XMPP server IP address
 xmpp_host=150.1.1.1
