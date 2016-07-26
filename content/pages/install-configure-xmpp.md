@@ -27,7 +27,7 @@ Component "my-manager.internal.mydomain"
         
 # Rendezvous component
 Component "my-rendezvous.internal.mydomain"
-        component_secret = "rendezvouz_password"
+        component_secret = "rendezvous_password"
 ```
 
 ## Run
