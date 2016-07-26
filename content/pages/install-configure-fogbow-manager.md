@@ -103,41 +103,6 @@ token_host_http_port=2223
 http_port = 8182
 ```
 
-### Plugins
-In this section, we overview the purpose of each plugin adopted by the Fogbow Manager. In the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation we provide a detailed description of all current implementations of each plugin, including their configuration. The example file comes with default values for all these plugins.
-
-**Member validation plugin:** The Member validation plugin is used to the define to whom the Fogbow Manager can receive or donate resources.
-
-**TODO:** Member validation refers to the **FederationMemberAuthorizationPlugin** and is specified via the property **member_validator_class**. Should we change the doc (or the code) to have a consistent description. For example, saying we have a **Federation Member authorization** plugin.
-
-**[Cloud compute plugin](http://www.fogbowcloud.org/customazing-deployment#compute-plugin):** The Cloud compute plugin deals with the allocation, monitoring and management of computing resources in the cloud infrastructure. 
-
-**Cloud identity information:** All identity information required by the identity plugin that will be used. You can see the required information by each identity plugin provided by fogbow at [Plugins Page](http://www.fogbowcloud.org/customazing-deployment).
-
-**[Cloud storage plugin](http://www.fogbowcloud.org/customazing-deployment#storage-plugin):**
-
-**[Cloud network plugin](http://www.fogbowcloud.org/customazing-deployment#network-plugin):**
-
-**[Manager authorization plugin](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin):**
-
-**[Member picker plugin](http://www.fogbowcloud.org/customazing-deployment#authorization-plugin#member-picker-plugin):** Choice of a federation member that Fogbow Manager will order for resource.
-
-**[Mapper user plugin](http://www.fogbowcloud.org/customazing-deployment#mapper-plugin):** Policy to map the user in one determinate project in the cloud.
-
-**[Compute accounting plugin](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information. You can see the required information by each mapper user plugin provided by fogbow at [Plugins Page].
-
-**[Storage accounting plugin](http://www.fogbowcloud.org/customazing-deployment#accounting-plugin):** Stores compute accounting information.
- 
-**Benchmarking plugin:** Benchmarking used to calculate the power rating of the VM.
-
-By default , we are using the Vanilla Benchmarking Accounting Plugin. Access [Simple Storage Accounting Plugin  section](http://www.fogbowcloud.org/customazing-deployment#simple-storage-accounting-plugin) for more information.
-
-**Image configuration:** Image to be used with instances created via manager. The image used need to have cloud init in order to be able to set machine configuration such as network, credential keys and machine name.
-
-**[Image storage plugin](http://www.fogbowcloud.org/customazing-deployment#image-storage):**  Get images by image storage plugin.
-
-**Static mapping imagens:** Static mapping between local image ids and image names. Applies to all image storage plugins
-
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
