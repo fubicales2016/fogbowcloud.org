@@ -37,7 +37,7 @@ dpkg -i fogbow-manager_$version.deb
 ```
 
 ## Configure
-After the installation, move the file ```manager.conf.example``` to ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these propoerties need to be adjusted to match your particular installation. In this document, we cover in more details the general properties that might need to be changed. The Fogbow Manager plugins are covered in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation.
+After the installation, edit the file ```manager.conf```. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these properties need to be adjusted to match your particular cloud infrastructure provider. To ease the configuration procedure, we distribute template files for each cloud provider currenlty supported by the Fogbow middleware: ```manager.conf.cloudstack.example```,```manager.conf.opennebula.example```,```manager.conf.openstack.example``` and ```manager.conf.azure.example```. In this document, we cover in more details the general properties that might need to be changed and the main cloud-specific plugin properties. A complete overview of the Fogbow Manager plugins is given in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation.
 
 ### General properties
 
