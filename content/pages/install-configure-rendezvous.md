@@ -74,7 +74,7 @@ iamalive_max_message_lost=3
 white_list_class=org.fogbowcloud.rendezvous.core.plugins.whitelist.AcceptAnyWhiteListPlugin
 ``` 
 
-Remember that the **xmpp_jid** and **xmpp_password** must match the values assigned during  in the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation.
+Remember that the **xmpp_jid** and **xmpp_password** must match the values assigned during the [Install and configure XMPP](install-configure-xmpp.md) section of our documentation.
 
 After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
 ``` shell
