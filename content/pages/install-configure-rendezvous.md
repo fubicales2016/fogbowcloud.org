@@ -43,7 +43,7 @@ After the installation, move the file ```rendezvous.conf.example``` to ```rendez
 xmpp_jid=my-rendezvous.internal.mydomain
 
 # XMPP component password
-xmpp_password=password
+xmpp_password=rendezvous_password
 
 # Address of the host running the XMPP server.
 xmpp_host=150.1.1.1
