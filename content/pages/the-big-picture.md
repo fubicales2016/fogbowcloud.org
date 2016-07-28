@@ -17,3 +17,5 @@ The architecture of the Fogbow middleware is based on two main components: the *
 Deployment Overview
 ------
 A typical deployment of Fogbow will require two dedicated machines (either real or virtual). Let us call them **internal.mydomain** and **external.mydomain**. The **internal.mydomain** machine is part of the private network and must have access to the endpoints of the cloud that is being federated. On the other hand, the **external.mydomain** machine should be outside the private network, within a DMZ. The FR and FM components are deployed in the **internal.mydomain** machine, while the XMPP server and the FRT component are deployed in the **external.mydomain** machine. The figure below shows this arrangement.
+
+![alt logo](../images/fogbow-deploy.png "Fogbow Deploy")
