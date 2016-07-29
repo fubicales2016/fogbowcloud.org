@@ -41,12 +41,7 @@ After the installation, edit the file ```manager.conf```. In this file, some gen
 
 ### General properties
 
-The **xmpp_jid** and **xmpp_password** properties below, in yout ```manager.conf``` file, must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation:
-
-**XMPP information:**
-As the Fogbow Manager runs as an XMPP component, it needs to access an XMPP server. You need to define some XMPP properties to allow the Fogbow Manager to communicate with the other federation members. Here is an example of the Fogbow Manager XMPP properties, considering the example XMPP installation described in the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation:
-
-
+The XMPP properties below indicate the XMMP server that the **Fogbow Manager** must contact to communicate in the federation. These properties also indicate the **Fogbow Rendezvous** associated with the **Fogbow Manager**.
 
 ```bash
 # jid of the Fogbow Manager XMPP component
@@ -65,10 +60,12 @@ xmpp_port=5347
 rendezvous_jid=my-site.rendezvous.com
 ```
 
-After configuring the Fogbow Manager, you need to add a new entry in your DNS to resolve your component name to an IP address like in the example below.
+The **xmpp_jid**, **xmpp_password** and **rendezvous_jid** properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.
+
+You need to add a new entry in your DNS to resolve the give **Fogbow Manager** component name to an IP address like in the example below.
 
 ``` shell
-my-site.manager.com        22      IN      A       150.1.1.2
+my-manager.internal.mydomain        22      IN      A       150.1.1.2
 ```
 
 **Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
