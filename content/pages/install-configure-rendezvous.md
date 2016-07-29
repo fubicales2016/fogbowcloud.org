@@ -78,7 +78,7 @@ Remember that the **xmpp_jid** and **xmpp_password** must match the values assig
 
 After adding the component to your XMPP server, you need to add a new entry in your DNS to resolve your component name to the XMPP server IP address, as shown in the example below.
 ``` shell
-my-rendezvous.internal.mydomain        22      IN      A       150.1.1.3
+my-rendezvous.internal.mydomain        22      IN      A       150.1.1.1
 ```
 
 ## Run
