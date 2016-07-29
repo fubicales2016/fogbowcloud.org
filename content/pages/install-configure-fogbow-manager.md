@@ -62,10 +62,10 @@ rendezvous_jid=my-site.rendezvous.com
 
 The **xmpp_jid**, **xmpp_password** and **rendezvous_jid** properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.
 
-Following, you need to add a new entry in your DNS to resolve the give **Fogbow Manager** component name to an IP address like in the example below.
+Following, you need to add a new entry in your DNS to resolve the given **Fogbow Manager** component name to the IP address of the XMPP server like in the example below.
 
 ``` shell
-my-manager.internal.mydomain        22      IN      A       150.1.1.2
+my-manager.internal.mydomain        22      IN      A       150.1.1.1
 ```
 
 **Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
