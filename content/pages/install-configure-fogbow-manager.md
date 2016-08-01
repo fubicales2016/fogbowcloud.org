@@ -57,7 +57,7 @@ xmpp_host=150.1.1.1
 xmpp_port=5347
 
 # jid of your Rendezvous XMPP component
-rendezvous_jid=my-site.rendezvous.com
+rendezvous_jid=my-rendezvous.internal.mydomain
 ```
 
 The **xmpp_jid**, **xmpp_password** and **rendezvous_jid** properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.
