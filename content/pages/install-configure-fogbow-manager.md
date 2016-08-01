@@ -134,7 +134,28 @@ compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 # compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 ```
 #### CloudStack
+```bash
+## Storage Plugin
+# storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 
+## Compute Plugin
+# compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+# compute_cloudstack_api_url=http://127.0.0.1:8080/client/api
+# compute_cloudstack_zone_id=d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
+# compute_cloudstack_image_download_base_url=http://127.0.0.1/downloads/
+# compute_cloudstack_image_download_base_path=/var/www/downloads/
+# compute_cloudstack_hypervisor=KVM
+# compute_cloudstack_image_download_os_type_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+# compute_cloudstack_expunge_on_destroy=true
+
+## Local Identity
+# local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+# local_identity_url=http://127.0.0.1:8080/client/api/
+
+## Mapper Plugin / Local credentials
+# mapper_defaults_apiKey=user_api_key
+# mapper_defaults_secretKey=user_secret_key
+```
 #### Azure
 
 #### Opennebula
