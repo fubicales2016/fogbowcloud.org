@@ -110,28 +110,28 @@ http_port = 8182
 ```bash
 ## network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://localhost:9696
-external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
+network_openstack_v2_url=http://address:port
+external_gateway_info=
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://localhost:8776
+storage_v2_url=http://address:port
 
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
-compute_novav2_url=http://localhost:8774
-compute_glancev2_url=http://localhost:9292
+compute_novav2_url=http://address:port
+compute_glancev2_url=http://address:port
 compute_glancev2_image_visibility=private
-compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+compute_novav2_network_id=
 
-## Compute Plugin
+## Compute Plugin (OCCI)
 # compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackOCCIComputePlugin
-# compute_openstack_v2api_url=http://localhost:8182
-# compute_occi_url=http://localhost:8182
+# compute_openstack_v2api_url=http://address:port
+# compute_occi_url=http://address:port
 # compute_occi_os_scheme=http://schemas.openstack.org/template/os#
 # compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
 # compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
-# compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+# compute_occi_network_id=
 ```
 #### CloudStack
 ```bash
@@ -139,26 +139,71 @@ compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
 # storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 
 ## Compute Plugin
-# compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
-# compute_cloudstack_api_url=http://127.0.0.1:8080/client/api
-# compute_cloudstack_zone_id=d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
-# compute_cloudstack_image_download_base_url=http://127.0.0.1/downloads/
-# compute_cloudstack_image_download_base_path=/var/www/downloads/
-# compute_cloudstack_hypervisor=KVM
-# compute_cloudstack_image_download_os_type_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
-# compute_cloudstack_expunge_on_destroy=true
+compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+compute_cloudstack_api_url=http://address:port/client/api
+compute_cloudstack_zone_id=
+compute_cloudstack_image_download_base_url=http://address:port/downloads/
+compute_cloudstack_image_download_base_path=/var/www/downloads/
+compute_cloudstack_hypervisor=KVM
+compute_cloudstack_image_download_os_type_id=
+compute_cloudstack_expunge_on_destroy=true
 
 ## Local Identity
-# local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
-# local_identity_url=http://127.0.0.1:8080/client/api/
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+local_identity_url=http://address:port/client/api/
 
 ## Mapper Plugin / Local credentials
-# mapper_defaults_apiKey=user_api_key
-# mapper_defaults_secretKey=user_secret_key
+mapper_defaults_apiKey=user_api_key
+mapper_defaults_secretKey=user_secret_key
 ```
-#### Azure
 
 #### Opennebula
+```bash
+# Network plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
+network_one_bridge=br0
+
+## Storage Plugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
+## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
+storage_one_datastore_default_device_prefix=vd
+
+## Compute Plugin
+compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://address:port/RPC2
+compute_one_network_id=1 
+compute_one_network_contextualization=false
+compute_one_templates=all
+compute_one_datastore_id=1
+compute_one_ssh_host=address
+compute_one_ssh_port=22
+compute_one_ssh_username=
+compute_one_ssh_key_file=/path/to/rsa/key
+compute_one_ssh_target_temp_folder=/tmp/images
+
+## Compute Plugin (Opennebula OCCI)
+# compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaOCCIComputePlugin
+# compute_one_url=http://address:port/RPC2
+# compute_occi_url=http://address:port
+# compute_occi_template_scheme=http://occi.localhost/occi/infrastructure/os_tpl#
+# compute_occi_resource_scheme=http://schema.fedcloud.egi.eu/occi/infrastructure/resource_tpl#
+# compute_occi_flavors_small={cpu=1,mem=512}
+# compute_occi_flavors_medium={cpu=2,mem=1024}
+# compute_occi_flavors_large={cpu=4,mem=2048}
+
+## Local Identity
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
+local_identity_url=http://address:port/RPC2
+
+# Mapper Plugin / Local credentials
+mapper_defaults_username=
+mapper_defaults_password=
+
+## Federation Identity
+federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+federation_identity_url=http://address:port/RPC2
+
+```
+#### Azure
 
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
