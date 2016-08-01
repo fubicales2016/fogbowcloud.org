@@ -104,10 +104,35 @@ token_host_http_port=2223
 http_port = 8182
 ```
 
-### Cloud-specific plugin
+### Cloud-specific plugins
 
 #### OpenStack
+```bash
+## network Plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+network_openstack_v2_url=http://localhost:9696
+external_gateway_info=ea51ed0c-0e8a-448d-8202-c79777109ffe
 
+## Storage Plugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+storage_v2_url=http://localhost:8776
+
+## Compute Plugin
+compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
+compute_novav2_url=http://localhost:8774
+compute_glancev2_url=http://localhost:9292
+compute_glancev2_image_visibility=private
+compute_novav2_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+
+## Compute Plugin
+# compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackOCCIComputePlugin
+# compute_openstack_v2api_url=http://localhost:8182
+# compute_occi_url=http://localhost:8182
+# compute_occi_os_scheme=http://schemas.openstack.org/template/os#
+# compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
+# compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
+# compute_occi_network_id=ea51ed0c-0e8a-448d-8202-c79777109ffe
+```
 #### CloudStack
 
 #### Azure
