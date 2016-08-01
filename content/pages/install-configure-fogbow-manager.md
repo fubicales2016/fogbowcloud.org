@@ -205,6 +205,22 @@ federation_identity_url=http://address:port/RPC2
 ```
 #### Azure
 
+```bash
+## Compute Plugin
+compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
+compute_azure_max_vcpu=10
+compute_azure_max_ram=10240
+compute_azure_region=East US
+compute_azure_storage_account_name=name
+compute_azure_storage_key=key
+
+## Identity
+federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+mapper_defaults_subscription_id=subscription_id
+mapper_defaults_keystore_path=/path/to/keystore
+mapper_defaults_keystore_password=pass
+```
+
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
