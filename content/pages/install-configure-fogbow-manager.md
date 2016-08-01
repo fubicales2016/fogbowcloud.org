@@ -104,6 +104,16 @@ token_host_http_port=2223
 http_port = 8182
 ```
 
+### Cloud-specific plugin
+
+#### OpenStack
+
+#### CloudStack
+
+#### Azure
+
+#### Opennebula
+
 ## Run 
 To start the manager component, run the start-manager script inside ```bin```.
 
