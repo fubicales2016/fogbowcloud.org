@@ -1,7 +1,7 @@
 Title: Install and configure fogbow manager
 url: install-configure-fogbow-manager
 save_as: install-configure-fogbow-manager.html
-section: install-configure
+section: install
 index: 3
 
 # Fogbow Manager
