@@ -1,0 +1,371 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/install-general.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li >
+            	<a href="the-big-picture">The Big Picture Fogbow Dashboard</a>
+            </li>
+            <li >
+            	<a href="intall-configure-fogbow-cli">Install and configure Fogbow</a>
+            </li>
+            <li >
+            	<a href="install-configure-xmpp">Install and configure XMPP</a>
+            </li>
+            <li class="active">
+            	<a href="install-configure-fogbow-manager">Install and configure fogbow manager</a>
+            </li>
+            <li >
+            	<a href="install-configure-fogbow-dashboard">Install and configure Fogbow Dashboard</a>
+            </li>
+            <li >
+            	<a href="install-configure-rendezvous">Install and configure fogbow rendezvous</a>
+            </li>
+            <li >
+            	<a href="install-configure-reverse-tunnel">Install and configure fogbow reverse tunnel</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Fogbow Manager</h1>
+<p>The Fogbow Manager is distributed in two forms: as source code or as a binary package for debian-based distributions. Choose the best distribution for your system, download it and install it as follow.</p>
+<h2>Install from source</h2>
+<p>To get the lastest stable version of the component, download it from our repository:</p>
+<div class="highlight"><pre>wget https://github.com/fogbow/fogbow-manager/archive/master.zip
+</pre></div>
+
+
+<p>Then, decompress it:</p>
+<div class="highlight"><pre>unzip master.zip
+</pre></div>
+
+
+<p>Now, install it with Maven:</p>
+<div class="highlight"><pre><span class="nb">cd </span>fogbow-manager
+mvn install
+</pre></div>
+
+
+<h2>Install from debian package</h2>
+<p>Download a stable version from our <a href="http://downloads.fogbowcloud.org/stable/debian/">package repository</a> and install it with dpkg:</p>
+<div class="highlight"><pre>dpkg -i fogbow-manager_<span class="nv">$version</span>.deb
+</pre></div>
+
+
+<h2>Configure</h2>
+<p>After the installation, edit the file <code>manager.conf</code>. In this file, some general properties, such as XMPP addresses and ports, as well as the set of plugins that define the behaviour of the Fogbow Manager are specified. Some of these properties need to be adjusted to match your particular cloud infrastructure provider. To ease the configuration procedure, we distribute template files for each cloud provider currenlty supported by the Fogbow middleware: <code>manager.conf.cloudstack.example</code>,<code>manager.conf.opennebula.example</code>,<code>manager.conf.openstack.example</code> and <code>manager.conf.azure.example</code>. In this document, we cover in more details the general properties that might need to be changed and the main cloud-specific plugin properties. A complete overview of the Fogbow Manager plugins is given in the <a  href="/install-configure-plugins" target="_blank">Configure Fogbow Manager's Plugins </a> section of our documentation.</p>
+<h3>General properties</h3>
+<p>The XMPP properties below indicate the XMMP server that the <strong>Fogbow Manager</strong> must contact to communicate in the federation. These properties also indicate the <strong>Fogbow Rendezvous</strong> associated with the <strong>Fogbow Manager</strong>.</p>
+<div class="highlight"><pre><span class="c"># jid of the Fogbow Manager XMPP component</span>
+<span class="nv">xmpp_jid</span><span class="o">=</span>my-manager.internal.mydomain
+
+<span class="c"># password of the Fogbow Manager XMPP component</span>
+<span class="nv">xmpp_password</span><span class="o">=</span>manager_password
+
+<span class="c"># XMPP server IP address</span>
+<span class="nv">xmpp_host</span><span class="o">=</span>150.1.1.1
+
+<span class="c"># Port in which the XMPP server will be listening.</span>
+<span class="nv">xmpp_port</span><span class="o">=</span>5347
+
+<span class="c"># jid of your Rendezvous XMPP component</span>
+<span class="nv">rendezvous_jid</span><span class="o">=</span>my-rendezvous.internal.mydomain
+</pre></div>
+
+
+<p>The <strong>xmpp_jid</strong>, <strong>xmpp_password</strong> and <strong>rendezvous_jid</strong> properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.</p>
+<p>Following, you need to add a new entry in your DNS to resolve the given <strong>Fogbow Manager</strong> component name to the IP address of the XMPP server like in the example below.</p>
+<div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">manager</span><span class="p">.</span><span class="n">internal</span><span class="p">.</span><span class="n">mydomain</span>        <span class="mi">22</span>      <span class="n">IN</span>      <span class="n">A</span>       <span class="mf">150.1.1.1</span>
+</pre></div>
+
+
+<p><strong>Time intervals:</strong> The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class <code>org.fogbowcloud.manager.core.ConfigurationConstants</code> and have default period values specified in the class <code>org.fogbowcloud.manager.core.ManagerController</code>. The default values of any property can be overwritten in the configuration file as shown below:</p>
+<div class="highlight"><pre><span class="c"># The scheduler_period property is the time interval (in milliseconds) in which</span>
+<span class="c"># the Fogbow Manager submit requests that are not fulfilled yet</span>
+<span class="nv">scheduler_period</span><span class="o">=</span>30000
+
+<span class="c"># The accounting_update_period is the time interval (in milliseconds) in which</span>
+<span class="c"># the Fogbow Manager calculate the resource usage accounting</span>
+<span class="nv">accounting_update_period</span><span class="o">=</span>300000
+</pre></div>
+
+
+<p><strong>SSH tunnel properties:</strong> These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet. The example below shows how these properties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel </a> section of our documentation:</p>
+<div class="highlight"><pre><span class="c"># The token_host_public_address property defines the public IP address of the FRT service</span>
+<span class="nv">token_host_public_address</span><span class="o">=</span>150.160.0.10
+
+<span class="c"># The token_host_private_address property defines the private IP address of the FRT service</span>
+<span class="nv">token_host_private_address</span><span class="o">=</span>10.0.0.1
+
+<span class="c"># The token_host_port property defines the port to be used when doing ssh.</span>
+<span class="c"># If this property isn&#39;t set, the default value is 2222</span>
+<span class="nv">token_host_port</span><span class="o">=</span>2222
+
+<span class="c"># The token_host_http_port property defines the port to be used when communicating with the FRT</span>
+<span class="nv">token_host_http_port</span><span class="o">=</span>2223
+</pre></div>
+
+
+<p><strong>Manager HTTP port:</strong> This property indicates the HTTP port to which the Fogbow Manager component endpoint will be listening to requests.</p>
+<div class="highlight"><pre><span class="c"># The http_port property indicates http port of the Fogbow Manager service endpoint</span>
+<span class="nv">http_port</span> <span class="o">=</span> 8182
+</pre></div>
+
+
+<h3>Cloud-specific plugins</h3>
+<p>In this section, we show the configuration of the cloud-specific plugins. Theses plugins configure not only the usage of compute, network and storage resources but also how users are identified in each cloud provider. In the examples below, the values identified with the <strong>$</strong> symbol must be replaced according with the deploy made the fogbow user. We distributed full configuration examples (<code>manager.conf.[cloudstack,opennebula,openstack,azure].example</code>) for each cloud provider in the <strong>Fogbow Manager</strong> source code.</p>
+<h4>OpenStack</h4>
+<div class="highlight"><pre><span class="c">## Compute Plugin</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
+<span class="nv">compute_novav2_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>
+<span class="nv">compute_glancev2_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>
+<span class="nv">compute_glancev2_image_visibility</span><span class="o">=</span>private
+<span class="nv">compute_novav2_network_id</span><span class="o">=</span><span class="nv">$network_id</span>
+
+<span class="c">## Network Plugin</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+<span class="nv">network_openstack_v2_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>
+<span class="nv">external_gateway_info</span><span class="o">=</span><span class="nv">$gateway_id</span>
+
+<span class="c">## Storage Plugin</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+<span class="nv">storage_v2_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>
+
+<span class="c">## Local Identity</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+<span class="nv">local_identity_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>
+
+<span class="c">## Local Credentials</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
+<span class="c">## Mapper Plugin / Local credentials to be used when we miss information about a given user</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span><span class="nv">$user_name</span>
+<span class="nv">mapper_defaults_password</span><span class="o">=</span><span class="nv">$user_pass</span>
+<span class="nv">mapper_defaults_tenantname</span><span class="o">=</span><span class="nv">$tenant_name</span>
+</pre></div>
+
+
+<h4>CloudStack</h4>
+<div class="highlight"><pre><span class="c">## Compute Plugin</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+<span class="nv">compute_cloudstack_api_url</span><span class="o">=</span>http://<span class="nv">$address</span>/client/api
+<span class="nv">compute_cloudstack_zone_id</span><span class="o">=</span><span class="nv">$zone_id</span>
+<span class="nv">compute_cloudstack_image_download_base_url</span><span class="o">=</span>http://<span class="nv">$address</span>
+<span class="nv">compute_cloudstack_image_download_base_path</span><span class="o">=</span><span class="nv">$path_to_download_dir</span>
+<span class="nv">compute_cloudstack_hypervisor</span><span class="o">=</span><span class="nv">$hypervisor_type</span>
+<span class="nv">compute_cloudstack_image_download_os_type_id</span><span class="o">=</span><span class="nv">$os_type_id</span>
+<span class="nv">compute_cloudstack_expunge_on_destroy</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c"># Network Plugin</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
+<span class="nv">network_cloudstack_api_url</span><span class="o">=</span>https://<span class="nv">$address</span>/client/api
+<span class="nv">network_cloudstack_zone_id</span><span class="o">=</span><span class="nv">$zone_id</span>
+<span class="nv">network_cloudstack_netoffering_id</span><span class="o">=</span><span class="nv">$offering_id</span>
+
+<span class="c">## Storage Plugin</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
+
+<span class="c">## Local Identity</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+<span class="nv">local_identity_url</span><span class="o">=</span>http://<span class="nv">$address</span>/client/api/
+
+<span class="c">## Local Credentials</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
+<span class="c">## Mapper Plugin / Local credentials to be used when we miss information about a given user</span>
+<span class="nv">mapper_defaults_apiKey</span><span class="o">=</span><span class="nv">$user_api_key</span>
+<span class="nv">mapper_defaults_secretKey</span><span class="o">=</span><span class="nv">$user_secret_key</span>
+</pre></div>
+
+
+<h4>Opennebula</h4>
+<div class="highlight"><pre><span class="c">## Compute Plugin</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin <span class="nv">compute_one_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>/RPC2
+<span class="nv">compute_one_network_id</span><span class="o">=</span><span class="nv">$network_id</span>
+<span class="nv">compute_one_datastore_id</span><span class="o">=</span><span class="nv">$datastore_id</span>
+<span class="c"># Below properties allow the FM to copy download VM images to OpenNebula controller machine</span>
+<span class="c"># (this is to be used when the FM and the OpenNebula controller run in different machines).</span>
+<span class="c">#compute_one_ssh_host=$address</span>
+<span class="c">#compute_one_ssh_port=$ssh_port</span>
+<span class="c">#compute_one_ssh_username=$user_name</span>
+<span class="c">#compute_one_ssh_key_file=$path_to_rsa_key</span>
+<span class="c">#compute_one_ssh_target_temp_folder=$path_to_images</span>
+
+<span class="c"># Network plugin</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
+<span class="nv">network_one_bridge</span><span class="o">=</span><span class="nv">$bridge_id</span>
+
+<span class="c">## Storage Plugin</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
+<span class="c">## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)</span>
+<span class="nv">storage_one_datastore_default_device_prefix</span><span class="o">=</span><span class="nv">$prefix</span>
+
+<span class="c">## Local Identity</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
+<span class="nv">local_identity_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>/RPC2
+
+<span class="c">## Local Credentials</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
+<span class="c"># Mapper Plugin / Local credentials</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span><span class="nv">$user_name</span>
+<span class="nv">mapper_defaults_password</span><span class="o">=</span><span class="nv">$user_pass</span>
+
+<span class="c">## Federation Identity</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://<span class="nv">$address</span>:<span class="nv">$port</span>/RPC2
+</pre></div>
+
+
+<h4>Azure</h4>
+<div class="highlight"><pre><span class="c">## Compute Plugin</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
+<span class="nv">compute_azure_max_instances</span><span class="o">=</span><span class="nv">$num_max_instances</span>
+<span class="nv">compute_azure_max_vcpu</span><span class="o">=</span><span class="nv">$num_max_vcpu</span>
+<span class="nv">compute_azure_max_ram</span><span class="o">=</span><span class="nv">$num_max_ram</span>
+<span class="nv">compute_azure_region</span><span class="o">=</span><span class="nv">$azure_region</span>
+<span class="nv">compute_azure_storage_account_name</span><span class="o">=</span><span class="nv">$storage_account_name</span>
+<span class="nv">compute_azure_storage_key</span><span class="o">=</span><span class="nv">$key_content</span>
+
+<span class="c"># Network Plugin</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlugin
+
+<span class="c">## Storage Plugin</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+
+<span class="c">## Identity</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+<span class="nv">mapper_defaults_subscription_id</span><span class="o">=</span><span class="nv">$subscription_id</span>
+<span class="nv">mapper_defaults_keystore_path</span><span class="o">=</span><span class="nv">$path_to_keystore</span>
+<span class="nv">mapper_defaults_keystore_password</span><span class="o">=</span><span class="nv">$keystore_pass</span>
+
+<span class="c">## Local Identity</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+
+<span class="c">## Identity</span>
+<span class="c"># federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin</span>
+<span class="nv">mapper_defaults_subscription_id</span><span class="o">=</span><span class="nv">$subscription_id</span>
+<span class="nv">mapper_defaults_keystore_path</span><span class="o">=</span><span class="nv">$path_to_keystore</span>
+<span class="nv">mapper_defaults_keystore_password</span><span class="o">=</span><span class="nv">$keystore_pass</span>
+</pre></div>
+
+
+<h2>Run</h2>
+<p>To start the manager component, run the start-manager script inside <code>bin</code>.</p>
+<div class="highlight"><pre>./bin/start-manager
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by CNPq/Brazil and the European Commission through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by FINEP/Brazil through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

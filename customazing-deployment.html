@@ -1,0 +1,865 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>fogbow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/bootstrap.css">
+    <link rel="stylesheet" href="http://www.fogbowcloud.org/theme/css/font-awesome.min.css">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.fogbowcloud.org/theme/img/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://www.fogbowcloud.org/theme/img/icons/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="http://www.fogbowcloud.org/theme/img/icons/mstile-144x144.png">
+   </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <ul id="navbar-main" class="nav navbar-nav navbar-right">
+          <li >
+            <a href="http://www.fogbowcloud.org/rational.html">Understand it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/install-general.html">Install it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/use-intro.html">Use it</a>
+          </li>
+          <li >
+            <a href="http://www.fogbowcloud.org/stories.html">Success stories</a>
+          </li>
+          <li><a href="https://github.com/fogbow/" target="_blank">Contribute to it</a></li>
+          <li><a href="http://www.fogbowcloud.org/contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+     <div class="container">
+      <div class="bs-docs-section">
+    <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-4">
+      	<br>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li class="active">
+            	<a href="customazing-deployment">Customising and deployment</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 page-content">
+      	<h1>Plugins</h1>
+<p>The manager component was designed to be agnostic to the underlying cloud technology. There is an interoperability plugin layer between this component and the cloud, in a sense that plugins are responsible for translating fogbow's orders to what the underlying cloud understands. Plugins are instantiated via reflection, and fully configured via the configuration file. Currently, fogbow makes available some plugins, and new ones can be contributed by the fogbow developers' community.</p>
+<p>In addition to interoperability plugins, there are also behavioural plugins. These are used to specify the way each fogbow manager should act when serving client's orders.</p>
+<h2>Identity Plugin</h2>
+<p>The Identity Plugin is responsible for getting and authenticating tokens for local and federation cloud users. The Local Identity Provider and the Federation Identity Provider must be the same when the authentication is done at the Local Cloud Identity Provider. Otherwise, you can configure different plugins for local and federation identity providers. </p>
+<p>Make sure to have the identity plugin ports opened in your network firewall configuration, to allow authentication by federation users from outside the local network, If you are using Keystone Identity Plugin, open the port 5000, or the port 2633 for OpenNebula Identity Plugin.</p>
+<h3>Configure</h3>
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, when the installation is done, rename the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to configure the Identity Plugin according to the Identity Provider you are using. The following sections go through the configuration for the Identity Plugins that come along with the Fogbow Manager. You can configure different plugins for local and federation identity providers.</p>
+<h5>Keystone Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
+<span class="c"># Cloud Identity endpoint</span>
+<span class="nv">local_identity_url</span><span class="o">=</span>http://localhost:5000
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.KeystoneIdentityPlugin
+<span class="c"># Federation Identity endpoint</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://localhost:5000
+
+<span class="c"># Proxy account for remote requests @ the local identity provider</span>
+<span class="nv">local_proxy_account_user_name</span><span class="o">=</span>fogbow
+<span class="c"># Password of such account</span>
+<span class="nv">local_proxy_account_password</span><span class="o">=</span>fogbow
+<span class="c"># Tenant of such account</span>
+<span class="nv">local_proxy_account_tenant_name</span><span class="o">=</span>demo
+</pre></div>
+
+
+<h5>OpenNebula Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+<span class="c"># Cloud identity endpoint</span>
+<span class="nv">local_identity_url</span><span class="o">=</span>http://localhost:2633/RPC2
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
+<span class="c"># Federation Identity endpoint</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://localhost:2633/RPC2
+
+<span class="c"># Proxy account for remote order @ the local identity provider </span>
+<span class="nv">local_proxy_account_user_name</span><span class="o">=</span>fogbow
+<span class="c"># Password of such account</span>
+<span class="nv">local_proxy_account_password</span><span class="o">=</span>fogbow
+</pre></div>
+
+
+<h5>X509 Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.x509.X509IdentityPlugin
+
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). </span>
+<span class="c"># They are certificates that you trust.</span>
+<span class="nv">x509_ca_dir_path</span><span class="o">=</span>/path/to/ca/directory
+</pre></div>
+
+
+<h5>VOMS Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugin
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.voms.VomsIdentityPlugin
+
+<span class="c"># Directory where are the VOMS server information. </span>
+<span class="c"># List of voms servers in order to issue a proxy. </span>
+<span class="c"># Default : &quot;~/.glite/vomses&quot;</span>
+<span class="nv">path_vomses</span><span class="o">=</span>/path/vomes
+
+<span class="c"># Directory where are the certificates of Certificate Authorities (CA). </span>
+<span class="c"># They are certificates that you trust.</span>
+<span class="c"># You need to have the certificate, CRL (certificate revocation list), </span>
+<span class="c"># info, namespaces and signing_policy files for each CA.</span>
+<span class="c"># These files need to have read permission grant to the user that runs</span>
+<span class="c"># the fogbow manager</span>
+<span class="c"># Default : &quot;/etc/grid-security/certificates&quot;</span>
+<span class="nv">path_trust_anchors</span><span class="o">=</span>/path/trust/anchors
+
+<span class="c"># Directory where are the certificates of VOMS that you trust.</span>
+<span class="c"># Default : &quot;/etc/grid-security/vomsdir&quot;</span>
+<span class="nv">path_vomsdir</span><span class="o">=</span>/path/voms/dir
+</pre></div>
+
+
+<p>Note: The VOMS Plugin uses the <a href="https://github.com/italiangrid/voms-api-java" target=_blank>VOMS API Java</a>. This API only works with JREs provided by Oracle with the <a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters" target=_blank>unlimited strength file installed</a>.</p>
+<h5>No Cloud Identity Plugin</h5>
+<p>Cloud Compute Plugin describe a scenary that does not exist an cloud that is associate to a Fogbow manager.</p>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.nocloud.NoCloudIdentityPlugin
+</pre></div>
+
+
+<h5>Simple Token Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.simpletoken.SimpleTokenIdentityPlugin
+<span class="c"># Token to check</span>
+<span class="nv">simple_token_identity_valid_token_id</span><span class="o">=</span>9398ybc43r-c9871btr7
+</pre></div>
+
+
+<h5>EC2 Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.ec2.EC2IdentityPlugin
+</pre></div>
+
+
+<h5>Azure Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+
+<span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+</pre></div>
+
+
+<h5>CloudStack Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+<span class="c"># Federation Identity endpoint</span>
+<span class="nv">federation_identity_url</span><span class="o">=</span>http://127.0.0.1:8080/client/api/
+
+<span class="c"># Local Identity plugin class</span>
+<span class="nv">local_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
+<span class="c"># Cloud Identity endpoint</span>
+<span class="nv">local_identity_url</span><span class="o">=</span>http://127.0.0.1:8080/client/api/
+</pre></div>
+
+
+<h5>Shiboleth Identity Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Identity plugin class</span>
+<span class="nv">federation_identity_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.identity.shibboleth.ShibbolethIdentityPlugin
+</pre></div>
+
+
+<h2>Compute Plugin</h2>
+<p>The Compute Plugin is responsible for requesting, getting, and deleting instances at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at <code>manager.conf</code> file are correct. If not, the behaviour of federation may not be the expected.</p>
+<h3>Configure</h3>
+<p>As you can see at the <a href="http://www.fogbowcloud.org/install-manager">Manager Install Guide</a>, after installation move the file <code>manager.conf.example</code> to <code>manager.conf</code>. You need to add the compute plugin contents according to plugin that will be used. These examples show the required properties for plugins already available on fogbowcloud project. </p>
+<h5>OpenStack OCCI Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackComputePlugin
+
+<span class="c"># Cloud OCCI endpoint</span>
+<span class="nv">compute_occi_url</span><span class="o">=</span>http://localhost:8182
+
+<span class="c"># Cloud v2 compute endpoint</span>
+<span class="nv">compute_openstack_v2api_url</span><span class="o">=</span>http://localhost:8182
+
+<span class="c"># Associating local cloud flavors to fogbow flavors</span>
+<span class="c"># Small flavor</span>
+<span class="nv">compute_occi_flavor_small</span><span class="o">=</span>m1-small
+
+<span class="c"># Medium flavor</span>
+<span class="nv">compute_occi_flavor_medium</span><span class="o">=</span>m1-medium
+
+<span class="c"># Large flavor</span>
+<span class="nv">compute_occi_flavor_large</span><span class="o">=</span>m1-large
+
+<span class="c"># OS Cloud Scheme</span>
+<span class="nv">compute_occi_os_scheme</span><span class="o">=</span>http://schemas.openstack.org/template/os#
+
+<span class="c"># Instance Cloud Scheme</span>
+<span class="nv">compute_occi_instance_scheme</span><span class="o">=</span>http://schemas.openstack.org/compute/instance#
+
+<span class="c"># Resource Cloud Scheme</span>
+<span class="nv">compute_occi_resource_scheme</span><span class="o">=</span>http://schemas.openstack.org/template/resource#
+
+<span class="c"># Network ID (This property is required only if user project has more </span>
+<span class="c"># than one network available)</span>
+<span class="c"># Example:</span>
+<span class="nv">compute_occi_network_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
+</pre></div>
+
+
+<h5>OpenStack Nova V2 Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.openstack.OpenStackNovaV2ComputePlugin
+
+<span class="c"># Nova V2 API URL</span>
+<span class="nv">compute_novav2_url</span><span class="o">=</span>http://localhost:8774
+
+<span class="c"># Small Flavour Identifier</span>
+<span class="nv">compute_novav2_flavor_small</span><span class="o">=</span>1
+
+<span class="c"># Medium Flavour Identifier</span>
+<span class="nv">compute_novav2_flavor_medium</span><span class="o">=</span>2
+
+<span class="c"># Large Flavour Identifier</span>
+<span class="nv">compute_novav2_flavor_large</span><span class="o">=</span>3
+
+<span class="c"># Network id (This property is required only if user project has more </span>
+<span class="c"># than one network available)</span>
+<span class="nv">compute_novav2_network_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
+</pre></div>
+
+
+<h5>OpenNebula Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaComputePlugin
+
+<span class="c"># Cloud opennebula compute endpoint</span>
+<span class="nv">compute_one_url</span><span class="o">=</span>http://localhost:2633/RPC2
+
+<span class="c"># Associating properties flavors to fogbow flavors</span>
+<span class="c"># Small flavor</span>
+<span class="nv">compute_one_flavor_small</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>128, <span class="nv">cpu</span><span class="o">=</span>1<span class="o">}</span>
+
+<span class="c"># Medium flavor</span>
+<span class="nv">compute_one_flavor_medium</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>256, <span class="nv">cpu</span><span class="o">=</span>2<span class="o">}</span>
+
+<span class="c"># Large flavor</span>
+<span class="nv">compute_one_flavor_large</span><span class="o">={</span><span class="nv">mem</span><span class="o">=</span>512, <span class="nv">cpu</span><span class="o">=</span>4<span class="o">}</span>
+
+<span class="c"># Network ID to be used for instances</span>
+<span class="nv">compute_one_network_id</span><span class="o">=</span>1
+
+<span class="c"># Settings used by ONE compute plugin to register new images in the cloud</span>
+<span class="c"># ID of datastore to register the image</span>
+<span class="nv">compute_one_datastore_id</span><span class="o">=</span>1
+<span class="c"># To register a new image, the image file needs to be in the some machine where ONE is running</span>
+<span class="c"># If the fogbow manager is running in a different machine, set the SSH properties to transfer the image</span>
+<span class="c"># Or if the fogbow manager is in the same machine, leave it blank</span>
+<span class="nv">compute_one_ssh_host</span><span class="o">=</span>127.0.0.1
+<span class="nv">compute_one_ssh_port</span><span class="o">=</span>22
+<span class="nv">compute_one_ssh_username</span><span class="o">=</span>fogbow
+<span class="c"># The SSH try to access using private key, set the path to ssh id_rsa file</span>
+<span class="nv">compute_one_ssh_key_file</span><span class="o">=</span>/home/fogbow/.ssh/id_rsa
+<span class="c"># Set the directory to copy images in remote host</span>
+<span class="nv">compute_one_ssh_target_temp_folder</span><span class="o">=</span>/tmp/images
+</pre></div>
+
+
+<h5>No Cloud Compute Plugin</h5>
+<p>Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.</p>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.nocloud.NoCloudComputePlugin
+</pre></div>
+
+
+<h5>EC2 Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.ec2.EC2ComputePlugin
+<span class="c"># Region where will create the VM</span>
+<span class="nv">compute_ec2_region</span><span class="o">=</span>us-east-1
+<span class="c"># Security group id given in the user&#39;s account</span>
+<span class="nv">compute_ec2_security_group_id</span><span class="o">=</span>sg-12345678
+<span class="c"># Subnet id given in the user&#39;s account</span>
+<span class="nv">compute_ec2_subnet_id</span><span class="o">=</span>subnet-12345678
+<span class="c"># </span>
+<span class="nv">compute_ec2_image_bucket_name</span><span class="o">=</span>s3-bucket-for-images
+<span class="c"># amount maximum of vCPU</span>
+<span class="nv">compute_ec2_max_vcpu</span><span class="o">=</span>10
+<span class="c"># amount maximum of RAM</span>
+<span class="nv">compute_ec2_max_ram</span><span class="o">=</span>10240
+<span class="c"># amount maximum of instances</span>
+<span class="nv">compute_ec2_max_instances</span><span class="o">=</span>10
+</pre></div>
+
+
+<h5>Azure Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
+<span class="c"># Limit of vCPUs to use</span>
+<span class="nv">compute_azure_max_vcpu</span><span class="o">=</span>10
+<span class="c"># Limit of memory to use</span>
+<span class="nv">compute_azure_max_ram</span><span class="o">=</span>10240
+<span class="c"># Region in Azure to create VMs and resources</span>
+<span class="nv">compute_azure_region</span><span class="o">=</span>East US
+<span class="c"># Name of the storage account to create the VM storage disk</span>
+<span class="nv">compute_azure_storage_account_name</span><span class="o">=</span>storage1
+<span class="c"># Access key of the configured storage account</span>
+<span class="nv">compute_azure_storage_key</span><span class="o">=</span>abcd12345
+</pre></div>
+
+
+<h5>CloudStack Compute Plugin</h5>
+<div class="highlight"><pre><span class="c"># Compute plugin class</span>
+<span class="nv">compute_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
+<span class="c"># URL of CloudStack API</span>
+<span class="nv">compute_cloudstack_api_url</span><span class="o">=</span>http://127.0.0.1:8080/client/api
+<span class="c"># ID of the CloudStack zone to create VMs</span>
+<span class="nv">compute_cloudstack_zone_id</span><span class="o">=</span>d05bfc3e-85e5-4be8-9ae9-cc7c2deb95f1
+<span class="c"># Base URL of the webserver where your image repository is configured</span>
+<span class="nv">compute_cloudstack_image_download_base_url</span><span class="o">=</span>http://127.0.0.1/downloads/
+<span class="c"># Absolute path of your image repository in the webserver</span>
+<span class="nv">compute_cloudstack_image_download_base_path</span><span class="o">=</span>/var/www/downloads/
+<span class="c"># Hypervisor type used in CloudStack</span>
+<span class="nv">compute_cloudstack_hypervisor</span><span class="o">=</span>KVM
+<span class="c"># ID of the default OS type to register new images</span>
+<span class="nv">compute_cloudstack_image_download_os_type_id</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
+<span class="c"># Defines if the VM should be completely removed on terminate</span>
+<span class="nv">compute_cloudstack_expunge_on_destroy</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+
+
+<h2>Image Storage Plugin</h2>
+<p>New orders arrive at the Fogbow Manager describe, among other things, an image that should be used by instances spawned. This image is a federation-wide id and potentially not recognized at the underlying cloud level as a proper image identifier. Image Storage plugins do the job of parsing such ids and translating them to valid local image identifiers.</p>
+<h5>VMCatcher Storage Plugin</h5>
+<p>Allows users to subscribe to virtual machine Virtual Machine Image Lists following the HEPIX Virtualisation working groups specification, cache the images referenced to in the Virtual Machine Image List, validate the images list with x509 based public key cryptography, and validate the images against sha512 hashes in the images lists and provide events for further applications to process updates or expiries of virtual machine images without having to further validate the images.</p>
+<p>For more information about vmcatcher, access <a href="https://github.com/hepix-virtualisation/vmcatcher">vmcatcher page on github.</a></p>
+<div class="highlight"><pre><span class="c">## Image Storage Plugin (VMCatcher)</span>
+<span class="c"># Image storage class</span>
+<span class="nv">image_storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.imagestorage.vmcatcher.VMCatcherStoragePlugin
+<span class="c"># Run with &quot;sudo&quot;</span>
+<span class="nv">image_storage_vmcatcher_use_sudo</span><span class="o">=</span><span class="nb">false</span>
+<span class="c"># Path database</span>
+<span class="nv">image_storage_vmcatcher_env_VMCATCHER_RDBMS</span><span class="o">=</span><span class="s2">&quot;sqlite:////var/lib/vmcatcher/vmcatcher.db&quot;</span>
+<span class="c"># Path where stores the images downloaded</span>
+<span class="nv">image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_CACHE</span><span class="o">=</span><span class="s2">&quot;/var/lib/vmcatcher/cache&quot;</span>
+<span class="c"># Path where stores the images are being download</span>
+<span class="nv">image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_DOWNLOAD</span><span class="o">=</span><span class="s2">&quot;/var/lib/vmcatcher/cache/partial&quot;</span>
+<span class="c"># Path where stores the images expired</span>
+<span class="nv">image_storage_vmcatcher_env_VMCATCHER_CACHE_DIR_EXPIRE</span><span class="o">=</span><span class="s2">&quot;/var/lib/vmcatcher/cache/expired&quot;</span>
+
+<span class="c">## Use &quot;glancepush specification&quot; for openstack or &quot;one specification&quot; for opennebula</span>
+
+<span class="c">### Plugin for openstack</span>
+<span class="c">### glancepush specific</span>
+<span class="c">## Option for use the openstack plugin</span>
+<span class="c"># image_storage_vmcatcher_push_method=glancepush</span>
+<span class="c"># image_storage_vmcatcher_glancepush_vmcmapping_file=/etc/vmcatcher/vmcmapping</span>
+<span class="c">## Path of the plugin</span>
+<span class="c"># image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT=&quot;python /var/lib/vmcatcher/gpvcmupdate.py&quot;</span>
+
+<span class="c">### Plugin for opennebula</span>
+<span class="c">### one specific</span>
+<span class="c">## Option for use the openstack plugin</span>
+<span class="c"># image_storage_vmcatcher_push_method=cesga</span>
+<span class="c">## Path of the plugin</span>
+<span class="c"># image_storage_vmcatcher_env_VMCATCHER_CACHE_EVENT=&quot;python /var/lib/vmcatcher/vmcatcher_eventHndl_ON&quot;</span>
+<span class="c">## Path where are the user&#39;s credentiais</span>
+<span class="c"># image_storage_vmcatcher_env_ONE_AUTH=&quot;/etc/vmcatcher/one_auth&quot;</span>
+</pre></div>
+
+
+<h5>HTTP Download Image Storage Plugin</h5>
+<p>This plugin allows users to request instances using an image URL, that should be an absolute URL or a suffix that will be appended to the base URL configured, then the plugin tries to download and register the new image in the cloud if it doesn't exists.</p>
+<div class="highlight"><pre><span class="nv">image_storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.imagestorage.http.HTTPDownloadImageStoragePlugin
+
+<span class="c"># Base URL of the image repository like the EGI Applications Database</span>
+<span class="c"># If the user supplies an relative URL in the request, the base URL will be used to find the image</span>
+<span class="nv">image_storage_http_base_url</span><span class="o">=</span>http://appliance-repo.egi.eu/images
+
+<span class="c"># Path to the temporary directory where the images should be downloaded to</span>
+<span class="nv">image_storage_http_tmp_storage</span><span class="o">=</span>/tmp/
+</pre></div>
+
+
+<h5>Static Image Storage Plugin</h5>
+<div class="highlight"><pre>image_storage_static_fogbow-linux-x86<span class="o">=</span>
+image_storage_static_fogbow-ubuntu-12.04-with-java<span class="o">=</span>
+</pre></div>
+
+
+<p>As you can see above, you can statically configure the fogbow manager with as many image as you want. Therefore, each manager can be configured with different images and/or same images but different names. Currently, fogbow uses global image identifiers in requests. For example, if the user requests for one instance of <strong>image-ubuntu</strong> in cloud A and that cloud does not have such image, the request is passed on to another cloud, cloud B, and will be fulfilled only if the manager in cloud B was configured with <strong>image-ubuntu</strong> or it previously fetched such image from a VM marketplace. A list of the most commom image names used by current fogbow installations follows on:</p>
+<ul>
+<li><strong>fogbow-linux-x86</strong>: Cirros 0.3.3 image; cirros as username; and cubswin:) as password</li>
+<li><strong>fogbow-ubuntu-12.04-with-java</strong>: Ubuntu 12.04 image (standard ubuntu cloud image with java); ubuntu as username; SSH login via publickey.</li>
+</ul>
+<p>Furthermore, Fogbow also expects that all images configured at manager have <strong>cloud-init</strong> working properly.</p>
+<h2>Authorization Plugin</h2>
+<p>The Authorization Plugin tells whether a given user (with a proper authenticated token) is able to create requests in the Federation. </p>
+<h3>Configure</h3>
+<p>The <strong>federation_authorization_class</strong> property must be set to a Authorization Plugin implementation. The Fogbow Manager comes with a single implementation that simply authorizes any user/token.</p>
+<h5>Allow All Authorization Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Authorization plugin class</span>
+<span class="nv">federation_authorization_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.common.AllowAllAuthorizationPlugin
+</pre></div>
+
+
+<h5>VO White List Authorization Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Authorization plugin class</span>
+<span class="nv">federation_authorization_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.authorization.voms.VOWhiteListAuthorizationPlugin
+<span class="nv">authorization_vo_whitelist</span><span class="o">=</span>memberOfListOne, memberOfListTwo, memberOfListThree
+</pre></div>
+
+
+<h5>Edu Person White List Authorization Plugin</h5>
+<div class="highlight"><pre><span class="c"># Federation Authorization plugin class</span>
+<span class="nv">federation_authorization_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.authorization.eduperson.EduPersonWhitelistAuthorizationPlugin
+<span class="nv">authorization_vo_whitelist</span><span class="o">=</span>memberOfListOne, memberOfListTwo, memberOfListThree
+</pre></div>
+
+
+<h2>Member Authorization Plugin</h2>
+<h3>Configure</h3>
+<p>The <strong>member_validator_class</strong> property must be set to a Member Authorization Plugin implementation.</p>
+<h5>Default Member Authorization</h5>
+<div class="highlight"><pre><span class="c"># member validator class</span>
+<span class="nv">member_validator_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.memberauthorization.DefaultMemberAuthorizationPlugin
+</pre></div>
+
+
+<h5>VOMS Member Authorization</h5>
+<div class="highlight"><pre><span class="c"># member validator class</span>
+<span class="nv">member_validator_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.memberauthorization.VOMSMemberAuthorizationPlugin
+<span class="nv">member_validator_ca_dir</span><span class="o">=</span>
+</pre></div>
+
+
+<h5>White List Member Authorization</h5>
+<div class="highlight"><pre><span class="c"># member validator class</span>
+<span class="nv">member_validator_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.memberauthorization.WhitelistMemberAuthorizationPlugin
+</pre></div>
+
+
+<h2>Storage Plugin</h2>
+<p>The Storage Plugin is responsible for requesting, getting, and deleting storage at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at <code>manager.conf</code> file are correct. If not, the behaviour of federation may not be the expected.</p>
+<h3>Configure</h3>
+<h5>OpenStack V2 Storage Plugin</h5>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+<span class="nv">storage_v2_url</span><span class="o">=</span>http://localhost:8776
+</pre></div>
+
+
+<h5>Opennebula Storage Plugin</h5>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
+<span class="c"># Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)</span>
+<span class="nv">storage_one_datastore_default_device_prefix</span><span class="o">=</span>vd
+</pre></div>
+
+
+<h5>No Cloud Storage Plugin</h5>
+<p>Cloud Storage Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.</p>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
+</pre></div>
+
+
+<h5>EC2 Storage Plugin</h5>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.ec2.EC2StoragePlugin
+<span class="nv">storage_ec2_availability_zone</span><span class="o">=</span>us-east-1b
+</pre></div>
+
+
+<h5>Azure Storage Plugin</h5>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+<span class="nv">compute_azure_storage_account_name</span><span class="o">=</span>
+<span class="nv">compute_azure_storage_key</span><span class="o">=</span>
+</pre></div>
+
+
+<h5>CloudStack Storage Plugin</h5>
+<div class="highlight"><pre><span class="c"># Storage Plugin class</span>
+<span class="nv">storage_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
+</pre></div>
+
+
+<h2>Network Plugin</h2>
+<p>The Network Plugin is responsible for requesting, getting, and deleting network at the local cloud. Different plugins can require different information depending on their implementation. Fogbow manager assumes that all cloud users have quota defined and all information at <code>manager.conf</code> file are correct. If not, the behaviour of federation may not be the expected.</p>
+<h3>Configure</h3>
+<h5>OpenStack V2 Network Plugin</h5>
+<div class="highlight"><pre><span class="c"># Network Plugin class</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+<span class="nv">network_openstack_v2_url</span><span class="o">=</span>http://localhost:9696
+<span class="nv">external_gateway_info</span><span class="o">=</span>ea51ed0c-0e8a-448d-8202-c79777109ffe
+</pre></div>
+
+
+<h5>Opennebula Network Plugin</h5>
+<div class="highlight"><pre><span class="c"># Network Plugin class</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
+<span class="nv">network_one_bridge</span><span class="o">=</span>br0
+</pre></div>
+
+
+<h5>No Cloud Network Plugin</h5>
+<p>Cloud Compute Plugin describe a scenary that does not exist an cloud  that is associate to a Fogbow manager.</p>
+<div class="highlight"><pre><span class="c"># Network Plugin class</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.nocloud.NoCloudNetworkPlugin
+</pre></div>
+
+
+<h5>EC2 Cloud Network Plugin</h5>
+<div class="highlight"><pre><span class="c"># Network Plugin class</span>
+<span class="nv">network_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.network.ec2.EC2NetworkPlugin
+<span class="nv">network_ec2_region</span><span class="o">=</span>
+</pre></div>
+
+
+<h2>Accounting Plugin</h2>
+<p>The Accounting Plugin is responsible for accounting of the instances and storages. </p>
+<h3>Configure</h3>
+<p>Configuração comum: </p>
+<div class="highlight"><pre><span class="c"># Periodo de atualização do accouting em milisegundos</span>
+<span class="nv">accounting_update_period</span><span class="o">=</span>300000
+</pre></div>
+
+
+<h5>FCU Accounting Plugin</h5>
+<p>The plugin calculate from sum of the use minutes and the power rating determined by benchmarking plugin.</p>
+<div class="highlight"><pre><span class="c"># Accounting class</span>
+<span class="nv">accounting_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.accounting.FCUAccountingPlugin
+<span class="c"># Path database</span>
+<span class="nv">fcu_accounting_datastore_url</span><span class="o">=</span>jdbc:sqlite:/tmp/computeusage
+</pre></div>
+
+
+<h5>Simple Storage Accounting Plugin</h5>
+<p>The plugin calculate from sum of the use minutes and the storage size.</p>
+<div class="highlight"><pre><span class="c"># Accounting class</span>
+<span class="nv">storage_accounting_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.accounting.SimpleStorageAccountingPlugin
+<span class="c"># Path database</span>
+<span class="nv">simple_storage_accounting_datastore_url</span><span class="o">=</span>jdbc:sqlite:/tmp/storageusage
+</pre></div>
+
+
+<h2>Benchmarking Plugin</h2>
+<p>Benchmarking used to calculate the power rating of the VM. </p>
+<h3>Configure</h3>
+<h5>SSH Benchmarking Plugin</h5>
+<p>The calculation of instance power rating is done from execution time of the script executed in the instance per SSH.</p>
+<div class="highlight"><pre><span class="c"># Benchmarking class</span>
+<span class="nv">benchmarking_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.benchmarking.SSHBenchmarkingPlugin
+<span class="c"># Benchmarking script to use with SSH Benchmarking plugin</span>
+<span class="nv">ssh_benchmarking_script_url</span><span class="o">=</span>http://downloads.fogbowcloud.org/benchmark/script_ssh_benchmarking.sh
+<span class="c"># Manager public and private keys</span>
+<span class="nv">ssh_private_key</span><span class="o">=</span>/etc/fogbow-manager/ssh/id_rsa
+<span class="nv">ssh_public_key</span><span class="o">=</span>/etc/fogbow-manager/ssh/id_rsa.pub
+</pre></div>
+
+
+<h5>Vanilla Benchmarking Plugin</h5>
+<p>The calculation of instance power rating is done from capabilities of the instance. This cababilities are VCPU and memorie.</p>
+<div class="highlight"><pre><span class="c"># Benchmarking class</span>
+<span class="nv">benchmarking_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.benchmarking.VanillaBenchmarkingPlugin
+</pre></div>
+
+
+<h2>Member Picker Plugin</h2>
+<p>Choice of a federation member that Fogbow Manager will order for resource.</p>
+<h3>Configure</h3>
+<h5>Round Robin Member Picker Plugin</h5>
+<p>The plugin choose the federation member by alphabetical order in a list.</p>
+<div class="highlight"><pre><span class="c"># Member picker class</span>
+<span class="nv">member_picker_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.memberpicker.RoundRobinMemberPickerPlugin
+</pre></div>
+
+
+<h5>NOF Member Picker Plugin</h5>
+<p>The plugin use the accounting plugin for decide the choice of the federation member. This choice is determined based on the debit of the federatio member with the local member. When biggest the debit, more propitious is be chosen.</p>
+<div class="highlight"><pre><span class="c"># Member picker class</span>
+<span class="nv">member_picker_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.memberpicker.NoFMemberPickerPlugin
+</pre></div>
+
+
+<h2>Capacity controller plugin</h2>
+<p>...</p>
+<h3>Configure</h3>
+<h5>Fairness Driven Capacity Controller Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.FairnessDrivenCapacityController
+</pre></div>
+
+
+<h5>Global Fairness Driven Controller Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.GlobalFairnessDrivenController
+<span class="nv">controller_delta</span><span class="o">=</span>
+<span class="nv">controller_minimum_threshold</span><span class="o">=</span>
+<span class="nv">controller_maximum_threshold</span><span class="o">=</span>
+<span class="nv">controller_maximum_capacity</span><span class="o">=</span>
+</pre></div>
+
+
+<h5>Hill Climbing Algorithm Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.HillClimbingAlgorithm
+</pre></div>
+
+
+<h5>Pairwise Fairnesse Driven Controller Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.PairwiseFairnessDrivenController
+<span class="nv">controller_delta</span><span class="o">=</span>
+<span class="nv">controller_minimum_threshold</span><span class="o">=</span>
+<span class="nv">controller_maximum_threshold</span><span class="o">=</span>
+<span class="nv">controller_maximum_capacity</span><span class="o">=</span>
+</pre></div>
+
+
+<h5>Two Fold Capacity Controller Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.fairnessdriven.TwoFoldCapacityController
+</pre></div>
+
+
+<h5>Satisfaction Driven Capacity Controller Plugin</h5>
+<div class="highlight"><pre><span class="c"># Capacity Controller class</span>
+<span class="nv">capacity_controller_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.capacitycontroller.satisfactiondriven.SatisfactionDrivenCapacityControllerPlugin
+</pre></div>
+
+
+<h2>Mapper Plugin</h2>
+<p>Policy to map a federation user in one determinate user in the cloud. </p>
+<h3>Configure</h3>
+<p>This mapping is done with a identificator, that will be determinated per one of plugins, and the credentials referent to local identity plugin. When not possible to find a identificator per plugin is used a identificator default mandatorily.</p>
+<p>Formulate : 
+mapper_ + {identificator} + _ + {credential}</p>
+<div class="highlight"><pre><span class="c"># Openstack credentials: username, password, tenantName</span>
+<span class="c"># Identificator: defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbow
+<span class="nv">mapper_defaults_password</span><span class="o">=</span>fogbow
+<span class="nv">mapper_defaults_tenantName</span><span class="o">=</span>fogbow
+
+<span class="c"># Identificator: other</span>
+<span class="c"># mapper_other_username=</span>
+<span class="c"># mapper_other_password=</span>
+<span class="c"># mapper_other_tenantName=</span>
+
+<span class="c"># Opennebula credentials: username, password</span>
+<span class="c"># Identificator: defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbow
+<span class="nv">mapper_defaults_password</span><span class="o">=</span>fogbowpass
+
+<span class="c"># EC2 credentals: accessKey, secretKey</span>
+<span class="c"># Identificator: defaults</span>
+<span class="nv">mapper_defaults_accessKey</span><span class="o">=</span>AKIALSKQLKFD7AHQLKEUO
+<span class="nv">mapper_defaults_secretKey</span><span class="o">=</span>Iuaooiad&amp;891/2309asd0123+akplkdh
+
+<span class="c"># EC2 credentals: apiKey, secretKey</span>
+<span class="c"># Identificator: defaults</span>
+<span class="nv">mapper_defaults_apiKey</span><span class="o">=</span>user_api_key
+<span class="nv">mapper_defaults_secretKey</span><span class="o">=</span>user_secret_key
+</pre></div>
+
+
+<h5>Federation User Based Mapper Plugin</h5>
+<p>This mapping is done per intermediate of the user name logged like identificator.</p>
+<div class="highlight"><pre><span class="c"># Mapper class</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.FederationUserBasedMapperPlugin
+
+<span class="c"># Example </span>
+<span class="c"># Identificator: fulado</span>
+<span class="nv">mapper_fulano_username</span><span class="o">=</span>fogbow
+<span class="nv">mapper_fulano_password</span><span class="o">=</span>fogbow
+<span class="nv">mapper_fulano_tenantName</span><span class="o">=</span>fogbow
+
+<span class="c"># defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_password</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_tenantName</span><span class="o">=</span>fogbowDefaults
+</pre></div>
+
+
+<h5>Member Based Mapper Plugin</h5>
+<p>This mapping is done per intermediate of the federation member that order the resource.</p>
+<div class="highlight"><pre><span class="c"># Mapper class</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.MemberBasedMapperPlugin
+
+<span class="c"># Example </span>
+<span class="c"># Identificator: manager.com.br</span>
+mapper_manager.com.br_username<span class="o">=</span>fogbow
+mapper_manager.com.br_password<span class="o">=</span>fogbow
+mapper_manager.com.br_tenantName<span class="o">=</span>fogbow
+
+<span class="c"># defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_password</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_tenantName</span><span class="o">=</span>fogbowDefaults
+</pre></div>
+
+
+<h5>Simple Mapper Plugin</h5>
+<p>This mapping is done only with the default.</p>
+<div class="highlight"><pre><span class="c"># Mapper class</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
+<span class="c"># Example </span>
+<span class="c"># Identificator: defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbow
+<span class="nv">mapper_defaults_defaults_password</span><span class="o">=</span>fogbow
+<span class="nv">mapper_defaults_tenantName</span><span class="o">=</span>fogbow
+</pre></div>
+
+
+<h5>VOBased Mapper Plugin</h5>
+<p>This mapping is done with de CN of the VOMS user token.</p>
+<div class="highlight"><pre><span class="c"># Mapper class</span>
+<span class="nv">federation_user_credentail_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.localcredentails.VOBasedMapperPlugin
+
+<span class="c"># Example </span>
+<span class="c"># Identificador: CN-&gt;Fulano,OU-&gt;DSC,O-&gt;UFCG,O-&gt;UFFBrGridCA,O-&gt;ICPEDU,C-&gt;BR</span>
+mapper_CN-&gt;Fulano,OU-&gt;DSC,O-&gt;UFCG,O-&gt;UFFBrGridCA,O-&gt;ICPEDU,C-&gt;BR_username<span class="o">=</span>fogbow
+mapper_CN-&gt;Fulano,OU-&gt;DSC,O-&gt;UFCG,O-&gt;UFFBrGridCA,O-&gt;ICPEDU,C-&gt;BR_password<span class="o">=</span>fogbow
+mapper_CN-&gt;Fulano,OU-&gt;DSC,O-&gt;UFCG,O-&gt;UFFBrGridCA,O-&gt;ICPEDU,C-&gt;BR_tenantName<span class="o">=</span>fogbow
+
+<span class="c"># defaults</span>
+<span class="nv">mapper_defaults_username</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_defaults_password</span><span class="o">=</span>fogbowDefault
+<span class="nv">mapper_defaults_tenantName</span><span class="o">=</span>fogbowDefaults
+</pre></div>
+
+
+<h2>Prioritization Plugin</h2>
+<p>The Prioritization Plugin is responsible for prioritizing a request over another with lower priority.
+It only comes into play when the quota for creating new resources is exceeded.
+In these cases, it must verify if in that given time there is any fulfilled/ongoing request from a member with lower priority than the new requester.
+If this condition is true, that request must preempted so that the new request can be met.</p>
+<h3>Configure</h3>
+<h5>Priotize Remove Order Plugin</h5>
+<p>Priotize the remote orders.</p>
+<div class="highlight"><pre><span class="c"># Priorization Plugin class</span>
+<span class="nv">remote_prioritization_plugin_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.prioritization.PriotizeRemoteOrderPlugin
+</pre></div>
+
+
+<h5>Two Fold Prioritization Plugin</h5>
+<p>This plugin allows a more refined prioritization policy by allowing that two other plugins be used by composition.
+One is used for prioritization of locar orders, and the other for prioritization of remote orders.</p>
+<div class="highlight"><pre><span class="c"># Priorization Plugin class</span>
+<span class="nv">remote_prioritization_plugin_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.prioritization.TwoFoldPrioritizationPlugin
+</pre></div>
+
+
+<h5>Nof Prioritization Plugin</h5>
+<p>This plugin uses the Network of Favors as policy. Roughly, the Network of Favors prioritizes members from which it owes more favors.</p>
+<div class="highlight"><pre><span class="c"># Priorization Plugin class</span>
+<span class="nv">remote_prioritization_plugin_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.prioritization.nof.NoFPrioritizationPlugin
+<span class="nv">nof_prioritize_local</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">nof_trustworthy</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+
+
+<h5>FCFS Prioritization Plugin</h5>
+<p>This plugin doesn't perform any prioritization. The first request to come is the first to be served. 
+Obviously, the request is only met if there is free quota.</p>
+<div class="highlight"><pre><span class="c"># Priorization Plugin class</span>
+<span class="nv">local_prioritization_plugin_class</span><span class="o">=</span>org.fogbowcloud.manager.core.plugins.prioritization.fcfs.FCFSPrioritizationPlugin
+</pre></div>
+      </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+      	  <div class="col-lg-12">
+      	    <ul class="list-inline">
+      	      <li class="pull-right"><a href="#top">Back to top</a></li>
+      	      <li><a href="https://github.com/fogbow/" target="_blank">GitHub</a></li>
+      	      <li><a href="http://build.fogbowcloud.org" target="_blank">Build status</a></li>
+      	    </ul>
+      	    <p>Code released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License Version 2.0</a>.</p>
+      	    <p>Based on <a href="http://getbootstrap.com" target="_blank" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" target="_blank" rel="nofollow">Google</a>.</p>
+      	  </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <footer class="below-footer">
+      <div class="container">
+      <div class="row">
+
+      <div class="col-lg-4">
+          <a href="http://ec.europa.eu/index_en.htm" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/eu.jpg"></a>
+          <a href="http://www.mcti.gov.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/fin_min_ciencia.png"></a>
+          <a href="http://www.cnpq.br/" target="_blank" rel="nofollow"><img src="http://www.eubrazilcloudconnect.eu/sites/default/files/cnpq.png"></a>
+          <a href="http://www.finep.gov.br/" target="_blank" rel="nofollow"><img src="http://www.fogbowcloud.org/theme/img/logos/finep_marca_RGB.jpg" height="28"></a>
+      </div>
+
+      <div class="col-lg-8">
+        <p>
+          Fogbow is partially funded by CNPq/Brazil and the European Commission through the <a href="http://www.eubrazilcloudconnect.eu" target="_blank" rel="nofollow">EUBrazilCC</a> project, and by FINEP/Brazil through the <a href="http://www.lncc.br/departamentos/projetosconsultar.php?vMenu=&Idt_Projeto=587&projeto=3&vCabecalho=pesq&vTitulo=lncc&vDepto=&idt_responsavel=&vAno=2014&idt_linha_pesquisa=" target="_blank" rel="nofollow">CICN</a> project.
+        </p>
+      </div>
+
+      </div>
+    </div>
+    </footer>
+
+
+
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-63282618-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -75,39 +75,54 @@
       </div>
       <div class="col-lg-8 page-content">
       	<h1>Fogbow CLI</h1>
-<p>The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members, create instance requests and manage the lifecycle of those requests.</p>
+<p>The fogbow CLI is a command line interface for the fogbow manager. It makes it easier for fogbow users to create HTTP requests and invoke them through the manager's OCCI API. Through the fogbow CLI, users are able to get information about federation members; create, retrive and delete instance, network, create storage and create orders.</p>
 <h2>Installation</h2>
-<h3>Install from source</h3>
-<p>Get the latest code and install it with maven.</p>
-<div class="highlight"><pre>git clone https://github.com/fogbow/fogbow-cli.git
-<span class="nb">cd </span>fogbow-cli
-mvn install
-</pre></div>
-
-
-<h3>Install from debian package</h3>
-<p>Download the <a href="http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-cli/fogbow-cli_v0.2.2.deb">lastest stable package</a></p>
-<div class="highlight"><pre>wget http://downloads.fogbowcloud.org/stable/debian/v0.2.2/fogbow-cli/fogbow-cli_v0.2.2.deb
-</pre></div>
-
-
-<p>And install it with dpkg</p>
-<div class="highlight"><pre>sudo dpkg -i fogbow-cli_v0.2.2.deb
-</pre></div>
-
-
+<p>Follow these steps, <a  href="/install-configure-manager" target="_blank">Instalation and configuration Fogbow cli</a> .</p>
 <h2>Member operations (<code>member</code>)</h2>
 <h3>List federation members</h3>
 <p>Get all federation members.</p>
 <ul>
-<li><strong>--get</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli member --get --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli member --url http://localhost:8182 --auth-file /tmp/token
 
-<span class="nv">id</span><span class="o">=</span>ferationid1;cpuIdle<span class="o">=</span>1;cpuInUse<span class="o">=</span>2;memIdle<span class="o">=</span>100;memInUse<span class="o">=</span>200;flavor:<span class="s1">&#39;small, capacity=&quot;1&quot;&#39;</span>;
-<span class="nv">id</span><span class="o">=</span>ferationid2;cpuIdle<span class="o">=</span>2;cpuInUse<span class="o">=</span>4;memIdle<span class="o">=</span>150;memInUse<span class="o">=</span>300;flavor:<span class="s1">&#39;large, capacity=&quot;2&quot;&#39;</span>;
+federation.member.one.com
+federation.member.two.com
+federation.member.three.com
+</pre></div>
+
+
+<h3>Get quota</h3>
+<p>Get the quota of the federation member</p>
+<ul>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--quota</strong> (required)</li>
+<li><strong>--memberId</strong> (required)</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli member --url http://localhost:8182 --quota --memberId id123 --auth-token mytoken
+
+<span class="nv">cpuQuota</span><span class="o">=</span>1;cpuInUse<span class="o">=</span>1;cpuInUseByUser<span class="o">=</span>1;memQuota<span class="o">=</span>1;memInUse<span class="o">=</span>1;memInUseByUser<span class="o">=</span>1;instancesQuota<span class="o">=</span>1;instancesInUse<span class="o">=</span>1;instancesInUseByUser<span class="o">=</span>1
+</pre></div>
+
+
+<h3>Get usage</h3>
+<p>Get the usage of the federation member</p>
+<ul>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--usage</strong> (required)</li>
+<li><strong>--memberId</strong> (required)</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)
+Example:</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli member --url http://localhost:8182 --usage --memberId id123 --auth-token mytoken
+
+<span class="nv">memberId</span><span class="o">=</span>federation.member.one.com
+compute <span class="nv">usage</span><span class="o">=</span>10
+storage <span class="nv">usage</span><span class="o">=</span>10
 </pre></div>
 
 
@@ -117,7 +132,7 @@ mvn install
 <ul>
 <li><strong>--get</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span class="nv">$ </span>fogbow-cli resource --get --url http://localhost:8182 --auth-token mytoken
@@ -125,6 +140,7 @@ mvn install
 Category: fogbow-request; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/request#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Request new Instances&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/request&quot;</span>; <span class="nv">attributes</span><span class="o">=</span><span class="s2">&quot;org.fogbowcloud.request.instance-count org.fogbowcloud.request.type org.fogbowcloud.request.valid-until org.fogbowcloud.request.valid-from&quot;</span>
 Category: fogbow-large; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://scmhemas.fogbowcloud.org/template/resource#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Large Flavor&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/large&quot;</span>
 Category: fogbow-linux-x86; <span class="nv">scheme</span><span class="o">=</span><span class="s2">&quot;http://schemas.fogbowcloud.org/template/os#&quot;</span>; <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;mixin&quot;</span>; <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Linux-x86 Image&quot;</span>; <span class="nv">location</span><span class="o">=</span><span class="s2">&quot;http://localhost:8182/fogbow-linux-x86&quot;</span>
+...
 </pre></div>
 
 
@@ -148,49 +164,67 @@ MIINXgYJKoZIhvcNAQcCoIINTzCCDUsCAQExCTAHBgUrDgMCGjCCC7QGCSqGSIb3DQEHAaCCC6UEgguh
 </pre></div>
 
 
+<p>Others credentails:</p>
+<div class="highlight"><pre>* x509
+   -Dx509CertificatePath <span class="o">(</span>Required<span class="o">)</span>
+* keystone
+   -Dusername <span class="o">(</span>Required<span class="o">)</span>
+   -Dpassword <span class="o">(</span>Required<span class="o">)</span>
+   -DtenantName <span class="o">(</span>Required<span class="o">)</span>
+   -DauthUrl <span class="o">(</span>Required<span class="o">)</span>
+* voms
+   -Dpassword <span class="o">(</span>Required<span class="o">)</span>
+   -DserverName <span class="o">(</span>Required<span class="o">)</span>
+   -DpathUserCred <span class="o">(</span>Optional<span class="o">)</span> - default :<span class="nv">$HOME</span>/.globus
+   -DpathUserKey <span class="o">(</span>Optional<span class="o">)</span> - default :<span class="nv">$HOME</span>/.globus
+* opennebula
+   -Dusername <span class="o">(</span>Required<span class="o">)</span>
+   -Dpassword <span class="o">(</span>Required<span class="o">)</span>
+</pre></div>
+
+
 <h2>Request operations (<code>request</code>)</h2>
-<h3>Get request</h3>
-<p>Get all instance requests associated to a particular user's token.</p>
+<h3>Get order</h3>
+<p>Get all instance orders associated to a particular user's token.</p>
 <ul>
 <li><strong>--get</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --get --auth-token mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --get --auth-token mytoken --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
 </pre></div>
 
 
-<p>Get detailed information about a single instance request.</p>
+<p>Get detailed information about a single instance order.</p>
 <ul>
 <li><strong>--get</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
-<li><strong>--id</strong> (required): request id</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): order id</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --get --auth-token mytoken --id requestid --url http://localhost:8182
-
-<span class="nv">RequestId</span><span class="o">=</span>47536d31-0674-4278-ad05-eff5fdd07257; <span class="nv">State</span><span class="o">=</span>open; <span class="nv">InstanceId</span><span class="o">=</span>232135435-5435345-435345435-43545
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --get --auth-token mytoken --id orderid --url http://localhost:8182
 </pre></div>
 
 
-<h3>Create requests</h3>
-<p>Create instance requests.</p>
+<h3>Create order</h3>
+<p>Create instance orders.</p>
 <ul>
 <li><strong>--create</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
-<li><strong>--n</strong> (optional; default: 1): number of requests to be created</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--n</strong> (optional; default: 1): number of orders to be created</li>
 <li><strong>--image</strong> (optional; default: fogbow-linux-x86): fogbow image</li>
 <li><strong>--flavor</strong> (optional; default: fogbow-small): fogbow flavor</li>
 <li><strong>--public-key</strong> (optional; path public key): fogbow public key</li>
+<li><strong>--requirements</strong> (optinal): </li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --create --n 2 --image fogbow-linux-x86 --flavor large --url http://localhost:8182 --public-key ~/.ssh/id_rsa.pub
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f197c
@@ -198,36 +232,36 @@ X-OCCI-Location: http://localhost:8182/request/fd745806-4909-4a39-8380-13183b1f1
 
 
 <p>Example using defaults:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --create --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --create --url http://localhost:8182
 
 X-OCCI-Location: http://localhost:8182/request/47536d31-0674-4278-ad05-eff5fdd07257
 </pre></div>
 
 
-<h3>Delete all requests</h3>
-<p>Delete all instance requests associated to a particular user's token.</p>
+<h3>Delete all orders</h3>
+<p>Delete all instance orders associated to a particular user's token.</p>
 <ul>
 <li><strong>--delete</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --delete --auth-token mytoken --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --delete --auth-token mytoken --url http://localhost:8182
 
 Ok
 </pre></div>
 
 
-<h3>Delete a single request</h3>
-<p>Delete a single instance request.</p>
+<h3>Delete a single order</h3>
+<p>Delete a single instance order.</p>
 <ul>
 <li><strong>--delete</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
-<li><strong>--id</strong> (required): request id</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): order id</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli request --delete --auth-token mytoken --id requestid --url http://localhost:8182
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli order --delete --auth-token mytoken --id requestid --url http://localhost:8182
 
 Ok
 </pre></div>
@@ -239,7 +273,7 @@ Ok
 <ul>
 <li><strong>--get</strong>  (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --get --auth-token  mytoken --url http://localhost:8182
@@ -254,7 +288,7 @@ X-OCCI-Location: 4B869582-8907667-123457-0765345c
 <ul>
 <li><strong>--get</strong>  (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 <li><strong>--id</strong> (required): instance id</li>
 </ul>
 <p>Example: </p>
@@ -275,7 +309,7 @@ X-OCCI-Attribute: org.fogbowcloud.request.ssh-address<span class="o">=</span><sp
 <ul>
 <li><strong>--delete</strong>  (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 </ul>
 <div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --delete --auth-token mytoken --url http://localhost:8182
 
@@ -288,12 +322,249 @@ Ok
 <ul>
 <li><strong>--delete</strong> (required)</li>
 <li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
-<li><strong>--auth-token</strong> (required): user's token</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
 <li><strong>--id</strong> (required): instance id</li>
 </ul>
 <div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --delete --auth-token mytoken --id instanceid --url http://localhost:8182
 
 Ok
+</pre></div>
+
+
+<h3>Create instance</h3>
+<p>Create a instance</p>
+<ul>
+<li><strong>--create</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--flavor</strong> (optional) </li>
+<li><strong>--image</strong> (required)</li>
+<li><strong>--publicKey</strong> (optional)</li>
+<li><strong>--userDataFile</strong> (optional)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --flavor m1-small --image fogbow-ubuntu --publicKey /tmp/pkey --userDataFile /tmp/userdatafile
+
+...
+</pre></div>
+
+
+<h2>Storage operations (<code>storage</code>)</h2>
+<h3>Get all storages</h3>
+<p>Get all storages associated to a particular user's token.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli storage --get --auth-token  mytoken --url http://localhost:8182
+
+X-OCCI-Location: 3I235356-3432434-324324-3243242f
+X-OCCI-Location: 4B869582-8907667-123457-0765345c
+</pre></div>
+
+
+<h3>Get a single storage</h3>
+<p>Get detailed information about a single storage.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): storage id</li>
+</ul>
+<p>Example: </p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli storage --get --auth-token mytoken --id storageid --url http://localhost:10000
+
+...
+</pre></div>
+
+
+<h3>Delete all storages</h3>
+<p>Delete all storages associated to a particular user's token.</p>
+<ul>
+<li><strong>--delete</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli storage --delete --auth-token mytoken --url http://localhost:8182
+
+Ok
+</pre></div>
+
+
+<h3>Delete a single storage</h3>
+<p>Delete a single storage.</p>
+<ul>
+<li><strong>--delete</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): storage id</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli instance --delete --auth-token mytoken --id storageid --url http://localhost:8182
+
+Ok
+</pre></div>
+
+
+<h3>Create storage</h3>
+<p>Create a storage</p>
+<ul>
+<li><strong>--create</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--size</strong> (required; Unit GB) </li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli storage --create --auth-token mytoken --url http://localhost:8182 --size 20
+
+...
+</pre></div>
+
+
+<h2>Network operations (<code>network</code>)</h2>
+<h3>Get all networks</h3>
+<p>Get all networks associated to a particular user's token.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli network --get --auth-token  mytoken --url http://localhost:8182
+
+X-OCCI-Location: 3I235356-3432434-324324-3243242f
+X-OCCI-Location: 4B869582-8907667-123457-0765345c
+</pre></div>
+
+
+<h3>Get a single network</h3>
+<p>Get detailed information about a single network.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): network id</li>
+</ul>
+<p>Example: </p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli network --get --auth-token mytoken --id networkid --url http://localhost:10000
+
+...
+</pre></div>
+
+
+<h3>Delete all networks</h3>
+<p>Delete all networks associated to a particular user's token.</p>
+<ul>
+<li><strong>--delete</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli network --delete --auth-token mytoken --url http://localhost:8182
+
+Ok
+</pre></div>
+
+
+<h3>Delete a single network</h3>
+<p>Delete a single network.</p>
+<ul>
+<li><strong>--delete</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): network id</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli network --delete --auth-token mytoken --id networkid --url http://localhost:8182
+
+Ok
+</pre></div>
+
+
+<h3>Create network</h3>
+<p>Create a network</p>
+<ul>
+<li><strong>--create</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--cird</strong> (required; format: ##.##.##.##/##) </li>
+<li><strong>--gateway</strong> (optional)</li>
+<li><strong>--allocation</strong> (optional ;options: dynamic or static; default: dynamic)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli network --create --auth-token mytoken --url http://localhost:8182 --cird 10.10.10.0/24 --gateway 10.10.10.10 --allocation dynamic
+
+...
+</pre></div>
+
+
+<h2>Attachment operations (<code>attachment</code>)</h2>
+<h3>Get all attachment</h3>
+<p>Get all attachment associated to a particular user's token.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli attachment --get --auth-token mytoken --url http://localhost:10000
+
+X-OCCI-Location: 687V5356-3432434-324324-3243242f
+X-OCCI-Location: 09129582-8907667-123457-0765345c
+</pre></div>
+
+
+<h3>Get a single attachment</h3>
+<p>Get detailed information about a single attachment.</p>
+<ul>
+<li><strong>--get</strong>  (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): attachment id</li>
+</ul>
+<p>Example: </p>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli attachment --get --auth-token mytoken --id networkid --url http://localhost:10000
+
+occi.core.source<span class="o">=</span>587V5356-3432434-324324-3243242f
+occi.core.target<span class="o">=</span>13029582-8907667-123457-0765345c
+occi.core.id<span class="o">=</span>E423CS82-8907667-123457-0765345c
+occi.storagelink.provadingMemberId<span class="o">=</span>provading_member
+</pre></div>
+
+
+<h3>Delete a single attachment</h3>
+<p>Delete a single attachment.</p>
+<ul>
+<li><strong>--delete</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--id</strong> (required): attachment id</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli attachment --delete --auth-token mytoken --id networkid --url http://localhost:8182
+
+Ok
+</pre></div>
+
+
+<h3>Create attachment</h3>
+<p>Create a new attachment</p>
+<ul>
+<li><strong>--create</strong> (required)</li>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+<li><strong>--computeId</strong> (required)</li>
+<li><strong>--storageId</strong> (required)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli attachment --create --auth-token mytoken --url http://localhost:8182 --computeId computeid --storageId storageid
+
+X-OCCI-Location: http://locahost:8182/243029582-8907667-123457-0765345C@provading_member
+</pre></div>
+
+
+<h2>Accounting operations (<code>accounting</code>)</h2>
+<p>Get accounting</p>
+<ul>
+<li><strong>--url</strong> (optional; default: http://localhost:8182): OCCI endpoint</li>
+<li><strong>--auth-token</strong> (user's token/Text)  or <strong>--auth-file</strong> (user's token/Path); (required)</li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>fogbow-cli accounting --auth-token mytoken --url http://localhost:8182
+
+user; requesting_member; provading_member; 20
 </pre></div>
       </div>
     </div>
