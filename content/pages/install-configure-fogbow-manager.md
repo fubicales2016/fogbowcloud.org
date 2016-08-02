@@ -128,7 +128,7 @@ storage_v2_url=http://address:port
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
 local_identity_url=http://address:port
 
-## Mapper Plugin / Local credentials
+## Mapper Plugin / Local credentials to be used when we miss information about a given user
 mapper_defaults_username=username
 mapper_defaults_password=userpass
 mapper_defaults_tenantname=tname
@@ -153,13 +153,13 @@ network_cloudstack_zone_id=zone_id
 network_cloudstack_netoffering_id=offering_id
 
 ## Storage Plugin
-# storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
 local_identity_url=http://address:port/client/api/
 
-## Mapper Plugin / Local credentials
+## Mapper Plugin / Local credentials to be used when we miss information about a given user
 mapper_defaults_apiKey=user_api_key
 mapper_defaults_secretKey=user_secret_key
 ```
@@ -186,16 +186,6 @@ compute_one_ssh_port=22
 compute_one_ssh_username=
 compute_one_ssh_key_file=/path/to/rsa/key
 compute_one_ssh_target_temp_folder=/tmp/images
-
-## Compute Plugin (Opennebula OCCI)
-# compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaOCCIComputePlugin
-# compute_one_url=http://address:port/RPC2
-# compute_occi_url=http://address:port
-# compute_occi_template_scheme=http://occi.localhost/occi/infrastructure/os_tpl#
-# compute_occi_resource_scheme=http://schema.fedcloud.egi.eu/occi/infrastructure/resource_tpl#
-# compute_occi_flavors_small={cpu=1,mem=512}
-# compute_occi_flavors_medium={cpu=2,mem=1024}
-# compute_occi_flavors_large={cpu=4,mem=2048}
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
