@@ -1,8 +1,8 @@
 Title: Install and configure Fogbow Dashboard
 url: install-configure-fogbow-dashboard
 save_as: install-configure-fogbow-dashboard.html
-section: install-configure
-index: 5
+section: install
+index: 6
 
 Fogbow Dashboard
 ==========
