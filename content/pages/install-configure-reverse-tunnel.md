@@ -1,4 +1,4 @@
-Title: Install and configure fogbow reverse tunnel
+Title: Install and configure Fogbow Reverse Tunnel
 url: install-configure-reverse-tunnel
 save_as: install-configure-reverse-tunnel.html
 section: install
