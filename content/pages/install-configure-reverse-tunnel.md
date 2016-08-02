@@ -1,8 +1,8 @@
 Title: Install and configure fogbow reverse tunnel
 url: install-configure-reverse-tunnel
 save_as: install-configure-reverse-tunnel.html
-section: install-configure
-index: 6
+section: install
+index: 1
 
 Install and configure the Fogbow Reverse Tunnel
 ==========
