@@ -1,7 +1,7 @@
 Title: Opportunism
 url: install-opportunism
 save_as: install-opportunism.html
-section: install
+section: install-nopage
 index: 3
 
 Installation
