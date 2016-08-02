@@ -138,7 +138,7 @@ mapper_defaults_tenantname=tname
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
-compute_cloudstack_api_url=http://address:port/client/api
+compute_cloudstack_api_url=http://address/client/api
 compute_cloudstack_zone_id=zone_id
 compute_cloudstack_image_download_base_url=http://address
 compute_cloudstack_image_download_base_path=/path/to/download/dir/
@@ -148,7 +148,7 @@ compute_cloudstack_expunge_on_destroy=true
 
 # Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
-network_cloudstack_api_url=https://compute.rnp.br/client/api
+network_cloudstack_api_url=https://address/client/api
 network_cloudstack_zone_id=zone_id
 network_cloudstack_netoffering_id=offering_id
 
@@ -157,7 +157,7 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStack
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
-local_identity_url=http://address:port/client/api/
+local_identity_url=http://address/client/api/
 
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
 mapper_defaults_apiKey=user_api_key
@@ -177,15 +177,14 @@ storage_one_datastore_default_device_prefix=vd
 
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://address:port/RPC2
-compute_one_network_id=1 
-compute_one_network_contextualization=false
-compute_one_templates=all
-compute_one_datastore_id=1
-compute_one_ssh_host=address
-compute_one_ssh_port=22
-compute_one_ssh_username=
-compute_one_ssh_key_file=/path/to/rsa/key
-compute_one_ssh_target_temp_folder=/tmp/images
+compute_one_network_id=network_id
+compute_one_datastore_id=datastore_id
+# Below properties allow the FM to copy download VM images to OpenNebula controller machine (this is to be used when the FM and the OpenNebula controller run in different machines)
+#compute_one_ssh_host=address
+#compute_one_ssh_port=22
+#compute_one_ssh_username=username
+#compute_one_ssh_key_file=/path/to/rsa/key
+#compute_one_ssh_target_temp_folder=/path/to/images
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
