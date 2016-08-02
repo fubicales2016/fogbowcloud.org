@@ -1,8 +1,8 @@
 Title: Install and configure Fogbow 
 url: intall-configure-fogbow-cli
 save_as: intall-configure-fogbow-cli.html
-section: install-configure
-index: 2
+section: install
+index: 5
 
 Install and configure Fogbow CLI
 ==========
