@@ -1,7 +1,7 @@
 Title: Get started
 url: install-general
 save_as: install-general.html
-section: install
+section: install-nopage
 index: 0
 
 # Get started
