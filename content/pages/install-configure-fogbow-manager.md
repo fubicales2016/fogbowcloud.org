@@ -148,66 +148,66 @@ compute_cloudstack_zone_id=$zone_id
 compute_cloudstack_image_download_base_url=http://$address
 compute_cloudstack_image_download_base_path=$path_to_download_dir
 compute_cloudstack_hypervisor=$hypervisor_type
-compute_cloudstack_image_download_os_type_id=id
+compute_cloudstack_image_download_os_type_id=$os_type_id
 compute_cloudstack_expunge_on_destroy=true
 
 # Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
-network_cloudstack_api_url=https://address/client/api
-network_cloudstack_zone_id=zone_id
-network_cloudstack_netoffering_id=offering_id
+network_cloudstack_api_url=https://$address/client/api
+network_cloudstack_zone_id=$zone_id
+network_cloudstack_netoffering_id=$offering_id
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
-local_identity_url=http://address/client/api/
+local_identity_url=http://$address/client/api/
 
 ## Local Credentials
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
-mapper_defaults_apiKey=user_api_key
-mapper_defaults_secretKey=user_secret_key
+mapper_defaults_apiKey=$user_api_key
+mapper_defaults_secretKey=$user_secret_key
 ```
 
 #### Opennebula
 ```bash
 ## Compute Plugin
-compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://address:port/RPC2
-compute_one_network_id=network_id
-compute_one_datastore_id=datastore_id
+compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://$address:$port/RPC2
+compute_one_network_id=$network_id
+compute_one_datastore_id=$datastore_id
 # Below properties allow the FM to copy download VM images to OpenNebula controller machine (this is to be used when the FM and the OpenNebula controller run in different machines)
-#compute_one_ssh_host=address
-#compute_one_ssh_port=22
-#compute_one_ssh_username=username
-#compute_one_ssh_key_file=/path/to/rsa/key
-#compute_one_ssh_target_temp_folder=/path/to/images
+#compute_one_ssh_host=$address
+#compute_one_ssh_port=$ssh_port
+#compute_one_ssh_username=$user_name
+#compute_one_ssh_key_file=$path_to_rsa_key
+#compute_one_ssh_target_temp_folder=$path_to_images
 
 # Network plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
-network_one_bridge=br0
+network_one_bridge=$bridge_id
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
 ## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
-storage_one_datastore_default_device_prefix=vd
+storage_one_datastore_default_device_prefix=$prefix
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
-local_identity_url=http://address:port/RPC2
+local_identity_url=http://$address:$port/RPC2
 
 ## Local Credentials
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 # Mapper Plugin / Local credentials
-mapper_defaults_username=username
-mapper_defaults_password=password
+mapper_defaults_username=$user_name
+mapper_defaults_password=$user_pass
 
 ## Federation Identity
 federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
-federation_identity_url=http://address:port/RPC2
+federation_identity_url=http://$address:$port/RPC2
 
 ```
 #### Azure
@@ -215,12 +215,12 @@ federation_identity_url=http://address:port/RPC2
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
-compute_azure_max_instances=num_max_instances
-compute_azure_max_vcpu=num_max_vcpu
-compute_azure_max_ram=num_max_ram
-compute_azure_region=azure_region
-compute_azure_storage_account_name=storage_account_name
-compute_azure_storage_key=key_content
+compute_azure_max_instances=$num_max_instances
+compute_azure_max_vcpu=$num_max_vcpu
+compute_azure_max_ram=$num_max_ram
+compute_azure_region=$azure_region
+compute_azure_storage_account_name=$storage_account_name
+compute_azure_storage_key=$key_content
 
 # Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlugin
@@ -230,18 +230,18 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlu
 
 ## Identity
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
-mapper_defaults_subscription_id=subscription_id
-mapper_defaults_keystore_path=/path/to/keystore
-mapper_defaults_keystore_password=pass
+mapper_defaults_subscription_id=$subscription_id
+mapper_defaults_keystore_path=$path_to_keystore
+mapper_defaults_keystore_password=$keystore_pass
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
 
 ## Identity
 # federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
-mapper_defaults_subscription_id=subscription_id
-mapper_defaults_keystore_path=/path/to/keystore
-mapper_defaults_keystore_password=keystore_pass
+mapper_defaults_subscription_id=$subscription_id
+mapper_defaults_keystore_path=$path_to_keystore
+mapper_defaults_keystore_password=$keystore_pass
 
 ```
 
