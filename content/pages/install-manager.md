@@ -1,7 +1,7 @@
 Title: Manager
 url: install-manager
 save_as: install-manager.html
-section: install
+section: install-nopage
 index: 1
 
 # Manager
