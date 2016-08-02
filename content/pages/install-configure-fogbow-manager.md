@@ -106,46 +106,48 @@ http_port = 8182
 
 ### Cloud-specific plugins
 
+In this section, we show the configuration of the cloud-specific plugins. Theses plugins configure not only the usage of compute, network and storage resources but also how users are identified in each cloud provider. In the examples below, the values identified with the **$** symbol must be replaced according with the deploy made the fogbow user. We distributed full configuration examples (```manager.conf.[cloudstack,opennebula,openstack,azure].example```) for each cloud provider in the **Fogbow Manager** source code.
+
 #### OpenStack
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
-compute_novav2_url=http://address:port
-compute_glancev2_url=http://address:port
+compute_novav2_url=http://$address:$port
+compute_glancev2_url=http://$address:$port
 compute_glancev2_image_visibility=private
-compute_novav2_network_id=network_id
+compute_novav2_network_id=$network_id
 
 ## Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://address:port
-external_gateway_info=gateway_id
+network_openstack_v2_url=http://$address:$port
+external_gateway_info=$gateway_id
 
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://address:port
+storage_v2_url=http://$address:$port
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
-local_identity_url=http://address:port
+local_identity_url=http://$address:$port
 
 ## Local Credentials
 federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
-mapper_defaults_username=username
-mapper_defaults_password=userpass
-mapper_defaults_tenantname=tname
+mapper_defaults_username=$user_name
+mapper_defaults_password=$user_pass
+mapper_defaults_tenantname=$tenant_name
 ```
 
 #### CloudStack
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
-compute_cloudstack_api_url=http://address/client/api
-compute_cloudstack_zone_id=zone_id
-compute_cloudstack_image_download_base_url=http://address
-compute_cloudstack_image_download_base_path=/path/to/download/dir/
-compute_cloudstack_hypervisor=hypervisor_name
+compute_cloudstack_api_url=http://$address/client/api
+compute_cloudstack_zone_id=$zone_id
+compute_cloudstack_image_download_base_url=http://$address
+compute_cloudstack_image_download_base_path=$path_to_download_dir
+compute_cloudstack_hypervisor=$hypervisor_type
 compute_cloudstack_image_download_os_type_id=id
 compute_cloudstack_expunge_on_destroy=true
 
