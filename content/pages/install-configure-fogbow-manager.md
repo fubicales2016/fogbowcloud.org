@@ -115,7 +115,7 @@ compute_glancev2_url=http://address:port
 compute_glancev2_image_visibility=private
 compute_novav2_network_id=network_id
 
-## network Plugin
+## Network Plugin
 network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
 network_openstack_v2_url=http://address:port
 external_gateway_info=gateway_id
@@ -172,15 +172,6 @@ mapper_defaults_secretKey=user_secret_key
 
 #### Opennebula
 ```bash
-# Network plugin
-network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
-network_one_bridge=br0
-
-## Storage Plugin
-storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
-## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
-storage_one_datastore_default_device_prefix=vd
-
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.opennebula.OpenNebulaComputePlugin compute_one_url=http://address:port/RPC2
 compute_one_network_id=network_id
@@ -191,6 +182,15 @@ compute_one_datastore_id=datastore_id
 #compute_one_ssh_username=username
 #compute_one_ssh_key_file=/path/to/rsa/key
 #compute_one_ssh_target_temp_folder=/path/to/images
+
+# Network plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.opennebula.OpenNebulaNetworkPlugin
+network_one_bridge=br0
+
+## Storage Plugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.opennebula.OpenNebulaStoragePlugin
+## Default device prefix to use when attaching volumes, values: hd (IDE), sd (SCSI), vd (KVM), vxd (XEN)
+storage_one_datastore_default_device_prefix=vd
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
@@ -220,7 +220,10 @@ compute_azure_region=azure_region
 compute_azure_storage_account_name=storage_account_name
 compute_azure_storage_key=key_content
 
-## Storage Plugin (Azure)
+# Network Plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.azure.AzureNetworkPlugin
+
+## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
 
 ## Identity
@@ -229,9 +232,14 @@ mapper_defaults_subscription_id=subscription_id
 mapper_defaults_keystore_path=/path/to/keystore
 mapper_defaults_keystore_password=pass
 
-----
-## Storage Plugin (Azure)
-storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+## Local Identity
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+
+## Identity
+# federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
+mapper_defaults_subscription_id=subscription_id
+mapper_defaults_keystore_path=/path/to/keystore
+mapper_defaults_keystore_password=keystore_pass
 
 ```
 
