@@ -1,4 +1,4 @@
-Title: The Big Picture Fogbow Dashboard
+Title: The Big Picture
 url: the-big-picture
 save_as: the-big-picture.html
 section: install
