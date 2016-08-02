@@ -108,30 +108,21 @@ http_port = 8182
 
 #### OpenStack
 ```bash
-## network Plugin
-network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
-network_openstack_v2_url=http://address:port
-external_gateway_info=
-
-## Storage Plugin
-storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
-storage_v2_url=http://address:port
-
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackNovaV2ComputePlugin
 compute_novav2_url=http://address:port
 compute_glancev2_url=http://address:port
 compute_glancev2_image_visibility=private
-compute_novav2_network_id=
+compute_novav2_network_id=network_id
 
-## Compute Plugin (OCCI)
-# compute_class=org.fogbowcloud.manager.core.plugins.compute.openstack.OpenStackOCCIComputePlugin
-# compute_openstack_v2api_url=http://address:port
-# compute_occi_url=http://address:port
-# compute_occi_os_scheme=http://schemas.openstack.org/template/os#
-# compute_occi_instance_scheme=http://schemas.openstack.org/compute/instance#
-# compute_occi_resource_scheme=http://schemas.openstack.org/template/resource#
-# compute_occi_network_id=
+## network Plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.openstack.OpenStackV2NetworkPlugin
+network_openstack_v2_url=http://address:port
+external_gateway_info=gateway_id
+
+## Storage Plugin
+storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
+storage_v2_url=http://address:port
 ```
 #### CloudStack
 ```bash
