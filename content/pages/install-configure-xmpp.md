@@ -1,8 +1,8 @@
 Title: Install and configure XMPP
 url: install-configure-xmpp
 save_as: install-configure-xmpp.html
-section: install-configure
-index: 0
+section: install
+index: 1
 
 Install and configure XMPP
 ==========
