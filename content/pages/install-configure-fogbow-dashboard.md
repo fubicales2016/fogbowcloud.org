@@ -4,7 +4,7 @@ save_as: install-configure-fogbow-dashboard.html
 section: install
 index: 6
 
-Fogbow Dashboard
+Install and configure the Fogbow Dashboard
 ==========
 The Fogbow Dashboard is a web interface to the Fogbow Manager. It provides all the operations that can be performed through the [Fogbow CLI](http://www.fogbowcloud.org/fogbow-cli).
 
