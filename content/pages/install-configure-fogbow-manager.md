@@ -1,4 +1,4 @@
-Title: Install and configure fogbow manager
+Title: Install and configure Fogbow manager
 url: install-configure-fogbow-manager
 save_as: install-configure-fogbow-manager.html
 section: install
