@@ -123,21 +123,37 @@ external_gateway_info=gateway_id
 ## Storage Plugin
 storage_class=org.fogbowcloud.manager.core.plugins.storage.openstack.OpenStackV2StoragePlugin
 storage_v2_url=http://address:port
+
+## Local Identity
+local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
+local_identity_url=http://address:port
+
+## Mapper Plugin / Local credentials
+mapper_defaults_username=username
+mapper_defaults_password=userpass
+mapper_defaults_tenantname=tname
 ```
+
 #### CloudStack
 ```bash
-## Storage Plugin
-# storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
-
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.cloudstack.CloudStackComputePlugin
 compute_cloudstack_api_url=http://address:port/client/api
-compute_cloudstack_zone_id=
-compute_cloudstack_image_download_base_url=http://address:port/downloads/
-compute_cloudstack_image_download_base_path=/var/www/downloads/
-compute_cloudstack_hypervisor=KVM
-compute_cloudstack_image_download_os_type_id=
+compute_cloudstack_zone_id=zone_id
+compute_cloudstack_image_download_base_url=http://address
+compute_cloudstack_image_download_base_path=/path/to/download/dir/
+compute_cloudstack_hypervisor=hypervisor_name
+compute_cloudstack_image_download_os_type_id=id
 compute_cloudstack_expunge_on_destroy=true
+
+# Network Plugin
+network_class=org.fogbowcloud.manager.core.plugins.network.cloudstack.CloudStackNetworkPlugin
+network_cloudstack_api_url=https://compute.rnp.br/client/api
+network_cloudstack_zone_id=zone_id
+network_cloudstack_netoffering_id=offering_id
+
+## Storage Plugin
+# storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStackStoragePlugin
 
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
