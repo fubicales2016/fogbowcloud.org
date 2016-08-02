@@ -128,6 +128,9 @@ storage_v2_url=http://address:port
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.openstack.KeystoneIdentityPlugin
 local_identity_url=http://address:port
 
+## Local Credentials
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
 mapper_defaults_username=username
 mapper_defaults_password=userpass
@@ -158,6 +161,9 @@ storage_class=org.fogbowcloud.manager.core.plugins.storage.cloudstack.CloudStack
 ## Local Identity
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.cloudstack.CloudStackIdentityPlugin
 local_identity_url=http://address/client/api/
+
+## Local Credentials
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
 
 ## Mapper Plugin / Local credentials to be used when we miss information about a given user
 mapper_defaults_apiKey=user_api_key
@@ -190,6 +196,9 @@ compute_one_datastore_id=datastore_id
 local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.OpenNebulaIdentityPlugin
 local_identity_url=http://address:port/RPC2
 
+## Local Credentials
+federation_user_credentail_class=org.fogbowcloud.manager.core.plugins.localcredentails.SingleMapperPlugin
+
 # Mapper Plugin / Local credentials
 mapper_defaults_username=username
 mapper_defaults_password=password
@@ -204,17 +213,26 @@ federation_identity_url=http://address:port/RPC2
 ```bash
 ## Compute Plugin
 compute_class=org.fogbowcloud.manager.core.plugins.compute.azure.AzureComputePlugin
-compute_azure_max_vcpu=10
-compute_azure_max_ram=10240
-compute_azure_region=East US
-compute_azure_storage_account_name=name
-compute_azure_storage_key=key
+compute_azure_max_instances=num_max_instances
+compute_azure_max_vcpu=num_max_vcpu
+compute_azure_max_ram=num_max_ram
+compute_azure_region=azure_region
+compute_azure_storage_account_name=storage_account_name
+compute_azure_storage_key=key_content
+
+## Storage Plugin (Azure)
+storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
 
 ## Identity
 federation_identity_class=org.fogbowcloud.manager.core.plugins.identity.azure.AzureIdentityPlugin
 mapper_defaults_subscription_id=subscription_id
 mapper_defaults_keystore_path=/path/to/keystore
 mapper_defaults_keystore_password=pass
+
+----
+## Storage Plugin (Azure)
+storage_class=org.fogbowcloud.manager.core.plugins.storage.azure.AzureStoragePlugin
+
 ```
 
 ## Run 
