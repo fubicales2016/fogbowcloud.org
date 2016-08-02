@@ -191,8 +191,8 @@ local_identity_class=org.fogbowcloud.manager.core.plugins.identity.opennebula.Op
 local_identity_url=http://address:port/RPC2
 
 # Mapper Plugin / Local credentials
-mapper_defaults_username=
-mapper_defaults_password=
+mapper_defaults_username=username
+mapper_defaults_password=password
 
 ## Federation Identity
 federation_identity_class=org.fogbowcloud.manager.core.plugins.opennebula.OpenNebulaIdentityPlugin
