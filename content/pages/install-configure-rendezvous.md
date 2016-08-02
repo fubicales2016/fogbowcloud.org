@@ -1,4 +1,4 @@
-Title: Install and configure fogbow rendezvous
+Title: Install and configure Fogbow Rendezvous
 url: install-configure-rendezvous
 save_as: install-configure-rendezvous.html
 section: install
