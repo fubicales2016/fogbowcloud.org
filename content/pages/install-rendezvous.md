@@ -1,7 +1,7 @@
 Title: Rendezvous
 url: install-rendezvous
 save_as: install-rendezvous.html
-section: install
+section: install-nopage
 index: 2
 
 # Rendezvous
