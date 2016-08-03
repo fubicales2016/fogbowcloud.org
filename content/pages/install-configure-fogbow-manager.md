@@ -84,16 +84,16 @@ accounting_update_period=300000
 
 ```bash
 # The token_host_public_address property defines the public IP address of the FRT service
-token_host_public_address=150.160.0.10
+token_host_public_address=123.456.789.4
 
 # The token_host_private_address property defines the private IP address of the FRT service
 token_host_private_address=10.0.0.1
 
-# The token_host_port property defines the port to be used when doing ssh.
+# The token_host_port property defines the port to be used by the VM to establish the SSH tunnel with the FRT
 # If this property isn't set, the default value is 2222
 token_host_port=2222
 
-# The token_host_http_port property defines the port to be used when communicating with the FRT
+# The token_host_http_port property defines the port to be used by the VM to request a port to create the SSH tunnel
 token_host_http_port=2223
 ```
 
