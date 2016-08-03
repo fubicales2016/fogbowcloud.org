@@ -119,7 +119,7 @@ mvn install
 <span class="nv">xmpp_password</span><span class="o">=</span>manager_password
 
 <span class="c"># XMPP server IP address</span>
-<span class="nv">xmpp_host</span><span class="o">=</span>150.1.1.1
+<span class="nv">xmpp_host</span><span class="o">=</span>123.1.1.1
 
 <span class="c"># Port in which the XMPP server will be listening.</span>
 <span class="nv">xmpp_port</span><span class="o">=</span>5347
@@ -131,7 +131,7 @@ mvn install
 
 <p>The <strong>xmpp_jid</strong>, <strong>xmpp_password</strong> and <strong>rendezvous_jid</strong> properties above must match the values assigned during the <a  href="/install-configure-xmpp" target="_blank">Install and configure XMPP </a> section of our documentation.</p>
 <p>Following, you need to add a new entry in your DNS to resolve the given <strong>Fogbow Manager</strong> component name to the IP address of the XMPP server like in the example below.</p>
-<div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">manager</span><span class="p">.</span><span class="n">internal</span><span class="p">.</span><span class="n">mydomain</span>        <span class="mi">22</span>      <span class="n">IN</span>      <span class="n">A</span>       <span class="mf">150.1.1.1</span>
+<div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">manager</span><span class="p">.</span><span class="n">internal</span><span class="p">.</span><span class="n">mydomain</span>        <span class="mi">22</span>      <span class="n">IN</span>      <span class="n">A</span>       <span class="mf">123.1.1.1</span>
 </pre></div>
 
 
