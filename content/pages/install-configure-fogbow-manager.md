@@ -51,7 +51,7 @@ xmpp_jid=my-manager.internal.mydomain
 xmpp_password=manager_password
 
 # XMPP server IP address
-xmpp_host=150.1.1.1
+xmpp_host=123.1.1.1
 
 # Port in which the XMPP server will be listening.
 xmpp_port=5347
@@ -65,7 +65,7 @@ The **xmpp_jid**, **xmpp_password** and **rendezvous_jid** properties above must
 Following, you need to add a new entry in your DNS to resolve the given **Fogbow Manager** component name to the IP address of the XMPP server like in the example below.
 
 ``` shell
-my-manager.internal.mydomain        22      IN      A       150.1.1.1
+my-manager.internal.mydomain        22      IN      A       123.1.1.1
 ```
 
 **Time intervals:** The Fogbow Manager executes some background tasks, such as resource monitoring, periodically. All the time interval properties are defined in the class ```org.fogbowcloud.manager.core.ConfigurationConstants``` and have default period values specified in the class ```org.fogbowcloud.manager.core.ManagerController```. The default values of any property can be overwritten in the configuration file as shown below:
