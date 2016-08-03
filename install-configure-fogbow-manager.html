@@ -148,16 +148,16 @@ mvn install
 
 <p><strong>SSH tunnel properties:</strong> These properties configure the Fogbow Reverse Tunnel (FRT) service to provide public IP access to the VMs created by the Fogbow Manager in its intranet. The example below shows how these properties should be set, considering the example presented in the <a  href="/install-configure-frt" target="_blank">Install and configure Fogbow Reverse Tunnel </a> section of our documentation:</p>
 <div class="highlight"><pre><span class="c"># The token_host_public_address property defines the public IP address of the FRT service</span>
-<span class="nv">token_host_public_address</span><span class="o">=</span>150.160.0.10
+<span class="nv">token_host_public_address</span><span class="o">=</span>123.456.789.4
 
 <span class="c"># The token_host_private_address property defines the private IP address of the FRT service</span>
 <span class="nv">token_host_private_address</span><span class="o">=</span>10.0.0.1
 
-<span class="c"># The token_host_port property defines the port to be used when doing ssh.</span>
+<span class="c"># The token_host_port property defines the port to be used by the VM to establish the SSH tunnel with the FRT</span>
 <span class="c"># If this property isn&#39;t set, the default value is 2222</span>
 <span class="nv">token_host_port</span><span class="o">=</span>2222
 
-<span class="c"># The token_host_http_port property defines the port to be used when communicating with the FRT</span>
+<span class="c"># The token_host_http_port property defines the port to be used by the VM to request a port to create the SSH tunnel</span>
 <span class="nv">token_host_http_port</span><span class="o">=</span>2223
 </pre></div>
 
